@@ -1,0 +1,96 @@
+﻿ @{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Tra cứu</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Jquery.alerts/jquery.alerts.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/Alert/common.js"></script>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/THONGTINPHUCVU/ThongTinPhucVu.css" rel="stylesheet" />
+    <script src="~/Scripts/Alert/common.js"></script>
+    <script src="~/Scripts/Alert/jquery.alerts.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <style>
+        .text-red{color:red}
+        .titlecss {    font-size: 32px;
+    text-transform: uppercase;}
+        hr{ font-weight:bold}
+    </style>
+    <div class="row">
+        <div class="col s3 m3" style="height:89px; display:grid">
+            <img src="~/Content/logo.png" style="height:inherit;   " />
+        </div>
+        <div class="col m9 s9">
+            <div class="col m12 center bold titlecss "  >Tra cứu THÔNG TIN PHỤC VỤ</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <hr style="border-color: #ccc; border-width: 2px;" >
+    <div class="row text-center">
+        <div class="input-field col m11 s10">
+            <input id="ticket" type="text" class="validate bold text-center" style="font-size:45px">
+            <label for="ticket">Số phiếu </label>
+            <span class="helper-text"> </span>
+        </div>
+        <div class="input-field col ">
+            <button type="button" btnsearch class="btn-floating waves-effect waves-light red"><i class="material-icons">search</i></button>
+        </div>
+    </div>
+    <div class="row col m12 s12 text-center info-result">
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('[btnSearch]').click(function () {
+                if ($('#ticket').val() == '') {
+                    alert("Vui lòng nhập số phiếu cần kiểm tra thông tin.");
+                    $('#ticket').focus();
+                }
+                else {
+                    $.ajax({
+                        url: "/DangKyOnline/CheckServeInformation",
+                        type: 'POST',
+                        data: JSON.stringify({ 'ticket': parseInt($('#ticket').val()) }),
+                        contentType: 'application/json charset=utf-8',
+                        success: function (data) {
+                            if (data != null) {
+                                $('.info-result').html(data.Records);
+                            }
+                        }
+                    });
+                }
+            })
+        });
+
+    </script>
+</body>
+</html>

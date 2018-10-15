@@ -1,0 +1,63 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+</head>
+<body>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.material.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.common-material.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.default.mobile.min.css" rel="stylesheet" />
+    <div class="col-md-12" style=" padding:0">
+        <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">Thống kê đánh giá</div>
+         
+        <div class="col-md-12">
+            <table id="tb_export">
+                <thead>
+                    <tr>
+                        <td class="col-md-1">TT</td>
+                        <td class="col-md-5">LĨNH VỰC</td>
+                        <td class="col-md-2">Rất hài lòng</td>
+                        <td class="col-md-2">Hài lòng</td>
+                        <td class="col-md-2">Không hài lòng</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5">Không có dữ liệu</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        #tb_export {
+            width: 100%;
+        }
+
+            #tb_export thead tr {
+            }
+
+                #tb_export thead tr td {
+                    background: blue;
+                    padding: 10px 0;
+                    text-transform: uppercase;
+                    color: white;
+                    font-weight: bold;
+                }
+
+            #tb_export td {
+                border: 1px solid #ccc;
+                text-align: center;
+                padding: 5px 0;
+            } 
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/KendoUI/kendo.all.min.js"></script>
+    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script> 
+    <script src="~/Scripts/QMS/Report/DailyReport.js"></script>>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+</body>
+</html>

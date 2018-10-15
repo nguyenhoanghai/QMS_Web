@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+</head>
+<body>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.material.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.common-material.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.default.mobile.min.css" rel="stylesheet" />
+
+    <div id="fullscreen" class="container">
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        <div>
+            <div id="box-date" class="col-md-12">
+                <div class="form-group col-md-4" style="display:none">
+                    <label class="control-label" style="float: left; padding-right: 10px; margin: auto; padding-top: 6px;">Nhân viên</label>
+                    <select class="form-control" id="user" style="width:80%"></select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label  ">Từ ngày</label>
+                    <input type="text" class="form-control" id="from" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Đến ngày</label>
+                    <input type="text" class="form-control" id="to" />
+                </div>
+                <div class="form-group col-md-6" style="padding-top:25px">
+                    <button class="btn btn-primary" id="view"><i class="fa fa-table"></i> Xem</button>
+                    <button class="btn btn-danger" id="export"><i class="fa fa-file-excel-o"></i> Xuất Excel</button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="danhgia_box" style="height:590px">
+                <div class="col-md-12 col-sm-12" style="height:150px">
+                    <div class="left_ col-md-2 col-sm-2"></div>
+                    <div id="title" class="col-md-8 col-sm-8">trung tâm hành chính công gia bình</div>
+                    <div class="right_ col-md-2 col-sm-2"></div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="col-md-12" style=" padding:0;  ">
+                    <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;">Thống kê đánh giá sự hài lòng</div>
+
+                    <div class="col-md-6" style="padding: 0">
+                        <table id="tb_export" class="tb_export">
+                            <thead>
+                                <tr>
+                                    <td class="col-md-1">TT</td>
+                                    <td class="col-md-5">Họ tên</td>
+                                    <td class="col-md-2">Rất hài lòng</td>
+                                    <td class="col-md-2">Hài lòng</td>
+                                    <td class="col-md-2">Không hài lòng</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">Không có dữ liệu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6" style="padding: 0">
+                        <table id="tb_export2" class="tb_export">
+                            <thead>
+                                <tr>
+                                    <td class="col-md-1">TT</td>
+                                    <td class="col-md-5">Họ tên</td>
+                                    <td class="col-md-2">Rất hài lòng</td>
+                                    <td class="col-md-2">Hài lòng</td>
+                                    <td class="col-md-2">Không hài lòng</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">Không có dữ liệu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+
+
+
+    <style>
+        .full-box {
+            position: fixed;
+            top: 72px;
+            left: 0px;
+            z-index: 99999;
+            overflow: hidden;
+            margin-left: -15px;
+        }
+
+        #box-date {
+            border: 1px solid #ccc;
+        }
+
+        #title {
+            color: red !important;
+            font-weight: bold;
+            font-size: 41px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .left_, .right_ {
+            height: 100%;
+            background-size: contain !important;
+        }
+
+        .left_ {
+            background: url('../../Content/QH.png') no-repeat center center;
+        }
+
+        .right_ {
+            background: url('../../Content/logo.png') no-repeat center center;
+        }
+
+        .tb_export {
+            width: 100%;
+        }
+
+            .tb_export thead tr {
+            }
+
+                .tb_export thead tr td {
+                    background: blue;
+                    padding: 10px 0;
+                    text-transform: uppercase;
+                    color: white;
+                    font-weight: bold;
+                }
+
+            .tb_export td {
+                border: 1px solid #ccc;
+                text-align: center;
+                padding: 5px 0;
+            }
+
+        /*#tb_export td:first-child{
+            border-left:none;
+        }
+
+          #tb_export td:last-child{
+            border-right:none;
+        }*/
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/KendoUI/kendo.all.min.js"></script>
+    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>
+    <script src="~/Scripts/QMS/Report/View.js"></script>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+    <script>
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                $('#box-date').hide();
+            }
+            else {
+                fullScreenApi.cancelFullScreen(document.documentElement);
+                $('#box-date').show();
+            }
+        }
+
+        $('#request-full').click(function () {
+            check();
+        });
+        var home = new GPRO.Home();
+        home.Init();
+    </script>
+</body>
+</html>

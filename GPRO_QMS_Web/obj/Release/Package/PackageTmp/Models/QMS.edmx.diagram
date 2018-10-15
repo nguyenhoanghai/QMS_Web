@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ac4be79ed974c9ea4337a1163c7b650" Name="Diagram1">
+        <EntityTypeShape EntityType="QMSModel.AMTHANH" Width="1.5" PointX="11.75" PointY="2.25" />
+        <EntityTypeShape EntityType="QMSModel.AMTHANHQUAY" Width="1.5" PointX="3" PointY="20.625" />
+        <EntityTypeShape EntityType="QMSModel.B01_THAMSO" Width="1.5" PointX="15.75" PointY="2.25" />
+        <EntityTypeShape EntityType="QMSModel.B03_MAYIN_AMTHANH" Width="1.5" PointX="15.75" PointY="8.25" />
+        <EntityTypeShape EntityType="QMSModel.B04_MAYIN_NV_NVU" Width="1.5" PointX="5.25" PointY="20.375" />
+        <EntityTypeShape EntityType="QMSModel.CA" Width="1.5" PointX="15.75" PointY="11.25" />
+        <EntityTypeShape EntityType="QMSModel.CHINHSACH" Width="1.5" PointX="6" PointY="30.5" />
+        <EntityTypeShape EntityType="QMSModel.CounterSoft" Width="1.5" PointX="15.75" PointY="15.25" />
+        <EntityTypeShape EntityType="QMSModel.CounterSoftButton" Width="1.5" PointX="0.75" PointY="18.25" />
+        <EntityTypeShape EntityType="QMSModel.CSoftButton_Lenh" Width="1.5" PointX="7.75" PointY="18.25" />
+        <EntityTypeShape EntityType="QMSModel.DICHVU" Width="1.5" PointX="3.75" PointY="27.5" />
+        <EntityTypeShape EntityType="QMSModel.DOANHNGHIEP" Width="1.5" PointX="3.75" PointY="24.5" />
+        <EntityTypeShape EntityType="QMSModel.DocumentKind" Width="1.5" PointX="17.75" PointY="2.25" />
+        <EntityTypeShape EntityType="QMSModel.Document" Width="1.5" PointX="17.75" PointY="5.25" />
+        <EntityTypeShape EntityType="QMSModel.DocumentStatu" Width="1.5" PointX="17.75" PointY="9.25" />
+        <EntityTypeShape EntityType="QMSModel.DUONGDI" Width="1.5" PointX="8.25" PointY="15.375" />
+        <EntityTypeShape EntityType="QMSModel.HANHDONG" Width="1.5" PointX="10.75" PointY="6.125" />
+        <EntityTypeShape EntityType="QMSModel.KIEUDICH" Width="1.5" PointX="17.75" PointY="12.25" />
+        <EntityTypeShape EntityType="QMSModel.LENH" Width="1.5" PointX="17.75" PointY="15.25" />
+        <EntityTypeShape EntityType="QMSModel.LENHTHAMSO0" Width="1.5" PointX="15.75" PointY="19.25" />
+        <EntityTypeShape EntityType="QMSModel.LOAIDOANHNGHIEP" Width="1.5" PointX="1.5" PointY="24.875" />
+        <EntityTypeShape EntityType="QMSModel.LOAITB" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="QMSModel.LOGON" Width="1.5" PointX="5.25" PointY="7.75" />
+        <EntityTypeShape EntityType="QMSModel.MAU_AMTHANH" Width="1.5" PointX="10.75" PointY="16.5" />
+        <EntityTypeShape EntityType="QMSModel.MAUNV" Width="1.5" PointX="10.75" PointY="9.25" />
+        <EntityTypeShape EntityType="QMSModel.MENU_Config0" Width="1.5" PointX="17.75" PointY="18.25" />
+        <EntityTypeShape EntityType="QMSModel.NB_QUAY" Width="1.5" PointX="3" PointY="15.375" />
+        <EntityTypeShape EntityType="QMSModel.NGHIEPVU" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="QMSModel.NGONNGU" Width="1.5" PointX="9.75" PointY="20.25" />
+        <EntityTypeShape EntityType="QMSModel.NHANVIEN" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="QMSModel.NHANVIENMAU" Width="1.5" PointX="13" PointY="5.5" />
+        <EntityTypeShape EntityType="QMSModel.NV_LENHBD" Width="1.5" PointX="11.75" PointY="20.25" />
+        <EntityTypeShape EntityType="QMSModel.NV_NGHIEPVU" Width="1.5" PointX="8.25" PointY="5.875" />
+        <EntityTypeShape EntityType="QMSModel.NVAMTHANH" Width="1.5" PointX="13" PointY="16.625" />
+        <EntityTypeShape EntityType="QMSModel.NVLENH" Width="1.5" PointX="19.75" PointY="2.25" />
+        <EntityTypeShape EntityType="QMSModel.PHANDEUPHIEU" Width="1.5" PointX="19.75" PointY="6.25" />
+        <EntityTypeShape EntityType="QMSModel.Q_BookService" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="QMSModel.Q_CallButtonNext" Width="1.5" PointX="19.75" PointY="9.25" />
+        <EntityTypeShape EntityType="QMSModel.Q_Evaluate" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="QMSModel.Q_EvaluateDetail" Width="1.5" PointX="13" PointY="12.5" />
+        <EntityTypeShape EntityType="QMSModel.Q_UserEvaluate" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="QMSModel.QUAY" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="QMSModel.QUAY_HUONGAMTHANH" Width="1.5" PointX="19.75" PointY="12.25" />
+        <EntityTypeShape EntityType="QMSModel.QUAY_MAIN" Width="1.5" PointX="5.25" PointY="11.625" />
+        <EntityTypeShape EntityType="QMSModel.SMSMessage" Width="1.5" PointX="19.75" PointY="15.25" />
+        <EntityTypeShape EntityType="QMSModel.SMSResultSetup" Width="1.5" PointX="19.75" PointY="19.25" />
+        <EntityTypeShape EntityType="QMSModel.SMSSetup" Width="1.5" PointX="13.75" PointY="22.25" />
+        <EntityTypeShape EntityType="QMSModel.THIETBI" Width="1.5" PointX="3" PointY="10.375" />
+        <EntityTypeShape EntityType="QMSModel.TIENTRINH" Width="1.5" PointX="6.75" PointY="33.375" />
+        <EntityTypeShape EntityType="QMSModel.TRANGTHAI" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="QMSModel.TTUUTIEN" Width="1.5" PointX="9" PointY="2.125" />
+        <EntityTypeShape EntityType="QMSModel.ViewAllWaitingList" Width="1.5" PointX="15.75" PointY="22.25" />
+        <EntityTypeShape EntityType="QMSModel.XULYYC" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="QMSModel.XULYYCLT" Width="1.5" PointX="17.75" PointY="22.25" />
+        <EntityTypeShape EntityType="QMSModel.YEUCAU" Width="1.5" PointX="6" PointY="25.625" />
+        <EntityTypeShape EntityType="QMSModel.YEUCAULT" Width="1.5" PointX="19.75" PointY="22.25" />
+        <EntityTypeShape EntityType="QMSModel.CHINHMAU" Width="1.5" PointX="21.75" PointY="2.25" />
+        <EntityTypeShape EntityType="QMSModel.CONTENT_SMS" Width="1.5" PointX="21.75" PointY="6.25" />
+        <EntityTypeShape EntityType="QMSModel.CONTENT_SMS_Tmp" Width="1.5" PointX="21.75" PointY="10.25" />
+        <EntityTypeShape EntityType="QMSModel.LENHTHAMSO" Width="1.5" PointX="8.75" PointY="23.25" />
+        <EntityTypeShape EntityType="QMSModel.MENU_Config" Width="1.5" PointX="10.75" PointY="23.25" />
+        <EntityTypeShape EntityType="QMSModel.NOIDUNGDANHGIA" Width="1.5" PointX="12.75" PointY="10.25" />
+        <AssociationConnector Association="QMSModel.FK_AMTHANHQUAY_QUAY" />
+        <AssociationConnector Association="QMSModel.FK_B04_MAYIN_NV_NVU_THIETBI" />
+        <AssociationConnector Association="QMSModel.FK_NV_NGHIEPVU_chinhsach" />
+        <AssociationConnector Association="QMSModel.FK_DUONGDI_DICHVU" />
+        <AssociationConnector Association="QMSModel.FK_YEUCAU_DICHVU" />
+        <AssociationConnector Association="QMSModel.FK_DOANHNGHIEP_LOAIDOANHNGHIEP" />
+        <AssociationConnector Association="QMSModel.FK_YEUCAU_DOANHNGHIEP" />
+        <AssociationConnector Association="QMSModel.FK_DUONGDI_NGHIEPVU" />
+        <AssociationConnector Association="QMSModel.FK_NHANVIENMAU_HANHDONG" />
+        <AssociationConnector Association="QMSModel.FK_THIETBI_LOAITB" />
+        <AssociationConnector Association="QMSModel.FK_TTUUTIEN_LOAITB" />
+        <AssociationConnector Association="QMSModel.FK_LOGON_NHANVIEN" />
+        <AssociationConnector Association="QMSModel.FK_LOGON_THIETBI" />
+        <AssociationConnector Association="QMSModel.FK_LOGON_TRANGTHAI" />
+        <AssociationConnector Association="QMSModel.FK_NVAMTHANH_MAU_AMTHANH" />
+        <AssociationConnector Association="QMSModel.FK_NHANVIENMAU_MAUNV" />
+        <AssociationConnector Association="QMSModel.FK_NB_QUAY_QUAY" />
+        <AssociationConnector Association="QMSModel.FK_NV_NGHIEPVU_NGHIEPVU" />
+        <AssociationConnector Association="QMSModel.FK_NV_NGHIEPVU_NHANVIEN" />
+        <AssociationConnector Association="QMSModel.FK_Q_BookService_NHANVIEN" />
+        <AssociationConnector Association="QMSModel.FK_Q_UserEvaluate_NHANVIEN" />
+        <AssociationConnector Association="QMSModel.FK_XULYYC_NHANVIEN" />
+        <AssociationConnector Association="QMSModel.FK_Q_EvaluateDetail_Q_Evaluate" />
+        <AssociationConnector Association="QMSModel.FK_QUAY_MAIN_QUAY" />
+        <AssociationConnector Association="QMSModel.FK_THIETBI_QUAY" />
+        <AssociationConnector Association="QMSModel.FK_QUAY_MAIN_THIETBI" />
+        <AssociationConnector Association="QMSModel.FK_XULYYC_THIETBI" />
+        <AssociationConnector Association="QMSModel.FK_TTUUTIEN_TIENTRINH" />
+        <AssociationConnector Association="QMSModel.FK_XULYYC_YEUCAU" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

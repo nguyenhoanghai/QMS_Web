@@ -1,0 +1,169 @@
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\QMS_Website.dll.config
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\QMS_Website.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\QMS_Website.pdb
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\EntityFramework.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\GPRO.Core.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\GPRO.Ultilities.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\Hugate.Framework.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\Microsoft.Web.XmlTransform.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\Newtonsoft.Json.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\PagedList.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Helpers.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Mvc.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Razor.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Webpages.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\EntityFramework.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\Newtonsoft.Json.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Razor.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Webpages.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Helpers.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Mvc.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\obj\Release\QMS_Website.csprojResolveAssemblyReference.cache
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\obj\Release\QMS_Website.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\obj\Release\QMS_Website.pdb
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Http.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.dll
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Http.xml
+E:\GPRO.1.4.17\Website\QMS_Website\QMS_Website\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.dll.config
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.pdb
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\EntityFramework.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\GPRO.Core.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\GPRO.Ultilities.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\Hugate.Framework.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\Microsoft.Web.XmlTransform.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\Newtonsoft.Json.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\PagedList.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Helpers.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Mvc.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Razor.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\EntityFramework.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\Newtonsoft.Json.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Razor.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Helpers.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Mvc.xml
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.csprojResolveAssemblyReference.cache
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.dll
+F:\GPRO.1.4.17\Website\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.pdb
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.dll.config
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.pdb
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\EntityFramework.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\GPRO.Core.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\GPRO.Ultilities.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\Hugate.Framework.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\Microsoft.Web.XmlTransform.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\Newtonsoft.Json.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\PagedList.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Helpers.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Mvc.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Razor.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\EntityFramework.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\Newtonsoft.Json.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Razor.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Helpers.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Mvc.xml
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.csprojResolveAssemblyReference.cache
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.dll
+F:\GPRO_New_7.8.2017\Source Code\Website\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.pdb
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.dll.config
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\QMS_Website.pdb
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\EntityFramework.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\EPPlus.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\GPRO.Core.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\GPRO.Ultilities.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\Hugate.Framework.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\Microsoft.Web.XmlTransform.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\Newtonsoft.Json.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\OpenXmlPackaging.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\PagedList.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Helpers.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Mvc.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Razor.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\EntityFramework.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\Newtonsoft.Json.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Net.Http.Formatting.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Http.WebHost.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Razor.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Deployment.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Webpages.Razor.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Helpers.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\bin\System.Web.Mvc.xml
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.csprojResolveAssemblyReference.cache
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.dll
+F:\GPRO_New_7.8.2017\Source Code\App\QMS\QMS Web\trunk\Source\QMS_Website\obj\Release\QMS_Website.pdb
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\QMS_Website.dll.config
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\QMS_Website.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\QMS_Website.pdb
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\EntityFramework.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\EPPlus.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\GPRO.Core.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\GPRO.Ultilities.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\Hugate.Framework.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\Microsoft.Web.XmlTransform.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\Newtonsoft.Json.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\OpenXmlPackaging.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\PagedList.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Net.Http.Formatting.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Helpers.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Http.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Http.WebHost.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Mvc.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Razor.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Webpages.Deployment.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Webpages.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Webpages.Razor.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\EntityFramework.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\Newtonsoft.Json.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Net.Http.Formatting.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Http.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Http.WebHost.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Razor.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Webpages.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Webpages.Deployment.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Webpages.Razor.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Helpers.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\bin\System.Web.Mvc.xml
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\obj\Release\QMS_Website.csprojResolveAssemblyReference.cache
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\obj\Release\QMS_Website.dll
+F:\GPRO_2018\Gọi số\QMS_Web\trunk\QMS_Website\obj\Release\QMS_Website.pdb

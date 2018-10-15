@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Thêm Nhân Viên";
+}
+<script src="~/Areas/Admin/Scripts/User/User_Create.js"></script>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title">Thông Tin Nhân Viên</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="col-md-4 form-group">
+                <label class="control-label">Họ Tên<span class="red bold">*</span></label>
+                <div>
+                    <input class="form-control" id="tennv" type="text" />
+                </div>
+            </div>
+            <div class="col-md-4 form-group" style=" margin-bottom:0">
+                <label class="control-label">Giới Tính<span class="red bold"> *</span></label>
+                <div>
+                    <input type="checkbox" id="sex" data-width="70" data-toggle="toggle" data-on="Nam" data-off="Nữ">
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="control-label">Tên tài khoản</label>
+                <div>
+                    <input class="form-control" id="username" type="text" />
+                </div>
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label class="control-label">Mật khẩu</label>
+                <div>
+                    <input class="form-control" id="password" type="password" />
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="control-label">Chuyên Môn</label>
+                <div>
+                    <input class="form-control" id="chuyenmon" type="text" />
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="control-label">Chức Vụ</label>
+                <div>
+                    <input class="form-control" id="chucvu" type="text" />
+                </div>
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label class="control-label">Trợ Giúp</label>
+                <div class="select-box">
+                    <select id="trogiup"></select>
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="control-label">Hình</label>
+                <div>
+                    <input type="file" id="pictureuploader" />
+                    <input type="hidden" id="hid_avatar" />
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="control-label">Quá Trình Công Tác </label>
+                <div>
+                    <textarea class="form-control" id="qtcongtac"></textarea>
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="control-label">Địa Chỉ </label>
+                <div>
+                    <textarea class="form-control" id="diachi"></textarea>
+                </div>
+            </div>
+
+          
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" id="btnBack" class="btn btn-default" data-dismiss="modal"><i class="fa fa-undo "></i> Quay lại danh sách </button>
+    <button type="button" id="btnSave" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-floppy-o"></i> Lưu lại </button>
+</div>

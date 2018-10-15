@@ -1,0 +1,101 @@
+﻿<script src="~/Scripts/QMS/Home/Home.js"></script>
+
+<input id="user" type="hidden" value="@ViewData["user"] " />
+
+<div style="display:none" id="currentNumber" class="font-dt">
+    <span id="num" style="color:white ; font-size:92px ">2032</span>
+</div>
+
+<div id="danhgia_box">
+    <div class="user-info col-md-5 col-sm-5" style="height:inherit">
+        @*<div style="height:70%">
+            <img src="@(Model.Hinh != null ? ("/Areas/Admin/Content/User/Images/"+Model.Hinh) : "~/Content/tsc_image.png")" style="height:100%;    border: 2px solid #aaa;" /> 
+        </div>
+        <ul class="ct-info">
+            <li>Họ tên : <span  >@Model.TENNV</span></li>
+            <li>Chuyên môn : <span  >@Model.ChuyenMon</span></li>
+            <li>Chức vụ : <span  >@Model.ChucVu</span></li>
+            <li>Quá trình công tác: <span  >@Model.QTCongTac</span></li> 
+        </ul>*@
+    </div>
+    <div id="dg_ct" class="col-md-7 col-sm-7">
+        <div class="title">Đánh giá Chất lượng</div>
+        <div class="ct">
+        </div>
+        <div class="foot">
+            <button class="btn btn-primary">Đánh Giá</button>
+        </div>
+    </div>
+
+</div>
+
+
+ 
+<style>
+    #currentNumber,
+    #danhgia_box {
+        background-color: red;
+        width: 100%;
+        text-align: center;
+    }
+
+    #num,
+    #dg_ct {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #danhgia_box {
+        background-color: #bbb !important;
+    }
+
+        #danhgia_box .title {
+            font-size: 45px;
+            border-bottom: 1px dotted #eee;
+        }
+
+        #danhgia_box .ct {
+            font-size: 35px;
+        }
+
+        #danhgia_box input[type=radio] {
+            width: 35px;
+            height: 25px;
+            margin-left:20px;
+        }
+
+        #danhgia_box .child_title,
+        #danhgia_box .child_ct {
+            color: darkgreen;
+            font-weight: bold;
+        }
+
+        #danhgia_box .child_ct {
+            font-weight: normal !important;
+        }
+
+        #danhgia_box .foot {
+           
+            padding-top: 20px;
+        }
+
+        #danhgia_box .btn-primary {
+            background-color: blue !important; font-size: 30px;
+        }
+
+        .ct-info{
+            margin:0; padding:0; 
+        }
+
+        .ct-info li{
+            list-style:none;
+            font-size:25px
+        }
+        .ct-info li span{
+            font-weight:bold;
+            color:red;
+        }
+</style>
+
+

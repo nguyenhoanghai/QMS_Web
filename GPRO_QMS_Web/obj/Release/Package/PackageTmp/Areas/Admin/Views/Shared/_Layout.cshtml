@@ -1,0 +1,286 @@
+﻿@using QMS_Website.Controllers;
+@{
+    var user = (QMS_Website.Areas.Admin.Controllers.Employee)Session["User"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Css/css/animate.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Web/main.css" rel="stylesheet" />
+    <link href="~/Content/Web/Layout.css" rel="stylesheet" />
+    <link href="~/Content/Web/Responsive.css" rel="stylesheet" />
+
+    <!-- Custom styling plus plugins -->
+    <link href="~/Areas/Admin/Content/Css/css/custom.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Content/Css/css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Css/css/icheck/flat/green.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Css/css/floatexamples.css" rel="stylesheet" type="text/css" />
+    <script src="~/Areas/Admin/Content/Css/js/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Content/Css/js/nprogress.js"></script>
+    <!--[if lt IE 9]>
+          <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+          <![endif]-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+    <link href="~/Areas/Admin/Content/Css/Controll.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Css/AdminCss.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/Content/Jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Jtable/customizejtable.css" rel="stylesheet" />
+    <link href="~/Content/Jquery.alerts/jquery.alerts.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/custom.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Controll.css" rel="stylesheet" />
+
+    <link href="~/Scripts/SwitchButton/bootstrap-toggle.min.css" rel="stylesheet" />
+    <script src="~/Scripts/SwitchButton/bootstrap-toggle.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/Home/Index" class="site_title"><i class="fa fa-cog fa-spin"></i> <span>QMS System</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu prile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="~/Areas/Admin/Content/Css/images/img.jpg" alt="..." class="img-circle profile_img" />
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>Admin  </h2>
+                        </div>
+                    </div>
+                    <!-- /menu prile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3> &nbsp;</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a href="/Home/Index"><i class="fa fa-home"></i>Trang Chủ </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/User/Index"><i class="fa fa-group"></i>Nhân Viên</a>
+                                </li>
+
+                                <li>
+                                    <a href="/Admin/Evaluate"><i class="fa fa-comments-o "></i>Tiêu chí đánh giá </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Service/Create/0-3"><i class="fa fa-pie-chart"></i>Report đánh giá</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/Areas/Admin/Content/Css/images/img.jpg" alt="">Admin
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <a href="javascript:;">  Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="badge bg-red pull-right">50%</span>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Help</a>
+                                    </li>
+                                    <li>
+                                        <a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @*<li role="presentation" class="dropdown">
+                                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-bell-o"></i>
+                                        <span class="badge bg-green">6</span>
+                                    </a>
+                                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                        <li>
+                                            <a>
+                                                <span class="image">
+                                                    <img src="/Content/Layout_N/images/img.jpg" alt="Profile Image" />
+                                                </span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <span class="image">
+                                                    <img src="/Content/Layout_N/images/img.jpg" alt="Profile Image" />
+                                                </span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <span class="image">
+                                                    <img src="/Content/Layout_N/images/img.jpg" alt="Profile Image" />
+                                                </span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <span class="image">
+                                                    <img src="/Content/Layout_N/images/img.jpg" alt="Profile Image" />
+                                                </span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="text-center">
+                                                <a href="inbox.html">
+                                                    <strong>See All Alerts</strong>
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="clearfix"></div>
+                <!-- top tiles -->
+                @RenderBody()
+                <!-- footer content -->
+                <footer>
+                    <div style="text-align:center">
+                        QMS System <br />Nhà Phát triển : GPRO COMPANY<br />Email : trivodai@yahoo.com - Điện Thoại : 01286 399 485.
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+        </div>
+    </div>
+    <div id="custom_notifications" class="custom-notifications dsp_none">
+        <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group"></ul>
+        <div class="clearfix"></div>
+        <div id="notif-group" class="tabbed_notifications"></div>
+    </div>
+
+
+    <div id="loading">
+        <img src="~/Areas/Admin/Content/Images/loading.gif" />
+    </div>
+
+
+    <script src="~/Areas/Admin/Content/Css/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.orderBars.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.time.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/date.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.spline.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/curvedLines.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Content/Css/js/flot/jquery.flot.resize.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/modernizr-2.5.3.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Areas/Admin/Content/Css/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/knockout%20Js/knockout-2.1.0.js"></script>
+    <script src="~/Scripts/knockout%20Js/knockout-2.1.0.debug.js"></script>
+    <script src="~/Scripts/jtable.2.4.0/jquery.jtable.js"></script>
+    <script src="~/Scripts/jtable.2.4.0/localization/jquery.jtable.vi.js"></script>
+
+    <script src="~/Areas/Admin/Content/Css/js/custom.js"></script>
+    <script src="~/Scripts/Web/Common.js"></script>
+    <script src="~/Scripts/Alert/common.js"></script>
+    <script src="~/Scripts/Alert/jquery.alerts.js"></script>
+    <style>
+        .tab-content {
+            padding: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        footer {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            border-left: none;
+            border-right: none;
+            background: #172D44;
+            font-weight: bold;
+            color: #ccc;
+        }
+    </style>
+
+    <script>
+        NProgress.done();
+    </script>
+</body>
+</html>

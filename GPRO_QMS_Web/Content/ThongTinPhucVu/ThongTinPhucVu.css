@@ -1,0 +1,276 @@
+﻿@font-face {
+    font-family: 'DS-DIGIB';
+    src: url('../../../fonts/DS-DIGIB.TTF') format('truetype');
+    font-style: normal;
+}
+
+.font-dt {
+    font-family: DS-DIGIB !important;
+    font-size: 45px !important;
+    line-height: 45px;
+    letter-spacing: -2px;
+    color: red !important;
+}
+
+.no_Padding_Margin {
+    padding: 0;
+    margin: 0;
+}
+
+.padding-left-15 {
+    padding-left: 15px;
+}
+
+.font_30{
+    font-size: 30px !important;
+    line-height: 30px;
+}
+.font_28 {
+    font-size: 28px !important;
+    line-height: 45px;
+}
+
+.font_26 {
+    font-size: 26px !important;
+    line-height: 46px;
+}
+
+.font_22 {
+    font-size: 22px !important;
+    line-height: 42px;
+}
+
+.font_20 {
+    font-size: 20px !important;
+    line-height: 40px;
+}
+.font_18 {
+    font-size: 18px !important;
+    line-height: 36px;
+}
+.font_16{
+    font-size:16px !important;
+    line-height: 30px;
+}
+div .border-bottom
+{
+    border-bottom: 1px solid white;
+}
+
+.bor_bottom {
+    border-bottom:1px solid #b8b894;
+}
+div .margin-right
+{
+    margin-right: 1px;
+}
+
+div .margin-left 
+{
+    margin-left:-1px;
+}
+div .border-right 
+{
+    border-right:1px solid #b8b894;
+}
+div .header{
+    /*background-color:#808080;*/
+    /*background-color:#5c5c3d;*/
+    background-color:blue;
+    color:white;
+}
+
+.title  {
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-right: none;
+    border-bottom: none;
+    padding: 10px 0;
+    background: blue;
+    color: white;
+}
+
+.rowcontent {
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    /*border: 2px solid #ccc;*/
+    /*border-right: none;
+    border-bottom: none;*/
+    /*padding: 7px 0;*/ 
+    /*background:black;*/
+    color:white;
+}
+
+/*#table2 .font-dt{
+    font-size:60px !important;
+}*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:whitesmoke;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.black {
+    color:black;
+}
+.white {
+    color: white;
+}
+.blue {
+    color: blue;
+}
+.red {
+    color:red;
+}
+
+.background-blue {
+    background-color:blue;
+}
+
+.background-row-odd {
+    /*background-color:#008000;*/
+     background-color:black;
+    /*color:#1aff1a;*/
+    color:red;
+
+}
+
+.background-row-even {
+    /*background-color:black;*/
+    background-color:black;
+    /*color:#1aff1a;*/
+    color:red;
+}
+.upper {
+    text-transform: uppercase;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.center {
+    text-align: center;
+}
+
+#dangky{
+    background-color:#f2f2f2;
+}
+#dangky:hover {
+    color: red !important;
+    background-color: white;
+}
+
+#dangky:visited {
+    color:red;
+}
+
+#xemthongtindangky:hover {
+    color: white !important;
+}
+
+#xemthongtindangky:visited {
+    color: white;
+}
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+/*div {
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }*/
+
+  .row-odd {
+        background-color: #c00000 !important;
+        color: white !important;
+        font-size: 25px;
+    }
+
+    .row-even {
+        background-color: white !important;
+        color: black !important;
+        font-size: 25px;
+    }
+
+.main-title {
+    font-size: 32px;
+}
+
+.sub-title {
+    font-size: 25px;
+}
+
+img {
+    display: block;
+}
+
+.container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: inherit !important;
+}
+
+
+    .full-box { 
+        position: fixed;
+        top: 72px;
+        left: 0px;
+        z-index: 99999;
+        overflow: hidden;
+        margin-left: -15px;
+    }
+
+        .full-box:hover { 
+            margin-left: 5px;
+        }
+
+    :-webkit-full-screen {
+        background: pink;
+    }
+
+    :-moz-full-screen {
+        background: pink;
+    }
+
+    :-ms-fullscreen {
+        background: pink;
+    }
+
+    :full-screen { /*pre-spec */
+        background: pink;
+    }
+
+    :fullscreen { /* spec */
+        background: pink;
+    }
+/*@media screen and (max-device-width : 320px)
+{
+  div
+  {
+    font-size: 8px !important;
+  }
+}*/
+/*@media screen and (max-device-width : 1204px)
+{
+  body or yourdiv element
+  {
+    font:<size>px/em/cm;
+  }
+}*/

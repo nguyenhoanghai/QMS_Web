@@ -1,0 +1,278 @@
+﻿@*<link href="~/Content/QMS/HienThiQuay/HienThiQuay.css" rel="stylesheet" />*@
+<script src="~/Scripts/QMS/Home/Index_1_tieuchi.js"></script>
+
+<input id="user" type="hidden" value="@ViewData["user"]" isuseqms="@System.Configuration.ConfigurationManager.AppSettings["IsUseQMS"]" />
+
+<div id="fullscreen" class="container">
+    <div class="full-box">
+        <a id="request-full" class="btn btn-primary">
+            <i class="fa fa-arrows-alt "></i>
+        </a>
+        <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+            <i class="fa fa-compress "> </i>
+        </a>
+    </div>
+    <div>
+        <div style="display:none" id="currentNumber" class="font-dt">
+            <span id="num" style="color:white ; font-size:92px ">2032</span>
+        </div>
+
+        <div id="danhgia_box" style="height:590px">
+            <div class="user-info col-md-5 col-sm-5">
+                <div style="height:50%">
+                    <img src="@(Model.Hinh != null ? ("/Areas/Admin/Content/User/Images/"+Model.Hinh) : "~/Content/tsc_image.png")" style="height:300px;margin: auto;  border: 2px solid #aaa;" />
+                </div>
+                <ul class="ct-info">
+                    <li> <span>@Model.TENNV</span></li>
+                </ul>
+            </div>
+            <div id="dg_ct" class="col-md-7 col-sm-7">
+                <div class="ct"> </div>
+            </div>
+            <div id="button" class="col-md-12"></div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="camon">@System.Configuration.ConfigurationManager.AppSettings["thanksWorld"]</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    #currentNumber,
+    #danhgia_box {
+        background-color: red;
+        width: 100%;
+        text-align: center;
+    }
+
+    #num,
+    #dg_ct {
+        position: relative;
+        /*top: 50%;
+            transform: translateY(-50%);*/
+    }
+
+    #dg_ct {
+        padding: 20px 0;
+    }
+
+    #danhgia_box {
+        background-color: #bbb !important;
+    }
+
+        #danhgia_box .title {
+            font-size: 45px;
+            border-bottom: 1px dotted #eee;
+        }
+
+        #danhgia_box .ct {
+            font-size: 54px;
+        }
+
+        #danhgia_box input[type=radio] {
+            width: 35px;
+            height: 25px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        #danhgia_box .child_title,
+        #danhgia_box .child_ct {
+            color: darkgreen;
+            font-weight: bold;
+        }
+
+        #danhgia_box .child_ct {
+            font-weight: normal !important;
+            padding: 30px;
+        }
+
+        #danhgia_box .foot {
+            padding-top: 20px;
+        }
+
+        #danhgia_box .btn-primary {
+            background-color: blue !important;
+            font-size: 30px;
+            width: 100%;
+        }
+
+    .ct-info {
+        margin: 0;
+        padding: 0;
+    }
+
+        .ct-info li {
+            list-style: none;
+            font-size: 20px;
+        }
+
+            .ct-info li span {
+                font-weight: bold;
+                color: red;
+                line-height: 20px;
+            }
+
+    .full-box {
+        position: fixed;
+        top: 72px;
+        left: 0px;
+        z-index: 99999;
+        overflow: hidden;
+        margin-left: -15px;
+    }
+
+    #camon {
+        display: none;
+        font-size: 94px;
+        margin: auto;
+        height: 530px;
+        padding: 50px;
+    }
+
+    .image-0,
+    .image-1,
+    .image-2 {
+        background-size: contain !important;
+        height: 200px;
+        width: 200px;
+    }
+
+    .image-0 {
+        background: url(../../Content/verygood.png) no-repeat;
+    }
+
+    .image-1 {
+        background: url(../../Content/ok.png) no-repeat;
+        background-size: 109% !important;
+        background-position: center center;
+    }
+
+    .image-2 {
+        background: url(../../Content/bad.png) no-repeat;
+        background-size: 80% !important;
+        background-position: top;
+    }
+
+    .button-text {
+        position: absolute;
+        bottom: 5%;
+        width: 100%;
+        left: 0%;
+    }
+</style>
+
+<script>
+    (function () {
+        var
+            fullScreenApi = {
+                supportsFullScreen: false,
+                nonNativeSupportsFullScreen: false,
+                isFullScreen: function () { return false; },
+                requestFullScreen: function () { },
+                cancelFullScreen: function () { },
+                fullScreenEventName: '',
+                prefix: ''
+            },
+            browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+        // check for native support
+        if (typeof document.cancelFullScreen != 'undefined') {
+            fullScreenApi.supportsFullScreen = true;
+        } else {
+            // check for fullscreen support by vendor prefix
+            for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                fullScreenApi.prefix = browserPrefixes[i];
+
+                if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                    fullScreenApi.supportsFullScreen = true;
+                    break;
+                }
+            }
+        }
+
+        // update methods to do something useful
+        if (fullScreenApi.supportsFullScreen) {
+            fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+            fullScreenApi.isFullScreen = function () {
+                switch (this.prefix) {
+                    case '':
+                        return document.fullScreen;
+                    case 'webkit':
+                        return document.webkitIsFullScreen;
+                    default:
+                        return document[this.prefix + 'FullScreen'];
+                }
+            }
+            fullScreenApi.requestFullScreen = function (el) {
+                return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+            }
+            fullScreenApi.cancelFullScreen = function (el) {
+                return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+            }
+        }
+        else if (typeof window.ActiveXObject !== "undefined") { // IE.
+            fullScreenApi.nonNativeSupportsFullScreen = true;
+            fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript !== null) {
+                    wscript.SendKeys("{F11}");
+                }
+            }
+            fullScreenApi.isFullScreen = function () {
+                return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+            }
+        }
+
+        // jQuery plugin
+        if (typeof jQuery != 'undefined') {
+            jQuery.fn.requestFullScreen = function () {
+
+                return this.each(function () {
+                    if (fullScreenApi.supportsFullScreen) {
+                        fullScreenApi.requestFullScreen(this);
+                    }
+                });
+            };
+        }
+
+        // export api
+        window.fullScreenApi = fullScreenApi;
+    })();
+
+    function check() {
+        if (!fullScreenApi.isFullScreen())
+            fullScreenApi.requestFullScreen(document.documentElement);
+        else
+            fullScreenApi.cancelFullScreen(document.documentElement);
+    }
+
+    $('#request-full').click(function () {
+        check();
+    });
+
+    //$(document).ready(function () {
+
+    //});
+
+    var home = new GPRO.Home();
+    home.Init();
+
+
+    function DanhGia(value) {
+        home.DanhGia(value);
+    }
+
+</script>

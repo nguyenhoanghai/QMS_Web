@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "QL Nhân Viên"; 
+}
+
+<script src="~/Areas/Admin/Scripts/User/User_Index.js"></script>
+<div id="jtableNhanVien" imgFolder="@System.Configuration.ConfigurationManager.AppSettings["imageFolder"].ToString()"></div>
+
+
+<div class="modal fade   " id="popup_Search" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modalsmall">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" cancel data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Tìm Kiếm</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="rows">
+                        <label class="control-label">Từ Khóa</label>
+                        <input class="form-control" id="keyword" type="text" placeholder="Nhập thông tin bạn cần tìm ..." />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button close aria-hidden="true" data-dismiss="modal" class="btn">
+                    <div class="button-image image-close"></div>
+                    Đóng
+                </button>
+                <button search class="btn btn-primary">
+                    <div class="button-image image-search"></div>
+                    Tìm Kiếm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog  ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button cancel aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Thông Tin nhân viên</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <input type="hidden" data-bind="value: MANV" />
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Họ tên<span class="required-class">*</span></label><br />
+                        <input class="form-control" id="name" required="required" data-bind="value: TENNV" type="text" placeholder="Nhập Họ Tên " />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Giới tính</label><br /> 
+                        <div>
+                            <input type="checkbox" id="sex" data-width="70" data-toggle="toggle" data-on="Nam" data-off="Nữ">
+                        </div> 
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Chuyên môn</label>
+                        <div>
+                            <input type="text" class="form-control" data-bind="value: ChuyenMon" />
+                        </div>                       
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Chức vụ</label>
+                        <div>
+                            <input type="text" class="form-control" data-bind="value: ChucVu" />
+                        </div>                       
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Trợ giúp</label>
+                        <div>
+                            <textarea class="form-control" data-bind="value: TROGIUP"></textarea>
+                        </div>                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Quá trình công tác</label>
+                        <div>
+                            <textarea class="form-control" data-bind="value: QTCongTac"></textarea>
+                        </div>                       
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Địa chỉ</label>
+                        <div>
+                            <textarea class="form-control" data-bind="value: DIACHI"></textarea>
+                        </div>                      
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Hình</label>
+                        <div>
+                            <input id="avatar"  type="file" />
+                            <input type="hidden" id="hid_avatar" />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button cancel aria-hidden="true" data-dismiss="modal" class="btn">
+                    <div class="button-image image-close"></div>Đóng
+                </button>
+                <button save class="btn btn-primary">
+                    <div class="button-image image-save"></div>Lưu Lại
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

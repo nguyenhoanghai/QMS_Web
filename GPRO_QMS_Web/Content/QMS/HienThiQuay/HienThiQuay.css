@@ -1,0 +1,262 @@
+﻿@font-face {
+    font-family: 'DS-DIGIB';
+    src: url('../../../fonts/DS-DIGIB.TTF') format('truetype');
+    font-style: normal;
+}
+
+.font-dt {
+    font-family: DS-DIGIB !important;
+    font-size: 45px !important;
+    line-height: 45px;
+    letter-spacing: -2px;
+    color: red !important;
+}
+
+.no_Padding_Margin {
+    padding: 0;
+    margin: 0;
+}
+
+.font_30 {
+    font-size: 30px !important;
+    line-height: 30px;
+}
+
+.title {
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    /*border: 2px solid #ccc;*/
+    border-right: none;
+    border-bottom: none;
+    padding: 10px 0;
+    background: blue;
+    color: white;
+}
+
+.rowcontent {
+    font-size: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-right: none;
+    border-bottom: none;
+    padding: 7px 0;
+    background: black;
+    color: white;
+}
+
+#table2 .font-dt {
+    font-size: 60px !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.blue {
+    color: blue;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.center {
+    text-align: center;
+}
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+table {
+    /*border: 1px solid black;*/
+    border: none;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    border-collapse: collapse;
+    /*overflow:hidden;*/
+}
+
+/*div {
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }*/
+
+#table1 {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+    #table1 td {
+        width: 11.25%;
+        /*border-right: 1px solid black;*/
+        padding: 6px;
+        text-wrap: normal;
+        word-wrap: break-word;
+        text-align: center;
+    }
+
+        #table1 td.col-even {
+            background-color: yellow;
+            color: red;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        #table1 td.col-odd {
+            text-align: right;
+            /*margin-right:20px;*/
+            padding-right: 10px;
+        }
+
+#table2 {
+    border: none;
+    border-right: none;
+}
+
+    #table2 td {
+        border: 1px solid black;
+        padding: 6px;
+        text-wrap: normal;
+        word-wrap: break-word;
+    }
+
+    #table2 thead {
+        background-color: black;
+        text-align: center;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        font-size: 25px;
+    }
+
+.row-odd {
+    background-color: #c00000 !important;
+    color: white !important;
+    font-size: 25px;
+}
+
+.row-even {
+    background-color: white !important;
+    color: black !important;
+    font-size: 25px;
+}
+
+#table2 tr td {
+    text-align: center;
+}
+
+.main-title {
+    font-size: 32px;
+}
+
+.sub-title {
+    font-size: 25px;
+}
+
+img {
+    display: block;
+}
+
+.container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: inherit !important;
+}
+
+
+.full-box {
+    position: fixed;
+    top: 72px;
+    left: 0px;
+    z-index: 99999;
+    overflow: hidden;
+    margin-left: -15px;
+}
+
+    .full-box:hover {
+        margin-left: 5px;
+    }
+
+:-webkit-full-screen {
+    background: pink;
+}
+
+:-moz-full-screen {
+    background: pink;
+}
+
+:-ms-fullscreen {
+    background: pink;
+}
+
+:full-screen { /*pre-spec */
+    background: pink;
+}
+
+:fullscreen { /* spec */
+    background: pink;
+}
+
+.doi {
+    animation: colorchange 2s infinite;
+    -webkit-animation: colorchange 2s infinite;
+    color: white !important;
+}
+
+@keyframes colorchange {
+    0% {
+        background: green;
+    }
+
+    30% {
+        background: red;
+    }
+
+    60% {
+        background: green;
+    }
+
+    100% {
+        background: red;
+    }
+}
+
+@-webkit-keyframes colorchange {
+    0% {
+        background: green;
+    }
+
+    30% {
+        background: red;
+    }
+
+    60% {
+        background: green;
+    }
+
+    100% {
+        background: red;
+    }
+}

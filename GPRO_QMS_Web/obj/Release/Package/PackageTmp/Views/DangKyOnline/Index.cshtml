@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Thông Tin Phục Vụ</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Jquery.alerts/jquery.alerts.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/Alert/common.js"></script>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/THONGTINPHUCVU/ThongTinPhucVu.css" rel="stylesheet" />
+    <script src="~/Scripts/Alert/common.js"></script>
+    <script src="~/Scripts/Alert/jquery.alerts.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/QMS/ThongTinPhucVu/ThongTinPhucVu.js"></script>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-9 col-sm-9 col-xs-9 no_Padding_Margin">
+            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin" style="background:black; color:#ccc">
+                <div class="col-md-2 col-sm-2 col-xs-2 no_Padding_Margin" style="height:89px; display:grid">
+                    <img src="~/Content/logo.png" style="height:inherit; width:89px; padding:inherit; " />
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="col-md-12 center bold " style="font-size:40px">THÔNG TIN PHỤC VỤ</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin margin-left no-margin" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+                <div class="col-md-4 col-sm-4 col-xs-4 center white bold font_18 header no_Padding_Margin margin-right border-right">TÊN DỊCH VỤ</div>
+                <div class="col-md-4 col-sm-4 col-xs-4 center white bold font_18 header no_Padding_Margin margin-left border-right">SỐ THỨ TỰ ĐANG PHỤC VỤ</div>
+                <div class="col-md-4 col-sm-4 col-xs-4 center white bold font_18 header no_Padding_Margin border-right">SỐ KHÁCH HÀNG ĐANG CHỜ</div>
+            </div>
+            <div class="clearfix"></div>
+            <div id="thongtindichvuchitiet" class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin margin-left margin-right" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;"></div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3  no_Padding_Margin" style="background-color:blue; min-height:600px;">
+            <div class="col-md-12 col-sm-12 col-xs-12 background-blue white bold font_18 border-bottom">ĐĂNG KÝ GIAO DỊCH</div>
+            <div class="col-md-12 col-sm-12 col-xs-12 background-blue white bold font_18">Điện thoại</div>
+            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin"><input type="text" name="sodienthoai" id="sodienthoai" class="form-control black bold padding-left-15" style="background-color:white; width:92%; margin-left:4%; margin-right:4%;font-size:18px; border-radius:initial" /></div>
+            <div class="col-md-12 col-sm-12 col-xs-12 background-blue white bold font_18">Dịch vụ yêu cầu</div>
+            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                <div>
+                    <select id="dichvu" name="dichvu" class="form-control black center bold padding-left-15" style="background-color:white; width:92%; margin-left:4%; margin-right:4%; font-size:18px; border-radius:initial"></select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 background-blue border-bottom font_18" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+                <a class="btn btn-default bold red" id="dangky" name="dangky" style="font-size:14px; margin-top:25px; margin-bottom:5px;">Đăng Ký</a>
+                <a class="btn btn-default bold red" id="xemthongtinphucvu" name="xemthongtinphucvu" style="font-size:14px; margin-top:25px; margin-bottom:5px;">Tra cứu thông tin</a>
+             </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12 background-blue" style="font-size:20px; overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+                
+                <div id="contentView" style="color:#afadad"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

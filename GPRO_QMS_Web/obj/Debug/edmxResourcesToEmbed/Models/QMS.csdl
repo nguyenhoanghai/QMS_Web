@@ -1,0 +1,1342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AMTHANHs" EntityType="QMSModel.AMTHANH" />
+    <EntitySet Name="AMTHANHQUAYs" EntityType="QMSModel.AMTHANHQUAY" />
+    <EntitySet Name="B01_THAMSO" EntityType="QMSModel.B01_THAMSO" />
+    <EntitySet Name="B03_MAYIN_AMTHANH" EntityType="QMSModel.B03_MAYIN_AMTHANH" />
+    <EntitySet Name="B04_MAYIN_NV_NVU" EntityType="QMSModel.B04_MAYIN_NV_NVU" />
+    <EntitySet Name="CAs" EntityType="QMSModel.CA" />
+    <EntitySet Name="CHINHSACHes" EntityType="QMSModel.CHINHSACH" />
+    <EntitySet Name="CounterSofts" EntityType="QMSModel.CounterSoft" />
+    <EntitySet Name="CounterSoftButtons" EntityType="QMSModel.CounterSoftButton" />
+    <EntitySet Name="CSoftButton_Lenh" EntityType="QMSModel.CSoftButton_Lenh" />
+    <EntitySet Name="DICHVUs" EntityType="QMSModel.DICHVU" />
+    <EntitySet Name="DOANHNGHIEPs" EntityType="QMSModel.DOANHNGHIEP" />
+    <EntitySet Name="DocumentKinds" EntityType="QMSModel.DocumentKind" />
+    <EntitySet Name="Documents" EntityType="QMSModel.Document" />
+    <EntitySet Name="DocumentStatus" EntityType="QMSModel.DocumentStatu" />
+    <EntitySet Name="DUONGDIs" EntityType="QMSModel.DUONGDI" />
+    <EntitySet Name="HANHDONGs" EntityType="QMSModel.HANHDONG" />
+    <EntitySet Name="KIEUDICHes" EntityType="QMSModel.KIEUDICH" />
+    <EntitySet Name="LENHs" EntityType="QMSModel.LENH" />
+    <EntitySet Name="LENHTHAMSO0" EntityType="QMSModel.LENHTHAMSO0" />
+    <EntitySet Name="LOAIDOANHNGHIEPs" EntityType="QMSModel.LOAIDOANHNGHIEP" />
+    <EntitySet Name="LOAITBs" EntityType="QMSModel.LOAITB" />
+    <EntitySet Name="LOGONs" EntityType="QMSModel.LOGON" />
+    <EntitySet Name="MAU_AMTHANH" EntityType="QMSModel.MAU_AMTHANH" />
+    <EntitySet Name="MAUNVs" EntityType="QMSModel.MAUNV" />
+    <EntitySet Name="MENU_Config0" EntityType="QMSModel.MENU_Config0" />
+    <EntitySet Name="NB_QUAY" EntityType="QMSModel.NB_QUAY" />
+    <EntitySet Name="NGHIEPVUs" EntityType="QMSModel.NGHIEPVU" />
+    <EntitySet Name="NGONNGUs" EntityType="QMSModel.NGONNGU" />
+    <EntitySet Name="NHANVIENs" EntityType="QMSModel.NHANVIEN" />
+    <EntitySet Name="NHANVIENMAUs" EntityType="QMSModel.NHANVIENMAU" />
+    <EntitySet Name="NV_LENHBD" EntityType="QMSModel.NV_LENHBD" />
+    <EntitySet Name="NV_NGHIEPVU" EntityType="QMSModel.NV_NGHIEPVU" />
+    <EntitySet Name="NVAMTHANHs" EntityType="QMSModel.NVAMTHANH" />
+    <EntitySet Name="NVLENHs" EntityType="QMSModel.NVLENH" />
+    <EntitySet Name="PHANDEUPHIEUx" EntityType="QMSModel.PHANDEUPHIEU" />
+    <EntitySet Name="Q_BookService" EntityType="QMSModel.Q_BookService" />
+    <EntitySet Name="Q_CallButtonNext" EntityType="QMSModel.Q_CallButtonNext" />
+    <EntitySet Name="Q_Evaluate" EntityType="QMSModel.Q_Evaluate" />
+    <EntitySet Name="Q_EvaluateDetail" EntityType="QMSModel.Q_EvaluateDetail" />
+    <EntitySet Name="Q_UserEvaluate" EntityType="QMSModel.Q_UserEvaluate" />
+    <EntitySet Name="QUAYs" EntityType="QMSModel.QUAY" />
+    <EntitySet Name="QUAY_HUONGAMTHANH" EntityType="QMSModel.QUAY_HUONGAMTHANH" />
+    <EntitySet Name="QUAY_MAIN" EntityType="QMSModel.QUAY_MAIN" />
+    <EntitySet Name="SMSMessages" EntityType="QMSModel.SMSMessage" />
+    <EntitySet Name="SMSResultSetups" EntityType="QMSModel.SMSResultSetup" />
+    <EntitySet Name="SMSSetups" EntityType="QMSModel.SMSSetup" />
+    <EntitySet Name="THIETBIs" EntityType="QMSModel.THIETBI" />
+    <EntitySet Name="TIENTRINHs" EntityType="QMSModel.TIENTRINH" />
+    <EntitySet Name="TRANGTHAIs" EntityType="QMSModel.TRANGTHAI" />
+    <EntitySet Name="TTUUTIENs" EntityType="QMSModel.TTUUTIEN" />
+    <EntitySet Name="ViewAllWaitingLists" EntityType="QMSModel.ViewAllWaitingList" />
+    <EntitySet Name="XULYYCs" EntityType="QMSModel.XULYYC" />
+    <EntitySet Name="XULYYCLTs" EntityType="QMSModel.XULYYCLT" />
+    <EntitySet Name="YEUCAUs" EntityType="QMSModel.YEUCAU" />
+    <EntitySet Name="YEUCAULTs" EntityType="QMSModel.YEUCAULT" />
+    <EntitySet Name="CHINHMAUs" EntityType="QMSModel.CHINHMAU" />
+    <EntitySet Name="CONTENT_SMS" EntityType="QMSModel.CONTENT_SMS" />
+    <EntitySet Name="CONTENT_SMS_Tmp" EntityType="QMSModel.CONTENT_SMS_Tmp" />
+    <EntitySet Name="LENHTHAMSOes" EntityType="QMSModel.LENHTHAMSO" />
+    <EntitySet Name="MENU_Config" EntityType="QMSModel.MENU_Config" />
+    <EntitySet Name="NOIDUNGDANHGIAs" EntityType="QMSModel.NOIDUNGDANHGIA" />
+    <AssociationSet Name="FK_AMTHANHQUAY_QUAY" Association="QMSModel.FK_AMTHANHQUAY_QUAY">
+      <End Role="QUAY" EntitySet="QUAYs" />
+      <End Role="AMTHANHQUAY" EntitySet="AMTHANHQUAYs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_B04_MAYIN_NV_NVU_THIETBI" Association="QMSModel.FK_B04_MAYIN_NV_NVU_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+      <End Role="B04_MAYIN_NV_NVU" EntitySet="B04_MAYIN_NV_NVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_NGHIEPVU_chinhsach" Association="QMSModel.FK_NV_NGHIEPVU_chinhsach">
+      <End Role="CHINHSACH" EntitySet="CHINHSACHes" />
+      <End Role="NV_NGHIEPVU" EntitySet="NV_NGHIEPVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUONGDI_DICHVU" Association="QMSModel.FK_DUONGDI_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="DUONGDI" EntitySet="DUONGDIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUCAU_DICHVU" Association="QMSModel.FK_YEUCAU_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="YEUCAU" EntitySet="YEUCAUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOANHNGHIEP_LOAIDOANHNGHIEP" Association="QMSModel.FK_DOANHNGHIEP_LOAIDOANHNGHIEP">
+      <End Role="LOAIDOANHNGHIEP" EntitySet="LOAIDOANHNGHIEPs" />
+      <End Role="DOANHNGHIEP" EntitySet="DOANHNGHIEPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUCAU_DOANHNGHIEP" Association="QMSModel.FK_YEUCAU_DOANHNGHIEP">
+      <End Role="DOANHNGHIEP" EntitySet="DOANHNGHIEPs" />
+      <End Role="YEUCAU" EntitySet="YEUCAUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUONGDI_NGHIEPVU" Association="QMSModel.FK_DUONGDI_NGHIEPVU">
+      <End Role="NGHIEPVU" EntitySet="NGHIEPVUs" />
+      <End Role="DUONGDI" EntitySet="DUONGDIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIENMAU_HANHDONG" Association="QMSModel.FK_NHANVIENMAU_HANHDONG">
+      <End Role="HANHDONG" EntitySet="HANHDONGs" />
+      <End Role="NHANVIENMAU" EntitySet="NHANVIENMAUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THIETBI_LOAITB" Association="QMSModel.FK_THIETBI_LOAITB">
+      <End Role="LOAITB" EntitySet="LOAITBs" />
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTUUTIEN_LOAITB" Association="QMSModel.FK_TTUUTIEN_LOAITB">
+      <End Role="LOAITB" EntitySet="LOAITBs" />
+      <End Role="TTUUTIEN" EntitySet="TTUUTIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGON_NHANVIEN" Association="QMSModel.FK_LOGON_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="LOGON" EntitySet="LOGONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGON_THIETBI" Association="QMSModel.FK_LOGON_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+      <End Role="LOGON" EntitySet="LOGONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGON_TRANGTHAI" Association="QMSModel.FK_LOGON_TRANGTHAI">
+      <End Role="TRANGTHAI" EntitySet="TRANGTHAIs" />
+      <End Role="LOGON" EntitySet="LOGONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NVAMTHANH_MAU_AMTHANH" Association="QMSModel.FK_NVAMTHANH_MAU_AMTHANH">
+      <End Role="MAU_AMTHANH" EntitySet="MAU_AMTHANH" />
+      <End Role="NVAMTHANH" EntitySet="NVAMTHANHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIENMAU_MAUNV" Association="QMSModel.FK_NHANVIENMAU_MAUNV">
+      <End Role="MAUNV" EntitySet="MAUNVs" />
+      <End Role="NHANVIENMAU" EntitySet="NHANVIENMAUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NB_QUAY_QUAY" Association="QMSModel.FK_NB_QUAY_QUAY">
+      <End Role="QUAY" EntitySet="QUAYs" />
+      <End Role="NB_QUAY" EntitySet="NB_QUAY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_NGHIEPVU_NGHIEPVU" Association="QMSModel.FK_NV_NGHIEPVU_NGHIEPVU">
+      <End Role="NGHIEPVU" EntitySet="NGHIEPVUs" />
+      <End Role="NV_NGHIEPVU" EntitySet="NV_NGHIEPVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_NGHIEPVU_NHANVIEN" Association="QMSModel.FK_NV_NGHIEPVU_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="NV_NGHIEPVU" EntitySet="NV_NGHIEPVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Q_BookService_NHANVIEN" Association="QMSModel.FK_Q_BookService_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="Q_BookService" EntitySet="Q_BookService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Q_UserEvaluate_NHANVIEN" Association="QMSModel.FK_Q_UserEvaluate_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="Q_UserEvaluate" EntitySet="Q_UserEvaluate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XULYYC_NHANVIEN" Association="QMSModel.FK_XULYYC_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="XULYYC" EntitySet="XULYYCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Q_EvaluateDetail_Q_Evaluate" Association="QMSModel.FK_Q_EvaluateDetail_Q_Evaluate">
+      <End Role="Q_Evaluate" EntitySet="Q_Evaluate" />
+      <End Role="Q_EvaluateDetail" EntitySet="Q_EvaluateDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUAY_MAIN_QUAY" Association="QMSModel.FK_QUAY_MAIN_QUAY">
+      <End Role="QUAY" EntitySet="QUAYs" />
+      <End Role="QUAY_MAIN" EntitySet="QUAY_MAIN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THIETBI_QUAY" Association="QMSModel.FK_THIETBI_QUAY">
+      <End Role="QUAY" EntitySet="QUAYs" />
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUAY_MAIN_THIETBI" Association="QMSModel.FK_QUAY_MAIN_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+      <End Role="QUAY_MAIN" EntitySet="QUAY_MAIN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XULYYC_THIETBI" Association="QMSModel.FK_XULYYC_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBIs" />
+      <End Role="XULYYC" EntitySet="XULYYCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTUUTIEN_TIENTRINH" Association="QMSModel.FK_TTUUTIEN_TIENTRINH">
+      <End Role="TIENTRINH" EntitySet="TIENTRINHs" />
+      <End Role="TTUUTIEN" EntitySet="TTUUTIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XULYYC_YEUCAU" Association="QMSModel.FK_XULYYC_YEUCAU">
+      <End Role="YEUCAU" EntitySet="YEUCAUs" />
+      <End Role="XULYYC" EntitySet="XULYYCs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AMTHANH">
+    <Key>
+      <PropertyRef Name="TENFILE" />
+    </Key>
+    <Property Name="TENFILE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MOI_KT" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AMTHANHQUAY">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+      <PropertyRef Name="KIEUQUAY" />
+      <PropertyRef Name="MADICH" />
+    </Key>
+    <Property Name="MAQUAY" Type="Int16" Nullable="false" />
+    <Property Name="KIEUQUAY" Type="Int16" Nullable="false" />
+    <Property Name="MADICH" Type="Int16" Nullable="false" />
+    <Property Name="TENFILE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QUAY" Relationship="QMSModel.FK_AMTHANHQUAY_QUAY" FromRole="AMTHANHQUAY" ToRole="QUAY" />
+  </EntityType>
+  <EntityType Name="B01_THAMSO">
+    <Key>
+      <PropertyRef Name="MATS" />
+    </Key>
+    <Property Name="MATS" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CACHIN" Type="Int16" />
+    <Property Name="XULY" Type="Int16" />
+    <Property Name="DUONGDAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="THONGBAONGHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="THOIGIANQUET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="THOIGIANPHAT" Type="Int32" />
+    <Property Name="TENFILECHIDAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGDINHMUC" Type="Int32" />
+    <Property Name="SOPHIEUTOIDA" Type="Int16" />
+    <Property Name="THOIGIANXOADL" Type="Byte" />
+    <Property Name="SOPHIEUGIOIHAN" Type="Int16" />
+    <Property Name="BATDAUCHIDAN" Type="DateTime" Precision="3" />
+    <Property Name="KETTHUCCHIDAN" Type="DateTime" Precision="3" />
+    <Property Name="TGDINHMUCDOI" Type="Int32" />
+    <Property Name="DINHMUCHUY" Type="Byte" />
+    <Property Name="INTRUCTIEP" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="B03_MAYIN_AMTHANH">
+    <Key>
+      <PropertyRef Name="MATB" />
+      <PropertyRef Name="MALENH" />
+    </Key>
+    <Property Name="MATB" Type="Int16" Nullable="false" />
+    <Property Name="MALENH" Type="Int16" Nullable="false" />
+    <Property Name="TENFILE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="B04_MAYIN_NV_NVU">
+    <Key>
+      <PropertyRef Name="MATB" />
+      <PropertyRef Name="MALENH" />
+    </Key>
+    <Property Name="MATB" Type="Int32" Nullable="false" />
+    <Property Name="MALENH" Type="Int16" Nullable="false" />
+    <Property Name="MANV" Type="Int16" Nullable="false" />
+    <Property Name="MADV" Type="Int16" />
+    <Property Name="MANVU" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="THIETBI" Relationship="QMSModel.FK_B04_MAYIN_NV_NVU_THIETBI" FromRole="B04_MAYIN_NV_NVU" ToRole="THIETBI" />
+  </EntityType>
+  <EntityType Name="CA">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="Int16" Nullable="false" />
+    <Property Name="TGBD1" Type="DateTime" Precision="3" />
+    <Property Name="TGKT1" Type="DateTime" Precision="3" />
+    <Property Name="TGBD2" Type="DateTime" Precision="3" />
+    <Property Name="TGKT2" Type="DateTime" Precision="3" />
+    <Property Name="TGBD3" Type="DateTime" Precision="3" />
+    <Property Name="TGKT3" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CHINHSACH">
+    <Key>
+      <PropertyRef Name="CHINHSACH1" />
+    </Key>
+    <Property Name="CHINHSACH1" Type="Int16" Nullable="false" />
+    <Property Name="HIENHANH" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NV_NGHIEPVU" Relationship="QMSModel.FK_NV_NGHIEPVU_chinhsach" FromRole="CHINHSACH" ToRole="NV_NGHIEPVU" />
+  </EntityType>
+  <EntityType Name="CounterSoft">
+    <Key>
+      <PropertyRef Name="CounterSoftId" />
+    </Key>
+    <Property Name="CounterSoftId" Type="Int16" Nullable="false" />
+    <Property Name="Required" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RequiredParam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Result" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="WaitingList" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralWaitingList" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="TotalDone" Type="Int32" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CounterSoftButton">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+    </Key>
+    <Property Name="ButtonId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ButtonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CSoftButton_Lenh">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="ButtonId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MALENH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MANV" Type="Int16" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DICHVU">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="Int16" Nullable="false" />
+    <Property Name="TENDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SOPHIEU" Type="Int32" />
+    <Property Name="SOPHIEUCUOI" Type="Int32" />
+    <Property Name="THOIGIANXULY" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DUONGDIs" Relationship="QMSModel.FK_DUONGDI_DICHVU" FromRole="DICHVU" ToRole="DUONGDI" />
+    <NavigationProperty Name="YEUCAUs" Relationship="QMSModel.FK_YEUCAU_DICHVU" FromRole="DICHVU" ToRole="YEUCAU" />
+  </EntityType>
+  <EntityType Name="DOANHNGHIEP">
+    <Key>
+      <PropertyRef Name="MADN" />
+    </Key>
+    <Property Name="MADN" Type="Int16" Nullable="false" />
+    <Property Name="MALOAIDN" Type="Int16" />
+    <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHIDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TONGVE" Type="Int16" />
+    <NavigationProperty Name="LOAIDOANHNGHIEP" Relationship="QMSModel.FK_DOANHNGHIEP_LOAIDOANHNGHIEP" FromRole="DOANHNGHIEP" ToRole="LOAIDOANHNGHIEP" />
+    <NavigationProperty Name="YEUCAUs" Relationship="QMSModel.FK_YEUCAU_DOANHNGHIEP" FromRole="DOANHNGHIEP" ToRole="YEUCAU" />
+  </EntityType>
+  <EntityType Name="DocumentKind">
+    <Key>
+      <PropertyRef Name="DocKindId" />
+    </Key>
+    <Property Name="DocKindId" Type="Byte" Nullable="false" />
+    <Property Name="DocKind" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocId" />
+    </Key>
+    <Property Name="DocId" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DocKindId" Type="Byte" />
+    <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusId" Type="Byte" />
+    <Property Name="StatusTime" Type="DateTime" Precision="3" />
+    <Property Name="AutoSend" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="DocumentStatu">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Byte" Nullable="false" />
+    <Property Name="DocStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DUONGDI">
+    <Key>
+      <PropertyRef Name="SOTT" />
+      <PropertyRef Name="MANVU" />
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="SOTT" Type="Int16" Nullable="false" />
+    <Property Name="MANVU" Type="Int16" Nullable="false" />
+    <Property Name="MADV" Type="Int16" Nullable="false" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DICHVU" Relationship="QMSModel.FK_DUONGDI_DICHVU" FromRole="DUONGDI" ToRole="DICHVU" />
+    <NavigationProperty Name="NGHIEPVU" Relationship="QMSModel.FK_DUONGDI_NGHIEPVU" FromRole="DUONGDI" ToRole="NGHIEPVU" />
+  </EntityType>
+  <EntityType Name="HANHDONG">
+    <Key>
+      <PropertyRef Name="MAHANHDONG" />
+    </Key>
+    <Property Name="MAHANHDONG" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="STT" Type="Int16" />
+    <NavigationProperty Name="NHANVIENMAUs" Relationship="QMSModel.FK_NHANVIENMAU_HANHDONG" FromRole="HANHDONG" ToRole="NHANVIENMAU" />
+  </EntityType>
+  <EntityType Name="KIEUDICH">
+    <Key>
+      <PropertyRef Name="MADICH" />
+      <PropertyRef Name="SO" />
+    </Key>
+    <Property Name="MADICH" Type="Int16" Nullable="false" />
+    <Property Name="SO" Type="Int16" Nullable="false" />
+    <Property Name="TENFILE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LENH">
+    <Key>
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="THAMSOLENH" />
+    </Key>
+    <Property Name="MALENH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSOLENH" Type="Int16" Nullable="false" />
+    <Property Name="MALENHHEX" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LENHTHAMSO0">
+    <Key>
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+    </Key>
+    <Property Name="MAHANHDONG" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MATHAMSO" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LOAIDOANHNGHIEP">
+    <Key>
+      <PropertyRef Name="MALOAIDN" />
+    </Key>
+    <Property Name="MALOAIDN" Type="Int16" Nullable="false" />
+    <Property Name="LOAIDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DOANHNGHIEPs" Relationship="QMSModel.FK_DOANHNGHIEP_LOAIDOANHNGHIEP" FromRole="LOAIDOANHNGHIEP" ToRole="DOANHNGHIEP" />
+  </EntityType>
+  <EntityType Name="LOAITB">
+    <Key>
+      <PropertyRef Name="MALTB" />
+    </Key>
+    <Property Name="MALTB" Type="Int16" Nullable="false" />
+    <Property Name="TENLTB" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="THIETBIs" Relationship="QMSModel.FK_THIETBI_LOAITB" FromRole="LOAITB" ToRole="THIETBI" />
+    <NavigationProperty Name="TTUUTIENs" Relationship="QMSModel.FK_TTUUTIEN_LOAITB" FromRole="LOAITB" ToRole="TTUUTIEN" />
+  </EntityType>
+  <EntityType Name="LOGON">
+    <Key>
+      <PropertyRef Name="LOGNBR" />
+    </Key>
+    <Property Name="LOGNBR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MATB" Type="Int32" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="NGAY" Type="DateTime" Precision="3" />
+    <Property Name="GIO" Type="DateTime" Precision="3" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TTPNEXT" Type="Int16" />
+    <Property Name="LOGOUTTIME" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QMSModel.FK_LOGON_NHANVIEN" FromRole="LOGON" ToRole="NHANVIEN" />
+    <NavigationProperty Name="THIETBI" Relationship="QMSModel.FK_LOGON_THIETBI" FromRole="LOGON" ToRole="THIETBI" />
+    <NavigationProperty Name="TRANGTHAI" Relationship="QMSModel.FK_LOGON_TRANGTHAI" FromRole="LOGON" ToRole="TRANGTHAI" />
+  </EntityType>
+  <EntityType Name="MAU_AMTHANH">
+    <Key>
+      <PropertyRef Name="MAU" />
+    </Key>
+    <Property Name="MAU" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MOI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="KETTHUC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MADICH" Type="Int16" />
+    <Property Name="KIEUQUAY" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NVAMTHANHs" Relationship="QMSModel.FK_NVAMTHANH_MAU_AMTHANH" FromRole="MAU_AMTHANH" ToRole="NVAMTHANH" />
+  </EntityType>
+  <EntityType Name="MAUNV">
+    <Key>
+      <PropertyRef Name="MAMAUNV" />
+    </Key>
+    <Property Name="MAMAUNV" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENMAUs" Relationship="QMSModel.FK_NHANVIENMAU_MAUNV" FromRole="MAUNV" ToRole="NHANVIENMAU" />
+  </EntityType>
+  <EntityType Name="MENU_Config0">
+    <Key>
+      <PropertyRef Name="MenuName" />
+    </Key>
+    <Property Name="MenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="MenuCaption" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NB_QUAY">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+      <PropertyRef Name="NB" />
+    </Key>
+    <Property Name="MAQUAY" Type="Int16" Nullable="false" />
+    <Property Name="NB" Type="Int16" Nullable="false" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QUAY" Relationship="QMSModel.FK_NB_QUAY_QUAY" FromRole="NB_QUAY" ToRole="QUAY" />
+  </EntityType>
+  <EntityType Name="NGHIEPVU">
+    <Key>
+      <PropertyRef Name="MANVU" />
+    </Key>
+    <Property Name="MANVU" Type="Int16" Nullable="false" />
+    <Property Name="TENNVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DUONGDIs" Relationship="QMSModel.FK_DUONGDI_NGHIEPVU" FromRole="NGHIEPVU" ToRole="DUONGDI" />
+    <NavigationProperty Name="NV_NGHIEPVU" Relationship="QMSModel.FK_NV_NGHIEPVU_NGHIEPVU" FromRole="NGHIEPVU" ToRole="NV_NGHIEPVU" />
+  </EntityType>
+  <EntityType Name="NGONNGU">
+    <Key>
+      <PropertyRef Name="MANN" />
+    </Key>
+    <Property Name="MANN" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="TENN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HIEULUC" Type="Int16" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="Int32" Nullable="false" />
+    <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="Boolean" Nullable="false" />
+    <Property Name="TROGIUP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hinh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ChuyenMon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QTCongTac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LOGONs" Relationship="QMSModel.FK_LOGON_NHANVIEN" FromRole="NHANVIEN" ToRole="LOGON" />
+    <NavigationProperty Name="NV_NGHIEPVU" Relationship="QMSModel.FK_NV_NGHIEPVU_NHANVIEN" FromRole="NHANVIEN" ToRole="NV_NGHIEPVU" />
+    <NavigationProperty Name="Q_BookService" Relationship="QMSModel.FK_Q_BookService_NHANVIEN" FromRole="NHANVIEN" ToRole="Q_BookService" />
+    <NavigationProperty Name="Q_UserEvaluate" Relationship="QMSModel.FK_Q_UserEvaluate_NHANVIEN" FromRole="NHANVIEN" ToRole="Q_UserEvaluate" />
+    <NavigationProperty Name="XULYYCs" Relationship="QMSModel.FK_XULYYC_NHANVIEN" FromRole="NHANVIEN" ToRole="XULYYC" />
+  </EntityType>
+  <EntityType Name="NHANVIENMAU">
+    <Key>
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+      <PropertyRef Name="THAMSOLENH" />
+      <PropertyRef Name="MAMAUNV" />
+    </Key>
+    <Property Name="MALENH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MAHANHDONG" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MATHAMSO" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSOLENH" Type="Int16" Nullable="false" />
+    <Property Name="HAM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SOTT" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAMAUNV" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HANHDONG" Relationship="QMSModel.FK_NHANVIENMAU_HANHDONG" FromRole="NHANVIENMAU" ToRole="HANHDONG" />
+    <NavigationProperty Name="MAUNV" Relationship="QMSModel.FK_NHANVIENMAU_MAUNV" FromRole="NHANVIENMAU" ToRole="MAUNV" />
+  </EntityType>
+  <EntityType Name="NV_LENHBD">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="Int16" Nullable="false" />
+    <Property Name="MALENH" Type="Int16" Nullable="false" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NV_NGHIEPVU">
+    <Key>
+      <PropertyRef Name="MANV" />
+      <PropertyRef Name="MANVU" />
+      <PropertyRef Name="CHINHSACH" />
+    </Key>
+    <Property Name="MANV" Type="Int32" Nullable="false" />
+    <Property Name="MANVU" Type="Int16" Nullable="false" />
+    <Property Name="UUTIEN" Type="Int16" />
+    <Property Name="CHINHSACH" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="CHINHSACH1" Relationship="QMSModel.FK_NV_NGHIEPVU_chinhsach" FromRole="NV_NGHIEPVU" ToRole="CHINHSACH" />
+    <NavigationProperty Name="NGHIEPVU" Relationship="QMSModel.FK_NV_NGHIEPVU_NGHIEPVU" FromRole="NV_NGHIEPVU" ToRole="NGHIEPVU" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QMSModel.FK_NV_NGHIEPVU_NHANVIEN" FromRole="NV_NGHIEPVU" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="NVAMTHANH">
+    <Key>
+      <PropertyRef Name="MANV" />
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAU" />
+    </Key>
+    <Property Name="MANV" Type="Int16" Nullable="false" />
+    <Property Name="MALENH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MAU" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MAU_AMTHANH" Relationship="QMSModel.FK_NVAMTHANH_MAU_AMTHANH" FromRole="NVAMTHANH" ToRole="MAU_AMTHANH" />
+  </EntityType>
+  <EntityType Name="NVLENH">
+    <Key>
+      <PropertyRef Name="MANV" />
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+      <PropertyRef Name="THAMSOLENH" />
+    </Key>
+    <Property Name="MANV" Type="Int16" Nullable="false" />
+    <Property Name="MALENH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MAHANHDONG" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MATHAMSO" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSOLENH" Type="Int16" Nullable="false" />
+    <Property Name="HAM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SOTT" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PHANDEUPHIEU">
+    <Key>
+      <PropertyRef Name="MADV" />
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MADV" Type="Int16" Nullable="false" />
+    <Property Name="MANV" Type="Int16" Nullable="false" />
+    <Property Name="MAQUAY" Type="Int16" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CAPPHIEU" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Q_BookService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaNV" Type="Int32" Nullable="false" />
+    <Property Name="KhachHang" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SoXe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayHen" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GioHen" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QMSModel.FK_Q_BookService_NHANVIEN" FromRole="Q_BookService" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="Q_CallButtonNext">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CounterId" Type="Int32" Nullable="false" />
+    <Property Name="IsClick" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Q_Evaluate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Q_EvaluateDetail" Relationship="QMSModel.FK_Q_EvaluateDetail_Q_Evaluate" FromRole="Q_Evaluate" ToRole="Q_EvaluateDetail" />
+  </EntityType>
+  <EntityType Name="Q_EvaluateDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EvaluateId" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Q_Evaluate" Relationship="QMSModel.FK_Q_EvaluateDetail_Q_Evaluate" FromRole="Q_EvaluateDetail" ToRole="Q_Evaluate" />
+  </EntityType>
+  <EntityType Name="Q_UserEvaluate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Score" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+    <Property Name="TicketNumber" Type="Int32" Nullable="false" />
+    <Property Name="GLAYPHIEU" Type="DateTime" Precision="3" />
+    <Property Name="GDENQUAY" Type="DateTime" Precision="3" />
+    <Property Name="GGIAODICH" Type="DateTime" Precision="3" />
+    <Property Name="GKETTHUC" Type="DateTime" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QMSModel.FK_Q_UserEvaluate_NHANVIEN" FromRole="Q_UserEvaluate" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="QUAY">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+    </Key>
+    <Property Name="MAQUAY" Type="Int16" Nullable="false" />
+    <Property Name="ShortName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TENQUAY" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="VITRI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIENTICH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsShow" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AMTHANHQUAYs" Relationship="QMSModel.FK_AMTHANHQUAY_QUAY" FromRole="QUAY" ToRole="AMTHANHQUAY" />
+    <NavigationProperty Name="NB_QUAY" Relationship="QMSModel.FK_NB_QUAY_QUAY" FromRole="QUAY" ToRole="NB_QUAY" />
+    <NavigationProperty Name="QUAY_MAIN" Relationship="QMSModel.FK_QUAY_MAIN_QUAY" FromRole="QUAY" ToRole="QUAY_MAIN" />
+    <NavigationProperty Name="THIETBIs" Relationship="QMSModel.FK_THIETBI_QUAY" FromRole="QUAY" ToRole="THIETBI" />
+  </EntityType>
+  <EntityType Name="QUAY_HUONGAMTHANH">
+    <Key>
+      <PropertyRef Name="MAQUYA" />
+      <PropertyRef Name="HUONGCARDSOUND" />
+    </Key>
+    <Property Name="MAQUYA" Type="Int16" Nullable="false" />
+    <Property Name="HUONGCARDSOUND" Type="Int16" Nullable="false" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QUAY_MAIN">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+      <PropertyRef Name="MATB" />
+    </Key>
+    <Property Name="MAQUAY" Type="Int16" Nullable="false" />
+    <Property Name="MATB" Type="Int32" Nullable="false" />
+    <Property Name="HUONG" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QUAY" Relationship="QMSModel.FK_QUAY_MAIN_QUAY" FromRole="QUAY_MAIN" ToRole="QUAY" />
+    <NavigationProperty Name="THIETBI" Relationship="QMSModel.FK_QUAY_MAIN_THIETBI" FromRole="QUAY_MAIN" ToRole="THIETBI" />
+  </EntityType>
+  <EntityType Name="SMSMessage">
+    <Key>
+      <PropertyRef Name="SMSId" />
+    </Key>
+    <Property Name="SMSId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TargetId" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Kind" Type="Boolean" />
+    <Property Name="SMSTime" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="SMSIO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DocId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TicketNo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IssuedTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SMSResultSetup">
+    <Key>
+      <PropertyRef Name="DocKindId" />
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="DocKindId" Type="Byte" Nullable="false" />
+    <Property Name="StatusId" Type="Byte" Nullable="false" />
+    <Property Name="SMSResult" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SMSSetup">
+    <Key>
+      <PropertyRef Name="CmdId" />
+    </Key>
+    <Property Name="CmdId" Type="Byte" Nullable="false" />
+    <Property Name="SMSFormat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SMSConfirm" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SMSConfirmOK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SMSReply" Type="String" MaxLength="480" FixedLength="false" Unicode="true" />
+    <Property Name="SMSStop" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SMSReminder" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SMSResult" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SMSRepeat" Type="String" MaxLength="480" FixedLength="false" Unicode="true" />
+    <Property Name="SMSFail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ServedTimeAvg" Type="Byte" />
+    <Property Name="ReminderTime" Type="Byte" />
+    <Property Name="BeginBreakTime" Type="DateTime" Precision="3" />
+    <Property Name="EndBreakTime" Type="DateTime" Precision="3" />
+    <Property Name="FinishTime" Type="DateTime" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="THIETBI">
+    <Key>
+      <PropertyRef Name="MATB" />
+    </Key>
+    <Property Name="MATB" Type="Int32" Nullable="false" />
+    <Property Name="MALTB" Type="Int16" />
+    <Property Name="TENTB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAQUAY" Type="Int16" />
+    <Property Name="VITRI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="GKETTHUC" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="B04_MAYIN_NV_NVU" Relationship="QMSModel.FK_B04_MAYIN_NV_NVU_THIETBI" FromRole="THIETBI" ToRole="B04_MAYIN_NV_NVU" />
+    <NavigationProperty Name="LOAITB" Relationship="QMSModel.FK_THIETBI_LOAITB" FromRole="THIETBI" ToRole="LOAITB" />
+    <NavigationProperty Name="LOGONs" Relationship="QMSModel.FK_LOGON_THIETBI" FromRole="THIETBI" ToRole="LOGON" />
+    <NavigationProperty Name="QUAY" Relationship="QMSModel.FK_THIETBI_QUAY" FromRole="THIETBI" ToRole="QUAY" />
+    <NavigationProperty Name="QUAY_MAIN" Relationship="QMSModel.FK_QUAY_MAIN_THIETBI" FromRole="THIETBI" ToRole="QUAY_MAIN" />
+    <NavigationProperty Name="XULYYCs" Relationship="QMSModel.FK_XULYYC_THIETBI" FromRole="THIETBI" ToRole="XULYYC" />
+  </EntityType>
+  <EntityType Name="TIENTRINH">
+    <Key>
+      <PropertyRef Name="MATIENTRINH" />
+    </Key>
+    <Property Name="MATIENTRINH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TT" Type="Decimal" Precision="5" Scale="0" />
+    <NavigationProperty Name="TTUUTIENs" Relationship="QMSModel.FK_TTUUTIEN_TIENTRINH" FromRole="TIENTRINH" ToRole="TTUUTIEN" />
+  </EntityType>
+  <EntityType Name="TRANGTHAI">
+    <Key>
+      <PropertyRef Name="MATT" />
+    </Key>
+    <Property Name="MATT" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LOAITT" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LOGONs" Relationship="QMSModel.FK_LOGON_TRANGTHAI" FromRole="TRANGTHAI" ToRole="LOGON" />
+  </EntityType>
+  <EntityType Name="TTUUTIEN">
+    <Key>
+      <PropertyRef Name="MALTB" />
+      <PropertyRef Name="BUOC" />
+      <PropertyRef Name="UUTIEN" />
+    </Key>
+    <Property Name="MALTB" Type="Int16" Nullable="false" />
+    <Property Name="BUOC" Type="Int16" Nullable="false" />
+    <Property Name="UUTIEN" Type="Int16" Nullable="false" />
+    <Property Name="MATIENTRINH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DEM" Type="Int16" />
+    <NavigationProperty Name="LOAITB" Relationship="QMSModel.FK_TTUUTIEN_LOAITB" FromRole="TTUUTIEN" ToRole="LOAITB" />
+    <NavigationProperty Name="TIENTRINH" Relationship="QMSModel.FK_TTUUTIEN_TIENTRINH" FromRole="TTUUTIEN" ToRole="TIENTRINH" />
+  </EntityType>
+  <EntityType Name="ViewAllWaitingList">
+    <Key>
+      <PropertyRef Name="StaffId" />
+      <PropertyRef Name="DeskId" />
+    </Key>
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="DeskId" Type="Int32" Nullable="false" />
+    <Property Name="WaitingList" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkSpecial" Type="Int32" />
+  </EntityType>
+  <EntityType Name="XULYYC">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="MAPHIEU" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+    <Property Name="MANVU" Type="Int16" />
+    <Property Name="MANVUT" Type="Int16" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="MATB" Type="Int32" />
+    <Property Name="NB" Type="Int16" />
+    <Property Name="GLAYPHIEU" Type="DateTime" Precision="3" />
+    <Property Name="GDENQUAY" Type="DateTime" Precision="3" />
+    <Property Name="Temp" Type="DateTime" Precision="3" />
+    <Property Name="GGIAODICH" Type="DateTime" Precision="3" />
+    <Property Name="GKETTHUC" Type="DateTime" Precision="3" />
+    <Property Name="TGGIAODICH" Type="DateTime" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MADN" Type="Int16" />
+    <Property Name="MANVDAU" Type="Int16" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QMSModel.FK_XULYYC_NHANVIEN" FromRole="XULYYC" ToRole="NHANVIEN" />
+    <NavigationProperty Name="THIETBI" Relationship="QMSModel.FK_XULYYC_THIETBI" FromRole="XULYYC" ToRole="THIETBI" />
+    <NavigationProperty Name="YEUCAU" Relationship="QMSModel.FK_XULYYC_YEUCAU" FromRole="XULYYC" ToRole="YEUCAU" />
+  </EntityType>
+  <EntityType Name="XULYYCLT">
+    <Key>
+      <PropertyRef Name="STT" />
+      <PropertyRef Name="MAPHIEU" />
+      <PropertyRef Name="GLAYPHIEU" />
+      <PropertyRef Name="LAN" />
+    </Key>
+    <Property Name="STT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="MAPHIEU" Type="Int32" Nullable="false" />
+    <Property Name="MANVU" Type="Int16" Nullable="false" />
+    <Property Name="MANVUT" Type="Int16" />
+    <Property Name="MANV" Type="Int16" />
+    <Property Name="MATB" Type="Int16" />
+    <Property Name="NB" Type="Int16" />
+    <Property Name="GLAYPHIEU" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GDENQUAY" Type="DateTime" Precision="3" />
+    <Property Name="GGIAODICH" Type="DateTime" Precision="3" />
+    <Property Name="GKETTHUC" Type="DateTime" Precision="3" />
+    <Property Name="TGGIAODICH" Type="DateTime" Precision="3" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LAN" Type="Int16" Nullable="false" />
+    <Property Name="MADN" Type="Int16" />
+    <Property Name="MANVDAU" Type="Int16" />
+  </EntityType>
+  <EntityType Name="YEUCAU">
+    <Key>
+      <PropertyRef Name="MAPHIEU" />
+    </Key>
+    <Property Name="MAPHIEU" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+    <Property Name="MADV" Type="Int16" />
+    <Property Name="GIOCAP" Type="DateTime" Precision="3" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MADN" Type="Int16" />
+    <Property Name="MANVDAU" Type="Int16" />
+    <Property Name="SOXE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TGPHUCVU_DK" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DICHVU" Relationship="QMSModel.FK_YEUCAU_DICHVU" FromRole="YEUCAU" ToRole="DICHVU" />
+    <NavigationProperty Name="DOANHNGHIEP" Relationship="QMSModel.FK_YEUCAU_DOANHNGHIEP" FromRole="YEUCAU" ToRole="DOANHNGHIEP" />
+    <NavigationProperty Name="XULYYCs" Relationship="QMSModel.FK_XULYYC_YEUCAU" FromRole="YEUCAU" ToRole="XULYYC" />
+  </EntityType>
+  <EntityType Name="YEUCAULT">
+    <Key>
+      <PropertyRef Name="MAPHIEU" />
+      <PropertyRef Name="GIOCAP" />
+      <PropertyRef Name="LAN" />
+    </Key>
+    <Property Name="MAPHIEU" Type="Int32" Nullable="false" />
+    <Property Name="MADV" Type="Int16" />
+    <Property Name="GIOCAP" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MATT" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LAN" Type="Int16" Nullable="false" />
+    <Property Name="MADN" Type="Int16" />
+    <Property Name="MANVDAU" Type="Int16" />
+  </EntityType>
+  <EntityType Name="CHINHMAU">
+    <Key>
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+      <PropertyRef Name="THAMSOLENH" />
+      <PropertyRef Name="MAMAUNV" />
+    </Key>
+    <Property Name="MALENH" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MAHANHDONG" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MATHAMSO" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSOLENH" Type="Int16" Nullable="false" />
+    <Property Name="HAM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="THAMSO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SOTT" Type="Int16" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAMAUNV" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CONTENT_SMS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoBNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NDPhanHoi" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gui" Type="Boolean" />
+    <Property Name="NgayChuyen" Type="DateTime" Precision="3" />
+    <Property Name="NgayGuiSMS" Type="DateTime" Precision="3" />
+    <Property Name="MaLinhVuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CONTENT_SMS_Tmp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoBNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NDPhanHoi" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gui" Type="Boolean" />
+    <Property Name="NgayChuyen" Type="DateTime" Precision="3" />
+    <Property Name="NgayGuiSMS" Type="DateTime" Precision="3" />
+    <Property Name="MaLinhVuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LENHTHAMSO">
+    <Key>
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+    </Key>
+    <Property Name="MAHANHDONG" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MATHAMSO" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DIENGIAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MENU_Config">
+    <Key>
+      <PropertyRef Name="MenuName" />
+      <PropertyRef Name="Visible" />
+    </Key>
+    <Property Name="MenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuCaption" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NOIDUNGDANHGIA">
+    <Key>
+      <PropertyRef Name="MACHATLUONG" />
+    </Key>
+    <Property Name="MACHATLUONG" Type="Byte" Nullable="false" />
+    <Property Name="NOIDUNG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_AMTHANHQUAY_QUAY">
+    <End Type="QMSModel.QUAY" Role="QUAY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.AMTHANHQUAY" Role="AMTHANHQUAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="AMTHANHQUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_B04_MAYIN_NV_NVU_THIETBI">
+    <End Type="QMSModel.THIETBI" Role="THIETBI" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.B04_MAYIN_NV_NVU" Role="B04_MAYIN_NV_NVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="B04_MAYIN_NV_NVU">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_NGHIEPVU_chinhsach">
+    <End Type="QMSModel.CHINHSACH" Role="CHINHSACH" Multiplicity="1" />
+    <End Type="QMSModel.NV_NGHIEPVU" Role="NV_NGHIEPVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHINHSACH">
+        <PropertyRef Name="CHINHSACH1" />
+      </Principal>
+      <Dependent Role="NV_NGHIEPVU">
+        <PropertyRef Name="CHINHSACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUONGDI_DICHVU">
+    <End Type="QMSModel.DICHVU" Role="DICHVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.DUONGDI" Role="DUONGDI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="DUONGDI">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YEUCAU_DICHVU">
+    <End Type="QMSModel.DICHVU" Role="DICHVU" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.YEUCAU" Role="YEUCAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="YEUCAU">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOANHNGHIEP_LOAIDOANHNGHIEP">
+    <End Type="QMSModel.LOAIDOANHNGHIEP" Role="LOAIDOANHNGHIEP" Multiplicity="0..1" />
+    <End Type="QMSModel.DOANHNGHIEP" Role="DOANHNGHIEP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIDOANHNGHIEP">
+        <PropertyRef Name="MALOAIDN" />
+      </Principal>
+      <Dependent Role="DOANHNGHIEP">
+        <PropertyRef Name="MALOAIDN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YEUCAU_DOANHNGHIEP">
+    <End Type="QMSModel.DOANHNGHIEP" Role="DOANHNGHIEP" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.YEUCAU" Role="YEUCAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOANHNGHIEP">
+        <PropertyRef Name="MADN" />
+      </Principal>
+      <Dependent Role="YEUCAU">
+        <PropertyRef Name="MADN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUONGDI_NGHIEPVU">
+    <End Type="QMSModel.NGHIEPVU" Role="NGHIEPVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.DUONGDI" Role="DUONGDI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGHIEPVU">
+        <PropertyRef Name="MANVU" />
+      </Principal>
+      <Dependent Role="DUONGDI">
+        <PropertyRef Name="MANVU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIENMAU_HANHDONG">
+    <End Type="QMSModel.HANHDONG" Role="HANHDONG" Multiplicity="1" />
+    <End Type="QMSModel.NHANVIENMAU" Role="NHANVIENMAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANHDONG">
+        <PropertyRef Name="MAHANHDONG" />
+      </Principal>
+      <Dependent Role="NHANVIENMAU">
+        <PropertyRef Name="MAHANHDONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THIETBI_LOAITB">
+    <End Type="QMSModel.LOAITB" Role="LOAITB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.THIETBI" Role="THIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITB">
+        <PropertyRef Name="MALTB" />
+      </Principal>
+      <Dependent Role="THIETBI">
+        <PropertyRef Name="MALTB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTUUTIEN_LOAITB">
+    <End Type="QMSModel.LOAITB" Role="LOAITB" Multiplicity="1" />
+    <End Type="QMSModel.TTUUTIEN" Role="TTUUTIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITB">
+        <PropertyRef Name="MALTB" />
+      </Principal>
+      <Dependent Role="TTUUTIEN">
+        <PropertyRef Name="MALTB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGON_NHANVIEN">
+    <End Type="QMSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QMSModel.LOGON" Role="LOGON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="LOGON">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGON_THIETBI">
+    <End Type="QMSModel.THIETBI" Role="THIETBI" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.LOGON" Role="LOGON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="LOGON">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGON_TRANGTHAI">
+    <End Type="QMSModel.TRANGTHAI" Role="TRANGTHAI" Multiplicity="0..1" />
+    <End Type="QMSModel.LOGON" Role="LOGON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANGTHAI">
+        <PropertyRef Name="MATT" />
+      </Principal>
+      <Dependent Role="LOGON">
+        <PropertyRef Name="MATT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NVAMTHANH_MAU_AMTHANH">
+    <End Type="QMSModel.MAU_AMTHANH" Role="MAU_AMTHANH" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.NVAMTHANH" Role="NVAMTHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAU_AMTHANH">
+        <PropertyRef Name="MAU" />
+      </Principal>
+      <Dependent Role="NVAMTHANH">
+        <PropertyRef Name="MAU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIENMAU_MAUNV">
+    <End Type="QMSModel.MAUNV" Role="MAUNV" Multiplicity="1" />
+    <End Type="QMSModel.NHANVIENMAU" Role="NHANVIENMAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAUNV">
+        <PropertyRef Name="MAMAUNV" />
+      </Principal>
+      <Dependent Role="NHANVIENMAU">
+        <PropertyRef Name="MAMAUNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NB_QUAY_QUAY">
+    <End Type="QMSModel.QUAY" Role="QUAY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.NB_QUAY" Role="NB_QUAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="NB_QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_NGHIEPVU_NGHIEPVU">
+    <End Type="QMSModel.NGHIEPVU" Role="NGHIEPVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.NV_NGHIEPVU" Role="NV_NGHIEPVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGHIEPVU">
+        <PropertyRef Name="MANVU" />
+      </Principal>
+      <Dependent Role="NV_NGHIEPVU">
+        <PropertyRef Name="MANVU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_NGHIEPVU_NHANVIEN">
+    <End Type="QMSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.NV_NGHIEPVU" Role="NV_NGHIEPVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="NV_NGHIEPVU">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Q_BookService_NHANVIEN">
+    <End Type="QMSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QMSModel.Q_BookService" Role="Q_BookService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="Q_BookService">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Q_UserEvaluate_NHANVIEN">
+    <End Type="QMSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QMSModel.Q_UserEvaluate" Role="Q_UserEvaluate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="Q_UserEvaluate">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XULYYC_NHANVIEN">
+    <End Type="QMSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QMSModel.XULYYC" Role="XULYYC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="XULYYC">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Q_EvaluateDetail_Q_Evaluate">
+    <End Type="QMSModel.Q_Evaluate" Role="Q_Evaluate" Multiplicity="1" />
+    <End Type="QMSModel.Q_EvaluateDetail" Role="Q_EvaluateDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Q_Evaluate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Q_EvaluateDetail">
+        <PropertyRef Name="EvaluateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUAY_MAIN_QUAY">
+    <End Type="QMSModel.QUAY" Role="QUAY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.QUAY_MAIN" Role="QUAY_MAIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="QUAY_MAIN">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THIETBI_QUAY">
+    <End Type="QMSModel.QUAY" Role="QUAY" Multiplicity="0..1" />
+    <End Type="QMSModel.THIETBI" Role="THIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="THIETBI">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUAY_MAIN_THIETBI">
+    <End Type="QMSModel.THIETBI" Role="THIETBI" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.QUAY_MAIN" Role="QUAY_MAIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="QUAY_MAIN">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XULYYC_THIETBI">
+    <End Type="QMSModel.THIETBI" Role="THIETBI" Multiplicity="0..1" />
+    <End Type="QMSModel.XULYYC" Role="XULYYC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="XULYYC">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTUUTIEN_TIENTRINH">
+    <End Type="QMSModel.TIENTRINH" Role="TIENTRINH" Multiplicity="1" />
+    <End Type="QMSModel.TTUUTIEN" Role="TTUUTIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIENTRINH">
+        <PropertyRef Name="MATIENTRINH" />
+      </Principal>
+      <Dependent Role="TTUUTIEN">
+        <PropertyRef Name="MATIENTRINH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XULYYC_YEUCAU">
+    <End Type="QMSModel.YEUCAU" Role="YEUCAU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QMSModel.XULYYC" Role="XULYYC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YEUCAU">
+        <PropertyRef Name="MAPHIEU" />
+      </Principal>
+      <Dependent Role="XULYYC">
+        <PropertyRef Name="MAPHIEU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

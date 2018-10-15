@@ -1,0 +1,1373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AMTHANH">
+    <Key>
+      <PropertyRef Name="TENFILE" />
+    </Key>
+    <Property Name="TENFILE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MOI_KT" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AMTHANHQUAY">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+      <PropertyRef Name="KIEUQUAY" />
+      <PropertyRef Name="MADICH" />
+    </Key>
+    <Property Name="MAQUAY" Type="smallint" Nullable="false" />
+    <Property Name="KIEUQUAY" Type="smallint" Nullable="false" />
+    <Property Name="MADICH" Type="smallint" Nullable="false" />
+    <Property Name="TENFILE" Type="nvarchar" MaxLength="30" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="B01_THAMSO">
+    <Key>
+      <PropertyRef Name="MATS" />
+    </Key>
+    <Property Name="MATS" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CACHIN" Type="smallint" />
+    <Property Name="XULY" Type="smallint" />
+    <Property Name="DUONGDAN" Type="nvarchar" MaxLength="100" />
+    <Property Name="THONGBAONGHI" Type="nvarchar" MaxLength="100" />
+    <Property Name="THOIGIANQUET" Type="nvarchar" MaxLength="50" />
+    <Property Name="THOIGIANPHAT" Type="int" />
+    <Property Name="TENFILECHIDAN" Type="nvarchar" MaxLength="50" />
+    <Property Name="TGDINHMUC" Type="int" />
+    <Property Name="SOPHIEUTOIDA" Type="smallint" />
+    <Property Name="THOIGIANXOADL" Type="tinyint" />
+    <Property Name="SOPHIEUGIOIHAN" Type="smallint" />
+    <Property Name="BATDAUCHIDAN" Type="datetime" />
+    <Property Name="KETTHUCCHIDAN" Type="datetime" />
+    <Property Name="TGDINHMUCDOI" Type="int" />
+    <Property Name="DINHMUCHUY" Type="tinyint" />
+    <Property Name="INTRUCTIEP" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QMS_New.dbo.B02_CAIDAT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="B02_CAIDAT">
+          <Property Name="TENUSER" Type="nvarchar" MaxLength="50" />
+          <Property Name="TRANGTHAI" Type="int" />
+        </EntityType>-->
+  <EntityType Name="B03_MAYIN_AMTHANH">
+    <Key>
+      <PropertyRef Name="MATB" />
+      <PropertyRef Name="MALENH" />
+    </Key>
+    <Property Name="MATB" Type="smallint" Nullable="false" />
+    <Property Name="MALENH" Type="smallint" Nullable="false" />
+    <Property Name="TENFILE" Type="nvarchar" MaxLength="100" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="B04_MAYIN_NV_NVU">
+    <Key>
+      <PropertyRef Name="MATB" />
+      <PropertyRef Name="MALENH" />
+    </Key>
+    <Property Name="MATB" Type="int" Nullable="false" />
+    <Property Name="MALENH" Type="smallint" Nullable="false" />
+    <Property Name="MANV" Type="smallint" Nullable="false" />
+    <Property Name="MADV" Type="smallint" />
+    <Property Name="MANVU" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CA">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="smallint" Nullable="false" />
+    <Property Name="TGBD1" Type="datetime" />
+    <Property Name="TGKT1" Type="datetime" />
+    <Property Name="TGBD2" Type="datetime" />
+    <Property Name="TGKT2" Type="datetime" />
+    <Property Name="TGBD3" Type="datetime" />
+    <Property Name="TGKT3" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QMS_New.dbo.CHATLUONGPHUCVU' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CHATLUONGPHUCVU">
+          <Property Name="MANV" Type="smallint" />
+          <Property Name="CHATLUONG" Type="tinyint" />
+          <Property Name="TGDANHGIA" Type="datetime" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QMS_New.dbo.CHINHMAU' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CHINHMAU">
+    <Key>
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+      <PropertyRef Name="THAMSOLENH" />
+      <PropertyRef Name="MAMAUNV" />
+    </Key>
+    <Property Name="MALENH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MAHANHDONG" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MATHAMSO" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="THAMSOLENH" Type="smallint" Nullable="false" />
+    <Property Name="HAM" Type="nvarchar" MaxLength="30" />
+    <Property Name="THAMSO" Type="nvarchar" MaxLength="30" />
+    <Property Name="SOTT" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAMAUNV" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHINHSACH">
+    <Key>
+      <PropertyRef Name="CHINHSACH" />
+    </Key>
+    <Property Name="CHINHSACH" Type="smallint" Nullable="false" />
+    <Property Name="HIENHANH" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QMS_New.dbo.CONTENT_SMS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CONTENT_SMS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoBNhan" Type="varchar" MaxLength="200" />
+    <Property Name="DienThoai" Type="varchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+    <Property Name="NDPhanHoi" Type="nvarchar" MaxLength="4000" />
+    <Property Name="TinhTrang" Type="varchar" MaxLength="50" />
+    <Property Name="Gui" Type="bit" />
+    <Property Name="NgayChuyen" Type="datetime" />
+    <Property Name="NgayGuiSMS" Type="datetime" />
+    <Property Name="MaLinhVuc" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_TinhTrang" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QMS_New.dbo.CONTENT_SMS_Tmp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CONTENT_SMS_Tmp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoBNhan" Type="varchar" MaxLength="200" />
+    <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+    <Property Name="NDPhanHoi" Type="nvarchar" MaxLength="4000" />
+    <Property Name="TinhTrang" Type="varchar" MaxLength="50" />
+    <Property Name="Gui" Type="bit" />
+    <Property Name="NgayChuyen" Type="datetime" />
+    <Property Name="NgayGuiSMS" Type="datetime" />
+    <Property Name="MaLinhVuc" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_TinhTrang" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CounterSoft">
+    <Key>
+      <PropertyRef Name="CounterSoftId" />
+    </Key>
+    <Property Name="CounterSoftId" Type="smallint" Nullable="false" />
+    <Property Name="Required" Type="nvarchar" MaxLength="50" />
+    <Property Name="RequiredParam" Type="nvarchar" MaxLength="50" />
+    <Property Name="Result" Type="nvarchar" MaxLength="200" />
+    <Property Name="WaitingList" Type="nvarchar" MaxLength="4000" />
+    <Property Name="GeneralWaitingList" Type="nvarchar" MaxLength="4000" />
+    <Property Name="TotalDone" Type="int" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CounterSoftButton">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+    </Key>
+    <Property Name="ButtonId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ButtonName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Note" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CSoftButton_Lenh">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="ButtonId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MALENH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MANV" Type="smallint" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="DICHVU">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="smallint" Nullable="false" />
+    <Property Name="TENDV" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="100" />
+    <Property Name="SOPHIEU" Type="int" />
+    <Property Name="SOPHIEUCUOI" Type="int" />
+    <Property Name="THOIGIANXULY" Type="nvarchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="DOANHNGHIEP">
+    <Key>
+      <PropertyRef Name="MADN" />
+    </Key>
+    <Property Name="MADN" Type="smallint" Nullable="false" />
+    <Property Name="MALOAIDN" Type="smallint" />
+    <Property Name="TENDN" Type="nvarchar" MaxLength="100" />
+    <Property Name="DIACHIDN" Type="nvarchar" MaxLength="100" />
+    <Property Name="TONGVE" Type="smallint" />
+  </EntityType>
+  <EntityType Name="DocumentKind">
+    <Key>
+      <PropertyRef Name="DocKindId" />
+    </Key>
+    <Property Name="DocKindId" Type="tinyint" Nullable="false" />
+    <Property Name="DocKind" Type="nvarchar" MaxLength="100" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Documents">
+    <Key>
+      <PropertyRef Name="DocId" />
+    </Key>
+    <Property Name="DocId" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="DocKindId" Type="tinyint" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Tel" Type="varchar" MaxLength="50" />
+    <Property Name="StatusId" Type="tinyint" />
+    <Property Name="StatusTime" Type="datetime" />
+    <Property Name="AutoSend" Type="bit" />
+  </EntityType>
+  <EntityType Name="DocumentStatus">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="tinyint" Nullable="false" />
+    <Property Name="DocStatus" Type="nvarchar" MaxLength="100" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="DUONGDI">
+    <Key>
+      <PropertyRef Name="SOTT" />
+      <PropertyRef Name="MANVU" />
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="SOTT" Type="smallint" Nullable="false" />
+    <Property Name="MANVU" Type="smallint" Nullable="false" />
+    <Property Name="MADV" Type="smallint" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HANHDONG">
+    <Key>
+      <PropertyRef Name="MAHANHDONG" />
+    </Key>
+    <Property Name="MAHANHDONG" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+    <Property Name="HAM" Type="nvarchar" MaxLength="50" />
+    <Property Name="STT" Type="smallint" />
+  </EntityType>
+  <EntityType Name="KIEUDICH">
+    <Key>
+      <PropertyRef Name="MADICH" />
+      <PropertyRef Name="SO" />
+    </Key>
+    <Property Name="MADICH" Type="smallint" Nullable="false" />
+    <Property Name="SO" Type="smallint" Nullable="false" />
+    <Property Name="TENFILE" Type="nvarchar" MaxLength="30" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LENH">
+    <Key>
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="THAMSOLENH" />
+    </Key>
+    <Property Name="MALENH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="THAMSOLENH" Type="smallint" Nullable="false" />
+    <Property Name="MALENHHEX" Type="nvarchar" MaxLength="15" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QMS_New.dbo.LENHTHAMSO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LENHTHAMSO">
+    <Key>
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+    </Key>
+    <Property Name="MAHANHDONG" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MATHAMSO" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LENHTHAMSO0">
+    <Key>
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+    </Key>
+    <Property Name="MAHANHDONG" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MATHAMSO" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LOAIDOANHNGHIEP">
+    <Key>
+      <PropertyRef Name="MALOAIDN" />
+    </Key>
+    <Property Name="MALOAIDN" Type="smallint" Nullable="false" />
+    <Property Name="LOAIDN" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LOAITB">
+    <Key>
+      <PropertyRef Name="MALTB" />
+    </Key>
+    <Property Name="MALTB" Type="smallint" Nullable="false" />
+    <Property Name="TENLTB" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="LOGON">
+    <Key>
+      <PropertyRef Name="LOGNBR" />
+    </Key>
+    <Property Name="LOGNBR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MATB" Type="int" />
+    <Property Name="MANV" Type="int" />
+    <Property Name="NGAY" Type="datetime" />
+    <Property Name="GIO" Type="datetime" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="TTPNEXT" Type="smallint" />
+    <Property Name="LOGOUTTIME" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MAU_AMTHANH">
+    <Key>
+      <PropertyRef Name="MAU" />
+    </Key>
+    <Property Name="MAU" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MOI" Type="nvarchar" MaxLength="30" />
+    <Property Name="KETTHUC" Type="nvarchar" MaxLength="30" />
+    <Property Name="MADICH" Type="smallint" />
+    <Property Name="KIEUQUAY" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MAUNV">
+    <Key>
+      <PropertyRef Name="MAMAUNV" />
+    </Key>
+    <Property Name="MAMAUNV" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QMS_New.dbo.MENU_Config' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MENU_Config">
+    <Key>
+      <PropertyRef Name="MenuName" />
+      <PropertyRef Name="Visible" />
+    </Key>
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MenuCaption" Type="nvarchar" MaxLength="100" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MENU_Config0">
+    <Key>
+      <PropertyRef Name="MenuName" />
+    </Key>
+    <Property Name="MenuName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="MenuCaption" Type="nvarchar" MaxLength="100" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NB_QUAY">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+      <PropertyRef Name="NB" />
+    </Key>
+    <Property Name="MAQUAY" Type="smallint" Nullable="false" />
+    <Property Name="NB" Type="smallint" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NGHIEPVU">
+    <Key>
+      <PropertyRef Name="MANVU" />
+    </Key>
+    <Property Name="MANVU" Type="smallint" Nullable="false" />
+    <Property Name="TENNVU" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="NGONNGU">
+    <Key>
+      <PropertyRef Name="MANN" />
+    </Key>
+    <Property Name="MANN" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="TENN" Type="nvarchar" MaxLength="50" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
+    <Property Name="HIEULUC" Type="smallint" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="int" Nullable="false" />
+    <Property Name="TENNV" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+    <Property Name="GIOITINH" Type="bit" Nullable="false" />
+    <Property Name="TROGIUP" Type="nvarchar" MaxLength="50" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hinh" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChuyenMon" Type="nvarchar(max)" />
+    <Property Name="ChucVu" Type="nvarchar(max)" />
+    <Property Name="QTCongTac" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NHANVIENMAU">
+    <Key>
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+      <PropertyRef Name="THAMSOLENH" />
+      <PropertyRef Name="MAMAUNV" />
+    </Key>
+    <Property Name="MALENH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MAHANHDONG" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MATHAMSO" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="THAMSOLENH" Type="smallint" Nullable="false" />
+    <Property Name="HAM" Type="nvarchar" MaxLength="30" />
+    <Property Name="THAMSO" Type="nvarchar" MaxLength="30" />
+    <Property Name="SOTT" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAMAUNV" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QMS_New.dbo.NOIDUNGDANHGIA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NOIDUNGDANHGIA">
+    <Key>
+      <PropertyRef Name="MACHATLUONG" />
+    </Key>
+    <Property Name="MACHATLUONG" Type="tinyint" Nullable="false" />
+    <Property Name="NOIDUNG" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NV_LENHBD">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="smallint" Nullable="false" />
+    <Property Name="MALENH" Type="smallint" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="NV_NGHIEPVU">
+    <Key>
+      <PropertyRef Name="MANV" />
+      <PropertyRef Name="MANVU" />
+      <PropertyRef Name="CHINHSACH" />
+    </Key>
+    <Property Name="MANV" Type="int" Nullable="false" />
+    <Property Name="MANVU" Type="smallint" Nullable="false" />
+    <Property Name="UUTIEN" Type="smallint" />
+    <Property Name="CHINHSACH" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NVAMTHANH">
+    <Key>
+      <PropertyRef Name="MANV" />
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAU" />
+    </Key>
+    <Property Name="MANV" Type="smallint" Nullable="false" />
+    <Property Name="MALENH" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MAU" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NVLENH">
+    <Key>
+      <PropertyRef Name="MANV" />
+      <PropertyRef Name="MALENH" />
+      <PropertyRef Name="MAHANHDONG" />
+      <PropertyRef Name="MATHAMSO" />
+      <PropertyRef Name="THAMSOLENH" />
+    </Key>
+    <Property Name="MANV" Type="smallint" Nullable="false" />
+    <Property Name="MALENH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MAHANHDONG" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MATHAMSO" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="THAMSOLENH" Type="smallint" Nullable="false" />
+    <Property Name="HAM" Type="nvarchar" MaxLength="30" />
+    <Property Name="THAMSO" Type="nvarchar" MaxLength="30" />
+    <Property Name="SOTT" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PHANDEUPHIEU">
+    <Key>
+      <PropertyRef Name="MADV" />
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MADV" Type="smallint" Nullable="false" />
+    <Property Name="MANV" Type="smallint" Nullable="false" />
+    <Property Name="MAQUAY" Type="smallint" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="CAPPHIEU" Type="bit" />
+  </EntityType>
+  <EntityType Name="Q_BookService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaNV" Type="int" Nullable="false" />
+    <Property Name="KhachHang" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="SoXe" Type="nvarchar" MaxLength="150" />
+    <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayHen" Type="datetime" Nullable="false" />
+    <Property Name="GioHen" Type="time" Precision="7" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Q_CallButtonNext">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CounterId" Type="int" Nullable="false" />
+    <Property Name="IsClick" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Q_Evaluate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Q_EvaluateDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EvaluateId" Type="int" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="Icon" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Q_UserEvaluate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Score" Type="nvarchar" MaxLength="550" Nullable="false" />
+    <Property Name="TicketNumber" Type="int" Nullable="false" />
+    <Property Name="GLAYPHIEU" Type="datetime" />
+    <Property Name="GDENQUAY" Type="datetime" />
+    <Property Name="GGIAODICH" Type="datetime" />
+    <Property Name="GKETTHUC" Type="datetime" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="QUAY">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+    </Key>
+    <Property Name="MAQUAY" Type="smallint" Nullable="false" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="TENQUAY" Type="nvarchar" MaxLength="30" />
+    <Property Name="VITRI" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIENTICH" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsShow" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QUAY_HUONGAMTHANH">
+    <Key>
+      <PropertyRef Name="MAQUYA" />
+      <PropertyRef Name="HUONGCARDSOUND" />
+    </Key>
+    <Property Name="MAQUYA" Type="smallint" Nullable="false" />
+    <Property Name="HUONGCARDSOUND" Type="smallint" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="QUAY_MAIN">
+    <Key>
+      <PropertyRef Name="MAQUAY" />
+      <PropertyRef Name="MATB" />
+    </Key>
+    <Property Name="MAQUAY" Type="smallint" Nullable="false" />
+    <Property Name="MATB" Type="int" Nullable="false" />
+    <Property Name="HUONG" Type="nvarchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="SMSMessage">
+    <Key>
+      <PropertyRef Name="SMSId" />
+    </Key>
+    <Property Name="SMSId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TargetId" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="Content" Type="nvarchar" MaxLength="500" />
+    <Property Name="Kind" Type="bit" />
+    <Property Name="SMSTime" Type="datetime" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="SMSIO" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DocId" Type="varchar" MaxLength="20" />
+    <Property Name="TicketNo" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IssuedTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SMSResultSetup">
+    <Key>
+      <PropertyRef Name="DocKindId" />
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="DocKindId" Type="tinyint" Nullable="false" />
+    <Property Name="StatusId" Type="tinyint" Nullable="false" />
+    <Property Name="SMSResult" Type="nvarchar" MaxLength="400" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="SMSSetup">
+    <Key>
+      <PropertyRef Name="CmdId" />
+    </Key>
+    <Property Name="CmdId" Type="tinyint" Nullable="false" />
+    <Property Name="SMSFormat" Type="nvarchar" MaxLength="100" />
+    <Property Name="SMSConfirm" Type="nvarchar" MaxLength="500" />
+    <Property Name="SMSConfirmOK" Type="nvarchar" MaxLength="100" />
+    <Property Name="SMSReply" Type="nvarchar" MaxLength="480" />
+    <Property Name="SMSStop" Type="nvarchar" MaxLength="500" />
+    <Property Name="SMSReminder" Type="nvarchar" MaxLength="500" />
+    <Property Name="SMSResult" Type="nvarchar" MaxLength="500" />
+    <Property Name="SMSRepeat" Type="nvarchar" MaxLength="480" />
+    <Property Name="SMSFail" Type="nvarchar" MaxLength="500" />
+    <Property Name="ServedTimeAvg" Type="tinyint" />
+    <Property Name="ReminderTime" Type="tinyint" />
+    <Property Name="BeginBreakTime" Type="datetime" />
+    <Property Name="EndBreakTime" Type="datetime" />
+    <Property Name="FinishTime" Type="datetime" />
+    <Property Name="Note" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QMS_New.dbo.TAM1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TAM1">
+          <Property Name="tg1" Type="datetime" />
+          <Property Name="tg2" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="THIETBI">
+    <Key>
+      <PropertyRef Name="MATB" />
+    </Key>
+    <Property Name="MATB" Type="int" Nullable="false" />
+    <Property Name="MALTB" Type="smallint" />
+    <Property Name="TENTB" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAQUAY" Type="smallint" />
+    <Property Name="VITRI" Type="nvarchar" MaxLength="50" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="GKETTHUC" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TIENTRINH">
+    <Key>
+      <PropertyRef Name="MATIENTRINH" />
+    </Key>
+    <Property Name="MATIENTRINH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="30" />
+    <Property Name="TT" Type="numeric" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityType Name="TRANGTHAI">
+    <Key>
+      <PropertyRef Name="MATT" />
+    </Key>
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="LOAITT" Type="smallint" />
+    <Property Name="DIENGIAI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TTUUTIEN">
+    <Key>
+      <PropertyRef Name="MALTB" />
+      <PropertyRef Name="BUOC" />
+      <PropertyRef Name="UUTIEN" />
+    </Key>
+    <Property Name="MALTB" Type="smallint" Nullable="false" />
+    <Property Name="BUOC" Type="smallint" Nullable="false" />
+    <Property Name="UUTIEN" Type="smallint" Nullable="false" />
+    <Property Name="MATIENTRINH" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DEM" Type="smallint" />
+  </EntityType>
+  <EntityType Name="ViewAllWaitingList">
+    <Key>
+      <PropertyRef Name="StaffId" />
+      <PropertyRef Name="DeskId" />
+    </Key>
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="DeskId" Type="int" Nullable="false" />
+    <Property Name="WaitingList" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkSpecial" Type="int" />
+  </EntityType>
+  <EntityType Name="XULYYC">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MAPHIEU" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="MANVU" Type="smallint" />
+    <Property Name="MANVUT" Type="smallint" />
+    <Property Name="MANV" Type="int" />
+    <Property Name="MATB" Type="int" />
+    <Property Name="NB" Type="smallint" />
+    <Property Name="GLAYPHIEU" Type="datetime" />
+    <Property Name="GDENQUAY" Type="datetime" />
+    <Property Name="Temp" Type="datetime" />
+    <Property Name="GGIAODICH" Type="datetime" />
+    <Property Name="GKETTHUC" Type="datetime" />
+    <Property Name="TGGIAODICH" Type="datetime" StoreGeneratedPattern="Computed" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="MADN" Type="smallint" />
+    <Property Name="MANVDAU" Type="smallint" />
+  </EntityType>
+  <EntityType Name="XULYYCLT">
+    <Key>
+      <PropertyRef Name="STT" />
+      <PropertyRef Name="MAPHIEU" />
+      <PropertyRef Name="GLAYPHIEU" />
+      <PropertyRef Name="LAN" />
+    </Key>
+    <Property Name="STT" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MAPHIEU" Type="int" Nullable="false" />
+    <Property Name="MANVU" Type="smallint" Nullable="false" />
+    <Property Name="MANVUT" Type="smallint" />
+    <Property Name="MANV" Type="smallint" />
+    <Property Name="MATB" Type="smallint" />
+    <Property Name="NB" Type="smallint" />
+    <Property Name="GLAYPHIEU" Type="datetime" Nullable="false" />
+    <Property Name="GDENQUAY" Type="datetime" />
+    <Property Name="GGIAODICH" Type="datetime" />
+    <Property Name="GKETTHUC" Type="datetime" />
+    <Property Name="TGGIAODICH" Type="datetime" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="LAN" Type="smallint" Nullable="false" />
+    <Property Name="MADN" Type="smallint" />
+    <Property Name="MANVDAU" Type="smallint" />
+  </EntityType>
+  <EntityType Name="YEUCAU">
+    <Key>
+      <PropertyRef Name="MAPHIEU" />
+    </Key>
+    <Property Name="MAPHIEU" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="MADV" Type="smallint" />
+    <Property Name="GIOCAP" Type="datetime" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="MADN" Type="smallint" />
+    <Property Name="MANVDAU" Type="smallint" />
+    <Property Name="SOXE" Type="varchar" MaxLength="250" />
+    <Property Name="PHONE" Type="varchar" MaxLength="250" />
+    <Property Name="TGPHUCVU_DK" Type="datetime" />
+  </EntityType>
+  <EntityType Name="YEUCAULT">
+    <Key>
+      <PropertyRef Name="MAPHIEU" />
+      <PropertyRef Name="GIOCAP" />
+      <PropertyRef Name="LAN" />
+    </Key>
+    <Property Name="MAPHIEU" Type="int" Nullable="false" />
+    <Property Name="MADV" Type="smallint" />
+    <Property Name="GIOCAP" Type="datetime" Nullable="false" />
+    <Property Name="MATT" Type="nvarchar" MaxLength="5" />
+    <Property Name="LAN" Type="smallint" Nullable="false" />
+    <Property Name="MADN" Type="smallint" />
+    <Property Name="MANVDAU" Type="smallint" />
+  </EntityType>
+  <Association Name="FK_AMTHANHQUAY_QUAY">
+    <End Role="QUAY" Type="Self.QUAY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AMTHANHQUAY" Type="Self.AMTHANHQUAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="AMTHANHQUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_B04_MAYIN_NV_NVU_THIETBI">
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="B04_MAYIN_NV_NVU" Type="Self.B04_MAYIN_NV_NVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="B04_MAYIN_NV_NVU">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOANHNGHIEP_LOAIDOANHNGHIEP">
+    <End Role="LOAIDOANHNGHIEP" Type="Self.LOAIDOANHNGHIEP" Multiplicity="0..1" />
+    <End Role="DOANHNGHIEP" Type="Self.DOANHNGHIEP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIDOANHNGHIEP">
+        <PropertyRef Name="MALOAIDN" />
+      </Principal>
+      <Dependent Role="DOANHNGHIEP">
+        <PropertyRef Name="MALOAIDN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUONGDI_DICHVU">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DUONGDI" Type="Self.DUONGDI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="DUONGDI">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUONGDI_NGHIEPVU">
+    <End Role="NGHIEPVU" Type="Self.NGHIEPVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DUONGDI" Type="Self.DUONGDI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGHIEPVU">
+        <PropertyRef Name="MANVU" />
+      </Principal>
+      <Dependent Role="DUONGDI">
+        <PropertyRef Name="MANVU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGON_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="LOGON" Type="Self.LOGON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="LOGON">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGON_THIETBI">
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LOGON" Type="Self.LOGON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="LOGON">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGON_TRANGTHAI">
+    <End Role="TRANGTHAI" Type="Self.TRANGTHAI" Multiplicity="0..1" />
+    <End Role="LOGON" Type="Self.LOGON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANGTHAI">
+        <PropertyRef Name="MATT" />
+      </Principal>
+      <Dependent Role="LOGON">
+        <PropertyRef Name="MATT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NB_QUAY_QUAY">
+    <End Role="QUAY" Type="Self.QUAY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NB_QUAY" Type="Self.NB_QUAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="NB_QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIENMAU_HANHDONG">
+    <End Role="HANHDONG" Type="Self.HANHDONG" Multiplicity="1" />
+    <End Role="NHANVIENMAU" Type="Self.NHANVIENMAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANHDONG">
+        <PropertyRef Name="MAHANHDONG" />
+      </Principal>
+      <Dependent Role="NHANVIENMAU">
+        <PropertyRef Name="MAHANHDONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIENMAU_MAUNV">
+    <End Role="MAUNV" Type="Self.MAUNV" Multiplicity="1" />
+    <End Role="NHANVIENMAU" Type="Self.NHANVIENMAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAUNV">
+        <PropertyRef Name="MAMAUNV" />
+      </Principal>
+      <Dependent Role="NHANVIENMAU">
+        <PropertyRef Name="MAMAUNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_NGHIEPVU_chinhsach">
+    <End Role="CHINHSACH" Type="Self.CHINHSACH" Multiplicity="1" />
+    <End Role="NV_NGHIEPVU" Type="Self.NV_NGHIEPVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHINHSACH">
+        <PropertyRef Name="CHINHSACH" />
+      </Principal>
+      <Dependent Role="NV_NGHIEPVU">
+        <PropertyRef Name="CHINHSACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_NGHIEPVU_NGHIEPVU">
+    <End Role="NGHIEPVU" Type="Self.NGHIEPVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NV_NGHIEPVU" Type="Self.NV_NGHIEPVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGHIEPVU">
+        <PropertyRef Name="MANVU" />
+      </Principal>
+      <Dependent Role="NV_NGHIEPVU">
+        <PropertyRef Name="MANVU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_NGHIEPVU_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NV_NGHIEPVU" Type="Self.NV_NGHIEPVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="NV_NGHIEPVU">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NVAMTHANH_MAU_AMTHANH">
+    <End Role="MAU_AMTHANH" Type="Self.MAU_AMTHANH" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NVAMTHANH" Type="Self.NVAMTHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAU_AMTHANH">
+        <PropertyRef Name="MAU" />
+      </Principal>
+      <Dependent Role="NVAMTHANH">
+        <PropertyRef Name="MAU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Q_BookService_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="Q_BookService" Type="Self.Q_BookService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="Q_BookService">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Q_EvaluateDetail_Q_Evaluate">
+    <End Role="Q_Evaluate" Type="Self.Q_Evaluate" Multiplicity="1" />
+    <End Role="Q_EvaluateDetail" Type="Self.Q_EvaluateDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Q_Evaluate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Q_EvaluateDetail">
+        <PropertyRef Name="EvaluateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Q_UserEvaluate_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="Q_UserEvaluate" Type="Self.Q_UserEvaluate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="Q_UserEvaluate">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUAY_MAIN_QUAY">
+    <End Role="QUAY" Type="Self.QUAY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="QUAY_MAIN" Type="Self.QUAY_MAIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="QUAY_MAIN">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUAY_MAIN_THIETBI">
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="QUAY_MAIN" Type="Self.QUAY_MAIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="QUAY_MAIN">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THIETBI_LOAITB">
+    <End Role="LOAITB" Type="Self.LOAITB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITB">
+        <PropertyRef Name="MALTB" />
+      </Principal>
+      <Dependent Role="THIETBI">
+        <PropertyRef Name="MALTB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THIETBI_QUAY">
+    <End Role="QUAY" Type="Self.QUAY" Multiplicity="0..1" />
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAY">
+        <PropertyRef Name="MAQUAY" />
+      </Principal>
+      <Dependent Role="THIETBI">
+        <PropertyRef Name="MAQUAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTUUTIEN_LOAITB">
+    <End Role="LOAITB" Type="Self.LOAITB" Multiplicity="1" />
+    <End Role="TTUUTIEN" Type="Self.TTUUTIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITB">
+        <PropertyRef Name="MALTB" />
+      </Principal>
+      <Dependent Role="TTUUTIEN">
+        <PropertyRef Name="MALTB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTUUTIEN_TIENTRINH">
+    <End Role="TIENTRINH" Type="Self.TIENTRINH" Multiplicity="1" />
+    <End Role="TTUUTIEN" Type="Self.TTUUTIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIENTRINH">
+        <PropertyRef Name="MATIENTRINH" />
+      </Principal>
+      <Dependent Role="TTUUTIEN">
+        <PropertyRef Name="MATIENTRINH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XULYYC_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="XULYYC" Type="Self.XULYYC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="XULYYC">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XULYYC_THIETBI">
+    <End Role="THIETBI" Type="Self.THIETBI" Multiplicity="0..1" />
+    <End Role="XULYYC" Type="Self.XULYYC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THIETBI">
+        <PropertyRef Name="MATB" />
+      </Principal>
+      <Dependent Role="XULYYC">
+        <PropertyRef Name="MATB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XULYYC_YEUCAU">
+    <End Role="YEUCAU" Type="Self.YEUCAU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="XULYYC" Type="Self.XULYYC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YEUCAU">
+        <PropertyRef Name="MAPHIEU" />
+      </Principal>
+      <Dependent Role="XULYYC">
+        <PropertyRef Name="MAPHIEU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YEUCAU_DICHVU">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="YEUCAU" Type="Self.YEUCAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="YEUCAU">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YEUCAU_DOANHNGHIEP">
+    <End Role="DOANHNGHIEP" Type="Self.DOANHNGHIEP" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="YEUCAU" Type="Self.YEUCAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOANHNGHIEP">
+        <PropertyRef Name="MADN" />
+      </Principal>
+      <Dependent Role="YEUCAU">
+        <PropertyRef Name="MADN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QMSModelStoreContainer">
+    <EntitySet Name="AMTHANH" EntityType="Self.AMTHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AMTHANHQUAY" EntityType="Self.AMTHANHQUAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="B01_THAMSO" EntityType="Self.B01_THAMSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="B03_MAYIN_AMTHANH" EntityType="Self.B03_MAYIN_AMTHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="B04_MAYIN_NV_NVU" EntityType="Self.B04_MAYIN_NV_NVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CA" EntityType="Self.CA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHINHSACH" EntityType="Self.CHINHSACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CounterSoft" EntityType="Self.CounterSoft" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CounterSoftButton" EntityType="Self.CounterSoftButton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CSoftButton_Lenh" EntityType="Self.CSoftButton_Lenh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DICHVU" EntityType="Self.DICHVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOANHNGHIEP" EntityType="Self.DOANHNGHIEP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentKind" EntityType="Self.DocumentKind" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentStatus" EntityType="Self.DocumentStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DUONGDI" EntityType="Self.DUONGDI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HANHDONG" EntityType="Self.HANHDONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KIEUDICH" EntityType="Self.KIEUDICH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LENH" EntityType="Self.LENH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LENHTHAMSO0" EntityType="Self.LENHTHAMSO0" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAIDOANHNGHIEP" EntityType="Self.LOAIDOANHNGHIEP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAITB" EntityType="Self.LOAITB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOGON" EntityType="Self.LOGON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MAU_AMTHANH" EntityType="Self.MAU_AMTHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MAUNV" EntityType="Self.MAUNV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU_Config0" EntityType="Self.MENU_Config0" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NB_QUAY" EntityType="Self.NB_QUAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGHIEPVU" EntityType="Self.NGHIEPVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGONNGU" EntityType="Self.NGONNGU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIENMAU" EntityType="Self.NHANVIENMAU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NV_LENHBD" EntityType="Self.NV_LENHBD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NV_NGHIEPVU" EntityType="Self.NV_NGHIEPVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NVAMTHANH" EntityType="Self.NVAMTHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NVLENH" EntityType="Self.NVLENH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHANDEUPHIEU" EntityType="Self.PHANDEUPHIEU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Q_BookService" EntityType="Self.Q_BookService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Q_CallButtonNext" EntityType="Self.Q_CallButtonNext" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Q_Evaluate" EntityType="Self.Q_Evaluate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Q_EvaluateDetail" EntityType="Self.Q_EvaluateDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Q_UserEvaluate" EntityType="Self.Q_UserEvaluate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUAY" EntityType="Self.QUAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUAY_HUONGAMTHANH" EntityType="Self.QUAY_HUONGAMTHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUAY_MAIN" EntityType="Self.QUAY_MAIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSMessage" EntityType="Self.SMSMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSResultSetup" EntityType="Self.SMSResultSetup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSSetup" EntityType="Self.SMSSetup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THIETBI" EntityType="Self.THIETBI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIENTRINH" EntityType="Self.TIENTRINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRANGTHAI" EntityType="Self.TRANGTHAI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TTUUTIEN" EntityType="Self.TTUUTIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ViewAllWaitingList" EntityType="Self.ViewAllWaitingList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XULYYC" EntityType="Self.XULYYC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XULYYCLT" EntityType="Self.XULYYCLT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YEUCAU" EntityType="Self.YEUCAU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YEUCAULT" EntityType="Self.YEUCAULT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHINHMAU" EntityType="Self.CHINHMAU" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[CHINHMAU].[MALENH] AS [MALENH], 
+[CHINHMAU].[MAHANHDONG] AS [MAHANHDONG], 
+[CHINHMAU].[MATHAMSO] AS [MATHAMSO], 
+[CHINHMAU].[THAMSOLENH] AS [THAMSOLENH], 
+[CHINHMAU].[HAM] AS [HAM], 
+[CHINHMAU].[THAMSO] AS [THAMSO], 
+[CHINHMAU].[SOTT] AS [SOTT], 
+[CHINHMAU].[DIENGIAI] AS [DIENGIAI], 
+[CHINHMAU].[MAMAUNV] AS [MAMAUNV]
+FROM [dbo].[CHINHMAU] AS [CHINHMAU]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CONTENT_SMS" EntityType="Self.CONTENT_SMS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[CONTENT_SMS].[ID] AS [ID], 
+[CONTENT_SMS].[SoBNhan] AS [SoBNhan], 
+[CONTENT_SMS].[DienThoai] AS [DienThoai], 
+[CONTENT_SMS].[HoTen] AS [HoTen], 
+[CONTENT_SMS].[NDPhanHoi] AS [NDPhanHoi], 
+[CONTENT_SMS].[TinhTrang] AS [TinhTrang], 
+[CONTENT_SMS].[Gui] AS [Gui], 
+[CONTENT_SMS].[NgayChuyen] AS [NgayChuyen], 
+[CONTENT_SMS].[NgayGuiSMS] AS [NgayGuiSMS], 
+[CONTENT_SMS].[MaLinhVuc] AS [MaLinhVuc], 
+[CONTENT_SMS].[ID_TinhTrang] AS [ID_TinhTrang]
+FROM [dbo].[CONTENT_SMS] AS [CONTENT_SMS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CONTENT_SMS_Tmp" EntityType="Self.CONTENT_SMS_Tmp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[CONTENT_SMS_Tmp].[ID] AS [ID], 
+[CONTENT_SMS_Tmp].[SoBNhan] AS [SoBNhan], 
+[CONTENT_SMS_Tmp].[DienThoai] AS [DienThoai], 
+[CONTENT_SMS_Tmp].[HoTen] AS [HoTen], 
+[CONTENT_SMS_Tmp].[NDPhanHoi] AS [NDPhanHoi], 
+[CONTENT_SMS_Tmp].[TinhTrang] AS [TinhTrang], 
+[CONTENT_SMS_Tmp].[Gui] AS [Gui], 
+[CONTENT_SMS_Tmp].[NgayChuyen] AS [NgayChuyen], 
+[CONTENT_SMS_Tmp].[NgayGuiSMS] AS [NgayGuiSMS], 
+[CONTENT_SMS_Tmp].[MaLinhVuc] AS [MaLinhVuc], 
+[CONTENT_SMS_Tmp].[ID_TinhTrang] AS [ID_TinhTrang]
+FROM [dbo].[CONTENT_SMS_Tmp] AS [CONTENT_SMS_Tmp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LENHTHAMSO" EntityType="Self.LENHTHAMSO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[LENHTHAMSO].[MAHANHDONG] AS [MAHANHDONG], 
+[LENHTHAMSO].[MATHAMSO] AS [MATHAMSO], 
+[LENHTHAMSO].[DIENGIAI] AS [DIENGIAI]
+FROM [dbo].[LENHTHAMSO] AS [LENHTHAMSO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MENU_Config" EntityType="Self.MENU_Config" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[MENU_Config].[MenuName] AS [MenuName], 
+[MENU_Config].[MenuCaption] AS [MenuCaption], 
+[MENU_Config].[Visible] AS [Visible], 
+[MENU_Config].[Note] AS [Note]
+FROM [dbo].[MENU_Config] AS [MENU_Config]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NOIDUNGDANHGIA" EntityType="Self.NOIDUNGDANHGIA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[NOIDUNGDANHGIA].[MACHATLUONG] AS [MACHATLUONG], 
+[NOIDUNGDANHGIA].[NOIDUNG] AS [NOIDUNG]
+FROM [dbo].[NOIDUNGDANHGIA] AS [NOIDUNGDANHGIA]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AMTHANHQUAY_QUAY" Association="Self.FK_AMTHANHQUAY_QUAY">
+      <End Role="QUAY" EntitySet="QUAY" />
+      <End Role="AMTHANHQUAY" EntitySet="AMTHANHQUAY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_B04_MAYIN_NV_NVU_THIETBI" Association="Self.FK_B04_MAYIN_NV_NVU_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBI" />
+      <End Role="B04_MAYIN_NV_NVU" EntitySet="B04_MAYIN_NV_NVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOANHNGHIEP_LOAIDOANHNGHIEP" Association="Self.FK_DOANHNGHIEP_LOAIDOANHNGHIEP">
+      <End Role="LOAIDOANHNGHIEP" EntitySet="LOAIDOANHNGHIEP" />
+      <End Role="DOANHNGHIEP" EntitySet="DOANHNGHIEP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUONGDI_DICHVU" Association="Self.FK_DUONGDI_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVU" />
+      <End Role="DUONGDI" EntitySet="DUONGDI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUONGDI_NGHIEPVU" Association="Self.FK_DUONGDI_NGHIEPVU">
+      <End Role="NGHIEPVU" EntitySet="NGHIEPVU" />
+      <End Role="DUONGDI" EntitySet="DUONGDI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGON_NHANVIEN" Association="Self.FK_LOGON_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="LOGON" EntitySet="LOGON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGON_THIETBI" Association="Self.FK_LOGON_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBI" />
+      <End Role="LOGON" EntitySet="LOGON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGON_TRANGTHAI" Association="Self.FK_LOGON_TRANGTHAI">
+      <End Role="TRANGTHAI" EntitySet="TRANGTHAI" />
+      <End Role="LOGON" EntitySet="LOGON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NB_QUAY_QUAY" Association="Self.FK_NB_QUAY_QUAY">
+      <End Role="QUAY" EntitySet="QUAY" />
+      <End Role="NB_QUAY" EntitySet="NB_QUAY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIENMAU_HANHDONG" Association="Self.FK_NHANVIENMAU_HANHDONG">
+      <End Role="HANHDONG" EntitySet="HANHDONG" />
+      <End Role="NHANVIENMAU" EntitySet="NHANVIENMAU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIENMAU_MAUNV" Association="Self.FK_NHANVIENMAU_MAUNV">
+      <End Role="MAUNV" EntitySet="MAUNV" />
+      <End Role="NHANVIENMAU" EntitySet="NHANVIENMAU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_NGHIEPVU_chinhsach" Association="Self.FK_NV_NGHIEPVU_chinhsach">
+      <End Role="CHINHSACH" EntitySet="CHINHSACH" />
+      <End Role="NV_NGHIEPVU" EntitySet="NV_NGHIEPVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_NGHIEPVU_NGHIEPVU" Association="Self.FK_NV_NGHIEPVU_NGHIEPVU">
+      <End Role="NGHIEPVU" EntitySet="NGHIEPVU" />
+      <End Role="NV_NGHIEPVU" EntitySet="NV_NGHIEPVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_NGHIEPVU_NHANVIEN" Association="Self.FK_NV_NGHIEPVU_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="NV_NGHIEPVU" EntitySet="NV_NGHIEPVU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NVAMTHANH_MAU_AMTHANH" Association="Self.FK_NVAMTHANH_MAU_AMTHANH">
+      <End Role="MAU_AMTHANH" EntitySet="MAU_AMTHANH" />
+      <End Role="NVAMTHANH" EntitySet="NVAMTHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Q_BookService_NHANVIEN" Association="Self.FK_Q_BookService_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="Q_BookService" EntitySet="Q_BookService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Q_EvaluateDetail_Q_Evaluate" Association="Self.FK_Q_EvaluateDetail_Q_Evaluate">
+      <End Role="Q_Evaluate" EntitySet="Q_Evaluate" />
+      <End Role="Q_EvaluateDetail" EntitySet="Q_EvaluateDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Q_UserEvaluate_NHANVIEN" Association="Self.FK_Q_UserEvaluate_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="Q_UserEvaluate" EntitySet="Q_UserEvaluate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUAY_MAIN_QUAY" Association="Self.FK_QUAY_MAIN_QUAY">
+      <End Role="QUAY" EntitySet="QUAY" />
+      <End Role="QUAY_MAIN" EntitySet="QUAY_MAIN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUAY_MAIN_THIETBI" Association="Self.FK_QUAY_MAIN_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBI" />
+      <End Role="QUAY_MAIN" EntitySet="QUAY_MAIN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THIETBI_LOAITB" Association="Self.FK_THIETBI_LOAITB">
+      <End Role="LOAITB" EntitySet="LOAITB" />
+      <End Role="THIETBI" EntitySet="THIETBI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THIETBI_QUAY" Association="Self.FK_THIETBI_QUAY">
+      <End Role="QUAY" EntitySet="QUAY" />
+      <End Role="THIETBI" EntitySet="THIETBI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTUUTIEN_LOAITB" Association="Self.FK_TTUUTIEN_LOAITB">
+      <End Role="LOAITB" EntitySet="LOAITB" />
+      <End Role="TTUUTIEN" EntitySet="TTUUTIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTUUTIEN_TIENTRINH" Association="Self.FK_TTUUTIEN_TIENTRINH">
+      <End Role="TIENTRINH" EntitySet="TIENTRINH" />
+      <End Role="TTUUTIEN" EntitySet="TTUUTIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XULYYC_NHANVIEN" Association="Self.FK_XULYYC_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="XULYYC" EntitySet="XULYYC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XULYYC_THIETBI" Association="Self.FK_XULYYC_THIETBI">
+      <End Role="THIETBI" EntitySet="THIETBI" />
+      <End Role="XULYYC" EntitySet="XULYYC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XULYYC_YEUCAU" Association="Self.FK_XULYYC_YEUCAU">
+      <End Role="YEUCAU" EntitySet="YEUCAU" />
+      <End Role="XULYYC" EntitySet="XULYYC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUCAU_DICHVU" Association="Self.FK_YEUCAU_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVU" />
+      <End Role="YEUCAU" EntitySet="YEUCAU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUCAU_DOANHNGHIEP" Association="Self.FK_YEUCAU_DOANHNGHIEP">
+      <End Role="DOANHNGHIEP" EntitySet="DOANHNGHIEP" />
+      <End Role="YEUCAU" EntitySet="YEUCAU" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

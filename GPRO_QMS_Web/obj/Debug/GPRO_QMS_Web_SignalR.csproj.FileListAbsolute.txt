@@ -1,0 +1,153 @@
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\QMS_Website.dll.config
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\QMS_Website.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\QMS_Website.pdb
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\EntityFramework.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\EntityFramework.SqlServer.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\EPPlus.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\GPRO.Core.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\GPRO.Ultilities.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Hugate.Framework.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Owin.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Owin.Security.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Web.XmlTransform.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Newtonsoft.Json.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\OpenXmlPackaging.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Owin.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\PagedList.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\QMS_System.Data.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Net.Http.Formatting.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Helpers.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Http.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Http.WebHost.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Mvc.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Razor.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Webpages.Deployment.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Webpages.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Webpages.Razor.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\EntityFramework.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\EntityFramework.SqlServer.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Owin.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Microsoft.Owin.Security.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\Newtonsoft.Json.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Net.Http.Formatting.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Http.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Http.WebHost.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Razor.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Webpages.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Webpages.Deployment.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Webpages.Razor.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Helpers.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\bin\System.Web.Mvc.xml
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csprojResolveAssemblyReference.cache
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\obj\Debug\QMS_Website.dll
+E:\GPRO_2018\App\QMS\GPRO_QMS_Web - Copy\GPRO_QMS_Web\obj\Debug\QMS_Website.pdb
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_Website.dll.config
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_Website.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_Website.pdb
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.SqlServer.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\EPPlus.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\GPRO.Core.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\GPRO.Ultilities.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Hugate.Framework.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Security.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Web.Infrastructure.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Web.XmlTransform.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Newtonsoft.Json.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\OpenXmlPackaging.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Owin.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\PagedList.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_System.Data.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Net.Http.Formatting.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Helpers.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.WebHost.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Mvc.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Razor.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Deployment.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Razor.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.SqlServer.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Security.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\Newtonsoft.Json.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Net.Http.Formatting.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.WebHost.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Razor.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Deployment.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Razor.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Helpers.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Mvc.xml
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csprojAssemblyReference.cache
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.CoreCompileInputs.cache
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.CopyComplete
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.dll
+E:\Hai_GPRO\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.pdb
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_Website.dll.config
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_Website.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_Website.pdb
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.SqlServer.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\EPPlus.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\GPRO.Core.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\GPRO.Ultilities.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Hugate.Framework.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Security.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Web.Infrastructure.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Web.XmlTransform.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Newtonsoft.Json.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\OpenXmlPackaging.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Owin.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\PagedList.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\QMS_System.Data.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Net.Http.Formatting.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Helpers.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.WebHost.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Mvc.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Razor.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Deployment.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Razor.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\EntityFramework.SqlServer.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Microsoft.Owin.Security.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\Newtonsoft.Json.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Net.Http.Formatting.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.WebHost.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Razor.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Deployment.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Webpages.Razor.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Helpers.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\bin\System.Web.Mvc.xml
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csprojAssemblyReference.cache
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.CoreCompileInputs.cache
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.CopyComplete
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.dll
+E:\Hai_GPRO\QMS\GPRO_QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.pdb
