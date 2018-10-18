@@ -120,7 +120,7 @@ GPRO.Home = function () {
         if (objs != null && objs.length > 0) {
             $.each(objs, function (i, item) {
                 var tr = $('<tr></tr>');
-                tr.append('<td>' + item.Index + '</td');
+                tr.append('<td>' + (i+1) + '</td');
                 tr.append('<td>' + item.Name + '</td');
                 tr.append('<td>' + item.TotalTransaction + '</td');
                 tr.append('<td>' + item.TotalTransTime + '</td');

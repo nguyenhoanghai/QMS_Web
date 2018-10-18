@@ -355,7 +355,7 @@ namespace QMS_Website.Controllers
                         row = 5;
                         for (int i = 0; i < reportObj.Count; i++)
                         {
-                            worksheet.Cells[row, 2].Value = reportObj[i].Index;
+                            worksheet.Cells[row, 2].Value = (i+1);
                             worksheet.Cells[row, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             worksheet.Cells[row, 3].Value = reportObj[i].Name;
                             worksheet.Cells[row, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
@@ -400,7 +400,7 @@ namespace QMS_Website.Controllers
                     {
                         foreach (var model in reportObj)
                         {
-                            worksheet.Cells[row, 1].Value = model.Index;
+                            worksheet.Cells[row, 1].Value = (row-4);
                             worksheet.Cells[row, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             worksheet.Cells[row, 2].Value = model.Name;
                             worksheet.Cells[row, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
