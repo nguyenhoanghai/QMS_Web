@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -494,6 +496,8 @@
     <Content Include="Content\logo.png" />
     <Content Include="Content\Marquee\jquery.marquee.min.css" />
     <Content Include="Content\Marquee\jquery.marquee.min.js" />
+    <Content Include="Content\Materialize\materialize.min.css" />
+    <Content Include="Content\Materialize\materialize.min.js" />
     <Content Include="Content\ok.png" />
     <Content Include="Content\QH.png" />
     <Content Include="Content\QMS\HienThiQuay\HienThiQuay.css" />
@@ -676,6 +680,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\QMS\DangNhap\DangNhap.js" />
+    <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.css" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien_2.js" />
@@ -773,6 +778,7 @@
     <Content Include="Views\DangKyOnline\FindInformation.cshtml" />
     <Content Include="Views\HienThiQuay\LCD_3.cshtml" />
     <Content Include="Views\HienThiQuay\TienThu.cshtml" />
+    <Content Include="Views\HienThiQuay\ManHinhCoVideo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -784,6 +790,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="BLL\" />
+    <Folder Include="Videos\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

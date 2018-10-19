@@ -108,7 +108,7 @@ GPRO.BenhVien = function () {
         $.ajax({
             url: Global.UrlAction.GetConfig,
             type: 'POST',
-            data: JSON.stringify({ 'name': 'ConfigHoanMy_2' }),
+            data: JSON.stringify({ 'pageType': '2' }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var obj = JSON.parse(data);
@@ -194,7 +194,7 @@ GPRO.BenhVien = function () {
         }
     }
 
-    function BindTable(objs) {
+    function BindTable(data) {
         var objs = data.Details
         $.each(objs, function (i, item) {
             $('[tk_' + i + ']').html(objs[i].TicketNumber);

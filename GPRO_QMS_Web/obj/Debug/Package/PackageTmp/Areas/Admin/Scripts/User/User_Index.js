@@ -235,7 +235,7 @@ GPRO.NhanVien = function () {
         $.ajax({
             url: Global.UrlAction.Delete,
             type: 'POST',
-            data: JSON.stringify({ 'Id': Id }),
+            data: JSON.stringify({ 'manv': Id }),
             contentType: 'application/json charset=utf-8',
             beforeSend: function () { $('#loading').show(); },
             success: function (data) {

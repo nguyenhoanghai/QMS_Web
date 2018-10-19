@@ -70,13 +70,15 @@ GPRO.BenhVien = function () {
             SerName_Col2_Css:'',
             Called_Col1_Css: '',
             Called_Col2_Css: '',
+            css_box_info: $('#css_box_info').val(),
+            css_box_video: $('#css_box_video').val(),
         }
         var str = JSON.stringify(obj);
 
         $.ajax({
             url: Global.UrlAction.Save,
             type: 'POST',
-            data: JSON.stringify({ 'configStr': str, 'pageType': 1 }),
+            data: JSON.stringify({ 'configStr': str, 'pageType': 3 }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 if (data == "OK")
@@ -108,7 +110,7 @@ GPRO.BenhVien = function () {
         $.ajax({
             url: Global.UrlAction.GetConfig,
             type: 'POST',
-            data: JSON.stringify({ 'pageType': '1' }),
+            data: JSON.stringify({ 'pageType': '3' }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var obj = JSON.parse(data);
@@ -118,6 +120,9 @@ GPRO.BenhVien = function () {
                     css +='.cell {'+obj.Row1_Css+'  }'; 
                     css +='.row-color .cell {'+obj.Row2_Css+' }';
                     css += '.marquee{' + obj.Adv_Css  + '  }';
+                    css += '.left-box{' + obj.css_box_info + '  }';
+                    css += '.right-box{' + obj.css_box_video + '  }';
+
                     $("style").append(css);
 
                     $('#row').val(obj.Row);
@@ -133,13 +138,18 @@ GPRO.BenhVien = function () {
                     $('#css_r1').val(obj.Row1_Css);
                     $('#css_r2').val(obj.Row2_Css);
                     $('#run_css').val(obj.Adv_Css);
+                    $('#css_box_info').val(obj.css_box_info);
+                    $('#css_box_video').val(obj.css_box_video);
+
+                    $('.materialize-textarea').trigger('autoresize');
+                    Materialize.updateTextFields();
                 }
             }
         });
     }
 
     function DrawTable(objs) {
-        var str = '<div class="col-md-12 rowcontent"> Không có dữ liệu </div>';
+        var str = '<div class="col m12 rowcontent"> Không có dữ liệu </div>';
         if (objs.length > 0) {
             var col = Global.Data.cols;
             var count = 0;
@@ -150,8 +160,8 @@ GPRO.BenhVien = function () {
                 str += '<div class="' + (i % 2 == 0 ? 'row-color' : 'row') + '">';
                 for (var z = 1; z <= col; z++) {
                     obj1 = ((count < objs.length) ? { tk: objs[count].TicketNumber, room: objs[count].TableCode, change: objs[count].StartStr } : { tk: '', room: '' });
-                    str += '   <div class="col-md-' + (12 / (col * 2)) + ' col-sm-' + (12 / (col * 2)) + ' cell" tk_' + count + '>' + obj1.tk + '</div>';
-                    str += '   <div class="col-md-' + (12 / (col * 2)) + ' col-sm-' + (12 / (col * 2)) + ' cell ' + (z == col ? 'cell-last' : '') + '" room_' + count + '>' + obj1.room + '</div>';
+                    str += '   <div class="col m' + (12 / (col * 2)) + ' s' + (12 / (col * 2)) + ' cell" tk_' + count + '>' + obj1.tk + '</div>';
+                    str += '   <div class="col m' + (12 / (col * 2)) + ' s' + (12 / (col * 2)) + ' cell ' + (z == col ? 'cell-last' : '') + '" room_' + count + '>' + obj1.room + '</div>';
                     count++;
                     Global.Data.objs.push(obj1);
                 }
