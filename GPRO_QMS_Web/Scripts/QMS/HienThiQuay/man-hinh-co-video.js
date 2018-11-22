@@ -41,7 +41,7 @@ GPRO.BenhVien = function () {
         RegisterEvent();
         GetConfig();
         Get();
-        var e = setInterval(function () { Get(); }, 500);
+      //  var e = setInterval(function () { Get(); }, 500);
         $('.marquee').marquee();
     }
 
@@ -93,7 +93,8 @@ GPRO.BenhVien = function () {
         $.ajax({
             url: Global.UrlAction.GetDayInfo,
             type: 'POST',
-            data: JSON.stringify({ 'counters': $('#fullscreen').attr('counters'), 'services': '1' }),
+           // data: JSON.stringify({ 'counters': $('#fullscreen').attr('counters'), 'services': '1' }),
+            data: JSON.stringify({ 'counters': ('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20'), 'services': ('1,2,3,4,5,6,7,8,9') }),
             contentType: 'application/json charset=utf-8',
             success: function (data ) {
                 var objs = JSON.parse(data);
@@ -142,7 +143,7 @@ GPRO.BenhVien = function () {
                     $('#css_box_video').val(obj.css_box_video);
 
                     $('.materialize-textarea').trigger('autoresize');
-                    Materialize.updateTextFields();
+                    M.updateTextFields();
                 }
             }
         });

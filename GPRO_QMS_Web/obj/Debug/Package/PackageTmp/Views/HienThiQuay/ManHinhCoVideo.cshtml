@@ -10,7 +10,7 @@
         str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
     }
     var col = Convert.ToInt32((cf.Col != null ? cf.Col : "1"));
-    QMS_System.Data.Q_User user = ViewData["userInfo"] as QMS_System.Data.Q_User;
+  //  QMS_System.Data.Q_User user = ViewData["userInfo"] as QMS_System.Data.Q_User;
 }
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@
     </style>
 </head>
 <body>
-    <div id="fullscreen" class=" " counters="@user.Counters">
+    <div id="fullscreen" class=" " >  @*counters="@user.Counters">*@
         <div class="full-box">
             <a id="request-full" class="btn btn-primary">
                 <i class="fa fa-arrows-alt "></i>
@@ -97,59 +97,46 @@
 
 
     <div class="setting row">
-        <div class="col m6">
-            <div class="input-field">
-                <input type="text" class="" id="title" value=" " placeholder="Nhập tên tiêu đề lớn ..." />
-                <label for="title">Tiêu đề lớn</label>
-            </div>
-            <div class="input-field">
-                <textarea class="materialize-textarea" id="title_css" placeholder="Nhập giá trị CSS tiêu đề lớn ..."> </textarea>
-                <label>CSS Tiêu đề lớn</label>
-            </div>
+        <div class="input-field col m6">
+            <input type="text" class="" id="title" value=" " placeholder="Nhập tên tiêu đề lớn ..." />
+            <label for="title">Tiêu đề lớn</label>
         </div>
-
-        <div class=" col m6">
-            <div class="input-field">
-                <input type="text" class="materialize-textarea" id="subText" value=" " placeholder="Nhập tên tiêu đề nhỏ ..." />
-                <label>Tiêu đề phía dưới</label>
-            </div>
-            <div class="input-field">
-                <textarea class="materialize-textarea" id="sub_css" placeholder="Nhập giá trị CSS tiêu đề nhỏ ..."> </textarea>
-                <label>CSS Tiêu đề phía dưới</label>
-            </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="title_css" placeholder="Nhập giá trị CSS tiêu đề lớn ..."> </textarea>
+            <label>CSS Tiêu đề lớn</label>
         </div>
-
-        <div class=" col m6">
-            <div class="input-field">
-                <textarea class="materialize-textarea" id="css_r1" placeholder="css dòng chẳn ..."> </textarea>
-                <label>CSS nội dung dòng chẳn</label>
-            </div>
-            <div class="input-field">
-                <textarea class="materialize-textarea" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
-                <label>CSS nội dung dòng lẻ</label>
-            </div>
+        <div class="input-field col m6">
+            <input type="text" class="materialize-textarea" id="subText" value=" " placeholder="Nhập tên tiêu đề nhỏ ..." />
+            <label>Tiêu đề phía dưới</label>
         </div>
-
-        <div class=" col m6">
-            <div class="input-field col m4 s4">
-                <label>Số cột</label>
-                <input type="text" class="" id="column" value=" " placeholder="số cột ..." />
-            </div>
-            <div class="input-field col m4 s4">
-                <label>Số dòng</label>
-                <input type="text" class="" id="row" value=" " placeholder="số dòng mỗi bên ..." />
-            </div>
-            <div class="input-field col m4 s4">
-                <label>Tốc độ chạy quảng cáo</label>
-                <input type="text" class="" id="run_time" value=" " placeholder="Tốc độ chạy quảng cáo ..." />
-            </div>
-            <div class="input-field col m12 s12">
-                <label>CSS quảng cáo</label>
-                <textarea class="materialize-textarea" id="run_css" placeholder="Css chạy quảng cáo ..."> </textarea>
-            </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="sub_css" placeholder="Nhập giá trị CSS tiêu đề nhỏ ..."> </textarea>
+            <label>CSS Tiêu đề phía dưới</label>
         </div>
-
-
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="css_r1" placeholder="css dòng chẳn ..."> </textarea>
+            <label>CSS nội dung dòng chẳn</label>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
+            <label>CSS nội dung dòng lẻ</label>
+        </div>
+        <div class="input-field col m2 s2">
+            <label>Số cột</label>
+            <input type="text" class="" id="column" value=" " placeholder="số cột ..." />
+        </div>
+        <div class="input-field col m2 s2">
+            <label>Số dòng</label>
+            <input type="text" class="" id="row" value=" " placeholder="số dòng mỗi bên ..." />
+        </div>
+        <div class="input-field col m2 s2">
+            <label>Tốc độ chạy quảng cáo</label>
+            <input type="text" class="" id="run_time" value=" " placeholder="Tốc độ chạy quảng cáo ..." />
+        </div>
+        <div class="input-field col m6 s6">
+            <label>CSS quảng cáo</label>
+            <textarea class="materialize-textarea" id="run_css" placeholder="Css chạy quảng cáo ..."> </textarea>
+        </div>
         <div class="input-field col m6">
             <textarea class="materialize-textarea" id="css_box_info"> </textarea>
             <label>CSS Box thông tin</label>
@@ -158,6 +145,25 @@
             <textarea class="materialize-textarea" id="css_box_video"> </textarea>
             <label>CSS Box Video</label>
         </div>
+
+        <div class="col m6">
+
+        </div>
+
+        <div class=" col m6">
+
+        </div>
+
+        <div class=" col m6">
+
+        </div>
+
+        <div class=" col m6">
+
+        </div>
+
+
+
 
 
         <div class="input-field">

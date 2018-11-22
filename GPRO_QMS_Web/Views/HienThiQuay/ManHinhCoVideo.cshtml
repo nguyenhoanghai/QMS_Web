@@ -10,7 +10,7 @@
         str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
     }
     var col = Convert.ToInt32((cf.Col != null ? cf.Col : "1"));
-    QMS_System.Data.Q_User user = ViewData["userInfo"] as QMS_System.Data.Q_User;
+  //  QMS_System.Data.Q_User user = ViewData["userInfo"] as QMS_System.Data.Q_User;
 }
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@
     </style>
 </head>
 <body>
-    <div id="fullscreen" class=" " counters="@user.Counters">
+    <div id="fullscreen" class=" " >  @*counters="@user.Counters">*@
         <div class="full-box">
             <a id="request-full" class="btn btn-primary">
                 <i class="fa fa-arrows-alt "></i>
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="col m6 s6 right-box" style="padding:0">
-                    <video autoplay
+                    <video autoplay controls 
                            name="media"
                            id="video"
                            autobuffer

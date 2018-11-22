@@ -492,6 +492,7 @@
     <Content Include="Content\KendoUI\Kendo.Cultures.vn.js" />
     <Content Include="Content\KendoUI\kendo.default.mobile.min.css" />
     <Content Include="Content\KendoUI\kendo.material.min.css" />
+    <Content Include="Content\KendoUI\Material\sprite_2x.png" />
     <Content Include="Content\KendoUI\Material\sprite.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\Marquee\jquery.marquee.min.css" />

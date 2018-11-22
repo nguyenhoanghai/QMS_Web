@@ -108,7 +108,7 @@ GPRO.BenhVien = function () {
         $.ajax({
             url: Global.UrlAction.GetConfig,
             type: 'POST',
-            data: JSON.stringify({ 'name': 'ConfigHoanMy_1' }),
+            data: JSON.stringify({ 'pageType': '1' }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var obj = JSON.parse(data);
