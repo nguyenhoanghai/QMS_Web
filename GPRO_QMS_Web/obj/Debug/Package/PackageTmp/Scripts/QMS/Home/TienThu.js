@@ -33,10 +33,11 @@ GPRO.Home = function () {
 
     this.Init = function () {
         GetEvaluate();
-        RegisterEvent();
+      //  RegisterEvent();
+        Get();
     }
 
-    var RegisterEvent = function () { setInterval(function () { Get(); }, 2000); }
+    //var RegisterEvent = function () { setInterval(function () { Get(); }, 2000); }
 
     function Get() {
         $.ajax({

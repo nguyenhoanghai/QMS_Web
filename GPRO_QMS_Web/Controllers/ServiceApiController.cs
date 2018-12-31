@@ -46,6 +46,17 @@ namespace QMS_Website.Controllers
             return string.Empty;
         }
 
+        [HttpGet]
+        public ResponseBase PrintNewTicket(string TenBenhNhan, string MaBenhNhan, string MaPhongKham, string STT_PhongKham)
+        {
+            return BLLDailyRequire.Instance.API_PrintNewTicket(TenBenhNhan,null,null,MaBenhNhan, MaPhongKham, STT_PhongKham);
+        }
+
+        [HttpGet]
+        public ResponseBase UpdateTicketInfo(string TenBenhNhan, string MaBenhNhan, string STT_PhongKham)
+        {
+            return BLLDailyRequire.Instance.API_UpdateTicketInfo(TenBenhNhan, MaBenhNhan,  STT_PhongKham);
+        }
 
     }
 }

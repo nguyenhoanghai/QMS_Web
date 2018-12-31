@@ -23,6 +23,9 @@ GPRO.Home = function () {
            // Get: '/Report/GetDailyReport'   //co su dung qms  theo nghiep vu
             Get: '/Report/GetDailyReport_NotUseQMS'     // ko su dung qms theo nv
         },
+        Data: {
+            firstLoad: true
+        }
     }
     this.GetGlobal = function () {
         return Global;
@@ -47,12 +50,26 @@ GPRO.Home = function () {
                 if (data.length > 0) {
                     str = '';
                     $.each(data, function (i, item) {
+                        if (Global.Data.firstLoad && i == 0) { 
+                            var tr = $('<tr></tr>');
+                            tr.append('<td>STT</td>');
+                            tr.append('<td>NHÂN VIÊN</td>'); 
+                            $.each(item.Details, function (ii, child) {
+                                tr.append('<td>' + child.Name + '</td>');
+                            })
+                            $('#tb_export thead').empty().append(tr);
+                            Global.Data.firstLoad = false;
+                        }
+
                         str += '<tr>';
                         str += ' <td  >' + (i+1) + '</td> ';
                         str += ' <td  >' + item.ServiceName + '</td> ';
-                        str += ' <td  >' + item.tc1 + '</td> ';
-                        str += ' <td  >' + item.tc2 + '</td> ';
-                        str += ' <td  >' + item.tc3 + '</td> ';
+                        $.each(item.Details, function (ii, child) {
+                            str += ' <td  >' + child.Id + '</td> ';
+                        })
+                        //str += ' <td  >' + item.tc1 + '</td> ';
+                        //str += ' <td  >' + item.tc2 + '</td> ';
+                        //str += ' <td  >' + item.tc3 + '</td> ';
                         str += '<tr>';
                     });
                 }

@@ -68,12 +68,21 @@ namespace GPRO_QMS_Web.Controllers
                         worksheet.Cells[col, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                         worksheet.Cells[col, 4].Value = reportObj[i].Name;
                         worksheet.Cells[col, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                        worksheet.Cells[col, 5].Value = reportObj[i].tc1;
-                        worksheet.Cells[col, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                        worksheet.Cells[col, 6].Value = reportObj[i].tc2;
-                        worksheet.Cells[col, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                        worksheet.Cells[col, 7].Value = reportObj[i].tc3;
-                        worksheet.Cells[col, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        for (int iii = 0; iii < reportObj[i].Details.Count; iii++)
+                        {
+                            worksheet.Cells[col, (5+iii)].Value = reportObj[i].Details[iii].Id;
+                            worksheet.Cells[col, (5 + iii)].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                            if (i==0)
+                            {
+                                worksheet.Cells[4, (5 + iii)].Value = reportObj[i].Details[iii].Name.ToUpper();
+                                worksheet.Cells[col, (5 + iii)].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            }
+                        } 
+                        //worksheet.Cells[col, 6].Value = reportObj[i].tc2;
+                        //worksheet.Cells[col, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        //worksheet.Cells[col, 7].Value = reportObj[i].tc3;
+                        //worksheet.Cells[col, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                         col++;
                     }
                 }

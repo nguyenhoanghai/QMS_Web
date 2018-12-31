@@ -20,11 +20,14 @@ GPRO.namespace('Home');
 GPRO.Home = function () {
     var Global = {
         UrlAction: {
-          //  Get: '/Report/Get ', 
-                Get: '/Report/GetReport_NotUseQMS',  //ko dung qms
+            //  Get: '/Report/Get ', 
+            Get: '/Report/GetReport_NotUseQMS',  //ko dung qms
             GetEvaluate: '/Admin/Evaluate/GetList',
             Report: '/Report/Excel'
         },
+        Data: {
+            firstLoad: true
+        }
     }
     this.GetGlobal = function () {
         return Global;
@@ -46,10 +49,10 @@ GPRO.Home = function () {
             Get();
         });
 
-       // setInterval(function () { $('#view').click(); }, 1000)
+        // setInterval(function () { $('#view').click(); }, 1000)
 
         $('#export').click(function () {
-            window.location.href = Global.UrlAction.Report + "?userId=0&&from=" + $("#from").val() + "&&to=" + $("#to").val()
+            window.location.href = Global.UrlAction.Report + "?userId=0&from=" + $("#from").val() + "&to=" + $("#to").val() + "&useQMS=false";
         });
     }
 
@@ -89,11 +92,34 @@ GPRO.Home = function () {
                     str1 = '<tr><td colspan="5">Không có dữ liệu</td></tr>';
                 if (data.length > 0) {
                     str = '', str1 = '';
-                    var i = 0, y = 7;
-                    for (i, y; i < data.length; i++, y++) {
-                        if (i <= 6) {
-                            str += '<tr><td  >' + (i + 1) + '</td><td  >' + data[i].Name + '</td><td  >' + data[i].tc1 + '</td><td  >' + data[i].tc2 + '</td><td  >' + data[i].tc3 + '</td> </tr>';
-                            str1 += '<tr><td  >' + (y + 1) + '</td><td class="text" >' + data[y].Name + '</td><td  >' + data[y].tc1 + '</td><td  >' + data[y].tc2 + '</td><td  >' + data[y].tc3 + '</td> </tr>';
+                    var i = 0, y = Math.ceil(data.length / 2);
+                    for (i, y; i < data.length; i++ , y++) {
+                        if (i == 0) {
+                            var tr = $('<tr></tr>');
+                            tr.append('<td>STT</td>');
+                            tr.append('<td>HỌ TÊN</td>');
+                            $.each(data[i].Details, function (ii, child) {
+                                tr.append('<td>' + child.Name + '</td>');
+                            })
+                            $('#tb_export thead,#tb_export2 thead').empty().append(tr);
+                        }
+                        if (i < Math.ceil(data.length / 2)) {
+
+                            str += '<tr><td  >' + (i + 1) + '</td>';
+                            str += '<td>' + data[i].Name + '</td>';
+                            $.each(data[i].Details, function (ii, child) {
+                                str += '<td>' + child.Id + '</td>';
+                            });
+                            str += '</tr>';
+
+                            if (data[y] != null) {
+                                str1 += '<tr><td  >' + (y + 1) + '</td>';
+                                str1 += '<td class="text" >' + data[y].Name + '</td>';
+                                $.each(data[y].Details, function (ii, child) {
+                                    str1 += '<td>' + child.Id + '</td>';
+                                });
+                                str1 += '</tr>';
+                            }
                         }
                     }
                     $('#tb_export tbody').empty().html(str);
