@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json;
 using QMS_System.Data.BLL;
+using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
 using QMS_Website.Hubs;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Web.Http;
 
@@ -49,13 +53,38 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public ResponseBase PrintNewTicket(string TenBenhNhan, string MaBenhNhan, string MaPhongKham, string STT_PhongKham)
         {
-            return BLLDailyRequire.Instance.API_PrintNewTicket(TenBenhNhan,null,null,MaBenhNhan, MaPhongKham, STT_PhongKham);
+            return BLLDailyRequire.Instance.API_PrintNewTicket(TenBenhNhan, null, null, MaBenhNhan, MaPhongKham, STT_PhongKham);
         }
 
         [HttpGet]
         public ResponseBase UpdateTicketInfo(string TenBenhNhan, string MaBenhNhan, string STT_PhongKham)
         {
-            return BLLDailyRequire.Instance.API_UpdateTicketInfo(TenBenhNhan, MaBenhNhan,  STT_PhongKham);
+            return BLLDailyRequire.Instance.API_UpdateTicketInfo(TenBenhNhan, MaBenhNhan, STT_PhongKham);
+        }
+
+        [HttpGet]
+        public List<ModelSelectItem> GetServices()
+        {
+            return BLLService.Instance.GetLookUp();
+        }
+
+        [HttpGet]
+        public ResponseBase PrintTicket(string soxe, string thoigian, int dichvuId)
+        {
+            var rs = new ResponseBase();
+            var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            var newDate = DateTime.ParseExact("01/01/2018 " + thoigian, "dd/MM/yyyy HH:mm:ss", provider);
+
+            var require = new PrinterRequireModel()
+            {
+                PrinterId = printerId,
+                SoXe = soxe,
+                ServeTime = newDate,
+                ServiceId = dichvuId
+            };
+            rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.PrintTicket);
+             return rs;
         }
 
     }
