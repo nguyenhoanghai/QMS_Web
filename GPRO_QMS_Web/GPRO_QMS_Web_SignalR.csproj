@@ -681,12 +681,14 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\QMS\DangNhap\DangNhap.js" />
+    <Content Include="Scripts\QMS\danh-gia\danh-gia-10-nut.js" />
     <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.css" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien_2.js" />
     <Content Include="Scripts\QMS\HienThiQuay\HienThiQuay_old.js" />
     <Content Include="Scripts\QMS\HienThiQuay\HienThiQuay.js" />
+    <Content Include="Scripts\QMS\HienThiQuay\vinh-cat-lcd.js" />
     <Content Include="Scripts\QMS\HienThiQuay\tien-thu.js" />
     <Content Include="Scripts\QMS\Home\Home - Copy.js" />
     <Content Include="Scripts\QMS\Home\DG_Teso_ThangLong.js" />
@@ -732,6 +734,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\DangKyOnlineController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
+    <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HienThiQuayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -780,6 +783,10 @@
     <Content Include="Views\HienThiQuay\LCD_3.cshtml" />
     <Content Include="Views\HienThiQuay\TienThu.cshtml" />
     <Content Include="Views\HienThiQuay\ManHinhCoVideo.cshtml" />
+    <Content Include="Views\HienThiQuay\VinhCat.cshtml" />
+    <Content Include="Views\Shared\_Layout_LCD.cshtml" />
+    <Content Include="Views\DanhGia\TenButton.cshtml" />
+    <Content Include="Views\Shared\_Layout_Danh_Gia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

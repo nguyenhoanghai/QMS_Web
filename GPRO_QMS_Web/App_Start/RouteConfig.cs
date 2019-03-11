@@ -33,6 +33,11 @@ namespace GPRO_QMS_Web
                 url: "MH3",
                 defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+              name: "MH_4",
+              url: "MH4",
+              defaults: new { controller = "HienThiQuay", action = "vinhcat", id = UrlParameter.Optional }
+          );
 
             routes.MapRoute(
                 name: "tkct",

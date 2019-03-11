@@ -86,7 +86,6 @@ namespace GPRO_QMS_Web.Controllers
                 cStudent.Element("Value").Value = configStr;
                 testXML.Save(path);
 
-
                 var config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
                 switch (pageType)
                 {
@@ -96,28 +95,12 @@ namespace GPRO_QMS_Web.Controllers
                     case 2: // bv mau 2
                         config.AppSettings.Settings["ConfigHoanMy_2"].Value = configStr;
                         break;
+                    case 3: // danh gia 10 nut
+                        config.AppSettings.Settings["ConfigDanhGia_10Nut"].Value = configStr;
+                        break;
                 }
 
-                config.Save();
-
-                //ConfigurationManager.AppSettings.Remove("TD_BV");
-                //ConfigurationManager.AppSettings.Add("TD_BV", title);
-                //ConfigurationManager.AppSettings.Remove("TD_BV_CSS");
-                //ConfigurationManager.AppSettings.Add("TD_BV_CSS", titlecss);
-                //ConfigurationManager.AppSettings.Remove("TD_S_BV");
-                //ConfigurationManager.AppSettings.Add("TD_S_BV", sub);
-                //ConfigurationManager.AppSettings.Remove("TD_S_BV_CSS");
-                //ConfigurationManager.AppSettings.Add("TD_S_BV_CSS", subcss);
-                //ConfigurationManager.AppSettings.Remove("TD_BV_R1_CSS");
-                //ConfigurationManager.AppSettings.Add("TD_BV_R1_CSS", r1css);
-                //ConfigurationManager.AppSettings.Remove("TD_BV_R2_CSS");
-                //ConfigurationManager.AppSettings.Add("TD_BV_R2_CSS", r2css);
-                //ConfigurationManager.AppSettings.Remove("TD_BV_ROW");
-                //ConfigurationManager.AppSettings.Add("TD_BV_ROW", row);
-                //ConfigurationManager.AppSettings.Remove("TD_BV_TIME");
-                //ConfigurationManager.AppSettings.Add("TD_BV_TIME", time);
-                //ConfigurationManager.AppSettings.Remove("TD_BV_RUN_CSS");
-                //ConfigurationManager.AppSettings.Add("TD_BV_RUN_CSS", runcss);
+                config.Save(); 
             }
             catch (Exception ex)
             {
@@ -130,6 +113,12 @@ namespace GPRO_QMS_Web.Controllers
         {
             return View();
         }
+
+        public ActionResult VinhCat()
+        {
+            return View();
+        }
+
 
         public ActionResult ManHinhCoVideo()
         {

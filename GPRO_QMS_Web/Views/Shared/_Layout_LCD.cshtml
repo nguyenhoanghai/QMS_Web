@@ -1,0 +1,133 @@
+﻿ 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/Alert/common.js"></script>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/QMS/HienThiQuay/HienThiQuay.css" rel="stylesheet" />
+    <script src="~/Scripts/TotemTicker/jquery.totemticker.min.js"></script>
+    <script src="~/Scripts/SlideJs/jquery.cycle.all.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+     
+</head>
+<body>
+    <div id="fullscreen" class="container">
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        @RenderBody()      
+
+        <div class="clearfix"></div>
+    </div>
+     
+    <script>
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen())
+                fullScreenApi.requestFullScreen(document.documentElement);
+            else
+                fullScreenApi.cancelFullScreen(document.documentElement);
+        }
+
+        $('#request-full').click(function () {
+            check();
+        }); 
+    </script>
+</body>
+</html>
+

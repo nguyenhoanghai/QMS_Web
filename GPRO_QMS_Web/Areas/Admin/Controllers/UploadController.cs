@@ -28,7 +28,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
                 returnName = (imgPath + fname);
                 fname = Path.Combine(Server.MapPath(("~"+imgPath)), fname);
                 file.SaveAs(fname);
-                return file.FileName;
+                return file.FileName.Replace(' ', '-');
             }
             return "";
         }
