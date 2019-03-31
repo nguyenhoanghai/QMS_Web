@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/Common.js"></script>
     <script src="~/Scripts/Alert/common.js"></script>
     <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -21,13 +21,10 @@
 
     <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
-
-    <link href="~/Content/Materialize/materialize.min.css" rel="stylesheet" />
-    <script src="~/Content/Materialize/materialize.min.js"></script>
-
+     
 </head>
 <body>
-    <div id="fullscreen" class=" ">
+    <div id="fullscreen" class="container">
         <div class="full-box">
             <a id="request-full" class="btn btn-primary">
                 <i class="fa fa-arrows-alt "></i>
@@ -36,9 +33,9 @@
                 <i class="fa fa-compress "> </i>
             </a>
         </div>
-        <div class="row">
-            @RenderBody()
-        </div> 
+        @RenderBody()      
+
+        <div class="clearfix"></div>
     </div>
      
     <script>
@@ -130,21 +127,6 @@
         $('#request-full').click(function () {
             check();
         }); 
-
-        function SaveConfig(jsonConfig,pageType) { 
-            $.ajax({
-                url: '/HienThiQuay/SaveBVConfig',
-                type: 'POST',
-                data: JSON.stringify({ 'configStr': jsonConfig, 'pageType': pageType }),
-                contentType: 'application/json charset=utf-8',
-                success: function (data) {
-                    if (data == "OK")
-                        location.reload();
-                    else
-                        alert(data);
-                }
-            });
-        }
     </script>
 </body>
 </html>

@@ -1,14 +1,14 @@
-﻿ 
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
-<head>
+<head> 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-
+    <link href="~/Content/Materialize/materialize.min.css" rel="stylesheet" />
+    <script src="~/Content/Materialize/materialize.min.js"></script>
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     @*<script src="~/Scripts/bootstrap.min.js"></script>*@
@@ -18,13 +18,7 @@
     <link href="~/Content/QMS/HienThiQuay/HienThiQuay.css" rel="stylesheet" />
     <script src="~/Scripts/TotemTicker/jquery.totemticker.min.js"></script>
     <script src="~/Scripts/SlideJs/jquery.cycle.all.js"></script>
-
-    <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-
-    <link href="~/Content/Materialize/materialize.min.css" rel="stylesheet" />
-    <script src="~/Content/Materialize/materialize.min.js"></script>
-
+    <title>@ViewBag.Title</title>
 </head>
 <body>
     <div id="fullscreen" class=" ">
@@ -36,11 +30,10 @@
                 <i class="fa fa-compress "> </i>
             </a>
         </div>
-        <div class="row">
-            @RenderBody()
-        </div> 
+        @RenderBody()
+
+        <div class="clearfix"></div>
     </div>
-     
     <script>
         (function () {
             var
@@ -121,31 +114,19 @@
         })();
 
         function check() {
-            if (!fullScreenApi.isFullScreen())
+            if (!fullScreenApi.isFullScreen()) {
                 fullScreenApi.requestFullScreen(document.documentElement);
-            else
+                $('.setting').hide();
+            }
+            else {
                 fullScreenApi.cancelFullScreen(document.documentElement);
+                $('.setting').show();
+            }              
         }
 
         $('#request-full').click(function () {
             check();
-        }); 
-
-        function SaveConfig(jsonConfig,pageType) { 
-            $.ajax({
-                url: '/HienThiQuay/SaveBVConfig',
-                type: 'POST',
-                data: JSON.stringify({ 'configStr': jsonConfig, 'pageType': pageType }),
-                contentType: 'application/json charset=utf-8',
-                success: function (data) {
-                    if (data == "OK")
-                        location.reload();
-                    else
-                        alert(data);
-                }
-            });
-        }
+        });
     </script>
 </body>
 </html>
-

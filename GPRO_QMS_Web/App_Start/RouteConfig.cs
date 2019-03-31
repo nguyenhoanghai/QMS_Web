@@ -60,6 +60,11 @@ namespace GPRO_QMS_Web
                 url: "MH-Danh-Gia-2",
                 defaults: new { controller = "Home", action = "dg_teso_thanglong" }
             );
+            routes.MapRoute(
+              name: "danhgia3",
+              url: "Danh-Gia-3",
+              defaults: new { controller = "danhgia", action = "tenbutton" }
+          );
 
             routes.MapRoute(
                name: "tracuu",

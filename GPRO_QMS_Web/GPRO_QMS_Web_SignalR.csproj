@@ -472,7 +472,9 @@
     <Content Include="Areas\Admin\Scripts\SMS\sms.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Create.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Index.js" />
-    <Content Include="Config_XML\hien_thi_quay_config.xml" />
+    <Content Include="Config_XML\hien_thi_quay_config.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\bad.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -682,6 +684,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\QMS\DangNhap\DangNhap.js" />
     <Content Include="Scripts\QMS\danh-gia\danh-gia-10-nut.js" />
+    <Content Include="Scripts\QMS\HienThiQuay\lcd-1.js" />
     <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.css" />
@@ -787,6 +790,7 @@
     <Content Include="Views\Shared\_Layout_LCD.cshtml" />
     <Content Include="Views\DanhGia\TenButton.cshtml" />
     <Content Include="Views\Shared\_Layout_Danh_Gia.cshtml" />
+    <Content Include="Views\HienThiQuay\LCD1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

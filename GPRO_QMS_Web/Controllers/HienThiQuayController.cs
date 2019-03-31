@@ -62,9 +62,9 @@ namespace GPRO_QMS_Web.Controllers
         public JsonResult GetDayInfo_BV(string counters, string services)
         {
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-            var servicesArr =  services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
 
-            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(countersArr,servicesArr));
+            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(countersArr, servicesArr));
             return Json(obj);
         }
 
@@ -83,24 +83,11 @@ namespace GPRO_QMS_Web.Controllers
                 var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
                 XDocument testXML = XDocument.Load(path);
                 XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageType.ToString())).FirstOrDefault();
-                cStudent.Element("Value").Value = configStr;
-                testXML.Save(path);
-
-                var config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-                switch (pageType)
+                if (cStudent != null)
                 {
-                    case 1: // bv mau 1
-                        config.AppSettings.Settings["ConfigHoanMy_1"].Value = configStr;
-                        break;
-                    case 2: // bv mau 2
-                        config.AppSettings.Settings["ConfigHoanMy_2"].Value = configStr;
-                        break;
-                    case 3: // danh gia 10 nut
-                        config.AppSettings.Settings["ConfigDanhGia_10Nut"].Value = configStr;
-                        break;
-                }
-
-                config.Save(); 
+                    cStudent.Element("Value").Value = configStr;
+                    testXML.Save(path);
+                } 
             }
             catch (Exception ex)
             {
@@ -132,10 +119,26 @@ namespace GPRO_QMS_Web.Controllers
             //ViewData["user"] = User.Identity.Name;
             //ViewData["userInfo"] = BLLUser.Instance.Get(User.Identity.Name);
             //if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLVideoTemplate.Instance.GetPlaylist());
+            return View(BLLVideoTemplate.Instance.GetPlaylist());
             //else
             //    return RedirectToAction("Login", "DangNhap");
         }
 
+        public ActionResult LCD1()
+        {
+            GetConfig("5");
+            return View();
+        }
+
+        private void GetConfig(string pageId)
+        {
+            var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
+            XDocument testXML = XDocument.Load(path);
+            XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageId)).FirstOrDefault();
+            if (cStudent != null)
+                ViewData["config"] = cStudent.Element("Value").Value;
+            else
+                ViewData["config"] = "{}";
+        }
     }
 }

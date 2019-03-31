@@ -199,7 +199,7 @@ img {
         margin-left: 5px;
     }
 
-:-webkit-full-screen {
+/*:-webkit-full-screen {
     background: pink;
 }
 
@@ -211,13 +211,13 @@ img {
     background: pink;
 }
 
-:full-screen { /*pre-spec */
+:full-screen {  
     background: pink;
 }
 
-:fullscreen { /* spec */
+:fullscreen {  
     background: pink;
-}
+}*/
 
 .doi {
     animation: colorchange 2s infinite;

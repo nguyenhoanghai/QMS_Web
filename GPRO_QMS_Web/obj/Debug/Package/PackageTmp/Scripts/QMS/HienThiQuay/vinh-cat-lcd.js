@@ -42,7 +42,7 @@ GPRO.HienThiQuay = function () {
     }
 
     var RegisterEvent = function () {
-       // setInterval(function () { Get(); }, 1000);
+        setInterval(function () { Get(); }, 1000);
     }
 
     function InitHub() {

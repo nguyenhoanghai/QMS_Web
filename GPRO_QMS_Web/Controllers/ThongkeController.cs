@@ -217,7 +217,7 @@ namespace QMS_Website.Controllers
                     Response.End();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

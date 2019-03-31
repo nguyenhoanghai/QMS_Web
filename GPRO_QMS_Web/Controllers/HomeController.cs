@@ -83,10 +83,17 @@ namespace GPRO_QMS_Web.Controllers
         
         public JsonResult Evaluate(string name ,string value, int num, string isUseQMS)
         {
-            //if (string.IsNullOrEmpty(User.Identity.Name))
+            try
+            {
+         //if (string.IsNullOrEmpty(User.Identity.Name))
             //    return Json("-1");
             //else
                 return Json(BLLUserEvaluate.Instance.Evaluate(name.Trim().ToUpper(), value, num, isUseQMS));
+            }
+            catch (Exception ex)
+            { 
+            }
+            return Json("");
         }
 
      
