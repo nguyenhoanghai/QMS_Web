@@ -76,13 +76,13 @@ namespace GPRO_QMS_Web.Controllers
             return Json(cStudent.Element("Value").Value);
         }
 
-        public JsonResult SaveBVConfig(string configStr, int pageType)
+        public JsonResult SaveBVConfig(string configStr, string pageType)
         {
             try
             {
                 var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
                 XDocument testXML = XDocument.Load(path);
-                XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageType.ToString())).FirstOrDefault();
+                XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageType )).FirstOrDefault();
                 if (cStudent != null)
                 {
                     cStudent.Element("Value").Value = configStr;

@@ -25,6 +25,16 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
+        public UserModel GetUserInfo(string userName)
+        {
+            var user = BLLUser.Instance.GetByUserName(userName);
+            if (user != null &&  !string.IsNullOrEmpty(user.Avatar))
+                user.Avatar =  (ConfigurationManager.AppSettings["imageFolder"].ToString() + user.Avatar);
+            return user;
+        }
+
+
+        [HttpGet]
         public ModelSelectItem GetNumber(string userName)
         {
             return BLLDailyRequire.Instance.GetCurrentProcess(userName);

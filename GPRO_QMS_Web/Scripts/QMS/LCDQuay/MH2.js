@@ -16,8 +16,8 @@ GPRO.namespace = function () {
     }
     return o;
 }
-GPRO.namespace('HienThiQuay');
-GPRO.HienThiQuay = function () {
+GPRO.namespace('MH2');
+GPRO.MH2 = function () {
     var Global = {
         UrlAction: {
             GetDayInfo: '/HienThiQuay/GetDayInfo',
@@ -38,11 +38,11 @@ GPRO.HienThiQuay = function () {
         InitHub();
         RegisterEvent();
         Get();
-        setInterval(function () { GetTime(); }, 100);
+        setInterval(function () { GetTime(); }, 1000);
     }
 
     var RegisterEvent = function () {
-        setInterval(function () { Get(); }, 1000);
+
     }
 
     function InitHub() {
@@ -95,8 +95,8 @@ GPRO.HienThiQuay = function () {
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var obj = JSON.parse(data);
-                // $('#date').html(obj.Date);
-                //  $('#time').html(obj.Time);
+                $('#date').html(obj.Date);
+                $('#time').html(obj.Time);
                 $('#totalcar').html(obj.TotalCar);
                 $('#done').html(obj.TotalCarServed);
                 $('#waiting').html(obj.TotalCarWaiting);
@@ -120,20 +120,20 @@ GPRO.HienThiQuay = function () {
     }
 
     function DrawTable(objs) {
-        var str = '<div class="col-md-12 rowcontent"> Không có dữ liệu </div>';
+        var str = '<div class="col m12 rowcontent"> Không có dữ liệu </div>';
         if (objs.length > 0) {
             str = '';
             var count = 0;
             $.each(objs, function (i, item) {
                 if (count == 0)
-                    str += '<div  class="slide-image" style=" height:100% ; width:100%" class="col-md-12">';
+                    str += '<div  class="slide-image" style=" height:100% ; width:100%" class="col m12">';
 
-                str += '<div id="r_' + item.TableId + '"><div class="col-md-2 rowcontent r-text ">' + item.TableName + '</div>';
-                str += '<div class="col-md-2 rowcontent font-dt ">' + item.TicketNumber + '</div>';
-                str += '<div class="col-md-2 rowcontent font-dt ">' + item.GioGiaoDK + '</div>';
-                str += '<div class="col-md-2 rowcontent   ">Sửa chữa</div>';
-                str += '<div class="col-md-2 rowcontent font-dt "> <div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="' + 70 + '"  aria-valuemin="0" aria-valuemax="100" style="width:' + 70 + '%">100%</div></div></div>';
-                str += '<div class="col-md-2 rowcontent font-dt ">' + item.strTimeCL + '</div> <div class="clearfix"></div></div>';
+                str += '<div id="r_' + item.TableId + '"><div class="col m2 rowcontent r-text ">' + item.TableName + '</div>';
+                str += '<div class="col m2 rowcontent font-dt ">' + item.TicketNumber + '</div>';
+                str += '<div class="col m2 rowcontent font-dt ">' + item.StartStr + '</div>';
+                str += '<div class="col m2 rowcontent font-dt ">' + item.TimeProcess + '</div>  ';
+                str += '<div class="col m2 rowcontent font-dt ">' + item.strServeTimeAllow + '</div>  ';
+                str += '<div class="col m2 rowcontent font-dt over ' + (item.IsEndTime ? "doi" : "") + '">' + item.strTimeCL + '</div> <div class="clearfix"></div></div>';
 
                 count++;
                 if (count == parseInt($('#table2').attr('rows'))) {
@@ -148,8 +148,8 @@ GPRO.HienThiQuay = function () {
         Global.Data.rows = objs.length;
 
         //$('#ticker li').css('height', $('#ticker').height() / 4);
-        $('#table2 .font-dt').css('cssText', $('#table2 .font-dt').attr('style') + ' ; font-size : ' + $('#table2').attr('size-dt') + 'px !important; line-height : ' + $('#table2').attr('size-dt') + 'px !important');
-        $('#table2 .r-text').css('cssText', $('#table2 .r-text').attr('style') + ' ; font-size : ' + $('#table2').attr('size-text') + 'px !important; line-height : ' + $('#table2').attr('size-dt') + 'px !important');
+      //  $('#table2 .font-dt').css('cssText', $('#table2 .font-dt').attr('style') + ' ; font-size : ' + $('#table2').attr('size-dt') + 'px !important; line-height : ' + $('#table2').attr('size-dt') + 'px !important');
+      //  $('#table2 .r-text').css('cssText', $('#table2 .r-text').attr('style') + ' ; font-size : ' + $('#table2').attr('size-text') + 'px !important; line-height : ' + $('#table2').attr('size-dt') + 'px !important');
 
     }
 
@@ -160,28 +160,32 @@ GPRO.HienThiQuay = function () {
                     switch (iii) {
                         case 0: $(div).html(item.TableName); break;
                         case 1: $(div).html(item.TicketNumber); break;
-                        case 2: $(div).html(item.GioGiaoDK); break;
-                        case 3:
-                            if (item.TicketNumber != '0')
-                                $(div).html('Sữa chữa');
-                            else
-                                $(div).html('');
-                            break;
-                        case 4:
-                            if (item.TicketNumber != '0')
-                                $(div).html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="' + item.TienDoTH + '"  aria-valuemin="0" aria-valuemax="100" style="width:' + item.TienDoTH + '%">' + item.TienDoTH + '%</div></div>');
-                            else
-                                $(div).html('');
-                            break;
-                        case 7: $(div).html(item.strTimeCL); break;
+                        //case 2: $(div).html(item.CarNumber); break;
+                        case 2: $(div).html(item.StartStr); break;
+                        case 3: $(div).html(item.TimeProcess); break;
+                        case 4: $(div).html(item.strServeTimeAllow); break;
+                        case 5: $(div).html(item.strTimeCL); break;
                     }
                 });
+
+            var tb = Global.Data.tableIds.filter(function (x) { return x == item.TableId; })[0];
+
+            if (item.IsEndTime && tb == null) {
+                $('#r_' + item.TableId + ' div.over').addClass('doi');
+                Global.Data.tableIds.push(item.TableId);
+            }
+            else if (!item.IsEndTime && tb != null) {
+                $('#r_' + item.TableId + ' div.over').removeClass('doi');
+                for (var i = 0; i < Global.Data.tableIds.length; i++) {
+                    if (Global.Data.tableIds[i] == item.TableId) {
+                        Global.Data.tableIds.splice(i, 1);
+                        return false;
+                    }
+                }
+            }
         });
     }
-
-
-
-
+         
     function DrawTicker(objs) {
         var str = '<li col-span="12" class=" rowcontent"> Không có dữ liệu </li>';
         if (objs.length > 0) {
@@ -189,11 +193,10 @@ GPRO.HienThiQuay = function () {
             $.each(objs, function (i, item) {
 
                 str += '<li ><ul id="r_' + item.TableId + '">';
-
-                str += '<li class="col-md-4 rowcontent r-text ">' + item.TableName + '</li>';
-                str += '<li class="col-md-2 rowcontent font-dt ">' + item.TicketNumber + '</li>';
-                str += '<li class="col-md-3 rowcontent font-dt ">' + item.StartStr + '</li>';
-                str += '<li class="col-md-3 rowcontent font-dt ">' + item.TimeProcess + '</li> <div style="clear:left"></div>';
+                str += '<li class="col m2 rowcontent r-text ">' + item.TableName + '</li>';
+                str += '<li class="col m2 rowcontent font-dt ">' + item.TicketNumber + '</li>';
+                str += '<li class="col m2 rowcontent font-dt ">' + item.StartStr + '</li>';
+                str += '<li class="col m2  rowcontent font-dt ">' + item.TimeProcess + '</li> <div style="clear:left"></div>';
 
                 str += '</ul> <div class="clearfix"></div></li>';
 
@@ -205,8 +208,8 @@ GPRO.HienThiQuay = function () {
 
         Global.Data.rows = objs.length;
         $('#ticker li').css('height', $('#ticker').height() / parseInt($('#table2').attr('rows')));
-        $('#ticker .font-dt').css('cssText', $('#ticker .font-dt').attr('style') + ' ; font-size : ' + $('#table2').attr('size-dt') + 'px !important; line-height : ' + $('#ticker').height() / parseInt($('#table2').attr('rows')) + 'px !important');
-        $('#ticker .r-text').css('cssText', $('#ticker .r-text').attr('style') + ' ; font-size : ' + $('#table2').attr('size-text') + 'px !important; line-height : ' + $('#table2').attr('size-dt') + 'px !important');
+      //  $('#ticker .font-dt').css('cssText', $('#ticker .font-dt').attr('style') + ' ; font-size : ' + $('#table2').attr('size-dt') + 'px !important; line-height : ' + $('#ticker').height() / parseInt($('#table2').attr('rows')) + 'px !important');
+      //  $('#ticker .r-text').css('cssText', $('#ticker .r-text').attr('style') + ' ; font-size : ' + $('#table2').attr('size-text') + 'px !important; line-height : ' + $('#table2').attr('size-dt') + 'px !important');
     }
 
     function BindTicker(objs) {
@@ -225,6 +228,6 @@ GPRO.HienThiQuay = function () {
 }
 
 $(document).ready(function () {
-    var home = new GPRO.HienThiQuay();
-    home.Init();
+    var mh2 = new GPRO.MH2();
+    mh2.Init();
 });

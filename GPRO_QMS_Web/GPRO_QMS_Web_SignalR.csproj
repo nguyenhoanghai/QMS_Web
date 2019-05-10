@@ -698,6 +698,8 @@
     <Content Include="Scripts\QMS\Home\Index_1_tieuchi.js" />
     <Content Include="Scripts\QMS\Home\TienThu.js" />
     <Content Include="Scripts\QMS\Home\Home.js" />
+    <Content Include="Scripts\QMS\LCDQuay\MH2.js" />
+    <Content Include="Scripts\QMS\LCDQuay\MH1.js" />
     <Content Include="Scripts\QMS\Report\DailyReport.js" />
     <Content Include="Scripts\QMS\Report\View.js" />
     <Content Include="Scripts\QMS\ThongKe\ThongKe_ct.js" />
@@ -741,6 +743,7 @@
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HienThiQuayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LCDQuayController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ServiceApiController.cs" />
     <Compile Include="Controllers\ThongkeController.cs" />
@@ -791,6 +794,8 @@
     <Content Include="Views\DanhGia\TenButton.cshtml" />
     <Content Include="Views\Shared\_Layout_Danh_Gia.cshtml" />
     <Content Include="Views\HienThiQuay\LCD1.cshtml" />
+    <Content Include="Views\LCDQuay\MH1.cshtml" />
+    <Content Include="Views\LCDQuay\MH2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

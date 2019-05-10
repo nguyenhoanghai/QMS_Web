@@ -28,7 +28,7 @@ GPRO.Home = function () {
             NV: 'STT,số phiếu,nhân viên,nghiệp vụ,giờ lấy phiếu,giờ giao dịch,giờ kết thúc,TG giao dịch,TG chờ',
             NgVu: 'STT,số phiếu,nhân viên,quầy,nghiệp vụ,giờ lấy phiếu,giờ giao dịch,giờ kết thúc,TG giao dịch,TG chờ',
             DV: 'STT,số phiếu,dịch vụ,giờ lấy phiếu,trạng thái',
-            DV_TT: 'STT,số phiếu,dịch vụ,giờ lấy phiếu,Giờ bắt đầu giao dịch,Giờ kết thúc,Giờ thu ngân gọi KH,Thời gian giao dịch,Thời gian chờ trước sửa chữa (phút),Thời gian sau trước sửa chữa (phút),trạng thái',
+            DV_TT: 'STT,số phiếu,dịch vụ,giờ lấy phiếu,Giờ bắt đầu giao dịch,Giờ kết thúc,Giờ thu ngân gọi KH,Thời gian giao dịch,Thời gian chờ trước sửa chữa,Thời gian chờ sau sửa chữa,trạng thái',
         }
     }
     this.GetGlobal = function () {

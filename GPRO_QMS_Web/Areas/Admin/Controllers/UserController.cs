@@ -48,6 +48,8 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             ResponseBase rs; 
             try
             {
+                if (nv.Counters == null)
+                    nv.Counters = "0";
                 rs = BLLUser.Instance.CreateOrUpdate(nv);
                 if (!rs.IsSuccess)
                 {

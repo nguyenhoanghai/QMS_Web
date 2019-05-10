@@ -16,4 +16,12 @@
     <Name>man_hinh_co_video</Name>
     <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ","tieu_de_css":"","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ|TG DỰ KIẾN|TG CÒN LẠI     ","sub_tieu_de_css":" background: blue;    font-size: 30px;    line-height: 30px;    text-align: center;    font-weight: bold;     border-right: none;    border-bottom: none;    padding: 10px 0;    background: blue;    color: white;","noi_dung_css":"","noi_dung_so_css":"","dong_1_trang":"","thoi_gian_lat_trang":""}</Value>
   </View>
+  <View ID="MH1">
+    <Name>man_hinh_tien_thu</Name>
+    <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ ","tieu_de_css":"font-size:45px","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ                   ","sub_tieu_de_css":" background: blue;    font-size: 30px;    line-height: 30px;    text-align: center;    font-weight: bold;     border-right: none;    border-bottom: none;    padding: 10px 0;    background: blue;    color: white;","noi_dung_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","noi_dung_so_css":"font-size: 90px !important;    line-height: 90px !important; background: black;    color: red !important;","dong_1_trang":"6","thoi_gian_lat_trang":"30","show_type":"slide"}</Value>
+  </View>
+  <View ID="MH2">
+    <Name>man_hinh_tien_thu</Name>
+    <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ ","tieu_de_css":"font-size:45px","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ|TG phục vụ tc|TG còn lại                     ","sub_tieu_de_css":" background: blue; font-size: 30px; line-height: 30px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0; background: blue; color: white; text-transform: uppercase;","noi_dung_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","noi_dung_so_css":"font-size: 90px !important;    line-height: 90px !important; background: black;    color: red !important;","dong_1_trang":"8","thoi_gian_lat_trang":"1","show_type":"slide"}</Value>
+  </View>
 </Views>
