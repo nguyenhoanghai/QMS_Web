@@ -128,10 +128,10 @@ GPRO.HienThiQuay = function () {
                 if (count == 0)
                     str += '<div  class="slide-image" style=" height:100% ; width:100%" class="col-md-12">';
 
-                str += '<div id="r_' + item.TableId + '"><div class="col-md-4 rowcontent r-text ">' + item.TableName + '</div>';
-                str += '<div class="col-md-2 rowcontent font-dt ">' + item.TicketNumber + '</div>';
-                str += '<div class="col-md-3 rowcontent font-dt ">' + item.StartStr + '</div>';
-                str += '<div class="col-md-3 rowcontent font-dt ">' + item.TimeProcess + '</div> <div class="clearfix"></div></div>';
+                str += '<div id="r_' + item.TableId + '"><div class="col-md-4 rowcontent r-text ' + (i == objs.length - 1 ? "bd-bt" : "") + ' ">' + item.TableName + '</div>';
+                str += '<div class="col-md-2 rowcontent font-dt ' + (i == objs.length-1?"bd-bt":"") + ' ">' + item.TicketNumber + '</div>';
+                str += '<div class="col-md-3 rowcontent font-dt ' + (i == objs.length - 1 ? "bd-bt" : "") + ' ">' + item.StartStr + '</div>';
+                str += '<div class="col-md-3 rowcontent font-dt ' + (i == objs.length - 1 ? "bd-bt" : "") + ' ">' + item.TimeProcess + '</div> <div class="clearfix"></div></div>';
 
                 count++;
                 if (count == parseInt($('#table2').attr('rows'))) {

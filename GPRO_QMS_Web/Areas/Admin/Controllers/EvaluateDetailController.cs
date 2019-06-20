@@ -54,12 +54,10 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
 
         [HttpPost]
         public JsonResult Delete(int Id)
-        {
-            bool result;
+        { 
             try
-            {
-                result = BLLEvaluateDetail.Instance.Delete(Id);
-                if ( result  )
+            { 
+                if (! BLLEvaluateDetail.Instance.Delete(Id)   )
                 {
                     JsonDataResult.Result = "ERROR";
                     JsonDataResult.ErrorMessages.Add(new GPRO.Core.Mvc.Error() {  Message ="Lỗi thực hiện", MemberName="Lỗi"});

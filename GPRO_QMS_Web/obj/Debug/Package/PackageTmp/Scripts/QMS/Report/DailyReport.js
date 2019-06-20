@@ -20,7 +20,7 @@ GPRO.namespace('Home');
 GPRO.Home = function () {
     var Global = {
         UrlAction: {
-           // Get: '/Report/GetDailyReport'   //co su dung qms  theo nghiep vu
+          // Get: '/Report/GetDailyReport'   //co su dung qms  theo nghiep vu
             Get: '/Report/GetDailyReport_NotUseQMS'     // ko su dung qms theo nv
         },
         Data: {
@@ -36,8 +36,8 @@ GPRO.Home = function () {
     }
 
     var RegisterEvent = function () {
-       // Get();
-         setInterval(function () { Get(); },1000)
+        Get();
+         //setInterval(function () { Get(); },1000)
     } 
     function Get() {
         $.ajax({

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using GPRO_QMS_Web.Controllers;
-using GPRO.Core.Mvc;
-using GPRO.Core.Generic;
-using PagedList;
-using QMS_System.Data.BLL;
+﻿using GPRO.Core.Generic;
 using QMS_System.Data;
+using QMS_System.Data.BLL;
 using QMS_System.Data.Model;
+using System;
+using System.Web.Mvc;
 
 namespace GPRO_QMS_Web.Areas.Admin.Controllers
 {
@@ -45,7 +39,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult Save(Q_User nv)
         {
-            ResponseBase rs; 
+            ResponseBase rs;
             try
             {
                 if (nv.Counters == null)
@@ -54,7 +48,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";
-                    JsonDataResult.ErrorMessages.Add(new GPRO.Core.Mvc.Error(){ MemberName =rs.Errors[0].MemberName, Message = rs.Errors[0].Message } );
+                    JsonDataResult.ErrorMessages.Add(new GPRO.Core.Mvc.Error() { MemberName = rs.Errors[0].MemberName, Message = rs.Errors[0].Message });
                 }
                 else
                     JsonDataResult.Result = "OK";
@@ -72,18 +66,10 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                ResponseBase responseResult;
-                BLLUser.Instance.Delete(manv);
-                //responseResult = BLLUser.Instance.Delete(manv);
-                //if (!responseResult.IsSuccess)
-                //{
-                //    JsonDataResult.Result = "ERROR";
-                //    JsonDataResult.ErrorMessages.AddRange(responseResult.Errors);
-                //}
-                //else
-                //{
-                JsonDataResult.Result = "OK";
-                // }
+                if (BLLUser.Instance.Delete(manv))
+                    JsonDataResult.Result = "OK";
+                else
+                    JsonDataResult.Result = "ERROR";
                 return Json(JsonDataResult);
             }
             catch (Exception ex)

@@ -33,6 +33,14 @@ namespace QMS_Website.Controllers
             return user;
         }
 
+        [HttpGet]
+        public AndroidModel GetAndroidInfo(string userName, int getSTT, int getSMS, int getUserInfo)
+        {
+            var info = BLLUserEvaluate.Instance.GetInfoForAndroid(userName,getSTT,getSMS,getUserInfo);
+            if (getUserInfo==1 && info.UserInfo != null && !string.IsNullOrEmpty(info.UserInfo.Avatar))
+                info.UserInfo.Avatar = (ConfigurationManager.AppSettings["imageFolder"].ToString() + info.UserInfo.Avatar);
+            return info;
+        }
 
         [HttpGet]
         public ModelSelectItem GetNumber(string userName)
@@ -44,6 +52,12 @@ namespace QMS_Website.Controllers
         public ResponseBaseModel Evaluate(string username, string value, int num, string isUseQMS)
         {
             return BLLUserEvaluate.Instance.Evaluate(username.Trim().ToUpper(), value, num, isUseQMS);
+        }
+
+        [HttpGet]
+        public List<string> GetRequireSendSMS( )
+        {
+            return BLLUserEvaluate.Instance.GetRequireSendSMSForAndroid( );
         }
 
         [HttpGet]
@@ -97,5 +111,25 @@ namespace QMS_Website.Controllers
              return rs;
         }
 
+        [HttpGet]
+        public ResponseBase CounterEvent(string counterId,string action )
+        {
+            var rs = new ResponseBase(); 
+            string content = "AA," + counterId + "," + action + ",00,00";
+            rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(content, (int)eCounterSoftRequireType.CounterEvent);
+            return rs;
+        }
+
+        public string GetTicketStatus(int ticket)
+        { 
+                return  (BLLDailyRequire.Instance.CheckServeInformation(ticket).Data_1);
+             
+        }
+
+        [HttpGet]
+        public List<ModelSelectItem> GetEquipments ()
+        {
+            return BLLEquipment.Instance.GetsEquipments();
+        }
     }
 }
