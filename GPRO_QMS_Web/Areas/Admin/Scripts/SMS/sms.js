@@ -23,6 +23,7 @@ GPRO.ReceiverSMS = function () {
             GetList: '/ReceiverSMS/GetList',
             Save: '/ReceiverSMS/Save',
             Delete: '/ReceiverSMS/Delete',
+            getUsers:'/User/GetUserSelect'
         },
         Element: {
             Jtable: 'jtableSMS',
@@ -39,11 +40,13 @@ GPRO.ReceiverSMS = function () {
 
     this.Init = function () {
         RegisterEvent();
+        GetUsers();
         InitList();
         ReloadList();
 
         InitSearchPopup();
         InitPopup();
+      
     }
 
     var RegisterEvent = function () {
@@ -60,21 +63,20 @@ GPRO.ReceiverSMS = function () {
             actions: {
                 listAction: Global.UrlAction.GetList,
                 createAction: Global.Element.Popup,
-                createObjDefault: BindModel(null),
                 searchAction: Global.Element.Search,
             },
             messages: {
                 addNewRecord: 'Thêm mới',
                 searchRecord: 'Tìm kiếm',
                 selectShow: 'Ẩn hiện cột'
-            }, 
+            },
             fields: {
                 Id: {
                     key: true,
                     create: false,
                     edit: false,
                     list: false
-                }, 
+                },
                 PhoneNumber: {
                     visibility: 'fixed',
                     title: "Số điện thoại",
@@ -91,7 +93,7 @@ GPRO.ReceiverSMS = function () {
                             text = $('<i class="fa fa-check-square-o blue"  style="font-size:26px"></i> ');
                         return text;
                     }
-                }, 
+                },
                 Note: {
                     title: "Ghi chú",
                     width: "50%",
@@ -102,10 +104,16 @@ GPRO.ReceiverSMS = function () {
                     width: '1%',
                     sorting: false,
                     display: function (data) {
-                        var text = $('<i data-toggle="modal" data-target="#' + Global.Element.Popup + '" title="Chỉnh sửa thông tin" class="fa fa-pencil-square-o clickable blue"  ></i>');
+                        var text = $('<i data-toggle="modal" href="#' + Global.Element.Popup + '" title="Chỉnh sửa thông tin" class="fa fa-pencil-square-o clickable blue modal-trigger"  ></i>');
                         text.click(function () {
-                            BindModel(data.record);
+                            $('#Id').val(data.record.Id);
+                            $('#PhoneNumber').val(data.record.PhoneNumber);
                             $('#isActive').prop('checked', data.record.IsActive);
+                            $('#txtNote').val(data.record.Note);
+                            if (data.record.UserIds != null)
+                                $("#txtUserIds").data("kendoMultiSelect").value(data.record.UserIds.split(','));
+                            else
+                                $("#txtUserIds").data("kendoMultiSelect").value('');
                         });
                         return text;
                     }
@@ -131,36 +139,20 @@ GPRO.ReceiverSMS = function () {
     function ReloadList() {
         $('#' + Global.Element.Jtable).jtable('load', { 'keyword': $('#keyword').val() });
     }
+     
 
-    function InitModel(obj) {
-        var ViewModel = {
-            Id: 0,
-            PhoneNumber: '',
-            Note: '',
-            IsActive: 0,
-        };
-        if (obj != null) {
-            ViewModel = {
-                Id: ko.observable(obj.Id),
-                PhoneNumber: ko.observable(obj.PhoneNumber),
-                Note: ko.observable(obj.Note),
-                IsActive: ko.observable(obj.IsActive),
-            };
+    function Save() { 
+        var obj = {
+            Id: $('#Id').val(),
+            PhoneNumber: $('#PhoneNumber').val(),
+            IsActive: $('#isActive').prop('checked'), 
+            Note: $('#txtNote').val(),
+            UserIds: $("#txtUserIds").data("kendoMultiSelect").value().toString()
         }
-        return ViewModel;
-    }
-
-    function BindModel(obj) {
-        Global.Data.Model = InitModel(obj);
-        ko.applyBindings(Global.Data.Model, document.getElementById(Global.Element.Popup));
-    }
-
-    function Save() {
-     Global.Data.Model.IsActive =   $('#isActive').prop('checked' );
         $.ajax({
             url: Global.UrlAction.Save,
             type: 'post',
-            data: ko.toJSON(Global.Data.Model),
+            data: ko.toJSON(obj),
             contentType: 'application/json',
             beforeSend: function () { $('#loading').show(); },
             success: function (result) {
@@ -214,7 +206,12 @@ GPRO.ReceiverSMS = function () {
         });
         $("#" + Global.Element.Popup + ' button[cancel]').click(function () {
             $("#" + Global.Element.Popup).modal("hide");
-            BindModel(null);
+            $("#txtUserIds").data("kendoMultiSelect").value('');
+            $('#Id').val(0);
+            $('#PhoneNumber').val('');
+            $('#isActive').prop('checked', true);
+            $('#txtNote').val('');
+            $("#txtUserIds").data("kendoMultiSelect").value('');
         });
     }
 
@@ -225,7 +222,7 @@ GPRO.ReceiverSMS = function () {
         }
         return true;
     }
-     
+
     function InitSearchPopup() {
         $('#' + Global.Element.Search + ' button[search]').click(function () {
             ReloadList();
@@ -235,9 +232,39 @@ GPRO.ReceiverSMS = function () {
             $("#" + Global.Element.Search).modal("hide");
         });
     }
-     
+
+    function GetUsers() { 
+        $.ajax({
+            url: Global.UrlAction.getUsers,
+            type: 'post',
+            contentType: 'application/json',
+            beforeSend: function () { $('#loading').show(); },
+            success: function (result) {
+                $('#loading').hide();
+                GlobalCommon.CallbackProcess(result, function () {
+                    if (result.Result == "OK") {
+                        var strOpt = '<option value=0>Không có dữ liệu nhân viên</option>';
+                        if (result.Data.length > 0) {
+                            strOpt = '';
+                            $.each(result.Data, function(i, item)  {
+                                strOpt += '<option value="' + item.Id + '">' + item.Name + '</option>'
+                            });
+                        }
+                        $("#txtUserIds").empty().html(strOpt).kendoMultiSelect().data("kendoMultiSelect");
+                    }
+                    else
+                        GlobalCommon.ShowMessageDialog(msg, function () { }, "Đã có lỗi xảy ra trong quá trình sử lý.");
+                }, false, Global.Element.PopupModule, true, true, function () {
+                    var msg = GlobalCommon.GetErrorMessage(result);
+                    GlobalCommon.ShowMessageDialog(msg, function () { }, "Đã có lỗi xảy ra trong quá trình sử lý.");
+                });
+            }
+        });
+    }
+
 }
 $(document).ready(function () {
     var ReceiverSMS = new GPRO.ReceiverSMS();
     ReceiverSMS.Init();
+
 })

@@ -468,6 +468,13 @@
     <Content Include="Areas\Admin\Content\User\Images\Nguyễn-Cao-Kỳ-Duyên.jpg" />
     <Content Include="Areas\Admin\Content\User\Images\save.png" />
     <Content Include="Areas\Admin\Scripts\Evaluate\EvaluateIndex.js" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\kendo.all.min.js" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\kendo.common-material.min.css" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\Kendo.Cultures.vn.js" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\Kendo.Cultures.vn.min.js" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\kendo.default.mobile.min.css" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\kendo.material.min.css" />
+    <Content Include="Areas\Admin\Scripts\KendoUI\Material\sprite_2x.png" />
     <Content Include="Areas\Admin\Scripts\QMSCommon.js" />
     <Content Include="Areas\Admin\Scripts\SMS\sms.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Create.js" />
