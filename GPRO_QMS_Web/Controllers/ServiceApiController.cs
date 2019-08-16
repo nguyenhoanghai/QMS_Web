@@ -81,6 +81,28 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
+        public ResponseBase PrintNewTicket(string MaPhongKham, string thoigian)
+        {
+            var rs = new ResponseBase();
+            var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            var newDate = DateTime.ParseExact("01/01/2018 " + thoigian, "dd/MM/yyyy HH:mm:ss", provider);
+
+            var require = new PrinterRequireModel()
+            {
+                PrinterId = printerId,
+                SoXe = "",
+                ServeTime = newDate,
+                ServiceId = int.Parse( MaPhongKham)
+            };
+            rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.PrintTicket);
+            return rs;
+
+           // return BLLDailyRequire.Instance.PrintNewTicket(int.Parse(MaPhongKham ), 0, 0, DateTime.Now,null,null, "","",null,"","","","");
+           // return BLLDailyRequire.Instance.API_PrintNewTicket("", null, null, "", MaPhongKham, "");
+        }
+
+        [HttpGet]
         public ResponseBase UpdateTicketInfo(string TenBenhNhan, string MaBenhNhan, string STT_PhongKham)
         {
             return BLLDailyRequire.Instance.API_UpdateTicketInfo(TenBenhNhan, MaBenhNhan, STT_PhongKham);

@@ -9,7 +9,7 @@
     {
         str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
     }
-    var col = Convert.ToInt32((cf.Col != null ? cf.Col : "1"));
+    var col = Convert.ToInt32((!string.IsNullOrEmpty( cf.Col) ? cf.Col : "1"));
   //  QMS_System.Data.Q_User user = ViewData["userInfo"] as QMS_System.Data.Q_User;
 }
 

@@ -37,7 +37,7 @@ GPRO.Home = function () {
 
     var RegisterEvent = function () {
         Get();
-         //setInterval(function () { Get(); },1000)
+        setInterval(function () { Get(); },2000)
     } 
     function Get() {
         $.ajax({
