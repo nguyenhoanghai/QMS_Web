@@ -20,6 +20,7 @@ namespace GPRO_QMS_Web.Controllers
         {
             try
             {
+               // if (UserName.Trim().ToLower().)
                 var user = BLLUser.Instance.Get(UserName.Trim().ToUpper(), Password.Trim().ToUpper());
                 if (user != null)
                 {
@@ -32,6 +33,9 @@ namespace GPRO_QMS_Web.Controllers
                     JsonDataResult.ErrorMessages.Add(new GPRO.Core.Mvc.Error() { MemberName = "Loi", Message = "Loi thong tin dang nhap khong dung" });
           
                 }
+
+
+                
             }
             catch (Exception ex)
             {

@@ -38,8 +38,8 @@ GPRO.Home = function () {
     }
 
     var RegisterEvent = function () {
-Get();
-        //setInterval(function () { Get(); }, 2000);
+//Get();
+         setInterval(function () { Get(); }, 2000);
     }
 
     function Get() {

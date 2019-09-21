@@ -78,6 +78,11 @@ namespace GPRO_QMS_Web
                defaults: new { controller = "Report", action = "dailyreport" }
            );
             routes.MapRoute(
+           name: "bc_ct",
+           url: "Bao-cao-danh-gia-chi-tiet",
+           defaults: new { controller = "Report", action = "DailyDetailsReport" }
+       );
+            routes.MapRoute(
                  name: "tk",
                  url: "bao-cao-2",
                  defaults: new { controller = "Report", action = "index" }

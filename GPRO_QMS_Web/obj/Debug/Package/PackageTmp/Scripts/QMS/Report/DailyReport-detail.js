@@ -16,11 +16,11 @@ GPRO.namespace = function () {
     }
     return o;
 }
-GPRO.namespace('Home');
-GPRO.Home = function () {
+GPRO.namespace('EvaluateReport');
+GPRO.EvaluateReport = function () {
     var Global = {
         UrlAction: {
-            Get: '/Report/GetDailyReport' ,  //co su dung qms  theo nghiep vu
+            Get: '/Report/GetDailyReport_details',  //co su dung qms  theo nghiep vu
             Get_: '/Report/GetDailyReport_NotUseQMS'     // ko su dung qms theo nv
         },
         Data: {
@@ -34,16 +34,18 @@ GPRO.Home = function () {
     }
 
     this.Init = function () {
+        $('.datepicker').datepicker({ format: 'dd/mm/yyyy', defaultDate: new Date(), setDefaultDate: true });
         RegisterEvent();
         $('#filter-type').change();
+
     }
 
     var RegisterEvent = function () {
         Get();
-        setInterval(function () { Get(); }, 2000)
+        //  setInterval(function () { Get(); }, 2000)
 
         $('#export-excel').click(() => {
-            window.location.href = '/Report/Excel_Dgia?useQMS=' + Global.Data.useQMS + '&reportForUser=' + Global.Data.reportForUser;
+            window.location.href = '/Report/Excel_Dgia_Ctiet?useQMS=' + Global.Data.useQMS + '&fromDate=' + $('#fromDate').val() + '&toDate=' + $('#toDate').val();
         });
 
         $('#filter-type').change(() => {
@@ -58,33 +60,21 @@ GPRO.Home = function () {
         $.ajax({
             url: url,
             type: 'POST',
-            data: JSON.stringify({ 'reportForUser': Global.Data.reportForUser }),
+            data: JSON.stringify({ 'fromDate': $('#fromDate').val(), 'toDate': $('#toDate').val() }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
-                var str = '<tr><td colspan="5">Không có dữ liệu</td></tr>';
+                var str = '<tr><td colspan="8">Không có dữ liệu</td></tr>';
                 if (data.length > 0) {
                     str = '';
                     $.each(data, function (i, item) {
-                        if (Global.Data.firstLoad && i == 0) {
-                            var tr = $('<tr></tr>');
-                            tr.append('<td>STT</td>');
-                            tr.append('<td>' + (Global.Data.reportForUser ? 'NHÂN VIÊN' : 'DỊCH VỤ') + '</td>');
-                            $.each(item.Details, function (ii, child) {
-                                tr.append('<td>' + child.Name + '</td>');
-                            })
-                            $('#tb_export thead').empty().append(tr);
-                            Global.Data.firstLoad = false;
-                        }
-
                         str += '<tr>';
-                        str += ' <td  >' + (i + 1) + '</td> ';
+                        str += ' <td  >' + item.Number + '</td> ';
+                        str += ' <td  >' + item.UserName + '</td> ';
                         str += ' <td  >' + item.ServiceName + '</td> ';
-                        $.each(item.Details, function (ii, child) {
-                            str += ' <td  >' + child.Id + '</td> ';
-                        })
-                        //str += ' <td  >' + item.tc1 + '</td> ';
-                        //str += ' <td  >' + item.tc2 + '</td> ';
-                        //str += ' <td  >' + item.tc3 + '</td> ';
+                        str += ' <td  >' + moment(item.PrintTime).format('DD/MM/YYYY h:mm:ss a') + '</td> ';
+                        for (var i = 1; i <= 4; i++) {
+                            str += '<td>' + (('1_' + i) == item.Score ? "<i class='fa fa-check'/>" : "") + '</td>';
+                        }
                         str += '<tr>';
                     });
                 }
@@ -95,6 +85,7 @@ GPRO.Home = function () {
 }
 
 $(document).ready(function () {
-    var home = new GPRO.Home();
+    var home = new GPRO.EvaluateReport();
     home.Init();
+    M.updateTextFields();
 });

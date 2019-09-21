@@ -20,40 +20,55 @@ GPRO.namespace('Home');
 GPRO.Home = function () {
     var Global = {
         UrlAction: {
-          // Get: '/Report/GetDailyReport'   //co su dung qms  theo nghiep vu
-            Get: '/Report/GetDailyReport_NotUseQMS'     // ko su dung qms theo nv
+            Get: '/Report/GetDailyReport' ,  //co su dung qms  theo nghiep vu
+            Get_: '/Report/GetDailyReport_NotUseQMS'     // ko su dung qms theo nv
         },
         Data: {
-            firstLoad: true
+            firstLoad: true,
+            useQMS: true,
+            reportForUser: false
         }
     }
     this.GetGlobal = function () {
         return Global;
     }
 
-    this.Init = function () { 
-        RegisterEvent(); 
+    this.Init = function () {
+        RegisterEvent();
+        $('#filter-type').change();
     }
 
     var RegisterEvent = function () {
         Get();
-        setInterval(function () { Get(); },2000)
-    } 
+        setInterval(function () { Get(); }, 2000)
+
+        $('#export-excel').click(() => {
+            window.location.href = '/Report/Excel_Dgia?useQMS=' + Global.Data.useQMS + '&reportForUser=' + Global.Data.reportForUser;
+        });
+
+        $('#filter-type').change(() => {
+            Global.Data.firstLoad = true;
+            Global.Data.reportForUser = ($('#filter-type').val() == '0' ? true : false);
+        });
+    }
     function Get() {
+        var url = Global.UrlAction.Get_;
+        if (Global.Data.useQMS)
+            url = Global.UrlAction.Get;
         $.ajax({
-            url: Global.UrlAction.Get,
+            url: url,
             type: 'POST',
-            data: '',   
+            data: JSON.stringify({ 'reportForUser': Global.Data.reportForUser }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var str = '<tr><td colspan="5">Không có dữ liệu</td></tr>';
                 if (data.length > 0) {
                     str = '';
                     $.each(data, function (i, item) {
-                        if (Global.Data.firstLoad && i == 0) { 
+                        if (Global.Data.firstLoad && i == 0) {
                             var tr = $('<tr></tr>');
                             tr.append('<td>STT</td>');
-                            tr.append('<td>NHÂN VIÊN</td>'); 
+                            tr.append('<td>' + (Global.Data.reportForUser ? 'NHÂN VIÊN' : 'DỊCH VỤ') + '</td>');
                             $.each(item.Details, function (ii, child) {
                                 tr.append('<td>' + child.Name + '</td>');
                             })
@@ -62,7 +77,7 @@ GPRO.Home = function () {
                         }
 
                         str += '<tr>';
-                        str += ' <td  >' + (i+1) + '</td> ';
+                        str += ' <td  >' + (i + 1) + '</td> ';
                         str += ' <td  >' + item.ServiceName + '</td> ';
                         $.each(item.Details, function (ii, child) {
                             str += ' <td  >' + child.Id + '</td> ';

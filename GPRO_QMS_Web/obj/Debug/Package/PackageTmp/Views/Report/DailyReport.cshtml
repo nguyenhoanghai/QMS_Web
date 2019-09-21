@@ -9,7 +9,8 @@
     <link href="~/Content/KendoUI/kendo.material.min.css" rel="stylesheet" />
     <link href="~/Content/KendoUI/kendo.common-material.min.css" rel="stylesheet" />
     <link href="~/Content/KendoUI/kendo.default.mobile.min.css" rel="stylesheet" />
-         
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" /> 
+
     <div id="fullscreen" class="container">
         <div class="full-box">
             <a id="request-full" class="btn btn-primary">
@@ -21,10 +22,23 @@
         </div>
         <div>
             <div class="col-md-12 col-sm-12" style=" padding:0">
-                <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">Thống kê đánh giá trong ngày</div>
+                <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">
+                    Thống kê đánh giá trong ngày
+                </div>
+                <div class="col-md-12" style="margin-bottom:10px">
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label" style="float: left; padding-right: 10px; margin: auto; padding-top: 6px;">Bộ lọc báo cáo</label>
+                        <select class="form-control" id="filter-type">
+                            <option value="0">Theo nhân viên</option>
+                            <option value="1">Theo dịch vụ</option>
+                        </select>
+                    </div>
+                    <a id="export-excel" class="btn btn-primary">Xuất báo cáo đánh giá</a>
+                </div>
 
                 <div class="col-md-12 col-sm-12">
-                    <table id="tb_export">
+                    <table id="tb_export" name="tb_export">
                         <thead>
                             <tr>
                                 <td class="col-md-1">TT</td>
@@ -47,7 +61,7 @@
 
 
 
-    
+
     <style>
         #tb_export {
             width: 100%;
@@ -69,115 +83,117 @@
                 text-align: center;
                 padding: 5px 0;
             }
-            .full-box {
-    position: fixed;
-    top: 72px;
-    left: 0px;
-    z-index: 99999;
-    overflow: hidden;
-    margin-left: -15px;
-}
+
+        .full-box {
+            position: fixed;
+            top: 72px;
+            left: 0px;
+            z-index: 99999;
+            overflow: hidden;
+            margin-left: -15px;
+        }
     </style>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script> 
     <script src="~/Content/KendoUI/kendo.all.min.js"></script>
     <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>
     <script src="~/Scripts/QMS/Report/DailyReport.js"></script>
     <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
     <script>
-    (function () {
-        var
-            fullScreenApi = {
-                supportsFullScreen: false,
-                nonNativeSupportsFullScreen: false,
-                isFullScreen: function () { return false; },
-                requestFullScreen: function () { },
-                cancelFullScreen: function () { },
-                fullScreenEventName: '',
-                prefix: ''
-            },
-            browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
 
-        // check for native support
-        if (typeof document.cancelFullScreen != 'undefined') {
-            fullScreenApi.supportsFullScreen = true;
-        } else {
-            // check for fullscreen support by vendor prefix
-            for (var i = 0, il = browserPrefixes.length; i < il; i++) {
-                fullScreenApi.prefix = browserPrefixes[i];
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
 
-                if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
-                    fullScreenApi.supportsFullScreen = true;
-                    break;
-                }
-            }
-        }
-
-        // update methods to do something useful
-        if (fullScreenApi.supportsFullScreen) {
-            fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
-
-            fullScreenApi.isFullScreen = function () {
-                switch (this.prefix) {
-                    case '':
-                        return document.fullScreen;
-                    case 'webkit':
-                        return document.webkitIsFullScreen;
-                    default:
-                        return document[this.prefix + 'FullScreen'];
-                }
-            }
-            fullScreenApi.requestFullScreen = function (el) {
-                return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
-            }
-            fullScreenApi.cancelFullScreen = function (el) {
-                return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
-            }
-        }
-        else if (typeof window.ActiveXObject !== "undefined") { // IE.
-            fullScreenApi.nonNativeSupportsFullScreen = true;
-            fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript !== null) {
-                    wscript.SendKeys("{F11}");
-                }
-            }
-            fullScreenApi.isFullScreen = function () {
-                return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
-            }
-        }
-
-        // jQuery plugin
-        if (typeof jQuery != 'undefined') {
-            jQuery.fn.requestFullScreen = function () {
-
-                return this.each(function () {
-                    if (fullScreenApi.supportsFullScreen) {
-                        fullScreenApi.requestFullScreen(this);
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
                     }
-                });
-            };
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                //  $('#box-date').hide();
+            }
+            else {
+                fullScreenApi.cancelFullScreen(document.documentElement);
+                //   $('#box-date').show();
+            }
         }
 
-        // export api
-        window.fullScreenApi = fullScreenApi;
-    })();
+        $('#request-full').click(function () {
+            check();
+        });
 
-    function check() {
-        if (!fullScreenApi.isFullScreen()) {
-            fullScreenApi.requestFullScreen(document.documentElement);
-          //  $('#box-date').hide();
-        }
-        else {
-            fullScreenApi.cancelFullScreen(document.documentElement);
-         //   $('#box-date').show();
-        }
-    }
 
-    $('#request-full').click(function () {
-        check();
-    });
-  
     </script>
 
 </body>

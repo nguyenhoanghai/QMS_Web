@@ -50,8 +50,8 @@ namespace QMS_Website.Controllers
 
         [HttpGet]
         public ResponseBaseModel Evaluate(string username, string value, int num, string isUseQMS)
-        {
-            return BLLUserEvaluate.Instance.Evaluate(username.Trim().ToUpper(), value, num, isUseQMS);
+        { 
+            return BLLUserEvaluate.Instance.Evaluate(username.Trim().ToUpper(), value, num, isUseQMS );
         }
 
         [HttpGet]
@@ -134,10 +134,10 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
-        public ResponseBase CounterEvent(string counterId,string action )
+        public ResponseBase CounterEvent(string counterId,string action, string param)
         {
             var rs = new ResponseBase(); 
-            string content = "AA," + counterId + "," + action + ",00,00";
+            string content = "AA," + counterId + "," + action + ","+param;
             rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(content, (int)eCounterSoftRequireType.CounterEvent);
             return rs;
         }
