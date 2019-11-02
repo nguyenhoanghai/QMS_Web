@@ -2,6 +2,7 @@
 using QMS_System.Data;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Model;
+using QMS_Website.App_Global;
 using System;
 using System.Web.Mvc;
 
@@ -23,7 +24,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                var objs = BLLUser.Instance.GetList(keyword, searchBy, jtStartIndex, jtPageSize, jtSorting);
+                var objs = BLLUser.Instance.GetList(AppGlobal.Connectionstring, keyword, searchBy, jtStartIndex, jtPageSize, jtSorting);
                 JsonDataResult.Result = "OK";
                 JsonDataResult.Records = objs;
                 JsonDataResult.TotalRecordCount = objs.TotalItemCount; // TotalItemCount la mot property cua PagedList<> dem tong so item
@@ -44,7 +45,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             {
                 if (nv.Counters == null)
                     nv.Counters = "0";
-                rs = BLLUser.Instance.CreateOrUpdate(nv);
+                rs = BLLUser.Instance.CreateOrUpdate(AppGlobal.Connectionstring,nv);
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";
@@ -66,7 +67,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                if (BLLUser.Instance.Delete(manv))
+                if (BLLUser.Instance.Delete(AppGlobal.Connectionstring,manv))
                     JsonDataResult.Result = "OK";
                 else
                     JsonDataResult.Result = "ERROR";
@@ -83,7 +84,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                var nv = BLLUser.Instance.Get(MaNV);
+                var nv = BLLUser.Instance.Get(AppGlobal.Connectionstring,MaNV);
                 JsonDataResult.Result = "OK";
                 JsonDataResult.Data = nv;
                 return Json(JsonDataResult);
@@ -100,7 +101,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             try
             {
                 JsonDataResult.Result = "OK";
-                JsonDataResult.Data = BLLUser.Instance.GetLookUp();
+                JsonDataResult.Data = BLLUser.Instance.GetLookUp(AppGlobal.Connectionstring);
             }
             catch (Exception ex)
             {

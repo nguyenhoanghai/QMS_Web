@@ -9,6 +9,7 @@ using GPRO.Core.Generic;
 using PagedList;
 using QMS_System.Data.BLL;
 using Newtonsoft.Json;
+using QMS_Website.App_Global;
 
 namespace GPRO_QMS_Web.Controllers
 {
@@ -25,7 +26,7 @@ namespace GPRO_QMS_Web.Controllers
 
         public JsonResult CheckServeInformation(int ticket)
         {
-            return Json( BLLDailyRequire.Instance.CheckServeInformation(ticket) );
+            return Json( BLLDailyRequire.Instance.CheckServeInformation(AppGlobal.Connectionstring, ticket) );
         }
 
         //public JsonResult GetServiceSelect()

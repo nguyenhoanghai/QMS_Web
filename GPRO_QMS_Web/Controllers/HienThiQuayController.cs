@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using QMS_System.Data.BLL;
+using QMS_Website.App_Global;
 using QMS_Website.Models;
 using System;
 using System.Configuration;
@@ -28,7 +29,7 @@ namespace GPRO_QMS_Web.Controllers
             ViewData["config"] = item;
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring,User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
@@ -43,7 +44,7 @@ namespace GPRO_QMS_Web.Controllers
             ViewData["config"] = item;
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring,User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
@@ -55,7 +56,7 @@ namespace GPRO_QMS_Web.Controllers
             var counterIds = ConfigurationManager.AppSettings["NotShowCounterIds"].ToString().Split('|').Select(x => Convert.ToInt32(x)).ToArray();
             int[] distanceWarning = ConfigurationManager.AppSettings["DistanceWarning"].ToString().Split('|').Select(x => Convert.ToInt32(x)).ToArray();
 
-            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(isTienthu, maNVThuNgan, counterIds, distanceWarning));
+            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring,isTienthu, maNVThuNgan, counterIds, distanceWarning));
             return Json(obj);
         }
 
@@ -64,7 +65,7 @@ namespace GPRO_QMS_Web.Controllers
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
             var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
 
-            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(countersArr, servicesArr));
+            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring,countersArr, servicesArr));
             return Json(obj);
         }
 
@@ -119,7 +120,7 @@ namespace GPRO_QMS_Web.Controllers
             //ViewData["user"] = User.Identity.Name;
             //ViewData["userInfo"] = BLLUser.Instance.Get(User.Identity.Name);
             //if (!string.IsNullOrEmpty(User.Identity.Name))
-            return View(BLLVideoTemplate.Instance.GetPlaylist());
+            return View(BLLVideoTemplate.Instance.GetPlaylist(AppGlobal.Connectionstring));
             //else
             //    return RedirectToAction("Login", "DangNhap");
         }

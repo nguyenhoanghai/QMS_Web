@@ -26,7 +26,7 @@ GPRO.Home = function () {
         Data: {
             firstLoad: true,
             useQMS: true,
-            reportForUser: false
+            reportForUser: true
         }
     }
     this.GetGlobal = function () {
@@ -34,6 +34,7 @@ GPRO.Home = function () {
     }
 
     this.Init = function () {
+        $('.datepicker').datepicker({ format: 'dd/mm/yyyy', defaultDate: new Date(), setDefaultDate: true });
         RegisterEvent();
         $('#filter-type').change();
     }
@@ -43,7 +44,7 @@ GPRO.Home = function () {
         setInterval(function () { Get(); }, 2000)
 
         $('#export-excel').click(() => {
-            window.location.href = '/Report/Excel_Dgia?useQMS=' + Global.Data.useQMS + '&reportForUser=' + Global.Data.reportForUser;
+            window.location.href = '/Report/Excel_Dgia?useQMS=' + Global.Data.useQMS + '&reportForUser=' + Global.Data.reportForUser + '&fromDate=' + $('#fromDate').val() + '&toDate=' + $('#toDate').val();
         });
 
         $('#filter-type').change(() => {
@@ -58,7 +59,7 @@ GPRO.Home = function () {
         $.ajax({
             url: url,
             type: 'POST',
-            data: JSON.stringify({ 'reportForUser': Global.Data.reportForUser }),
+            data: JSON.stringify({ 'reportForUser': Global.Data.reportForUser, 'fromDate': $('#fromDate').val(), 'toDate': $('#toDate').val() }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var str = '<tr><td colspan="5">Không có dữ liệu</td></tr>';
@@ -97,4 +98,5 @@ GPRO.Home = function () {
 $(document).ready(function () {
     var home = new GPRO.Home();
     home.Init();
+    $('select').formSelect();
 });

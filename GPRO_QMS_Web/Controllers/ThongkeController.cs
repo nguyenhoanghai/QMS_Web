@@ -2,6 +2,7 @@
 using OfficeOpenXml.Style;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Model;
+using QMS_Website.App_Global;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,12 +31,12 @@ namespace QMS_Website.Controllers
             switch (type)
             {
                 case "1":
-                    listObj = BLLUser.Instance.GetLookUp(); break;
+                    listObj = BLLUser.Instance.GetLookUp(AppGlobal.Connectionstring); break;
                 case "2":
-                    listObj = BLLMajor.Instance.GetLookUp(); break;
+                    listObj = BLLMajor.Instance.GetLookUp(AppGlobal.Connectionstring); break;
                 case "3":
                 case "4":
-                    listObj = BLLService.Instance.GetLookUp(); break;
+                    listObj = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring); break;
             }
             if (listObj != null && listObj.Count > 0)
                 foreach (var item in listObj)
@@ -47,7 +48,7 @@ namespace QMS_Website.Controllers
         {
             try
             {
-                var objs = (typeOfSearch == 4 ? BLLReport.Instance.DetailReport_DichVuTienThu(objId, thungan, from, to) : BLLReport.Instance.DetailReport(objId, typeOfSearch, from, to));
+                var objs = (typeOfSearch == 4 ? BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.Connectionstring,objId, thungan, from, to) : BLLReport.Instance.DetailReport(AppGlobal.Connectionstring,objId, typeOfSearch, from, to));
                 return Json(objs);
             }
             catch (Exception)
@@ -75,7 +76,7 @@ namespace QMS_Website.Controllers
                     {
                         var workbook = package.Workbook;
                         var worksheet = workbook.Worksheets.First();
-                        var reportObj = BLLReport.Instance.DetailReport(objId, typeOfSearch, new DateTime(dfrom.Year, dfrom.Month, dfrom.Day), new DateTime(dto.Year, dto.Month, dto.Day, 23, 59, 00));
+                        var reportObj = BLLReport.Instance.DetailReport(AppGlobal.Connectionstring,objId, typeOfSearch, new DateTime(dfrom.Year, dfrom.Month, dfrom.Day), new DateTime(dto.Year, dto.Month, dto.Day, 23, 59, 00));
                         int row = 4;
 
                         #region Draw header
@@ -143,7 +144,7 @@ namespace QMS_Website.Controllers
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.DetailReport_DichVuTienThu(objId, thungan, dfrom, dto);
+                    var reportObj = BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.Connectionstring,objId, thungan, dfrom, dto);
 
                     worksheet.Cells[2, 1].Value = "Từ " + dfrom.ToString("HH:mm") + " ngày " + dfrom.ToString("dd/MM/yyyy") + " - " + dto.ToString("HH:mm") + " ngày " + dto.ToString("dd/MM/yyyy");
                     int row = 5;
@@ -308,7 +309,8 @@ namespace QMS_Website.Controllers
 
         public JsonResult GetReportTH(int typeOfSearch, DateTime from, DateTime to, int thungan)
         {
-            var objs = typeOfSearch == 4 ? BLLReport.Instance.GeneralReport_DichVuTienThu(0, thungan, from, to) : BLLReport.Instance.GeneralReport(0, typeOfSearch, from, to);
+            var objs = typeOfSearch == 4 ? BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.Connectionstring,0, thungan, from, to) :
+                BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring,0, typeOfSearch, from, to);
             return Json(objs);
         }
 
@@ -327,7 +329,7 @@ namespace QMS_Website.Controllers
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.GeneralReport(0, typeOfSearch, dfrom, dto);
+                    var reportObj = BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring,0, typeOfSearch, dfrom, dto);
                     int row = 4;
 
                     #region Draw header
@@ -392,7 +394,7 @@ namespace QMS_Website.Controllers
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.GeneralReport_DichVuTienThu(objId, thungan, dfrom, dto);
+                    var reportObj = BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.Connectionstring,objId, thungan, dfrom, dto);
 
                     worksheet.Cells[2, 1].Value = "Từ " + dfrom.ToString("HH:mm") + " ngày " + dfrom.ToString("dd/MM/yyyy") + " - " + dto.ToString("HH:mm") + " ngày " + dto.ToString("dd/MM/yyyy");
                     int row = 5;

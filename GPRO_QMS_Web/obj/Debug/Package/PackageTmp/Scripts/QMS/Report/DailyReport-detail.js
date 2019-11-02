@@ -42,7 +42,7 @@ GPRO.EvaluateReport = function () {
 
     var RegisterEvent = function () {
         Get();
-        //  setInterval(function () { Get(); }, 2000)
+        setInterval(function () { Get(); }, 2000)
 
         $('#export-excel').click(() => {
             window.location.href = '/Report/Excel_Dgia_Ctiet?useQMS=' + Global.Data.useQMS + '&fromDate=' + $('#fromDate').val() + '&toDate=' + $('#toDate').val();
@@ -72,6 +72,8 @@ GPRO.EvaluateReport = function () {
                         str += ' <td  >' + item.UserName + '</td> ';
                         str += ' <td  >' + item.ServiceName + '</td> ';
                         str += ' <td  >' + moment(item.PrintTime).format('DD/MM/YYYY h:mm:ss a') + '</td> ';
+                        str += '<td>' + ('1000' == item.Score ? item.Comment : "") + '</td>';
+
                         for (var i = 1; i <= 4; i++) {
                             str += '<td>' + (('1_' + i) == item.Score ? "<i class='fa fa-check'/>" : "") + '</td>';
                         }

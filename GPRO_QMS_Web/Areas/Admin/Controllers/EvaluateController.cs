@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using QMS_System.Data;
 using QMS_System.Data.BLL;
+using QMS_Website.App_Global;
 
 namespace GPRO_QMS_Web.Areas.Admin.Controllers
 {
@@ -22,9 +23,9 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             try
             {
                 if (obj.Id == 0)
-                    result = BLLEvaluate.Instance.Insert(obj);
+                    result = BLLEvaluate.Instance.Insert(AppGlobal.Connectionstring,obj);
                 else
-                    result = BLLEvaluate.Instance.Update(obj);
+                    result = BLLEvaluate.Instance.Update(AppGlobal.Connectionstring,obj);
                 if (result == 0)
                 {
                     JsonDataResult.Result = "ERROR";
@@ -43,7 +44,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
 
         public JsonResult GetSelectList()
         {
-            JsonDataResult.Records = BLLEvaluate.Instance.Gets();
+            JsonDataResult.Records = BLLEvaluate.Instance.Gets(AppGlobal.Connectionstring);
             JsonDataResult.Result = "OK";
             return Json(JsonDataResult);
         }
@@ -53,7 +54,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                var objs = BLLEvaluate.Instance.GetList(keyword, jtStartIndex, jtPageSize, jtSorting);
+                var objs = BLLEvaluate.Instance.GetList(AppGlobal.Connectionstring,keyword, jtStartIndex, jtPageSize, jtSorting);
                 JsonDataResult.Records = objs;
                 JsonDataResult.Result = "OK";
                 JsonDataResult.TotalRecordCount = objs.TotalItemCount;
@@ -72,7 +73,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             bool result;
             try
             {
-                result = BLLEvaluate.Instance.Delete(Id);
+                result = BLLEvaluate.Instance.Delete(AppGlobal.Connectionstring,Id);
                 if (!result)
                 {
                     JsonDataResult.Result = "ERROR";
@@ -95,7 +96,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             try
             {
                 JsonDataResult.Result = "OK";
-                JsonDataResult.Data = BLLEvaluate.Instance.GetWithChild();
+                JsonDataResult.Data = BLLEvaluate.Instance.GetWithChild(AppGlobal.Connectionstring);
             }
             catch (Exception ex)
             {

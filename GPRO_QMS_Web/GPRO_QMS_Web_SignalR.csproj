@@ -479,6 +479,7 @@
     <Content Include="Areas\Admin\Scripts\SMS\sms.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Create.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Index.js" />
+    <Content Include="Config_XML\DATA.XML" />
     <Content Include="Config_XML\hien_thi_quay_config.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -740,6 +741,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Global\AppGlobal.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -765,6 +767,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\EncryptionHelper.cs" />
+    <Compile Include="Helper\GPRO_Helper.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Models\BV_ConfigModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

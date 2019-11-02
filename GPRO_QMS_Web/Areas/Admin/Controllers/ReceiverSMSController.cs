@@ -1,6 +1,7 @@
 ﻿using QMS_System.Data;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Model;
+using QMS_Website.App_Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             ResponseBase rs;
             try
             {
-                rs = BLLRecieverSMS.Instance.InsertOrUpdate(obj);
+                rs = BLLRecieverSMS.Instance.InsertOrUpdate(AppGlobal.Connectionstring, obj);
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";
@@ -43,7 +44,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                var objs = BLLRecieverSMS.Instance.Gets(keyword, jtStartIndex, jtPageSize, jtSorting);
+                var objs = BLLRecieverSMS.Instance.Gets(AppGlobal.Connectionstring, keyword, jtStartIndex, jtPageSize, jtSorting);
                 JsonDataResult.Records = objs;
                 JsonDataResult.Result = "OK";
                 JsonDataResult.TotalRecordCount = objs.TotalItemCount;
@@ -61,7 +62,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             ResponseBase rs;
             try
             {
-                rs = BLLRecieverSMS.Instance.Delete(Id);
+                rs = BLLRecieverSMS.Instance.Delete(AppGlobal.Connectionstring,Id);
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";

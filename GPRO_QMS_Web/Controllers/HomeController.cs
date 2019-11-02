@@ -2,7 +2,7 @@
 using Microsoft.AspNet.SignalR;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Enum;
- 
+using QMS_Website.App_Global;
 using QMS_Website.Hubs;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace GPRO_QMS_Web.Controllers
         {
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring, User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
@@ -28,7 +28,7 @@ namespace GPRO_QMS_Web.Controllers
         {
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring, User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
@@ -41,7 +41,7 @@ namespace GPRO_QMS_Web.Controllers
                     return Json("-1");
                 else
                 {
-                    var obj = BLLDailyRequire.Instance.GetCurrentProcess(User.Identity.Name.Trim().ToUpper());
+                    var obj = BLLDailyRequire.Instance.GetCurrentProcess(AppGlobal.Connectionstring, User.Identity.Name.Trim().ToUpper());
                     return Json((obj == null ? "0,0" : (obj.Id + "," +  obj.Data)));
                 }
             }
@@ -58,7 +58,7 @@ namespace GPRO_QMS_Web.Controllers
         {
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring, User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
@@ -67,7 +67,7 @@ namespace GPRO_QMS_Web.Controllers
         {
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring, User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
@@ -76,19 +76,19 @@ namespace GPRO_QMS_Web.Controllers
         {
             ViewData["user"] = User.Identity.Name;
             if (!string.IsNullOrEmpty(User.Identity.Name))
-                return View(BLLUser.Instance.Get(User.Identity.Name));
+                return View(BLLUser.Instance.Get(AppGlobal.Connectionstring, User.Identity.Name));
             else
                 return RedirectToAction("Login", "DangNhap");
         }
         
-        public JsonResult Evaluate(string name ,string value, int num, string isUseQMS)
+        public JsonResult Evaluate(string name ,string value, int num, string isUseQMS, string comment)
         {
             try
             {
          //if (string.IsNullOrEmpty(User.Identity.Name))
             //    return Json("-1");
             //else
-                return Json(BLLUserEvaluate.Instance.Evaluate(name.Trim().ToUpper(), value, num, isUseQMS));
+                return Json(BLLUserEvaluate.Instance.Evaluate(AppGlobal.Connectionstring, name.Trim().ToUpper(), value, num, isUseQMS, comment));
             }
             catch (Exception ex)
             { 
