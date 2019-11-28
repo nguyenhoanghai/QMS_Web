@@ -479,6 +479,37 @@
     <Content Include="Areas\Admin\Scripts\SMS\sms.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Create.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Index.js" />
+    <Content Include="Audios\#0.wav" />
+    <Content Include="Audios\#1.wav" />
+    <Content Include="Audios\#2.wav" />
+    <Content Include="Audios\#3.wav" />
+    <Content Include="Audios\#4.wav" />
+    <Content Include="Audios\#5.wav" />
+    <Content Include="Audios\#6.wav" />
+    <Content Include="Audios\#7.wav" />
+    <Content Include="Audios\#8.wav" />
+    <Content Include="Audios\#9.wav" />
+    <Content Include="Audios\KHOA.wav" />
+    <Content Include="Audios\moi benh vien.wav" />
+    <Content Include="Audios\Q1.wav" />
+    <Content Include="Audios\Q10.wav" />
+    <Content Include="Audios\Q11.wav" />
+    <Content Include="Audios\Q12.wav" />
+    <Content Include="Audios\Q13.wav" />
+    <Content Include="Audios\Q14.wav" />
+    <Content Include="Audios\Q15.wav" />
+    <Content Include="Audios\Q16.wav" />
+    <Content Include="Audios\Q17.wav" />
+    <Content Include="Audios\Q18.wav" />
+    <Content Include="Audios\Q19.wav" />
+    <Content Include="Audios\Q2.wav" />
+    <Content Include="Audios\Q3.wav" />
+    <Content Include="Audios\Q4.wav" />
+    <Content Include="Audios\Q5.wav" />
+    <Content Include="Audios\Q6.wav" />
+    <Content Include="Audios\Q7.wav" />
+    <Content Include="Audios\Q8.wav" />
+    <Content Include="Audios\Q9.wav" />
     <Content Include="Config_XML\DATA.XML" />
     <Content Include="Config_XML\hien_thi_quay_config.xml">
       <SubType>Designer</SubType>
@@ -696,9 +727,11 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\playSound.min.js" />
     <Content Include="Scripts\QMS\DangNhap\DangNhap.js" />
     <Content Include="Scripts\QMS\danh-gia\danh-gia-10-nut.js" />
     <Content Include="Scripts\QMS\HienThiQuay\lcd-1.js" />
+    <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video-doc.js" />
     <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.css" />
@@ -815,6 +848,8 @@
     <Content Include="Views\LCDQuay\MH1.cshtml" />
     <Content Include="Views\LCDQuay\MH2.cshtml" />
     <Content Include="Views\Report\DailyDetailsReport.cshtml" />
+    <Content Include="Views\HienThiQuay\ManHinhCoVideo_Doc.cshtml" />
+    <Content Include="Views\HienThiQuay\TienThu_CoVideo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

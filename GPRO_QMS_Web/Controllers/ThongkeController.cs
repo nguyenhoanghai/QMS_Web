@@ -31,12 +31,12 @@ namespace QMS_Website.Controllers
             switch (type)
             {
                 case "1":
-                    listObj = BLLUser.Instance.GetLookUp(AppGlobal.Connectionstring); break;
+                    listObj = BLLUser.Instance.GetLookUp(AppGlobal.Connectionstring ); break;
                 case "2":
-                    listObj = BLLMajor.Instance.GetLookUp(AppGlobal.Connectionstring); break;
+                    listObj = BLLMajor.Instance.GetLookUp(AppGlobal.Connectionstring ); break;
                 case "3":
                 case "4":
-                    listObj = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring); break;
+                    listObj = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring,false); break;
             }
             if (listObj != null && listObj.Count > 0)
                 foreach (var item in listObj)

@@ -64,8 +64,8 @@ namespace GPRO_QMS_Web.Controllers
         {
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
             var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-
-            var obj = JsonConvert.SerializeObject(BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring,countersArr, servicesArr));
+            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr);
+            var obj = JsonConvert.SerializeObject(ss);
             return Json(obj);
         }
 
@@ -102,6 +102,11 @@ namespace GPRO_QMS_Web.Controllers
             return View();
         }
 
+        public ActionResult TienThu_CoVideo()
+        {
+            return View(BLLVideoTemplate.Instance.GetPlaylist(AppGlobal.Connectionstring));
+        }
+
         public ActionResult VinhCat()
         {
             return View();
@@ -123,6 +128,18 @@ namespace GPRO_QMS_Web.Controllers
             return View(BLLVideoTemplate.Instance.GetPlaylist(AppGlobal.Connectionstring));
             //else
             //    return RedirectToAction("Login", "DangNhap");
+        }
+
+        public ActionResult ManHinhCoVideo_Doc()
+        {
+            var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
+            XDocument testXML = XDocument.Load(path);
+            XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals("6")).FirstOrDefault();
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            BV_ConfigModel item = serializer.Deserialize<BV_ConfigModel>(cStudent.Element("Value").Value);
+            ViewData["config"] = item;
+            return View(BLLVideoTemplate.Instance.GetPlaylist(AppGlobal.Connectionstring)); 
         }
 
         public ActionResult LCD1()

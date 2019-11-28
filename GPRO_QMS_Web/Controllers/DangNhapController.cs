@@ -1,5 +1,6 @@
 ﻿using GPRO_QMS_Web.Areas.Admin.Controllers;
 using QMS_System.Data.BLL;
+using QMS_Website.App_Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace GPRO_QMS_Web.Controllers
             try
             {
                // if (UserName.Trim().ToLower().)
-                var user = BLLUser.Instance.Get(UserName.Trim().ToUpper(), Password.Trim().ToUpper());
+                var user = BLLUser.Instance.Get(AppGlobal.Connectionstring, UserName.Trim().ToUpper(), Password.Trim().ToUpper());
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(UserName, false);

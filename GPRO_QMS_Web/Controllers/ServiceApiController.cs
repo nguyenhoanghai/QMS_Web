@@ -113,7 +113,7 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public List<ModelSelectItem> GetServices()
         {
-            return BLLService.Instance.GetLookUp(connectString);
+            return BLLService.Instance.GetLookUp(connectString,false);
         }
 
         [HttpGet]
