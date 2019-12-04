@@ -1,0 +1,272 @@
+﻿@using System.Configuration;
+@using Newtonsoft.Json
+@{ Layout = null; }
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bảng Thông Tin Phục Vụ</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/Alert/common.js"></script>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/QMS/HienThiQuay/HienThiQuay.css" rel="stylesheet" />
+    <script src="~/Scripts/TotemTicker/jquery.totemticker.min.js"></script>
+    <script src="~/Scripts/SlideJs/jquery.cycle.all.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/QMS/HienThiQuay/tien-thu.js"></script>
+</head>
+<body>
+    <div id="fullscreen" class="container">
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        <div style="background:black; color:#ccc">
+            <div class="col-md-1" style="height:109px; display:grid">
+                <img src="~/Content/logo.png" style="height:inherit; padding:inherit; " />
+            </div>
+            <div class="col-md-9">
+                <div class="col-md-12 center bold " style="font-size:45px">BẢNG THÔNG TIN PHỤC VỤ</div>
+                <div class="col-md-3 font_30 no_Padding_Margin center">TỔNG XE <span class="center bold font-dt" id="totalcar">0</span></div>
+                <div class="col-md-3 font_30 no_Padding_Margin center">ĐÃ XỬ LÝ <span class="center bold font-dt" id="done">0</span></div>
+                <div class="col-md-3 font_30 no_Padding_Margin center">ĐANG CHỜ <span class="center bold font-dt" id="waiting">0</span></div>
+                <div class="col-md-3 font_30 no_Padding_Margin center">ĐANG XỬ LÝ <span class="center bold font-dt" id="procesing">0</span></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-2 font-dt center" style="padding-top:10px">
+                <div id="date"></div>
+                <div id="time"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <div class="col-md-4  title">BÀN</div>
+            <div class="col-md-2  title">SỐ PHIẾU</div>
+            <div class="col-md-3  title">GIỜ BẮT ĐẦU</div>
+            <div class="col-md-3  title">TG XỬ LÝ</div>
+            <div class="clearfix"></div>
+        </div>
+        <ul id="ticker" class="col-md-12">
+            <li class="col-md-12 rowcontent">Không có dữ liệu</li>
+        </ul>
+        <div id="table2" config="@ConfigurationManager.AppSettings["ChangePage"].ToString()" rows="@ConfigurationManager.AppSettings["TickerRows"].ToString()" size-dt="@ConfigurationManager.AppSettings["size-dt"].ToString()" size-text="@ConfigurationManager.AppSettings["size-text"].ToString()">
+            <div id="vtemslideshow1" class="vtem_main_slideshow"> </div>
+        </div>
+
+        <div class="col m12 s12 right-box" style="padding:0">
+            <video autoplay controls
+                   name="media"
+                   id="video"
+                   autobuffer
+                   onended="RunNext()"
+                   src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <style>
+        #ticker {
+            padding: 0 !important;
+            height: 500px;
+            display: none;
+            margin-top: -21px;
+        }
+
+            #ticker ul,
+            #ticker ul li {
+                list-style: none;
+                padding: 0 !important;
+            }
+
+        #table2 {
+            margin: 0;
+            padding: 0;
+            width: 99.5%;
+            display: none;
+            height: 600px;
+        }
+
+            #table2 li {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+        .rowcontent {
+            height: 90px;
+            line-height: 90px;
+            padding: 0 !important;
+        }
+
+        .bd-bt {
+            border-bottom: 2px solid #ccc !important;
+        }
+    </style>
+
+    <script>
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                var video = document.getElementById("video");
+                video.play();
+            }  
+            else
+                fullScreenApi.cancelFullScreen(document.documentElement);
+        }
+
+        $('#request-full').click(function () {
+            check();
+        });
+
+
+        function RunTicker() {
+            if ($('#table2').attr('config') == 'ticker') {
+                $('#ticker').totemticker({
+                    row_height: $('#ticker ul li').css('height'),
+                    mousestop: false,
+                    speed: 800,
+                    interval: 2000,
+                    max_items: parseInt($('#table2').attr('rows')),
+                    row_move: 1,
+                    type: 'ul'
+                });
+            }
+            else {
+                $('#vtemslideshow1').cycle({
+                    fx: 'blindX,blindY,blindZ,fadeZoom,toss',
+                    timeout: 3000,
+                    speed: 1000,
+                    next: '#cycle_next',
+                    prev: '#cycle_prev',
+                    pager: '#vtemnav',
+                    pagerEvent: 'click',
+                    startingSlide: 0,
+                    fit: true,
+                    height: 550,
+                });
+            }
+        }
+
+
+    </script>
+
+    <script>
+        var list = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model))');
+        var index = (list != null && list.length > 1 ? 1 : 0);
+
+            function toggleMute() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/'+list[index].Path;
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+            }
+
+            function RunNext() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/' + list[index].Path;
+                setTimeout('', 5000);
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+            };
+    </script>
+
+</body>
+</html>

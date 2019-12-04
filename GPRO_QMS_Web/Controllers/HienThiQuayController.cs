@@ -60,11 +60,20 @@ namespace GPRO_QMS_Web.Controllers
             return Json(obj);
         }
 
-        public JsonResult GetDayInfo_BV(string counters, string services)
+        //public JsonResult GetDayInfo_BV(string counters, string services)
+        //{
+        //    var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+        //    var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+        //    var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr);
+        //    var obj = JsonConvert.SerializeObject(ss);
+        //    return Json(obj);
+        //}
+
+        public JsonResult GetDayInfo_BV(string counters, string services,int userId)
         {
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
             var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr);
+            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr,userId);
             var obj = JsonConvert.SerializeObject(ss);
             return Json(obj);
         }
