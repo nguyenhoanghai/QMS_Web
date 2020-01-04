@@ -37,6 +37,7 @@
                 @RenderBody()
             </div>
         </div>
+        <audio id="audio" src="~/audios/pingpong.wav" type="audio/wav"></audio>
 
         <script>
             (function () {
@@ -118,17 +119,28 @@
             })();
 
             function check() {
-                if (!fullScreenApi.isFullScreen())
+                if (!fullScreenApi.isFullScreen()) {
+                    $('.setting').hide();
                     fullScreenApi.requestFullScreen(document.documentElement);
-                else
+                    var audio = document.getElementById("audio");
+                    var audioPromise = audio.play();
+                    if (audioPromise !== undefined) {
+                        audioPromise.then(_ => { }).catch(error => { });
+                    }
+                }
+
+                else {
                     fullScreenApi.cancelFullScreen(document.documentElement);
+                    $('.setting').show();
+                }
+
             }
 
             $('#request-full').click(function () {
                 check();
             });
 
-            function SaveConfig(jsonConfig,pageType) {
+            function SaveConfig(jsonConfig, pageType) {
                 $.ajax({
                     url: '/HienThiQuay/SaveBVConfig',
                     type: 'POST',

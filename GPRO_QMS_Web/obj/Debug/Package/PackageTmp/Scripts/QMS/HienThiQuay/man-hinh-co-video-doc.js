@@ -33,7 +33,7 @@ GPRO.BenhVien = function () {
             sounds: [],
             index: 0,
             reading: false,
-            first:true
+            first: true 
         }
     }
     this.GetGlobal = function () {
@@ -41,12 +41,10 @@ GPRO.BenhVien = function () {
     }
 
     this.Init = function () {
-
-        RegisterEvent();
-        initAudio();
+        RegisterEvent(); 
         GetConfig();
         Get();
-        var e = setInterval(function () { Get(); }, 1000);
+        //var e = setInterval(function () { Get(); }, 1000);
         $('.marquee').marquee();
     }
 
@@ -58,6 +56,10 @@ GPRO.BenhVien = function () {
         $('[runmaquee]').click(function () { document.getElementsByTagName('marquee').start(); });
 
         $(".marquee").marquee();
+
+        $('#audio').on('ended', function () {
+           playSound();
+        }); 
     }
     function SaveConfig() {
         var obj = {
@@ -99,64 +101,42 @@ GPRO.BenhVien = function () {
             url: Global.UrlAction.GetDayInfo,
             type: 'POST',
             // data: JSON.stringify({ 'counters': $('#fullscreen').attr('counters'), 'services': $('#service').val() }),
-            data: JSON.stringify({ 'counters': ('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userId': 1 }),
+            data: JSON.stringify({ 'counters': ('2,3,4,5,6'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userId': 3 }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var objs = JSON.parse(data);
-                // if (!Global.Data.Drawed || (Global.Data.lastRows != obj.Details.length))
+                //TODO test
+               // if (Global.Data.sounds.length <30)
+               // Global.Data.sounds = Global.Data.sounds.concat(('moi benh vien.wav|1.wav|4.wav|5.wav|9.wav|q1.wav').split('|'));
+
+                if (objs.Sounds != null && objs.Sounds.length > 0)
+                    $.each(objs.Sounds, (i, item) => {
+                        Global.Data.sounds = Global.Data.sounds.concat(item.split('|'));
+                    })
+
+                if (Global.Data.sounds.length > 0 && !Global.Data.reading) {
+                    Global.Data.reading = true;
+                    playSound();
+                }                  
+                 
                 if (!Global.Data.Drawed)
                     DrawTable(objs.Details);
                 else
                     BindTable(objs.Details);
-
-                if (objs.Sounds != null && objs.Sounds.length > 0) {
-                    $.each(objs.Sounds, (i, item) => {
-                        Global.Data.sounds = Global.Data.sounds.concat(item.split('|'));
-                    })
-                }
-
-
-                if (Global.Data.sounds.length > 0 && !Global.Data.reading) {
-                    Global.Data.reading = true;
-                    $('#btplay').click();
-                }
-                //if (Global.Data.first && Global.Data.reading) {
-                //    Global.Data.reading = false;
-                //    Global.Data.first = false;
-                //}
-                    
             }
         });
-    }
+    } 
 
-
-    function initAudio() {
-        var audioE = document.getElementById('myAudio');
-        $('#myAudio').on('ended', function () {
-            try {
-                if (Global.Data.sounds.length > 0) {
-                    audioE.src = '/audios/' + Global.Data.sounds[0];
-                    Global.Data.sounds.splice(0, 1);
-                    audioE.play();
-                }
-                else {
-                    audioE.src = '';
-                    Global.Data.reading = false;
-                }
-            } catch (e) {
-                Global.Data.reading = false;
-            }
-        });
-        $('#btplay').click(() => {
-            try {
-                var audioE = document.getElementById('myAudio');
-                audioE.src = '/audios/' + Global.Data.sounds[0];
-                Global.Data.sounds.splice(0, 1);
-                audioE.play();
-            } catch (e) {
-                Global.Data.reading = false;
-            }
-        }); 
+    function playSound() {
+        var audioE = document.getElementById('audio');
+        if (Global.Data.sounds.length > 0) {
+            audioE.src = '/audios/' + Global.Data.sounds[0];
+            Global.Data.sounds.splice(0, 1);
+            audioE.play(); 
+        }
+        else { 
+            Global.Data.reading = false;
+        }
     }
 
     function GetConfig() {
@@ -246,4 +226,6 @@ GPRO.BenhVien = function () {
 $(document).ready(function () {
     var home = new GPRO.BenhVien();
     home.Init();
+
+
 });

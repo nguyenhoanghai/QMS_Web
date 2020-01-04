@@ -14,7 +14,7 @@
   </View>
   <View ID="6">
     <Name>man_hinh_co_video</Name>
-    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Adv_Css":"","Row":"1","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important","css_box_video":"display:block;width:100% !important;height:550px !important"}</Value>
+    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Adv_Css":"","Row":"4","Col":"1","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important","css_box_video":"display:block;width:100% !important;height:550px !important"}</Value>
   </View>
   <View ID="5">
     <Name>man_hinh_co_video</Name>
@@ -22,11 +22,15 @@
   </View>
   <View ID="MH1">
     <Name>man_hinh_tien_thu</Name>
-    <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ ","tieu_de_css":"font-size:45px","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ                   ","sub_tieu_de_css":" background: blue;    font-size: 30px;    line-height: 30px;    text-align: center;    font-weight: bold;     border-right: none;    border-bottom: none;    padding: 10px 0;    background: blue;    color: white;","noi_dung_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","noi_dung_so_css":"font-size: 90px !important;    line-height: 90px !important; background: black;    color: red !important;","dong_1_trang":"6","thoi_gian_lat_trang":"30","show_type":"slide"}</Value>
+    <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ ","tieu_de_css":"font-size:45px","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ|TG phục vụ tc|TG còn lại                      ","sub_tieu_de_css":" background: blue; font-size: 30px; line-height: 30px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0; background: blue; color: white; text-transform: uppercase;","noi_dung_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","noi_dung_so_css":"font-size: 90px !important;    line-height: 90px !important; background: black;    color: red !important;","dong_1_trang":"8","thoi_gian_lat_trang":"1","show_type":"slide"}</Value>
   </View>
   <View ID="MH2">
     <Name>man_hinh_tien_thu</Name>
     <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ ","tieu_de_css":"font-size:45px","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ|TG phục vụ tc|TG còn lại                     ","sub_tieu_de_css":" background: blue; font-size: 30px; line-height: 30px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0; background: blue; color: white; text-transform: uppercase;","noi_dung_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","noi_dung_so_css":"font-size: 90px !important;    line-height: 90px !important; background: black;    color: red !important;","dong_1_trang":"8","thoi_gian_lat_trang":"1","show_type":"slide"}</Value>
+  </View>
+  <View ID="MH3">
+    <Name>man_hinh_tien_thu</Name>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:40px !important","sub_tieu_de_css":" font-size: 45px !important; line-height: 45px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; line-height: 45px; ","stt_css":" font-size: 120px !important; line-height: 120px; ","noi_dung_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white; height: 90px; line-height: 90px; padding: 0 !important","dong_1_trang":"8","thoi_gian_lat_trang":"1","show_type":"slide"}</Value>
   </View>
   <View ID="Security">
     <Name>Security</Name>

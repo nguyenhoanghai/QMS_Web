@@ -153,36 +153,12 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <audio id="myAudio"   >
-        Your browser does not support the audio element.
-    </audio>
-    <button id="btplay">play</button>
+
+    <audio id="audio" src="~/audios/pingpong.wav" type="audio/wav"></audio>
+    <input type="button" value="Start" id="start" />
+
     <script src="~/Scripts/QMS/HienThiQuay/man-hinh-co-video-doc.js"></script>
     <script>
-        /*
-        var sounds = ['moi benh vien.wav', '1.wav', '2.wav', '3.wav', '4.wav', 'q1.wav'];
-        var index = 0;         
-        var audioE = document.getElementById('myAudio');
-        $('#myAudio').on('ended', function () {
-            if (index < sounds.length) {
-                audioE.src = '/audios/' + sounds[index];
-                audioE.play();
-                index++;
-            }
-            else {
-                audioE.src = '';
-                index = 0;
-            }              
-        });
-        $('#btplay').click(() => {
-            var audioE = document.getElementById('myAudio');
-            audioE.src = '/audios/' + sounds[0];
-            audioE.play();
-            index++;
-        });  
-
-        var i = setInterval(() => { $('#btplay').click();   }, 5000);
-        */
         (function () {
             var
                 fullScreenApi = {
@@ -248,7 +224,6 @@
             // jQuery plugin
             if (typeof jQuery != 'undefined') {
                 jQuery.fn.requestFullScreen = function () {
-
                     return this.each(function () {
                         if (fullScreenApi.supportsFullScreen) {
                             fullScreenApi.requestFullScreen(this);
@@ -256,7 +231,6 @@
                     });
                 };
             }
-
             // export api
             window.fullScreenApi = fullScreenApi;
         })();
@@ -266,8 +240,16 @@
                 fullScreenApi.requestFullScreen(document.documentElement);
                 $('.setting').hide();
                 var video = document.getElementById("video");
-                video.play();
-                $('#btplay').click();
+                var videoPromise = video.play();
+                if (videoPromise !== undefined) {
+                    videoPromise.then(_ => {}).catch(error => { });
+                }
+
+                var audio = document.getElementById("audio");
+                var audioPromise = audio.play();
+                if (audioPromise !== undefined) {
+                    audioPromise.then(_ => {}).catch(error => { });
+                }
             }
             else {
                 fullScreenApi.cancelFullScreen(document.documentElement);
@@ -279,18 +261,11 @@
             check();
         });
         var home = new GPRO.BenhVien();
-        home.Init();
-
-        function abb() {
-            alert('ii');
-        }
-
-        // document.getElementById('myAudio').play();
+        home.Init(); 
     </script>
     <script>
         var list = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model))');
         var index = (list != null && list.length > 1 ? 1 : 0);
-
             function toggleMute() {
                 var video = document.getElementById("video");
                 video.src = '/Videos/'+list[index].Path;
@@ -310,17 +285,12 @@
                     index = 0;
                 else
                     index++;
-            };
+        };
 
         $(document).ready(function () {
-            //var intel = setInterval(() => {
-            //    var video = document.getElementById("video");
-            //    video.play(); clearInterval(intel)
-            //}, 10000);
-
             $('.materialize-textarea').trigger('autoresize');
-          //  Materialize.updateTextFields();
-            })
+        })
+
     </script>
 </body>
 </html>

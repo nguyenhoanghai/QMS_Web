@@ -37,8 +37,9 @@ GPRO.HienThiQuay = function () {
     this.Init = function () {
         InitHub();
         RegisterEvent();
-        Get();
-        setInterval(function () {  GetTime();  }, 100);
+       // Get();
+        //setInterval(function () {  GetTime();  }, 100);
+         setInterval(function () { Get (); }, 1000);
     }
 
     var RegisterEvent = function () {
@@ -132,8 +133,9 @@ GPRO.HienThiQuay = function () {
                 str += '<div class="col-md-2 rowcontent font-dt ">' + item.TicketNumber + '</div>';
                 str += '<div class="col-md-2 rowcontent font-dt ">' + item.StartStr + '</div>';
                 str += '<div class="col-md-2 rowcontent font-dt ">' + item.TimeProcess + '</div>  ';
-                str += '<div class="col-md-2 rowcontent font-dt ">' + item.strServeTimeAllow + '</div>  ';
-                str += '<div class="col-md-2 rowcontent font-dt over ' + (item.IsEndTime ? "doi" : "") + '">' + item.strTimeCL + '</div> <div class="clearfix"></div></div>';
+                str += '<div class="col-md-2 rowcontent font-dt ">' + item.strServeTimeAllow + '</div>  ';   
+               // str += '<div class="col-md-2 rowcontent font-dt over ' + (item.IsEndTime ? "doi" : "") + '">' + item.strTimeCL + '</div> <div class="clearfix"></div></div>';
+                str += '<div class="col-md-2 rowcontent font-dt">' + item.strTGDK_Khach + '</div> <div class="clearfix"></div></div>';
 
                 count++;
                 if (count == parseInt($('#table2').attr('rows'))) {
@@ -163,7 +165,8 @@ GPRO.HienThiQuay = function () {
                         case 2: $(div).html(item.StartStr); break;
                         case 3: $(div).html(item.TimeProcess); break;
                         case 4: $(div).html(item.strServeTimeAllow); break;
-                        case 5: $(div).html(item.strTimeCL); break;
+                       // case 5: $(div).html(item.strTimeCL); break;
+                        case 5: $(div).html(item.strTGDK_Khach); break;
                     }
                 });
 

@@ -126,7 +126,7 @@ namespace GPRO_QMS_Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo_Doc", id = UrlParameter.Optional }
+                defaults: new { controller = "HienThiQuay", action = "tienthu_covideo", id = UrlParameter.Optional }
             );
         }
     }

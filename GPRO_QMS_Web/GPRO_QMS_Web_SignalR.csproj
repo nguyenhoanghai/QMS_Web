@@ -489,8 +489,31 @@
     <Content Include="Audios\7.wav" />
     <Content Include="Audios\8.wav" />
     <Content Include="Audios\9.wav" />
+    <Content Include="Audios\CD01.wav" />
+    <Content Include="Audios\CD1.wav" />
+    <Content Include="Audios\CD10.wav" />
+    <Content Include="Audios\CD2.wav" />
+    <Content Include="Audios\CD3.wav" />
+    <Content Include="Audios\CD4.wav" />
+    <Content Include="Audios\CD5.wav" />
+    <Content Include="Audios\CD6.wav" />
+    <Content Include="Audios\CD7.wav" />
+    <Content Include="Audios\CD8.wav" />
+    <Content Include="Audios\CD9.wav" />
+    <Content Include="Audios\D1.wav" />
+    <Content Include="Audios\D10.wav" />
+    <Content Include="Audios\D2.wav" />
+    <Content Include="Audios\D3.wav" />
+    <Content Include="Audios\D4.wav" />
+    <Content Include="Audios\D5.wav" />
+    <Content Include="Audios\D6.wav" />
+    <Content Include="Audios\D7.wav" />
+    <Content Include="Audios\D8.wav" />
+    <Content Include="Audios\D9.wav" />
     <Content Include="Audios\KHOA.wav" />
     <Content Include="Audios\moi benh vien.wav" />
+    <Content Include="Audios\Moichuong.wav" />
+    <Content Include="Audios\pingpong.wav" />
     <Content Include="Audios\Q1.wav" />
     <Content Include="Audios\Q10.wav" />
     <Content Include="Audios\Q11.wav" />
@@ -510,6 +533,8 @@
     <Content Include="Audios\Q7.wav" />
     <Content Include="Audios\Q8.wav" />
     <Content Include="Audios\Q9.wav" />
+    <Content Include="Audios\silent.wav" />
+    <Content Include="Audios\XESO.wav" />
     <Content Include="Config_XML\DATA.XML" />
     <Content Include="Config_XML\hien_thi_quay_config.xml">
       <SubType>Designer</SubType>
@@ -747,6 +772,7 @@
     <Content Include="Scripts\QMS\Home\Home.js" />
     <Content Include="Scripts\QMS\LCDQuay\MH2.js" />
     <Content Include="Scripts\QMS\LCDQuay\MH1.js" />
+    <Content Include="Scripts\QMS\ManHinhGoiSo\goi-so-1.js" />
     <Content Include="Scripts\QMS\Report\DailyReport-detail.js" />
     <Content Include="Scripts\QMS\Report\DailyReport.js" />
     <Content Include="Scripts\QMS\Report\View.js" />
@@ -793,6 +819,7 @@
     <Compile Include="Controllers\HienThiQuayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LCDQuayController.cs" />
+    <Compile Include="Controllers\ManHinhGoiSoController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ServiceApiController.cs" />
     <Compile Include="Controllers\ThongkeController.cs" />
@@ -850,6 +877,7 @@
     <Content Include="Views\Report\DailyDetailsReport.cshtml" />
     <Content Include="Views\HienThiQuay\ManHinhCoVideo_Doc.cshtml" />
     <Content Include="Views\HienThiQuay\TienThu_CoVideo.cshtml" />
+    <Content Include="Views\ManHinhGoiSo\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
