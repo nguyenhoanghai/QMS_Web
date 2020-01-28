@@ -43,7 +43,7 @@ namespace GPRO_QMS_Web.Controllers
         {
             var f = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
             var t = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
-            return Json(BLLUserEvaluate.Instance.GetDailyReport_Detail(AppGlobal.Connectionstring, f, t));
+            return Json(BLLUserEvaluate.Instance.GetDailyReport_Detail(AppGlobal.sqlConnection, f, t));
         }
 
         public void Excel_Dgia_Ctiet(bool useQMS, string fromDate, string toDate)
@@ -58,7 +58,7 @@ namespace GPRO_QMS_Web.Controllers
                 worksheet.Cells[3, 11].Value = (fromDate == toDate ? fromDate : (fromDate + " - " + toDate));
                 List<ReportEvaluateDetailModel> reportObj = null;
                 if (useQMS)
-                    reportObj = BLLUserEvaluate.Instance.GetDailyReport_Detail(AppGlobal.Connectionstring, f, t);
+                    reportObj = BLLUserEvaluate.Instance.GetDailyReport_Detail(AppGlobal.sqlConnection, f, t);
                 //else
                 //    reportObj = BLLUserEvaluate.Instance.GetDailyReport_NotUseQMS(reportForUser);
                 if (reportObj.Count > 0)
@@ -78,10 +78,10 @@ namespace GPRO_QMS_Web.Controllers
                         worksheet.Cells[col, 5].Value = reportObj[i].ServiceName;
                         worksheet.Cells[col, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet.Cells[col, 6].Value = reportObj[i].PrintTime.ToString("dd/MM/yyyy HH:mm:ss");
+                        worksheet.Cells[col, 6].Value = (reportObj[i].PrintTime.HasValue ? reportObj[i].PrintTime.Value.ToString("dd/MM/yyyy HH:mm:ss") : "");
                         worksheet.Cells[col, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet.Cells[col, 7].Value = reportObj[i].EvaluateTime.ToString("dd/MM/yyyy HH:mm:ss");
+                        worksheet.Cells[col, 7].Value = (reportObj[i].EvaluateTime.HasValue ? reportObj[i].EvaluateTime.Value.ToString("dd/MM/yyyy HH:mm:ss") : reportObj[i].PrintTime.Value.AddMinutes(15).ToString("dd/MM/yyyy HH:mm:ss"));
                         worksheet.Cells[col, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                         worksheet.Cells[col, 8].Value = reportObj[i].Score == "1000" && reportObj[i].Comment != null ? reportObj[i].Comment : "";
@@ -150,14 +150,15 @@ namespace GPRO_QMS_Web.Controllers
         {
             var f = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
             var t = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
-            return Json(BLLUserEvaluate.Instance.GetDailyReport_NotUseQMS(AppGlobal.Connectionstring, reportForUser,f,t));
+            return Json(BLLUserEvaluate.Instance.GetDailyReport_NotUseQMS(AppGlobal.sqlConnection, reportForUser, f, t));
         }
 
         public JsonResult GetDailyReport(bool reportForUser, string fromDate, string toDate)
         {
             var f = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
-            var t = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
-            return Json(BLLUserEvaluate.Instance.GetDailyReport(AppGlobal.Connectionstring, reportForUser,f,t));
+            var t = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.CurrentCulture); 
+            var data = BLLUserEvaluate.Instance.GetDailyReport(AppGlobal.sqlConnection, reportForUser, f, t);
+            return Json(data);
         }
 
         public void Excel(int userId, string from, string to, bool useQMS)
@@ -182,7 +183,7 @@ namespace GPRO_QMS_Web.Controllers
                         worksheet.Cells[col, 3].Value = (i + 1);
                         worksheet.Cells[col, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                         worksheet.Cells[col, 4].Value = reportObj[i].Name;
-                        worksheet.Cells[col, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin); 
+                        worksheet.Cells[col, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                         for (int iii = 0; iii < reportObj[i].Details.Count; iii++)
                         {
                             worksheet.Cells[col, (5 + iii)].Value = reportObj[i].Details[iii].Id;
@@ -224,9 +225,9 @@ namespace GPRO_QMS_Web.Controllers
                 var worksheet = workbook.Worksheets.First();
                 List<ReportEvaluateModel> reportObj;
                 if (useQMS)
-                    reportObj = BLLUserEvaluate.Instance.GetDailyReport(AppGlobal.Connectionstring, reportForUser,f,t);
+                    reportObj = BLLUserEvaluate.Instance.GetDailyReport(AppGlobal.sqlConnection, reportForUser, f, t);
                 else
-                    reportObj = BLLUserEvaluate.Instance.GetDailyReport_NotUseQMS(AppGlobal.Connectionstring, reportForUser,f, t);
+                    reportObj = BLLUserEvaluate.Instance.GetDailyReport_NotUseQMS(AppGlobal.sqlConnection, reportForUser, f, t);
                 worksheet.Cells[3, 8].Value = (fromDate == toDate ? fromDate : (fromDate + " - " + toDate));
                 if (reportObj.Count > 0)
                 {

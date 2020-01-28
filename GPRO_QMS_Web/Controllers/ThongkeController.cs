@@ -48,7 +48,7 @@ namespace QMS_Website.Controllers
         {
             try
             {
-                var objs = (typeOfSearch == 4 ? BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.Connectionstring,objId, thungan, from, to) : BLLReport.Instance.DetailReport(AppGlobal.Connectionstring,objId, typeOfSearch, from, to));
+                var objs = (typeOfSearch == 4 ? BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.sqlConnection,objId, thungan, from, to) : BLLReport.Instance.DetailReport(AppGlobal.sqlConnection,objId, typeOfSearch, from, to));
                 return Json(objs);
             }
             catch (Exception)
@@ -76,7 +76,7 @@ namespace QMS_Website.Controllers
                     {
                         var workbook = package.Workbook;
                         var worksheet = workbook.Worksheets.First();
-                        var reportObj = BLLReport.Instance.DetailReport(AppGlobal.Connectionstring,objId, typeOfSearch, new DateTime(dfrom.Year, dfrom.Month, dfrom.Day), new DateTime(dto.Year, dto.Month, dto.Day, 23, 59, 00));
+                        var reportObj = BLLReport.Instance.DetailReport(AppGlobal.sqlConnection,objId, typeOfSearch, new DateTime(dfrom.Year, dfrom.Month, dfrom.Day), new DateTime(dto.Year, dto.Month, dto.Day, 23, 59, 00));
                         int row = 4;
 
                         #region Draw header
@@ -127,7 +127,7 @@ namespace QMS_Website.Controllers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -144,7 +144,7 @@ namespace QMS_Website.Controllers
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.Connectionstring,objId, thungan, dfrom, dto);
+                    var reportObj = BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.sqlConnection,objId, thungan, dfrom, dto);
 
                     worksheet.Cells[2, 1].Value = "Từ " + dfrom.ToString("HH:mm") + " ngày " + dfrom.ToString("dd/MM/yyyy") + " - " + dto.ToString("HH:mm") + " ngày " + dto.ToString("dd/MM/yyyy");
                     int row = 5;

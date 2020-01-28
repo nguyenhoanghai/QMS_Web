@@ -10,7 +10,7 @@
   </View>
   <View ID="3">
     <Name>man_hinh_co_video</Name>
-    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Adv_Css":"","Row":"1","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important","css_box_video":"display:block;width:100% !important"}</Value>
+    <Value>{"PageTitle":" ","PageTitle_Css":" ","SubTitle":" ","SubTitle_Css":" ","Row1_Css":" ","Row2_Css":" ","Adv_Css":" ","Row":" 5","Col":" 1","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":" ","css_box_video":" "}</Value>
   </View>
   <View ID="6">
     <Name>man_hinh_co_video</Name>

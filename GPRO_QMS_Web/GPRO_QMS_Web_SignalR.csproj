@@ -53,6 +53,9 @@
     <Reference Include="GPRO.Core">
       <HintPath>..\Lib\GPRO.Core.dll</HintPath>
     </Reference>
+    <Reference Include="GPRO.Core.Hai">
+      <HintPath>..\Lib\GPRO.Core.Hai.dll</HintPath>
+    </Reference>
     <Reference Include="GPRO.Ultilities">
       <HintPath>..\Lib\GPRO.Ultilities.dll</HintPath>
     </Reference>

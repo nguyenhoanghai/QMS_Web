@@ -104,12 +104,6 @@ namespace GPRO_QMS_Web
               defaults: new { controller = "ReceiverSMS", action = "index" }
           ).DataTokens["area"] = "Admin";
 
-
-
-
-
-
-
             routes.MapRoute(
                name: "dg",
                url: "Nhan-Vien",
@@ -122,11 +116,10 @@ namespace GPRO_QMS_Web
             defaults: new { controller = "Report", action = "Excel", userId = UrlParameter.Optional, from = UrlParameter.Optional, to = UrlParameter.Optional }
         );
 
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HienThiQuay", action = "tienthu_covideo", id = UrlParameter.Optional }
+                defaults: new { controller = "HienThiQuay", action = "index", id = UrlParameter.Optional }
             );
         }
     }

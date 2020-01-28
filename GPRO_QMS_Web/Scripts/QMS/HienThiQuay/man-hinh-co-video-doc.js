@@ -43,8 +43,8 @@ GPRO.BenhVien = function () {
     this.Init = function () {
         RegisterEvent(); 
         GetConfig();
-       // Get();
-         var e = setInterval(function () { Get(); }, 1500);
+        Get();
+       //  var e = setInterval(function () { Get(); }, 1500);
         $('.marquee').marquee();
     }
 

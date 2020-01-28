@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Data.SqlClient;
 using System.Web;
 
 namespace QMS_Website.App_Global
@@ -17,6 +15,19 @@ namespace QMS_Website.App_Global
                     _connectionstring = Helper.GPRO_Helper.Instance.GetEntityConnectString();
                 }
                 return _connectionstring;
+            }
+        }
+
+        private static SqlConnection _sqlConnection;
+        public static SqlConnection sqlConnection
+        {
+            get
+            {
+                if (_sqlConnection == null)
+                {
+                    _sqlConnection = GPRO.Core.Hai.DatabaseConnection.Instance.Connect(HttpContext.Current.Server.MapPath("~/Config_XML") + "\\DATA.XML"); //Helper.GPRO_Helper.Instance.GetEntityConnectString();
+                }
+                return _sqlConnection;
             }
         }
 

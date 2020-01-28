@@ -203,3 +203,4 @@ E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.C
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.CopyComplete
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.pdb
+E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\GPRO.Core.Hai.dll
