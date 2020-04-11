@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "NangSuatDV_TGTrungBinhNV";
+    Layout = "~/Views/Shared/_Layout_BaoCaoDanhGia.cshtml";
+}
+
+<div class="col s12 col-sm-12" style=" padding:0">
+    <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">
+        Báo cáo năng suất phục vụ và thời gian trung bình của nhân viên
+    </div>
+    <div class="  col s12" style="margin-bottom:10px;padding:0">
+        <div class="input-field col " style="width:115px">
+            <input type="text" id="fromDate" class="datepicker">
+            <label>Từ ngày</label>
+        </div>
+        <div class="input-field col s2" style="width:115px">
+            <input type="text" id="toDate" class="datepicker">
+            <label>đến ngày</label>
+        </div>
+        <div class="input-field col s2" style="width:150px">
+            <select id="cb_option">
+                <option value="1">Nhân viên</option>
+                <option value="2">Dịch vụ</option>
+            </select>
+            <label>Loại đối tượng</label>
+        </div>
+        <button id="get-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+            xem  
+        </button>
+        <button id="export-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+            Xuất Excel
+        </button>
+    </div>
+
+    <div class="col s12 col-sm-12" style="padding:0">
+        <table id="tb_export" name="tb_export">
+            <thead>
+                <tr>
+                    <td class="max-100">stt</td>
+                    @* <td>nhân viên</td>*@
+                    <td id="type-title">dich vụ</td>
+                    <td class="max-100">Tổng số lượt giao dịch</td>
+                    <td class="max-100">Tổng TG chờ trung bình</td>
+                    <td class="max-100">Tổng TG chờ trước sửa chữa</td>
+                    <td class="max-100">Tổng TG chờ sau sửa chữa</td>
+                </tr>
+            </thead>
+            <tbody>  </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/QMS/BaoCao/NSPhucVu-TG-TrungBinh.js"></script> 
+

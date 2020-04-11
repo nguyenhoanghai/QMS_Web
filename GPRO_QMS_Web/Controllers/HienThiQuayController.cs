@@ -78,11 +78,11 @@ namespace GPRO_QMS_Web.Controllers
             return Json(obj);
         }
 
-        public JsonResult GetConfig(int pageType)
+        public JsonResult GetConfig(string pageType)
         {
             var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
             XDocument testXML = XDocument.Load(path);
-            XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageType.ToString())).FirstOrDefault();
+            XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageType)).FirstOrDefault();
             return Json(cStudent.Element("Value").Value);
         }
 
@@ -152,12 +152,11 @@ namespace GPRO_QMS_Web.Controllers
         }
 
         public ActionResult LCD1()
-        {
-            GetConfig("5");
+        { 
             return View();
         }
 
-        private void GetConfig(string pageId)
+        private void GetConfig(int pageId)
         {
             var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
             XDocument testXML = XDocument.Load(path);

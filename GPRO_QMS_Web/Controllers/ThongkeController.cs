@@ -18,7 +18,7 @@ namespace QMS_Website.Controllers
     {
 
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 
@@ -309,7 +309,7 @@ namespace QMS_Website.Controllers
 
         public JsonResult GetReportTH(int typeOfSearch, DateTime from, DateTime to, int thungan)
         {
-            var objs = typeOfSearch == 4 ? BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.Connectionstring,0, thungan, from, to) :
+            var objs = typeOfSearch == 4 ? BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.sqlConnection,0, thungan, from, to) :
                 BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring,0, typeOfSearch, from, to);
             return Json(objs);
         }

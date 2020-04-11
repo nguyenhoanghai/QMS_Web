@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Xe_ChiTietTungPhieu";
+    Layout = "~/Views/Shared/_Layout_BaoCaoDanhGia.cshtml";
+}
+
+<div class="col s12 col-sm-12" style=" padding:0">
+    <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">
+        Báo cáo năng suất phục vụ chi tiết theo phiếu
+    </div>
+    <div class="  col s12" style="margin-bottom:10px;padding:0">
+        <div class="input-field col " style="width:115px">
+            <input type="text" id="fromDate" class="datepicker">
+            <label>Từ ngày</label>
+        </div>
+        <div class="input-field col s2" style="width:115px">
+            <input type="text" id="toDate" class="datepicker">
+            <label>đến ngày</label>
+        </div>
+        <button id="get-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+            xem
+        </button>
+        <button id="export-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+            Xuất Excel
+        </button>
+    </div>
+
+    <div class="col s12 col-sm-12" style="padding:0">
+        <table id="tb_export" name="tb_export">
+            <thead>
+                <tr>
+                    <td class="max-100">stt</td>
+                    <td>số phiếu</td>
+                    <td id="type-title">dich vụ</td>
+                    <td class="max-100">giờ Bắt Đầu sửa chữa</td>
+                    <td class="max-100">Tổng Thời Gian chờ</td>
+                    <td class="max-100">Thời Gian sửa Dự Kiến</td>
+                    <td class="max-100">Thời Gian sửa Thực tế</td>
+                    <td class="max-100">Thời Gian chờ trước sửa chữa</td>
+                    <td class="max-100">Thời Gian chờ sau sửa chữa</td>
+                    <td>nhân viên</td>
+                    <td>phát sinh</td>
+                </tr>
+            </thead>
+            <tbody>  </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/QMS/BaoCao/chi-tiet-tung-phieu.js"></script>

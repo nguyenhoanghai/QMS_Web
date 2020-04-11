@@ -36,4 +36,8 @@
     <Name>Security</Name>
     <Value>511ddc268f0ea3807d70585ec9b732e3</Value>
   </View>
+  <View ID="TV1">
+    <Name>TV1</Name>
+    <Value>{"PageTitle":"Xe Máy Việt thái quân","PageTitle_Css":" background:white;padding:10px;text-align:center;font-size:45px;font-weight:bold;color:red","SubTitle":"BÀN NÂNG|SỐ THẺ|SỐ PHIẾU|THỜI GIAN CÒN LẠI","SubTitle_Css":"font-size:25px !important;","Row1_Css":"font-size:35px !important;","Row2_Css":"font-size:35px !important;background:green;","background":"black","Row":"4","Hight":" 650","SlideInterval":"30000","css_box_video":"height:550px ;width:100% ","counters":"1,2,3,4,5"}</Value>
+  </View>
 </Views>

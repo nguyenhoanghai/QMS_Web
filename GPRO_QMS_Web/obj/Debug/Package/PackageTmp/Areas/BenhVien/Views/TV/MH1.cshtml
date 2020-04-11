@@ -1,0 +1,100 @@
+﻿@using System.Configuration;
+@{
+    ViewBag.Title = "MH1";
+    Layout = "~/Views/Shared/_LayoutTV.cshtml";
+    var cf = (ViewData["config"] as QMS_Website.Models.BV_ConfigModel);
+    var str = (cf.SubTitle != null ? cf.SubTitle.Split('|').ToArray() : new String[] { });
+    if (str.Length < 2)
+    {
+        str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
+    }
+    var col = Convert.ToInt32((cf.Col != null ? cf.Col : "1"));
+    // QMS_System.Data.Q_User user = Model;
+} 
+<link href="~/Areas/BenhVien/Scripts/MH1.css" rel="stylesheet" />
+<div>
+    <div class="col m12 s12  title"> </div>
+    <div class="col m12 s12 " style="padding:0">
+        <div class="row  ">
+            @for (int i = 1; i <= col; i++)
+            {
+                <div class="col m@(12/(col*2)) s@(12/(col*2)) sub-title">@str[0]</div>
+                <div class="col m@(12/(col*2)) s@(12/(col*2)) sub-title @(i==col?"cell-last":"") ">@str[1]</div>
+            }
+            <div class="clearfix"></div>
+        </div>
+        <div content>
+            <div class="row">
+                <div class="col m3 s3 sub-title   ">0</div>
+                <div class="col m6 s6 sub-title cell-last"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col m12 s12 ">
+        @* <marquee id="mq" behavior=scroll onmousedown="this.stop();" onfinish="alert('chay xong')" direction="left" loop="1" scrollamount="@ConfigurationManager.AppSettings["TD_BV_TIME"]" class="marquee"> Dòng chữ chạy khi gọi bệnh nhân giữ lai so phieu cuoi cung ko cho ve 0</marquee>*@
+        @*  <marquee id="mq" behavior="scroll" loop="1" direction="left" scrollamount="@ConfigurationManager.AppSettings["TD_BV_TIME"]" class="marquee"> cho ve 0</marquee>*@
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="setting row">
+    <div class="input-field  col m2 s12">
+        <label>Tiêu đề lớn</label>
+        <input type="text" id="title" value=" " placeholder="Nhập tên tiêu đề lớn ..." />
+    </div>
+    <div class="input-field  col m4 s12">
+        <label>CSS Tiêu đề lớn</label>
+        <textarea class="materialize-textarea" id="title_css" placeholder="Nhập giá trị CSS tiêu đề lớn ..."> </textarea>
+    </div>
+    <div class="input-field  col m2 s12">
+        <label>Tiêu đề phía dưới</label>
+        <input type="text" id="subText" value=" " placeholder="Nhập tên tiêu đề nhỏ ..." /> 
+    </div>
+    <div class="input-field  col m4 s12">
+        <label>CSS Tiêu đề phía dưới</label> 
+        <textarea class="materialize-textarea" id="sub_css" placeholder="Nhập giá trị CSS tiêu đề nhỏ ..."> </textarea>
+    </div>
+    <div class="clearfix"></div>
+    <div class="input-field  col m6 s12">
+        <label>CSS nội dung dòng chẳn</label>
+        <textarea class="materialize-textarea" id="css_r1" placeholder="css dòng chẳn ..."> </textarea>
+    </div>
+    <div class="input-field  col m6 s12" >
+        <label>CSS nội dung dòng lẻ</label>
+        <textarea class="materialize-textarea" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
+    </div>
+    <div class=" col m12">
+        <div class="input-field col m1 s4">
+            <label>Số cột</label>
+            <input type="text" class="form-control" id="column" value=" " placeholder="số cột ..." />
+        </div>
+        <div class="input-field col m1 s4">
+            <label>Số dòng</label>
+            <input type="text" class="form-control" id="row" value=" " placeholder="số dòng mỗi bên ..." />
+        </div>
+        <div class="input-field col m1 s4">
+            <label>Tốc độ chạy quảng cáo</label>
+            <input type="text" class="form-control" id="run_time" value=" " placeholder="Tốc độ chạy quảng cáo ..." />
+        </div>
+        <div class="input-field col m3 s4">
+            <label>Counters</label>
+            <input type="text" class="form-control" id="counters" value="1,2,3,4,5" placeholder="mã thiết bị" />
+        </div>
+        <div class="input-field col m6  s12">
+            <label>CSS quảng cáo</label>
+            <textarea class="materialize-textarea" id="run_css" placeholder="Css chạy quảng cáo ..."> </textarea>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="input-field  col m12 ">
+        <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<script src="~/Areas/BenhVien/Scripts/MH1.js"></script>
+<script>
+    var home = new GPRO.BenhVien();
+    home.Init();
+
+</script>

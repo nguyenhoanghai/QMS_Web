@@ -117,9 +117,27 @@ namespace GPRO_QMS_Web
         );
 
             routes.MapRoute(
+               name: "xe-baocaochatluongphucvu",
+               url: "xe-baocaochatluongphucvu",
+               defaults: new { controller = "bcdanhgia", action = "ChatLuongPhucVuNV", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+             name: "xe-baocaonangsuatdichvuvathoigiantrungbinh",
+             url: "xe-baocaonangsuatdichvuvathoigiantrungbinh",
+             defaults: new { controller = "bcdanhgia", action = "xe_NangSuatDV_TGTrungBinhNV", id = UrlParameter.Optional }
+         );
+            routes.MapRoute(
+             name: "xe-baocaochitiettungphieu",
+             url: "xe-baocaochitiettungphieu",
+             defaults: new { controller = "bcdanhgia", action = "Xe_ChiTietTungPhieu", id = UrlParameter.Optional }
+         );
+
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HienThiQuay", action = "index", id = UrlParameter.Optional }
+                // defaults: new { controller = "HienThiQuay", action = "index", id = UrlParameter.Optional }
+                defaults: new { controller = "TV", action = "tv1", id = UrlParameter.Optional }
             );
         }
     }

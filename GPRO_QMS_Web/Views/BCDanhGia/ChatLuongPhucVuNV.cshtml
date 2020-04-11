@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "ChatLuongPhucVuNV";
+    Layout = "~/Views/Shared/_Layout_BaoCaoDanhGia.cshtml";
+}
+
+<div class="col s12 col-sm-12" style=" padding:0">
+    <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">
+        Báo cáo chất lượng phục vụ nhân viên
+    </div>
+    <div class="  col s12" style="margin-bottom:10px;padding:0">
+        <div class="input-field col " style="width:115px">
+            <input type="text" id="fromDate" class="datepicker">
+            <label>Từ ngày</label>
+        </div>
+        <div class="input-field col s2" style="width:115px">
+            <input type="text" id="toDate" class="datepicker">
+            <label>đến ngày</label>
+        </div>
+        <button id="get-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+            xem cáo đánh giá
+        </button>
+        <button id="export-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+            Xuất báo cáo đánh giá 
+        </button>
+    </div>
+
+    <div class="col s12 col-sm-12" style="padding:0">
+        <table id="tb_export" name="tb_export">
+            <thead>
+                <tr>
+                    <td class="max-100">phiếu</td>
+                    <td>nhân viên</td>
+                    <td>dich vụ</td>
+                    <td class="max-100">Giờ đánh giá</td>
+                    <td class="max-100">Ý kiến khác</td>
+                    <td class="max-100">hài lòng</td>
+                    <td class="max-100">KHÔNG HÀI LÒNG VỀ THỜI GIAN PHỤC VỤ</td>
+                    <td class="max-100">KHÔNG HÀI LÒNG VỀ THÁI ĐỘ PHỤC VỤ</td>
+                    <td class="max-100">KHÔNG HÀI LÒNG VỀ CHẤT LƯỢNG PHỤC VỤ</td>
+                </tr>
+            </thead>
+            <tbody>  </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/QMS/Report/DailyReport-detail.js"></script>

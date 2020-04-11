@@ -482,6 +482,8 @@
     <Content Include="Areas\Admin\Scripts\SMS\sms.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Create.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Index.js" />
+    <Content Include="Areas\BenhVien\Scripts\MH1.css" />
+    <Content Include="Areas\BenhVien\Scripts\MH1.js" />
     <Content Include="Audios\0.wav" />
     <Content Include="Audios\1.wav" />
     <Content Include="Audios\2.wav" />
@@ -699,6 +701,10 @@
     <Content Include="Areas\Admin\Content\Jtable\themes\metro\purple\jtable.less" />
     <Content Include="Areas\Admin\Content\Jtable\themes\metro\red\jtable.less" />
     <Content Include="Areas\Admin\Views\ReceiverSMS\Index.cshtml" />
+    <Content Include="Areas\Xe\Views\web.config" />
+    <Content Include="Areas\BenhVien\Views\web.config" />
+    <Content Include="Areas\Khac\Views\web.config" />
+    <Content Include="Areas\BenhVien\Views\TV\MH1.cshtml" />
     <None Include="Properties\PublishProfiles\nQMS.pubxml" />
     <None Include="Properties\PublishProfiles\QMS.pubxml" />
     <Content Include="Report Template\Report QMS Template.xls" />
@@ -712,6 +718,8 @@
     </None>
     <Content Include="Report Template\BCao_DGia_Ngay.xlsx" />
     <Content Include="Report Template\BCao_DGia_Ngay_CTiet.xlsx" />
+    <Content Include="Report Template\Mau_NangSuatDV_TGTrungBinh.xlsx" />
+    <Content Include="Report Template\Mau_NangSuatDV_TheoTungPhieu.xlsx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -756,6 +764,8 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\playSound.min.js" />
+    <Content Include="Scripts\QMS\BaoCao\NSPhucVu-TG-TrungBinh.js" />
+    <Content Include="Scripts\QMS\BaoCao\chi-tiet-tung-phieu.js" />
     <Content Include="Scripts\QMS\DangNhap\DangNhap.js" />
     <Content Include="Scripts\QMS\danh-gia\danh-gia-10-nut.js" />
     <Content Include="Scripts\QMS\HienThiQuay\lcd-1.js" />
@@ -782,6 +792,7 @@
     <Content Include="Scripts\QMS\ThongKe\ThongKe_ct.js" />
     <Content Include="Scripts\QMS\ThongKe\ThongKe_TH.js" />
     <Content Include="Scripts\QMS\ThongTinPhucVu\ThongTinPhucVu.js" />
+    <Content Include="Scripts\QMS\TV\tv1.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SlideJs\jcycle.js" />
@@ -797,6 +808,7 @@
     <Content Include="Scripts\Web\plugins.js" />
     <Content Include="Scripts\Web\Slide\jcycle.js" />
     <Content Include="Scripts\Web\Slide\jquery-1.4.2.js" />
+    <Content Include="Content\QMS\TV\TV1.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -815,6 +827,11 @@
     <Compile Include="Areas\Admin\Controllers\ReceiverSMSController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\BenhVien\BenhVienAreaRegistration.cs" />
+    <Compile Include="Areas\BenhVien\Controllers\BVTVController.cs" />
+    <Compile Include="Areas\Khac\KhacAreaRegistration.cs" />
+    <Compile Include="Areas\Xe\XeAreaRegistration.cs" />
+    <Compile Include="Controllers\BCDanhGiaController.cs" />
     <Compile Include="Controllers\DangKyOnlineController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
@@ -826,6 +843,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ServiceApiController.cs" />
     <Compile Include="Controllers\ThongkeController.cs" />
+    <Compile Include="Controllers\TVController.cs" />
     <Compile Include="Enum\eStatusName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -881,6 +899,12 @@
     <Content Include="Views\HienThiQuay\ManHinhCoVideo_Doc.cshtml" />
     <Content Include="Views\HienThiQuay\TienThu_CoVideo.cshtml" />
     <Content Include="Views\ManHinhGoiSo\Index.cshtml" />
+    <Content Include="Views\TV\TV1.cshtml" />
+    <Content Include="Views\BCDanhGia\ChatLuongPhucVuNV.cshtml" />
+    <Content Include="Views\Shared\_Layout_BaoCaoDanhGia.cshtml" />
+    <Content Include="Views\BCDanhGia\Xe_NangSuatDV_TGTrungBinhNV.cshtml" />
+    <Content Include="Views\BCDanhGia\Xe_ChiTietTungPhieu.cshtml" />
+    <Content Include="Views\Shared\_LayoutTV.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -891,6 +915,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\BenhVien\Models\" />
+    <Folder Include="Areas\BenhVien\Views\Shared\" />
+    <Folder Include="Areas\Khac\Controllers\" />
+    <Folder Include="Areas\Khac\Models\" />
+    <Folder Include="Areas\Khac\Views\Shared\" />
+    <Folder Include="Areas\Xe\Controllers\" />
+    <Folder Include="Areas\Xe\Models\" />
+    <Folder Include="Areas\Xe\Views\Shared\" />
     <Folder Include="BLL\" />
     <Folder Include="Videos\" />
   </ItemGroup>

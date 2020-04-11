@@ -100,6 +100,7 @@ GPRO.Home = function () {
             error: function (err) {
                 alert("Dữ liệu trả về quá lớn không thể hiển thị. Vui lòng chọn 'Xuất Báo Cáo' để xem báo cáo trên file excel.");
                 console.log(err);
+                $("#get-excel").attr("disabled", false);
             }
         });
     }

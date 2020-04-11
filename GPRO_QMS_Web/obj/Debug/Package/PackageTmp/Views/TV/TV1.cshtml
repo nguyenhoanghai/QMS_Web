@@ -1,0 +1,361 @@
+﻿@using System.Configuration;
+@using Newtonsoft.Json
+@{ Layout = null; }
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bảng Thông Tin Phục Vụ</title>
+    <link href="~/Content/Materialize/materialize.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/QMS/TV/TV1.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Marquee/jquery.marquee.min.js"></script>
+    <script src="~/Content/Materialize/materialize.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <style>
+        .container {
+            padding: 0 !important;
+            margin: 0 !important;
+            max-width: inherit !important;
+        }
+
+
+        .full-box {
+            position: fixed;
+            top: 72px;
+            left: 0px;
+            z-index: 99999;
+            overflow: hidden;
+            margin-left: -15px;
+        }
+
+            .full-box:hover {
+                margin-left: 5px;
+            }
+    </style>
+</head>
+<body>
+    <div id="fullscreen" class=" ">
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        <div class="page-setting">
+            <div class="title-page" style="text-transform:uppercase">Xe Sửa chữa nhẹ</div>
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+                <div class="slide-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides ">
+                        <div class="thead row sub-title">
+                            <div class="col col m3 sub-title t0 ">Bàn Nâng</div>
+                            <div class="col col m2 sub-title t1">Số thẻ</div>
+                            <div class="col col m3 sub-title t2">số phiếu</div>
+                            <div class="col col m4 sub-title t3">thời gian còn lại</div>
+                            <div class="clearfix"></div>
+                        </div>
+                        @for (int i = 1; i < 6; i++)
+                        {
+                            <div class="tbody row  @(i%2==0?"row-color":"")">
+                                <div class="col col m3 cell"> @i</div>
+                                <div class="col col m2 cell">100 @i</div>
+                                <div class="col col m3 cell">DV031219-123</div>
+                                <div class="col col m4 cell">..:..</div>
+                                <div class="clearfix"></div>
+                            </div>
+                        }
+                    </div>
+                    @*
+                        <div class="mySlides ">
+                            <div class="thead row">
+                                <div class="col col m3 sub-title t0">Bàn Nâng</div>
+                                <div class="col col m2 sub-title t1">Số thẻ</div>
+                                <div class="col col m3 sub-title t2">số phiếu</div>
+                                <div class="col col m4 sub-title t3">thời gian còn lại</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            @for (int i = 6; i < 12; i++)
+                            {
+                                <div class="tbody row @(i%2==0?"row-color":"")">
+                                    <div class="col col m3 cell"> @i</div>
+                                    <div class="col col m2 cell">100 @i</div>
+                                    <div class="col col m3 cell">DV031219-123</div>
+                                    <div class="col col m4 cell">..:..</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            }
+                        </div>
+                    *@
+                </div>
+                <div class="mySlides " style="background-color:black; text-align:center">
+                    <video autoplay controls class="video-box"
+                           name="media"
+                           id="video"
+                           autobuffer
+                           onended="RunNext()"
+                           src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
+                </div>
+                <!-- Next and previous buttons -->
+                @*<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>*@
+            </div>
+        </div>
+
+        <div class="setting row">
+            <div class="title">Cấu hình trang web</div>
+
+            <div class="input-field col m6">
+                <input type="text" class="" id="title" value=" " placeholder="Nhập tên tiêu đề lớn ..." />
+                <label for="title">Tiêu đề lớn</label>
+            </div>
+
+            <div class="input-field col m6">
+                <textarea class="materialize-textarea" id="title_css" placeholder="Nhập giá trị CSS tiêu đề lớn ..."> </textarea>
+                <label>CSS Tiêu đề lớn</label>
+            </div>
+            <div class="input-field col m6">
+                <input type="text" class="materialize-textarea" id="subText" value=" " placeholder="Nhập tên tiêu đề nhỏ ..." />
+                <label>Tiêu đề phía dưới</label>
+            </div>
+
+            <div class="input-field col m6">
+                <textarea class="materialize-textarea" id="sub_css" placeholder="Nhập giá trị CSS tiêu đề nhỏ ..."> </textarea>
+                <label>CSS Tiêu đề phía dưới</label>
+            </div>
+            <div class="input-field col m6">
+                <textarea class="materialize-textarea" id="css_r1" placeholder="css dòng chẳn ..."> </textarea>
+                <label>CSS nội dung dòng chẳn</label>
+            </div>
+
+            <div class="input-field col m6">
+                <textarea class="materialize-textarea" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
+                <label>CSS nội dung dòng lẻ</label>
+            </div>
+            <div class="input-field col m6">
+                <textarea class="materialize-textarea" id="css_box_video"> </textarea>
+                <label>CSS Box Video</label>
+            </div>
+            <div class="input-field col m1 s1">
+                <label>Chiều cao MH (px)</label>
+                <input type="text" class="" id="Hight" value=" " />
+            </div>
+            <div class="input-field col m1 s1">
+                <label>Dòng/trang</label>
+                <input type="text" class="" id="row" value=" " />
+            </div>
+            <div class="input-field col m1 s1">
+                <label>TG lật trang (miliseconds)</label>
+                <input type="text" class="" id="SlideInterval" value=" " />
+            </div>
+            <div class="input-field col m1 s1">
+                <label>Màu nền</label>
+                <input type="text" class="" id="background" value=" " />
+            </div>
+            <div class="input-field col m2 s2">
+                <label>Counters</label>
+                <input type="text" class="" id="counters" value=" " />
+            </div>
+            <div class="clearfix"></div>
+            <div class=" col m12 ">
+                <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <script src="~/Scripts/QMS/TV/tv1.js"></script>
+    <script>
+        // --- Fullscreen
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                $('.setting').hide();
+                //   var video = document.getElementById("video");
+                //   video.play();
+            }
+            else {
+                fullScreenApi.cancelFullScreen(document.documentElement);
+                $('.setting').show();
+            }
+
+        }
+
+        $('#request-full').click(function () {
+            check();
+        });
+        //-- end of Fullscreen
+        var home = new GPRO.TV1();
+        home.Init();
+        //-- play video
+        var inter = home.GetGlobal().Data.slideInterval, videoInter = 1000;
+         var list = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model))');
+        if (list != null && list.length > 0)
+            $.each(list, (_index,item) => {
+                videoInter += item._Duration;
+            });
+        var index = (list != null && list.length > 1 ? 1 : 0);
+            function toggleMute() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/'+list[index].Path;
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+            }
+
+            function RunNext() {
+                var video = document.getElementById("video");
+                if (index == list.length) {
+                    index = 0;
+                    video.pause();
+                }
+                else {
+                    video.src = '/Videos/' + list[index].Path;
+                    index++;
+                    video.play();
+                }
+            };
+        //-- end play video
+
+        //-- slide show
+        var slideIndex = 0;
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+            var slides = document.getElementsByClassName("mySlides");
+            if (slideIndex == slides.length) {
+                inter = videoInter; 
+                var video = document.getElementById("video");
+                video.src = '/Videos/' + list[0].Path;
+                video.play();
+                    index = 1;
+            }
+            else
+                inter = home.GetGlobal().Data.slideInterval;
+          var timeout =  setTimeout(function () {
+              plusSlides(1);
+               clearTimeout(timeout);
+            }, inter);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+        //end of slide show
+
+        function setSlideInterval() {
+            inter = home.GetGlobal().Data.slideInterval;
+        }
+        $(document).ready(function () {
+            M.updateTextFields();
+        })
+    </script>
+
+</body>
+</html>
