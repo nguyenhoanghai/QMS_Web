@@ -1,10 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<String_Connect>
+<SystemConfig>
   <SQLServer id="1">
     <Server_Name>QNd8Qi1YHVg6gBfOh9dXCw==</Server_Name>
-    <Database>3sJZ+O5+2eJqbBTkD3o6+A==</Database>
+    <Database>5eQK1TwLQ/1nueanfqE7qWcVEWhjZFFLmy9g45elsq0=</Database>
     <User>ZXhwutftOGY2GQGN7xFCdA==</User>
     <Password>u83X0HO/seCu6CcDOMQghA==</Password>
     <Window_Authenticate>False</Window_Authenticate>
   </SQLServer>
-</String_Connect>
+  <AppConfig>
+    <Template>[canh-giua][2x1]BENH VIEN QUAN 6
+[canh-giua]========================================
+
+[2x2][ten-dich-vu]
+[canh-giua][3x3]STT:[STT]
+[canh-trai][1x1]
+  + Uu tien so tu 1 den 50
+  + Khong uu tien so tu 51 tro len
+------------------------------------------------
+[ngay]  [gio]  [dang-goi]
+
+
+
+
+[cat-giay]</Template>
+    <SoLien>1</SoLien>
+    <CounterId>31</CounterId>
+    <Display>False</Display>
+    <COMDisplay>COM2</COMDisplay>
+    <Print>False</Print>
+    <COMPrint>COM10</COMPrint>
+    <PrintCode>27</PrintCode>
+    <ReadSound>False</ReadSound>
+    <SoundPath>C:\Users\DoNguyen\Desktop\Audios\</SoundPath>
+    <NumberOfButton>3</NumberOfButton>
+  </AppConfig>
+</SystemConfig>

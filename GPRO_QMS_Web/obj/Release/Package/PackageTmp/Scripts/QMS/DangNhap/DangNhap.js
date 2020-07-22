@@ -45,7 +45,7 @@ GPRO.DangNhap = function () {
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 if (data.Result == 'OK')
-                    window.location.href = "/Danh-Gia";
+                    window.location.href = "/Tien-Thu-Danh-Gia";
                 else
                     alert("Thông tin đăng nhập không đúng");
             }

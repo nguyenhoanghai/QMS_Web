@@ -94,4 +94,6 @@ GPRO.Home = function () {
 $(document).ready(function () {
     var home = new GPRO.Home();
     home.Init();
+
+ 
 });

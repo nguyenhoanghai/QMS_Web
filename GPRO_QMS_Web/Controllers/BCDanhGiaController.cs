@@ -31,6 +31,7 @@ namespace QMS_Website.Controllers
         {
             var f = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
             var t = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
+            t = t.AddHours(23).AddMinutes(59);
             if (type == 1) // theo nv
                 return Json(BLLReport.Instance.BaoCaoNangSuatDichVuVaThoiGianTrungBinh_TheoNV(App_Global.AppGlobal.sqlConnection, f, t, Convert.ToInt32(ConfigurationManager.AppSettings["ThuNgan"].ToString())));
             //theo dich vu
@@ -44,6 +45,7 @@ namespace QMS_Website.Controllers
                 var fi = new FileInfo(Server.MapPath(@"~\Report Template\Mau_NangSuatDV_TGTrungBinh.xlsx"));
                 var dfrom = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 var dto = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                dto = dto.AddHours(23).AddMinutes(59);
                 using (var package = new ExcelPackage(fi))
                 {
                     var workbook = package.Workbook;
@@ -76,14 +78,17 @@ namespace QMS_Website.Controllers
                             worksheet.Cells[row, 3].Value = reportObj[i].Number;
                             worksheet.Cells[row, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[row, 4].Value = reportObj[i].TongTGChoTB.Value.ToString(@"HH\:mm\:ss");
+                            worksheet.Cells[row, 4].Value = reportObj[i].dTongTGCho ;
                             worksheet.Cells[row, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[row, 5].Value = reportObj[i].TGChoTruocSC.Value.ToString(@"HH\:mm\:ss");
-                            worksheet.Cells[row, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            worksheet.Cells[row, 5].Value = reportObj[i].dTGChoTruocSC;
+                            worksheet.Cells[row, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin); 
 
-                            worksheet.Cells[row, 6].Value = reportObj[i].TGChoSauSC.Value.ToString(@"HH\:mm\:ss");
+                            worksheet.Cells[row, 6].Value = reportObj[i].dTGXuLyTT  ;
                             worksheet.Cells[row, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                            worksheet.Cells[row, 7].Value = reportObj[i].dTGChoSauSC ;
+                            worksheet.Cells[row, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                             row++;
                         }
@@ -111,26 +116,28 @@ namespace QMS_Website.Controllers
             return View();
         }
 
-        public JsonResult Xe_GetNSPhucVu_ChiTietTungPhieu(string fromDate, string toDate )
+        public JsonResult Xe_GetNSPhucVu_ChiTietTungPhieu(string fromDate, string toDate)
         {
             var f = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
             var t = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.CurrentCulture);
-             return Json(BLLReport.Instance.BaoCaoNangSuatDichVuChiTietTheoPhieu(App_Global.AppGlobal.sqlConnection, f, t, Convert.ToInt32(ConfigurationManager.AppSettings["ThuNgan"].ToString())));
+            t = t.AddHours(23).AddMinutes(59);
+            return Json(BLLReport.Instance.BaoCaoNangSuatDichVuChiTietTheoPhieu(App_Global.AppGlobal.sqlConnection, f, t, Convert.ToInt32(ConfigurationManager.AppSettings["ThuNgan"].ToString())));
         }
-        public void Xe_GetNSPhucVu_ChiTietTungPhieu_Excel(string from, string to )
+        public void Xe_GetNSPhucVu_ChiTietTungPhieu_Excel(string from, string to)
         {
             try
             {
                 var fi = new FileInfo(Server.MapPath(@"~\Report Template\Mau_NangSuatDV_TheoTungPhieu.xlsx"));
                 var dfrom = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 var dto = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                dto = dto.AddHours(23).AddMinutes(59);
                 using (var package = new ExcelPackage(fi))
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    List<ReportModel> reportObj = null; 
-                            reportObj = BLLReport.Instance.BaoCaoNangSuatDichVuChiTietTheoPhieu(AppGlobal.sqlConnection, dfrom, dto, Convert.ToInt32(ConfigurationManager.AppSettings["ThuNgan"].ToString()));
-                         
+                    List<ReportModel> reportObj = null;
+                    reportObj = BLLReport.Instance.BaoCaoNangSuatDichVuChiTietTheoPhieu(AppGlobal.sqlConnection, dfrom, dto, Convert.ToInt32(ConfigurationManager.AppSettings["ThuNgan"].ToString()));
+
                     worksheet.Cells[2, 1].Value = "Từ " + dfrom.ToString("HH:mm") + " ngày " + dfrom.ToString("dd/MM/yyyy") + " - " + dto.ToString("HH:mm") + " ngày " + dto.ToString("dd/MM/yyyy");
                     int row = 5;
                     if (reportObj != null && reportObj.Count > 0)
@@ -140,7 +147,7 @@ namespace QMS_Website.Controllers
                             worksheet.Cells[row, 1].Value = (i + 1);
                             worksheet.Cells[row, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[row, 2].Value =   reportObj[i].STT_PhongKham ;
+                            worksheet.Cells[row, 2].Value = reportObj[i].STT_PhongKham;
                             worksheet.Cells[row, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                             worksheet.Cells[row, 3].Value = reportObj[i].ServiceName;
@@ -149,7 +156,7 @@ namespace QMS_Website.Controllers
                             worksheet.Cells[row, 4].Value = reportObj[i].Start.Value.ToString(@"HH\:mm\:ss");
                             worksheet.Cells[row, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[row, 5].Value = reportObj[i].TongTGChoTB.Value.ToString(@"HH\:mm\:ss");
+                            worksheet.Cells[row, 5].Value = reportObj[i].TongTGCho.Value.ToString(@"HH\:mm\:ss");
                             worksheet.Cells[row, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                             worksheet.Cells[row, 6].Value = reportObj[i].ServeTime.ToString(@"HH\:mm\:ss");
@@ -167,7 +174,7 @@ namespace QMS_Website.Controllers
                             worksheet.Cells[row, 10].Value = reportObj[i].UserName;
                             worksheet.Cells[row, 10].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[row, 11].Value = reportObj[i].PhatSinh ? "Có":"Không";
+                            worksheet.Cells[row, 11].Value = reportObj[i].PhatSinh ? "Có" : "Không";
                             worksheet.Cells[row, 11].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             row++;
                         }

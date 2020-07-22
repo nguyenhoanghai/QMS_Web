@@ -75,9 +75,10 @@ GPRO.Home = function () {
                         str += ' <td  >' + (i + 1) + '</td> ';
                         str += ' <td  >' + ($('#cb_option').val() == '1' ? item.UserName : item.ServiceName) + '</td> ';
                         str += ' <td  >' + item.Number + '</td> ';
-                        str += ' <td  >' + hhmmss(item.TongTGChoTB) + '</td> ';
-                        str += ' <td  >' + hhmmss(item.TGChoTruocSC) + '</td> ';
-                        str += ' <td  >' + hhmmss(item.TGChoSauSC) + '</td> ';
+                        str += ' <td  >' +  (item.dTongTGCho) + '</td> ';
+                        str += ' <td  >' +  (item.dTGChoTruocSC) + '</td> ';
+                        str += ' <td  >' +  (item.dTGXuLyTT) + '</td> ';
+                        str += ' <td  >' +  (item.dTGChoSauSC) + '</td> ';
                         str += '<tr>';
                     });
                 }

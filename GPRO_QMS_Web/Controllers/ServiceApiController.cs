@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using QMS_System.Data.BLL;
+using QMS_System.Data.BLL.VietThaiQuan;
 using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
 using QMS_Website.App_Global;
@@ -45,15 +46,36 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
+        public AndroidModel GetAndroidInfo2(int matb, int getSTT, int getSMS, int getUserInfo)
+        {
+            var info = BLLUserEvaluate.Instance.GetInfoForAndroid(connectString, matb, getSTT, getSMS, getUserInfo);
+            if (getUserInfo == 1 && info.UserInfo != null && !string.IsNullOrEmpty(info.UserInfo.Avatar))
+                info.UserInfo.Avatar = (ConfigurationManager.AppSettings["imageFolder"].ToString() + info.UserInfo.Avatar);
+            return info;
+        }
+
+        [HttpGet]
         public ModelSelectItem GetNumber(string userName)
         {
             return BLLDailyRequire.Instance.GetCurrentProcess(connectString, userName);
         }
 
         [HttpGet]
+        public ModelSelectItem GetSTT_Username(int maTB)
+        {
+            return BLLDailyRequire.Instance.GetSTT_UserName(connectString, maTB);
+        }
+
+        [HttpGet]
         public ResponseBaseModel Evaluate(string username, string value, int num, string isUseQMS, string comment)
         {
             return BLLUserEvaluate.Instance.Evaluate(connectString, username.Trim().ToUpper(), value, num, isUseQMS, comment);
+        }
+
+        [HttpGet]
+        public ResponseBaseModel Evaluate2(int matb, string value, int num, string isUseQMS, string comment)
+        {
+            return BLLUserEvaluate.Instance.Evaluate(connectString, matb, value, num, isUseQMS, comment);
         }
 
         [HttpGet]
@@ -89,6 +111,7 @@ namespace QMS_Website.Controllers
             //if (BLLCounterSoftRequire.Instance.HasProcessing(connectString, (int)eCounterSoftRequireType.PrintTicket) == null)
             //{
             var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
+
             CultureInfo provider = CultureInfo.InvariantCulture;
             var newDate = DateTime.ParseExact("01/01/2018 " + thoigian, "dd/MM/yyyy HH:mm:ss", provider);
 
@@ -100,32 +123,51 @@ namespace QMS_Website.Controllers
             //    ServiceId = int.Parse(MaPhongKham)
             //};
             //rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.PrintTicket);
-            
+
 
             var serObj = BLLService.Instance.Get(connectString, int.Parse(MaPhongKham));
             if (serObj != null)
             {
-                PrinterRequireModel require = null;
-                var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, 1, 0, DateTime.Now, 2, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
-                if (result.IsSuccess)
+                string checkTime = "0";
+                var cf = BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.CheckTimeBeforePrintTicket);
+                var now = DateTime.Now;
+                if (!string.IsNullOrEmpty(cf))
+                    checkTime = cf;
+                bool _continue = true;
+                if (checkTime == "1" && BLLServiceShift.Instance.CheckTime(connectString, serObj.Id, now))
+                    _continue = false;
+                if (_continue)
                 {
-                    require = new PrinterRequireModel()
+                    int _printType = 1;
+                    int.TryParse(ConfigurationManager.AppSettings["PrintType"].ToString(), out _printType);
+                    PrinterRequireModel require = null;
+                    var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, now, 1, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
+                    if (result.IsSuccess)
                     {
-                        newNumber = ((int)result.Data + 1),
-                        oldNumber = (int)result.Data,
-                        TenDichVu = serObj.Name,
-                        TenQuay = result.Data_2,
-                        MajorId = (int)result.Data_1,
-                        ServiceId = serObj.Id
-                    };
-                    BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
-                    rs.IsSuccess = true;
-                    rs.Data = require.newNumber;
+                        require = new PrinterRequireModel()
+                        {
+                            newNumber = ((int)result.Data + 1),
+                            oldNumber = (int)result.Data,
+                            TenDichVu = serObj.Name,
+                            TenQuay = result.Data_2,
+                            MajorId = (int)result.Data_1,
+                            ServiceId = serObj.Id
+                        };
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        rs.IsSuccess = true;
+                        rs.Data = require.newNumber;
+                    }
+                    else
+                    {
+                        rs.IsSuccess = false;
+                        rs.Errors.Add(new Error() { Message = "Gửi thông tin bị lỗi không xử lý được yêu cầu" });
+                    }
                 }
                 else
                 {
                     rs.IsSuccess = false;
-                    rs.Errors.Add(new Error() { Message = "Gửi thông tin bị lỗi không xử lý được yêu cầu" });
+                   // rs.Errors.Add(new Error() { Message = "Dịch vụ hiện tạm ngưng phát số thứ tự. Xin quý khách đến vào buổi giao dịch sau." });
+                    BLLCounterSoftRequire.Instance.Insert(connectString,"khoa.wav"  , (int)eCounterSoftRequireType.ReadSound);
                 }
             }
             return rs;
@@ -204,6 +246,7 @@ namespace QMS_Website.Controllers
                         BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
                         result.IsSuccess = true;
                         result.Data = require.newNumber;
+                        result.Data_1 = serObj.Name;
                     }
                     else
                     {
@@ -225,6 +268,59 @@ namespace QMS_Website.Controllers
             }
             return result;
         }
+
+        [HttpGet]
+        public ResponseBase PrintTicket_vtq(int stt, string maphieudichvu, string madichvu, string macongviec, string loaixe)
+        {
+            var result = new ResponseBase();
+            //ktra xem so cu da co chua neu chua có moi in mới
+            var foundTicket = BLLDailyRequire.Instance.Get(connectString, maphieudichvu);
+            if (foundTicket == null)
+            {
+                // chua co in mới   
+                var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
+                var serObj = BLLService.Instance.Get(connectString, madichvu);
+                if (serObj != null)
+                {
+                    PrinterRequireModel require = null;
+                    var rs = BLLVietThaiQuan.Instance.ThemPhieu(connectString,stt, serObj.Id, maphieudichvu, macongviec, loaixe,serObj.TimeProcess.TimeOfDay,  DateTime.Now);
+                    if (rs.IsSuccess)
+                    {
+                        require = new PrinterRequireModel()
+                        {
+                            newNumber = ((int)rs.Data + 1),
+                            oldNumber = (int)rs.Data,
+                            TenDichVu = serObj.Name,
+                            TenQuay = rs.Data_2,
+                            MajorId = (int)rs.Data_1,
+                            ServiceId = serObj.Id
+                        };
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        result.IsSuccess = true;
+                        result.Data = require.newNumber;
+                        result.Data_1 = serObj.Name;
+                    }
+                    else
+                    {
+                        result.IsSuccess = false;
+                        result.Errors.Add(new Error() { Message = "Gửi thông tin bị lỗi không xử lý được yêu cầu" });
+                    }
+                }
+                else
+                {
+                    result.IsSuccess = false;
+                    result.Errors.Add(new Error() { MemberName = "in phiếu", Message = "Không tìm thấy thông tin dịch vụ với mã bạn vừa cung cấp. vui lòng kiểm tra lại." });
+                }
+            }
+            else
+            {
+                //có rồi trả lai so thôi
+                result.IsSuccess = true;
+                result.Data = foundTicket.TicketNumber;
+            }
+            return result;
+        }
+
 
         //[HttpGet]
         //public ResponseBase PrintTicket1(string maphieudichvu, string madichvu, string macongviec, string loaixe)

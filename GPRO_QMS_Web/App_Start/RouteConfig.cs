@@ -131,13 +131,23 @@ namespace GPRO_QMS_Web
              url: "xe-baocaochitiettungphieu",
              defaults: new { controller = "bcdanhgia", action = "Xe_ChiTietTungPhieu", id = UrlParameter.Optional }
          );
-
+            routes.MapRoute(
+           name: "huunghi1",
+           url: "huunghi1",
+           defaults: new { controller = "huunghi", action = "lcd1", id = UrlParameter.Optional }
+       );
+            routes.MapRoute(
+          name: "huunghi2",
+          url: "huunghi2",
+          defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional }
+      );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                // defaults: new { controller = "HienThiQuay", action = "index", id = UrlParameter.Optional }
-                defaults: new { controller = "TV", action = "tv1", id = UrlParameter.Optional }
+                 // defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
+                // defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } //huu nghi
+                 defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
             );
         }
     }

@@ -107,10 +107,10 @@ GPRO.Home = function () {
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 $('#danhgia_box').hide();
-                $('#camon').show();
+                $('#camon').css("display", 'block !important');
                 var inter = setInterval(function () {
                     $('#danhgia_box').show();
-                    $('#camon').hide();
+                    $('#camon').css("display", 'none !important');
                 }, 10000);
             }
         });

@@ -2,8 +2,16 @@
     ViewBag.Title = "Tiêu chí đánh giá";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-  <script src="~/Areas/Admin/Scripts/Evaluate/EvaluateIndex.js"></script>
-<div id="jtable"></div> 
+ 
+<link href="~/Content/KendoUI/kendo.common-material.min.css" rel="stylesheet" /> 
+<link href="~/Content/KendoUI/kendo.material.min.css" rel="stylesheet" />
+<link href="~/Content/KendoUI/kendo.default.mobile.min.css" rel="stylesheet" />
+
+<script src="~/Content/KendoUI/kendo.all.min.js"></script>
+<script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>
+
+<script src="~/Areas/Admin/Scripts/Evaluate/EvaluateIndex.js"></script>
+<div id="jtable" imgfolder="@System.Configuration.ConfigurationManager.AppSettings["imageFolder"].ToString()"></div>
 
 <div class="modal fade" id="popup" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modalsmall">
@@ -22,8 +30,8 @@
                     <div class="form-group">
                         <label class="control-label">Thứ tự sắp xiếp<span class="required-class">*</span></label><br />
                         <input class="form-control" id="index" data-bind="value: Index" type="text" placeholder="Nhập số thứ tự" />
-                    </div> 
-                    
+                    </div>
+
                     <div class="form-group">
                         <label class="control-label">Ghi chú</label>
                         <textarea class="form-control" data-bind="value: Note"></textarea>
@@ -91,7 +99,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label">Chọn Mặc định <span class="required-class">*</span></label><br />
-                        <input type="checkbox" id="Eval_c_default" data-width="130" data-toggle="toggle" data-on="Có" data-off="Không">
+                        <input type="checkbox" id="Eval_c_default" @*data-width="130" data-toggle="toggle" data-on="Có" data-off="Không"*@ />
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label">Logo </label>
@@ -101,11 +109,20 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="form-group  ">
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Gửi tin nhắn<span class="required-class">*</span></label><br />
+                        <input type="checkbox" id="Eval_c_sendSMS"  />
+                    </div>                    
+                    <div class="form-group col-md-6 ">
                         <label class="control-label">Ghi chú</label>
                         <textarea class="form-control" id="Eval_c_note" data-bind="value: Note"></textarea>
                     </div>
-                    
+                    <div class="clearfix"></div>
+                    <div class="form-group box-sms col-md-12">
+                        <label class="control-label">Nội dung gửi tin nhắn đánh giá</label>
+                        <textarea class="form-control" id="SmsContent" data-bind="value: SmsContent"></textarea>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <div class="modal-footer">

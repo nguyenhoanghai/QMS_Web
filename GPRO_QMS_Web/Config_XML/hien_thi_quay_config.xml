@@ -14,7 +14,7 @@
   </View>
   <View ID="6">
     <Name>man_hinh_co_video</Name>
-    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Adv_Css":"","Row":"4","Col":"1","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important","css_box_video":"display:block;width:100% !important;height:550px !important"}</Value>
+    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Adv_Css":"","Row":"4","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important;height:650px !important","css_box_video":"display:none;width:100% !important;height:550px !important"}</Value>
   </View>
   <View ID="5">
     <Name>man_hinh_co_video</Name>
@@ -39,5 +39,14 @@
   <View ID="TV1">
     <Name>TV1</Name>
     <Value>{"PageTitle":"Xe Máy Việt thái quân","PageTitle_Css":" background:white;padding:10px;text-align:center;font-size:45px;font-weight:bold;color:red","SubTitle":"BÀN NÂNG|SỐ THẺ|SỐ PHIẾU|THỜI GIAN CÒN LẠI","SubTitle_Css":"font-size:25px !important;","Row1_Css":"font-size:35px !important;","Row2_Css":"font-size:35px !important;background:green;","background":"black","Row":"4","Hight":" 650","SlideInterval":"30000","css_box_video":"height:550px ;width:100% ","counters":"1,2,3,4,5"}</Value>
+  </View>
+
+  <View ID="MH5">
+    <Name>man_hinh_tien_thu</Name>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":" font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","rows":"3"}</Value>
+  </View>
+  <View ID="MH4">
+    <Name>man_hinh_tien_thu</Name>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":" font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","tieu_de_stt":"SỐ THỨ TỰ ĐANG PHỤ VỤ TẠI CỬA SỐ ","rows":"6"}</Value>
   </View>
 </Views>

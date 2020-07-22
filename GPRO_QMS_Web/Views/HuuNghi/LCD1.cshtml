@@ -126,6 +126,10 @@
     .num-stt-ketluan {
         color: green
     }
+
+    .setting .row .col {
+        padding: 0 .75rem;
+    }
 </style>
 
 <div class="row text-center" style="width:100%">
@@ -140,21 +144,14 @@
             </div>
             <div class="clearfix"></div>
             <div class="cho-kham">
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
+                @for (int i = 0; i < (int)cf.rows; i++)
+                {
+                    <div class="bv-table-row r@(i)">
+                        <div class="col s2"></div>
+                        <div class="col s8"></div>
+                        <div class="col s2"></div>
+                    </div>
+                }
                 <div class="clearfix"></div>
             </div>
 
@@ -169,28 +166,21 @@
             </div>
             <div class="clearfix"></div>
             <div class="qua-luot-kham">
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
+                @for (int i = 0; i < (int)cf.rows; i++)
+                {
+                    <div class="bv-table-row r@(i)">
+                        <div class="col s2"></div>
+                        <div class="col s8"></div>
+                        <div class="col s2"></div>
+                    </div>
+                }
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="  padd-20">
+    <div class=" ">
         <div class="sub-title-stt">SỐ THỨ TỰ ĐANG KHÁM BỆNH</div>
         <div class="num-stt num-stt-dangkham">001</div>
     </div>
@@ -204,21 +194,14 @@
             </div>
             <div class="clearfix"></div>
             <div class="cho-ket-luan">
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
+                @for (int i = 0; i < (int)cf.rows; i++)
+                {
+                    <div class="bv-table-row r@(i)">
+                        <div class="col s2"></div>
+                        <div class="col s8"></div>
+                        <div class="col s2"></div>
+                    </div>
+                }
                 <div class="clearfix"></div>
             </div>
 
@@ -226,7 +209,7 @@
         </div>
         <div class="col s2"></div>
         <div class="col s5  border-left  blue-text">
-            <div class="bold bv-sub-title">DANH SÁCH BN QUÁ LƯỢT KẾT LUẬN KHÁM BỆNH</div>
+            <div class="bold bv-sub-title">BN QUÁ LƯỢT KẾT LUẬN KHÁM BỆNH</div>
             <div class="bv-table-title">
                 <div class="col s2">STT</div>
                 <div class="col s8">Họ và Tên</div>
@@ -234,28 +217,21 @@
             </div>
             <div class="clearfix"></div>
             <div class="qua-luot-ket-luan">
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
-                <div class="bv-table-row">
-                    <div class="col s2">001</div>
-                    <div class="col s8">Lâm văn C</div>
-                    <div class="col s2">30</div>
-                </div>
+                @for (int i = 0; i < (int)cf.rows; i++)
+                {
+                    <div class="bv-table-row r@(i)">
+                        <div class="col s2"></div>
+                        <div class="col s8"></div>
+                        <div class="col s2"></div>
+                    </div>
+                }
                 <div class="clearfix"></div>
             </div>
 
             <div class="clearfix"></div>
         </div>
     </div>
-    <div class=" col s12 border-bottom padd-20">
+    <div class=" col s12 border-bottom  ">
         <div class="sub-title-stt">SỐ THỨ TỰ ĐANG KẾT LUẬN KHÁM</div>
         <div class="num-stt num-stt-ketluan">021</div>
     </div>
@@ -264,7 +240,7 @@
 
 <div class="clearfix"></div>
 <div id="configStr" style="display:none">@Html.Raw(cf)</div>
- 
+
 <div class="row setting">
     <div class="col s12 m12">
         <div class="card  ">
@@ -274,7 +250,7 @@
                     <div class="input-field col s4">
                         <input id="tieu-de" type="text" value="@cf.tieu_de">
                         <label for="tieu-de">Tiêu đề</label>
-                    </div> 
+                    </div>
                     <div class="input-field col s8">
                         <textarea id="css-tieu-de" class="materialize-textarea">@cf.tieu_de_css</textarea>
                         <label for="css-tieu-de">css khung Tiêu đề</label>
@@ -299,7 +275,10 @@
                         <textarea id="css-content" class="materialize-textarea">@cf.noi_dung_css</textarea>
                         <label for="css-content">css dòng nội dung</label>
                     </div>
-                     
+                    <div class="input-field col s4">
+                        <input id="rows" type="number" min="1" value="@cf.rows">
+                        <label>Số dòng nội dung</label>
+                    </div>
                 </div>
             </div>
             <div class="card-action">
@@ -308,7 +287,10 @@
         </div>
     </div>
 </div>
-<script src="~/Scripts/QMS/ManHinhGoiSo/goi-so-1.js"></script>
+ 
+
+<script src="~/Scripts/playSound.min.js"></script>
+<script src="~/Scripts/QMS/huu-nghi/goi-so-1.js"></script>
 <script>
     $('[btSave]').click(function () {
         var obj = {
@@ -317,9 +299,10 @@
             sub_tieu_de: $('#sub-tieu-de').val(),
             sub_tieu_de_css: $('#css-sub-tieu-de').val(),
             tieu_de_stt_css: $('#css-tieu-de-stt').val(),
-            stt_css: $('#css-stt').val(), 
+            stt_css: $('#css-stt').val(),
             noi_dung_css: $('#css-content').val(),
-            noi_dung_title_css: $('#css-content-title').val() 
+            noi_dung_title_css: $('#css-content-title').val(),
+            rows: $('#rows').val()
         }
         SaveConfig(JSON.stringify(obj), 'MH3');
     });
@@ -332,7 +315,6 @@
 
     css += '.bv-table-title {' + obj.noi_dung_title_css + '  }';
     css += '.bv-table-row {' + obj.noi_dung_css + ' }';
-     
 
     $("style").append(css);
 

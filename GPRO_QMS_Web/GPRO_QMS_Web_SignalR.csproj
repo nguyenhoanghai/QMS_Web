@@ -783,6 +783,8 @@
     <Content Include="Scripts\QMS\Home\Index_1_tieuchi.js" />
     <Content Include="Scripts\QMS\Home\TienThu.js" />
     <Content Include="Scripts\QMS\Home\Home.js" />
+    <Content Include="Scripts\QMS\huu-nghi\goi-so-1.js" />
+    <Content Include="Scripts\QMS\huu-nghi\goi-so-2.js" />
     <Content Include="Scripts\QMS\LCDQuay\MH2.js" />
     <Content Include="Scripts\QMS\LCDQuay\MH1.js" />
     <Content Include="Scripts\QMS\ManHinhGoiSo\goi-so-1.js" />
@@ -838,6 +840,8 @@
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HienThiQuayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HuuNghiController.cs" />
+    <Compile Include="Controllers\HuuNghiServiceController.cs" />
     <Compile Include="Controllers\LCDQuayController.cs" />
     <Compile Include="Controllers\ManHinhGoiSoController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -905,6 +909,8 @@
     <Content Include="Views\BCDanhGia\Xe_NangSuatDV_TGTrungBinhNV.cshtml" />
     <Content Include="Views\BCDanhGia\Xe_ChiTietTungPhieu.cshtml" />
     <Content Include="Views\Shared\_LayoutTV.cshtml" />
+    <Content Include="Views\HuuNghi\LCD1.cshtml" />
+    <Content Include="Views\HuuNghi\LCD2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -34,7 +34,8 @@ GPRO.NhanVien = function () {
         Data: {
             NhanVienModel: {},
             FileName: '',
-            avatar: ''
+            avatar: '',
+            Id : 0
         }
     }
     this.GetGlobal = function () {
@@ -62,38 +63,38 @@ GPRO.NhanVien = function () {
         });
 
         $('#hid_avatar').change(function () {
-            Global.Data.NhanVienModel.Hinh = $('#hid_avatar').val();
+            Global.Data.NhanVienModel.Avatar = $('#hid_avatar').val();
             Save();
         });
     }
 
     function InitViewModel(NhanVien) {
         var ViewModel = {
-            MANV: 0,
-            TENNV: '',
-            GIOITINH: false,
-            DIACHI: '',
-            USERNAME: '',
-            PASSWORD: '',
-            Hinh: '',
-            ChuyenMon: '',
-            ChucVu: '',
-            QTCongTac: '',
-            TROGIUP: ''
+            Id: 0,
+            Name: '',
+            Sex: false,
+            Address: '',
+            UserName: '',
+            Password: '',
+            Avatar: '',
+            Professional: '',
+            Position: '',
+            WorkingHistory: '',
+            Help: ''
         };
         if (NhanVien != null) {
             ViewModel = {
-                MANV: ko.observable(NhanVien.MANV),
-                TENNV: ko.observable(NhanVien.TENNV),
-                GIOITINH: ko.observable(NhanVien.GIOITINH),
-                DIACHI: ko.observable(NhanVien.DIACHI),
-                USERNAME: ko.observable(NhanVien.USERNAME),
-                PASSWORD: ko.observable(NhanVien.PASSWORD),
-                Hinh: ko.observable(NhanVien.Hinh),
-                ChuyenMon: ko.observable(NhanVien.ChuyenMon),
-                ChucVu: ko.observable(NhanVien.ChucVu),
-                QTCongTac: ko.observable(NhanVien.QTCongTac),
-                TROGIUP: ko.observable(NhanVien.TROGIUP)
+                Id: ko.observable(NhanVien.Id),
+                Name: ko.observable(NhanVien.Name),
+                Sex: ko.observable(NhanVien.Sex),
+                Address: ko.observable(NhanVien.Address),
+                UserName: ko.observable(NhanVien.UserName),
+                Password: ko.observable(NhanVien.Password),
+                Avatar: ko.observable(NhanVien.Avatar),
+                Professional: ko.observable(NhanVien.Professional),
+                Position: ko.observable(NhanVien.Position),
+                WorkingHistory: ko.observable(NhanVien.WorkingHistory),
+                Help: ko.observable(NhanVien.Help)
             };
         }
         return ViewModel;
@@ -108,13 +109,13 @@ GPRO.NhanVien = function () {
         $('#' + Global.Element.JtableNhanVien).jtable({
             title: 'Thông Tin Nhân Viên',
             paging: true,
-            pageSize: 10,
+            pageSize: 50,
             pageSizeChange: true,
             sorting: true,
             selectShow: true,
             actions: {
                 listAction: Global.UrlAction.GetList,
-                createActionUrl: Global.UrlAction.Create,
+                createAction: Global.Element.Popup,
                 searchAction: Global.Element.PopupSearch,
             },
             messages: {
@@ -126,63 +127,67 @@ GPRO.NhanVien = function () {
                 jtableId: Global.Element.JtableNhanVien
             },
             fields: {
-                MANV: {
+                Id: {
                     key: true,
                     create: false,
                     edit: false,
                     list: false
                 },
-                TENNV: {
+                UserName: {
                     visibility: 'fixed',
+                    title: "Tài khoản",
+                    width: "5%", 
+                },
+                Name: { 
                     title: "Tên NV",
                     width: "15%",
                     display: function (data) {
                         var txt = ""
-                        txt = '<span class="">' + data.record.TENNV + '</span>';
+                        txt = '<span class="">' + data.record.Name + '</span>';
                         return txt;
                     }
                 },
-                GIOITINH: {
+                Sex: {
                     title: "Giới Tính",
                     width: "7%",
                     display: function (data) {
                         var text = '';
-                        if (data.record.GIOITINH)
+                        if (data.record.Sex)
                             text = $('<i class="fa fa-male" style="font-size:26px"></i> ');
                         else
                             text = $('<i class="fa fa-female blue"  style="font-size:26px"></i> ');
                         return text;
                     }
                 },
-                DIACHI: {
+                Address: {
                     title: "Địa Chỉ",
                     width: "15%",
                 },
-                Hinh: {
+                Avatar: {
                     title: "Hình",
                     width: "7%",
                     display: function (data) {
                         var txt;
-                        if (data.record.Hinh != null)
-                            txt = '<span><img src="' +($('#'+Global.Element.JtableNhanVien).attr('imgFolder') + data.record.Hinh )+ '" width="40px" height="40px"/></span>';
+                        if (data.record.Avatar != null)
+                            txt = '<span><img src="' +($('#'+Global.Element.JtableNhanVien).attr('imgFolder') + data.record.Avatar )+ '" width="40px" height="40px"/></span>';
                         else
                             txt = '<span>' + " " + '</span>';
                         return txt;
                     }
                 },
-                ChuyenMon: {
+                Professional: {
                     title: "Chuyên Môn",
                     width: "10%",
                 },
-                ChucVu: {
+                Position: {
                     title: "Chức Vụ",
                     width: "15%",
                 },
-                QTCongTac: {
+                WorkingHistory: {
                     title: "QT Công Tác",
                     width: "15%",
                 },
-                TROGIUP: {
+                Help: {
                     title: "Trợ Giúp",
                     width: "15%",
                 },
@@ -194,8 +199,10 @@ GPRO.NhanVien = function () {
                         var text = $('<i data-toggle="modal" data-target="#' + Global.Element.Popup + '" title="Chỉnh sửa thông tin" class="fa fa-pencil-square-o clickable blue"  ></i>');
                         text.click(function () {
                             BindData(data.record);
-                            $('#sex').attr('checked', data.record.GIOITINH).change();
-                            Global.Data.avatar = data.record.Hinh;
+                            $('#sex').attr('checked', data.record.Sex).change();
+                            $('#username').val(  data.record.UserName) ;
+                            $('#password').val( data.record.Password) ;
+                            Global.Data.avatar = data.record.Avatar;
                         });
                         return text;
                     }
@@ -208,8 +215,8 @@ GPRO.NhanVien = function () {
                         var text = $('<button title="Xóa" class="jtable-command-button jtable-delete-command-button"><span>Xóa</span></button>');
                         text.click(function () {
                             GlobalCommon.ShowConfirmDialog('Bạn có chắc chắn muốn xóa?', function () {
-                                Global.Data.FileName = data.record.Hinh;
-                                Delete(data.record.MANV);
+                                Global.Data.FileName = data.record.Avatar;
+                                Delete(data.record.Id);
                             }, function () { }, 'Đồng ý', 'Hủy bỏ', 'Thông báo');
                         });
                         return text;
@@ -224,11 +231,11 @@ GPRO.NhanVien = function () {
         $('#' + Global.Element.PopupSearch).modal('hide');
     }
 
-    function Delete(manv) {
+    function Delete(Id) {
         $.ajax({
             url: Global.UrlAction.Delete,
             type: 'POST',
-            data: JSON.stringify({ 'MANV': manv }),
+            data: JSON.stringify({ 'manv': Id }),
             contentType: 'application/json charset=utf-8',
             beforeSend: function () { $('#loading').show(); },
             success: function (data) {
@@ -259,7 +266,7 @@ GPRO.NhanVien = function () {
     }
 
     function Save() {       
-        Global.Data.NhanVienModel.GIOITINH = $('#sex').prop('checked');
+        Global.Data.NhanVienModel.Sex = $('#sex').prop('checked');
         $.ajax({
             url: Global.UrlAction.Save,
             type: 'post',
@@ -293,7 +300,7 @@ GPRO.NhanVien = function () {
                 if ($('#avatar').val() != '')
                      UploadPicture('avatar', 'hid_avatar');
                 else {
-                    Global.Data.NhanVienModel.Hinh = Global.Data.avatar;
+                    Global.Data.NhanVienModel.Avatar = Global.Data.avatar;
                     Save();
                 }
             }
@@ -302,10 +309,24 @@ GPRO.NhanVien = function () {
             $("#" + Global.Element.Popup).modal("hide");
             BindData(null);
             $('#sex').attr('checked', false).change();
-            $('#hid_avatar').val('');
+            $('#hid_avatar').val('');  
+            $('#avatar').val(''); 
         });
     }
     function CheckValidate() {
+        if ($('#username').val().trim() == "") {
+            GlobalCommon.ShowMessageDialog("Vui lòng nhập Tên tài khoản.", function () { }, "Lỗi Nhập liệu");
+            return false;
+        }
+        else if ($('#name').val().trim() == "") {
+            GlobalCommon.ShowMessageDialog("Vui lòng nhập Tên Nhân Viên.", function () { }, "Lỗi Nhập liệu");
+            return false;
+        } 
+        else if (Global.Data.Id == 0 && $('#password').val().trim() == "") {
+            GlobalCommon.ShowMessageDialog("Vui lòng nhập mật khẩu.", function () { }, "Lỗi Nhập liệu");
+            return false;
+        }
+        else
         return true;
     }
 

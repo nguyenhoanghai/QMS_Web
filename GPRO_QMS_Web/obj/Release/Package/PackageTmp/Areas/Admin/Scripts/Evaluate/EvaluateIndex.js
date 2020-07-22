@@ -39,7 +39,7 @@ GPRO.Evaluate = function () {
             Parent: {},
             Child: {},
             ParentId: 0,
-            Avartar:''
+            Avartar: ''
         }
     }
     this.GetGlobal = function () {
@@ -59,9 +59,21 @@ GPRO.Evaluate = function () {
     }
 
     var RegisterEvent = function () {
+        //$('#Eval_c_default').bootstrapToggle({
+        //    on: 'Có',
+        //    off: 'Không'
+        //});
+        $('.box-sms').hide();
         $('#Eval_c_hid_avatar').change(function () {
             Global.Data.Avartar = $('#Eval_c_hid_avatar').val();
             SaveChild();
+        });
+
+        $('#Eval_c_sendSMS').change(function () {
+            if ($('#Eval_c_sendSMS').prop('checked'))  
+                $('.box-sms').show();
+            else
+                $('.box-sms').hide();
         });
     }
 
@@ -69,7 +81,7 @@ GPRO.Evaluate = function () {
         $('#' + Global.Element.Jtable).jtable({
             title: 'Danh sách tiêu chí đánh giá',
             paging: true,
-            pageSize: 25,
+            pageSize: 50,
             pageSizeChange: true,
             sorting: true,
             selectShow: true,
@@ -123,13 +135,13 @@ GPRO.Evaluate = function () {
                                     {
                                         title: '<span class="red">Danh sách thang đánh giá : ' + parent.record.Name + '</span>',
                                         paging: true,
-                                        pageSize: 10,
+                                        pageSize: 20,
                                         pageSizeChange: true,
                                         sorting: true,
                                         selectShow: true,
                                         actions: {
                                             listAction: Global.UrlAction.GetList_c + '' + parent.record.Id,
-                                            createAction: Global.Element.Popup_c, 
+                                            createAction: Global.Element.Popup_c,
                                         },
                                         messages: {
                                             addNewRecord: 'Thêm thang ĐG',
@@ -167,6 +179,35 @@ GPRO.Evaluate = function () {
                                                     return text;
                                                 }
                                             },
+                                            Avatar: {
+                                                title: "Hình",
+                                                width: "7%",
+                                                display: function (data) {
+                                                    var txt;
+                                                    if (data.record.Icon != null)
+                                                        txt = '<span><img src="' + ($('#' + Global.Element.Jtable).attr('imgFolder') + data.record.Icon) + '" width="40px" height="40px"/></span>';
+                                                    else
+                                                        txt = '<span>' + " " + '</span>';
+                                                    return txt;
+                                                }
+                                            },
+                                            IsSendSMS: {
+                                                title: "Gửi tin nhắn",
+                                                width: "10%",
+                                                display: function (data) {
+                                                    var text = '';
+                                                    if (!data.record.IsSendSMS)
+                                                        text = $('<i class="fa fa-square-o" style="font-size:26px"></i> ');
+                                                    else
+                                                        text = $('<i class="fa fa-check-square-o blue"  style="font-size:26px"></i> ');
+                                                    return text;
+                                                }
+                                            },
+                                            SmsContent: {
+                                                title: "Tin nhắn",
+                                                width: "20%",
+                                                sorting: false,
+                                            },
                                             Note: {
                                                 title: "Ghi Chú",
                                                 width: "20%",
@@ -183,8 +224,16 @@ GPRO.Evaluate = function () {
                                                         $('#Eval_c_name').val(data.record.Name);
                                                         $('#Eval_c_note').val(data.record.Note);
                                                         $('#Eval_c_index').val(data.record.Index);
-                                                        Global.Data.Avartar = data.record.Icon; 
-                                                        $('#Eval_c_default').attr('checked', data.record.IsDefault);
+                                                        $('#SmsContent').val(data.record.SmsContent);
+                                                        Global.Data.Avartar = data.record.Icon;
+                                                        $('#Eval_c_default').prop('checked', data.record.IsDefault);
+                                                        $('#Eval_c_sendSMS').prop('checked', data.record.IsSendSMS).change();
+                                                        //.data("kendoMobileSwitch").check( data.record.IsDefault);
+                                                        //if(data.record.IsDefault)
+                                                        //    $('#Eval_c_default').bootstrapToggle('on');
+                                                        //else
+                                                        //    $('#Eval_c_default').bootstrapToggle('off');
+
                                                     });
                                                     return text;
                                                 }
@@ -357,7 +406,7 @@ GPRO.Evaluate = function () {
             $("#" + Global.Element.Search).modal("hide");
         });
     }
- 
+
 
 
     function SaveChild() {
@@ -366,10 +415,12 @@ GPRO.Evaluate = function () {
             Name: $('#Eval_c_name').val(),
             Note: $('#Eval_c_note').val(),
             Index: $('#Eval_c_index').val(),
-            EvaluateId:  Global.Data.ParentId,
-            IsDefault: $('#Eval_c_default').prop('checked'),
-            Icon:  Global.Data.Avartar
-        } 
+            SmsContent: $('#SmsContent').val(),
+            EvaluateId: Global.Data.ParentId,
+            IsDefault: $("#Eval_c_default").prop('checked'),//.data("kendoMobileSwitch").check(),
+            IsSendSMS: $("#Eval_c_sendSMS").prop('checked'), 
+            Icon: Global.Data.Avartar
+        }
         $.ajax({
             url: Global.UrlAction.Save_c,
             type: 'post',
@@ -435,11 +486,12 @@ GPRO.Evaluate = function () {
             $('#Eval_c_note').val('');
             $('#Eval_c_pictureuploader').val('');
             $('#Eval_c_hid_avatar').val('');
-            $('#Eval_c_index').val(0); 
+            $('#SmsContent').val('');
+            $('#Eval_c_index').val(0);
             Global.Data.Avartar = '';
-            $('#Eval_c_default').attr('checked', true);
-
-            
+            $('#Eval_c_default').prop('checked', true);
+            $('#Eval_c_sendSMS').prop('checked', false).change();
+           // $('#Eval_c_default').bootstrapToggle('on');
         });
     }
 
@@ -454,11 +506,18 @@ GPRO.Evaluate = function () {
         }
         return true;
     }
-    
+
 }
 $(document).ready(function () {
     var Evaluate = new GPRO.Evaluate();
     Evaluate.Init();
+
+    //$("#Eval_c_default").kendoMobileSwitch({
+    //    onLabel: "Có",
+    //    offLabel: "Không"
+    //});
+   // $('#Eval_c_default').bootstrapToggle({        on: 'Có',        off: 'Không'    });
+   
 })
 
 
