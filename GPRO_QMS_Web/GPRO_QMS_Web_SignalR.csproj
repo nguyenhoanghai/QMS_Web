@@ -97,6 +97,9 @@
     <Reference Include="QMS_System.Data">
       <HintPath>..\Lib\QMS_System.Data.dll</HintPath>
     </Reference>
+    <Reference Include="QMS_System.ThirdApp">
+      <HintPath>..\Lib\QMS_System.ThirdApp.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -785,6 +788,7 @@
     <Content Include="Scripts\QMS\Home\Home.js" />
     <Content Include="Scripts\QMS\huu-nghi\goi-so-1.js" />
     <Content Include="Scripts\QMS\huu-nghi\goi-so-2.js" />
+    <Content Include="Scripts\QMS\huu-nghi\huu-nghi.css" />
     <Content Include="Scripts\QMS\LCDQuay\MH2.js" />
     <Content Include="Scripts\QMS\LCDQuay\MH1.js" />
     <Content Include="Scripts\QMS\ManHinhGoiSo\goi-so-1.js" />
@@ -847,6 +851,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ServiceApiController.cs" />
     <Compile Include="Controllers\ThongkeController.cs" />
+    <Compile Include="Controllers\TienThuController.cs" />
     <Compile Include="Controllers\TVController.cs" />
     <Compile Include="Enum\eStatusName.cs" />
     <Compile Include="Global.asax.cs">

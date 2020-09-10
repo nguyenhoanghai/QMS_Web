@@ -43,7 +43,7 @@ namespace QMS_Website.Controllers
             int userId = int.Parse(ConfigurationManager.AppSettings["UserId"].ToString());
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
             int equipCode = int.Parse(ConfigurationManager.AppSettings["EquipCode"].ToString());
-            var obj = JsonConvert.SerializeObject(BLLHuuNghi.Instance.GetCounterDayInfo_Web(AppGlobal.Connectionstring, userId, equipCode, countersArr));
+            var obj = JsonConvert.SerializeObject(BLLHuuNghi.Instance.GetCounterDayInfo_Web(AppGlobal.Connectionstring, userId, countersArr[0], countersArr,GetKL));
             return Json(obj);
         }
 

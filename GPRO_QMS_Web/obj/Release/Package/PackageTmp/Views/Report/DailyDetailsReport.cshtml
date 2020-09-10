@@ -1,0 +1,212 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+</head>
+<body> 
+    <link href="~/Content/Materialize/materialize.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <div id="fullscreen" style="margin:0 10px ">
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col s12 col-sm-12" style=" padding:0">
+                <div style="padding: 10px;background: #ccc;text-align: center;font-weight: bold;text-transform: uppercase;font-size: 25px;margin-bottom: 15px;">
+                    Báo cáo chi tiết đánh giá
+                </div>
+                <div class="  col s12" style="margin-bottom:10px">
+                    <div class="input-field col s2">
+                        <input type="text" id="fromDate" class="datepicker">
+                        <label>Từ ngày</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input type="text" id="toDate" class="datepicker">
+                        <label>đến ngày</label>
+                    </div>
+                    <button id="get-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+                        Lấy báo cáo đánh giá
+                    </button>
+                    <button id="export-excel" class="btn waves-effect waves-light" type="button" style="margin-top:25px">
+                        Xuất báo cáo đánh giá
+                        @*<i class="material-icons right">cloud_download</i>*@
+                    </button>
+                </div>
+
+                <div class="col s12 col-sm-12">
+                    <table id="tb_export" name="tb_export">
+                        <thead>
+                            <tr>
+                                <td class="max-100">phiếu</td>
+                                <td>nhân viên</td>
+                                <td>dich vụ</td>
+                                <td class="max-100">Giờ đánh giá</td>
+                                <td class="max-100">Ý kiến khác</td>
+                                <td class="max-100">hài lòng</td>
+                                <td class="max-100">KHÔNG HÀI LÒNG VỀ THỜI GIAN PHỤC VỤ</td>
+                                <td class="max-100">KHÔNG HÀI LÒNG VỀ THÁI ĐỘ PHỤC VỤ</td>
+                                <td class="max-100">KHÔNG HÀI LÒNG VỀ CHẤT LƯỢNG PHỤC VỤ</td>
+                            </tr>
+                        </thead>
+                        <tbody>  </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <style>
+        #tb_export {
+            width: 100%;
+        }
+
+            #tb_export thead tr {
+            }
+
+                #tb_export thead tr td {
+                    background: blue;
+                    padding: 10px 0;
+                    text-transform: uppercase;
+                    color: white;
+                    font-weight: bold;
+                }
+
+            #tb_export td {
+                border: 1px solid #ccc;
+                text-align: center;
+                padding: 5px 0;
+            }
+
+        .full-box {
+            position: fixed;
+            top: 35px;
+            left: 0px;
+            z-index: 99999;
+            overflow: hidden;
+            margin-left: -15px;
+        }
+
+        .max-100 {
+            max-width: 100px
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    @*<script src="~/Content/KendoUI/kendo.all.min.js"></script>
+        <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>*@
+    <script src="~/Content/Materialize/materialize.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/QMS/Report/DailyReport-detail.js"></script>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+    <script>
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                //  $('#box-date').hide();
+            }
+            else {
+                fullScreenApi.cancelFullScreen(document.documentElement);
+                //   $('#box-date').show();
+            }
+        }
+
+        $('#request-full').click(function () {
+            check();
+        });
+
+
+    </script>
+
+</body>
+</html>

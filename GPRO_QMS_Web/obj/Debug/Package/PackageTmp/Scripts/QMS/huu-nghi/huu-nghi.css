@@ -1,0 +1,41 @@
+﻿.doi {
+    animation: colorchange 2s infinite;
+    -webkit-animation: colorchange 2s infinite;
+    color: white !important
+}
+
+@keyframes colorchange {
+    0% {
+        background: green;
+    }
+
+    30% {
+        background: red;
+    }
+
+    60% {
+        background: green;
+    }
+
+    100% {
+        background: red;
+    }
+}
+
+@-webkit-keyframes colorchange {
+    0% {
+        background: green;
+    }
+
+    30% {
+        background: red;
+    }
+
+    60% {
+        background: green;
+    }
+
+    100% {
+        background: red;
+    }
+}

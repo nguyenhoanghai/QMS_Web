@@ -146,8 +146,8 @@ namespace GPRO_QMS_Web
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                  // defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
-                // defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } //huu nghi
-                 defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
+                 defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } //huu nghi
+                // defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
             );
         }
     }

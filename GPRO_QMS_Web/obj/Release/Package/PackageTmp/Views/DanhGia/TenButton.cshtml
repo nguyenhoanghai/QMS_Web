@@ -1,0 +1,225 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_Danh_Gia.cshtml";
+}
+<style>
+    .logo {
+        background-size: contain !important;
+        height: 130px;
+        background: url(../../Content/logo.png) no-repeat center center;
+        padding: 0;
+    }
+
+    .container_ {
+        display: -webkit-flexbox !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-flex-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #currentNumber,
+    #danhgia_box {
+        background-color: red;
+        width: 100%;
+        text-align: center;
+    }
+
+    #num,
+    #dg_ct {
+        position: relative;
+        /*top: 50%;
+            transform: translateY(-50%);*/
+    }
+
+    #dg_ct {
+        padding-bottom: 10px;
+        /*margin-top: -10px;*/
+    }
+
+    #danhgia_box {
+        background-color: white !important;
+    }
+
+        #danhgia_box .title {
+            font-size: 45px;
+            border-bottom: 1px dotted #eee;
+        }
+
+        #danhgia_box .ct {
+            font-size: 44px;
+        }
+
+        #danhgia_box input[type=radio] {
+            width: 35px;
+            height: 25px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        #danhgia_box .child_title,
+        #danhgia_box .child_ct {
+            color: blue;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #danhgia_box .child_ct {
+            font-weight: normal !important;
+            padding: 30px;
+        }
+
+        #danhgia_box .foot {
+            padding-top: 20px;
+        }
+
+        #danhgia_box .btn-primary {
+            background-color: blue !important;
+            font-size: 30px;
+            width: 100%;
+        }
+
+    .ct-info {
+        margin: 0;
+        padding: 0;
+    }
+
+        .ct-info li {
+            list-style: none;
+            font-size: 20px;
+        }
+
+            .ct-info li span {
+                font-weight: bold;
+                color: red;
+                line-height: 20px;
+            }
+
+    .full-box {
+        position: fixed;
+        top: 72px;
+        left: 0px;
+        z-index: 99999;
+        overflow: hidden;
+        margin-left: -15px;
+    }
+
+    #camon {
+        font-size: 94px;
+        margin: auto;
+        height: 590px;
+        padding: 50px;
+        background: white;
+        color: blue;
+    }
+
+    .hide {
+        display: none !important
+    }
+
+    .button-text {
+        font-size: 34px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: blue;
+    }
+
+    .ButtonCSS {
+        font-size: 62px;
+        font-weight: 600;
+        margin-right: 5px;
+        height: unset;
+        line-height: 92px;
+        width: 90px;
+    } 
+
+    #currentNumber {
+        background-color: black;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0 0 0;
+        margin: 0px 0 -81px 0;
+        line-height: 331px;
+    }
+</style>
+
+<input id="user" type="hidden" 
+       value="@ViewData["user"] " 
+       isuseqms="@System.Configuration.ConfigurationManager.AppSettings["IsUseQMS"]" 
+       imgfolder="@System.Configuration.ConfigurationManager.AppSettings["imageFolder"].ToString()"/>
+
+<div>
+    <div  id="currentNumber" class="font-dt">
+        <span id="num"   style="color:red ; font-size:500px; padding :  0px 0 ">2032</span>
+    </div>
+
+    <div id="danhgia_box" style="height:590px">
+        <div id="dg_ct" class=" " style="margin:0; padding:0;font-size: 35px; font-weight: 600; color: red;">
+            <div class="com-name" >CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG HÓA HÀNG KHÔNG VIỆT NAM</div>
+        </div>
+        <div id="dg_ct" class=" ">
+            <div class="EvaluateTitleCSS " style="font-size: 30px;"></div>
+        </div>
+        <div id="button" class=" "></div>
+        @*<div class="col-md-12" style="margin-top:-15px">
+            <marquee behavior=scroll direction="left" scrollamount="5" style="font-size:41px; color:red; text-transform:uppercase; font-weight:bold">SỰ HÀI LÒNG CỦA NHÂN DÂN LÀ MỤC TIÊU PHỤC VỤ CỦA CƠ QUAN HÀNH CHÍNH NHÀ NƯỚC.</marquee>
+        </div>*@
+        <div class="clearfix"></div>
+    </div>
+    <div id="camon" class="container_ hide"><span class="thank-words">  </span></div>
+</div>
+<div class="clearfix"></div>
+  
+<div class="row setting">
+    <div class="col s12 m12">
+        <div class="card  ">
+            <div class="card-content blue-text text-darken-2 glyphicon-bold">
+                <span class="card-title">Cấu hình hiển thị </span>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="company-name" type="text">
+                        <label for="company-name">Tên đơn vị</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="thank-words" type="text">
+                        <label for="thank-words">Lời cảm ơn</label>
+                    </div>
+                    <div class="input-field col s12"> 
+                        <textarea id="css-company-name" class="materialize-textarea"></textarea>
+                        <label for="css-company-name">css khung tên đơn vị</label>
+                    </div>
+                    <div class="input-field col s12"> 
+                        <textarea id="css-number" class="materialize-textarea"></textarea>
+                        <label for="css-number">css khung số thứ tự</label>
+                    </div>
+                    <div class="input-field col s12"> 
+                        <textarea id="css-tieu-de" class="materialize-textarea"></textarea>
+                        <label for="css-tieu-de">css khung tiêu đề đánh giá</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-button" class="materialize-textarea"></textarea> 
+                        <label for="css-button">css nút đánh giá</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="~/Scripts/QMS/danh-gia/danh-gia-10-nut.js"></script>
+    <script>
+        var home = new GPRO.Home();
+        home.Init();
+
+
+        function DanhGia(value) {
+            home.DanhGia(value);
+        }
+    </script>

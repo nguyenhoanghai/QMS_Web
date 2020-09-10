@@ -1,0 +1,221 @@
+﻿@using System.Configuration;
+@{
+    Layout = null;
+    var cf = (ViewData["config"] as QMS_Website.Models.BV_ConfigModel);
+    var str = (cf.SubTitle != null ? cf.SubTitle.Split('|').ToArray() : new String[] { });
+    if (str.Length < 2)
+    {
+        str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
+    }
+    var col = Convert.ToInt32((cf.Col != null ? cf.Col : "1"));
+    QMS_System.Data.Q_User user = Model;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thông tin BenhVien</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Marquee/jquery.marquee.min.css" rel="stylesheet" />
+    <link href="~/Scripts/QMS/HienThiQuay/BenhVien.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/Alert/common.js"></script>
+    <script src="~/Content/Marquee/jquery.marquee.min.js"></script>
+    <style>
+   .cell-last {border-right: none;        }
+ .row {margin: 0;}        
+    </style>
+</head>
+<body>
+    <div id="fullscreen" class=" " counters="@user.Counters">
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        <div>
+            <div class="col-md-12 col-sm-12 title"> </div>
+            <div class="col-md-12 col-sm-12" style="padding:0">
+                <div class="row  ">
+                    @for (int i = 1; i <= col; i++)
+                    {
+                        <div class="col-md-@(12/(col*2)) col-sm-@(12/(col*2)) sub-title">@str[0]</div>
+                        <div class="col-md-@(12/(col*2)) col-sm-@(12/(col*2)) sub-title @(i==col?"cell-last":"") ">@str[1]</div>
+                    }
+                    <div class="clearfix"></div>
+                </div>
+                <div content>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 sub-title   ">0</div>
+                        <div class="col-md-6 col-sm-6 sub-title cell-last"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                @* <marquee id="mq" behavior=scroll onmousedown="this.stop();" onfinish="alert('chay xong')" direction="left" loop="1" scrollamount="@ConfigurationManager.AppSettings["TD_BV_TIME"]" class="marquee"> Dòng chữ chạy khi gọi bệnh nhân giữ lai so phieu cuoi cung ko cho ve 0</marquee>*@
+              @*  <marquee id="mq" behavior="scroll" loop="1" direction="left" scrollamount="@ConfigurationManager.AppSettings["TD_BV_TIME"]" class="marquee"> cho ve 0</marquee>*@
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+    <div class="setting">
+        <div class="form-group col-md-6">
+            <label class="control-label">Tiêu đề lớn</label>
+            <input type="text" class="form-control" id="title" value=" " placeholder="Nhập tên tiêu đề lớn ..." />
+            <textarea class="form-control" id="title_css" placeholder="Nhập giá trị CSS tiêu đề lớn ..."> </textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label">Tiêu đề phía dưới</label>
+            <input type="text" class="form-control" id="subText" value=" " placeholder="Nhập tên tiêu đề nhỏ ..." />
+            <textarea class="form-control" id="sub_css" placeholder="Nhập giá trị CSS tiêu đề nhỏ ..."> </textarea>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group col-md-6">
+            <label class="control-label">CSS nội dung dòng chẳn</label>
+            <textarea class="form-control" id="css_r1" placeholder="css dòng chẳn ..."> </textarea>
+            <label class="control-label">CSS nội dung dòng lẻ</label>
+            <textarea class="form-control" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <div class="col-md-4 col-sm-4">
+                <label class="control-label">Số cột</label>
+                <input type="text" class="form-control" id="column" value=" " placeholder="số cột ..." />
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <label class="control-label">Số dòng</label>
+                <input type="text" class="form-control" id="row" value=" " placeholder="số dòng mỗi bên ..." />
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <label class="control-label">Tốc độ chạy quảng cáo</label>
+                <input type="text" class="form-control" id="run_time" value=" " placeholder="Tốc độ chạy quảng cáo ..." />
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12 col-sm-12">
+                <label class="control-label">CSS quảng cáo</label>
+                <textarea class="form-control" id="run_css" placeholder="Css chạy quảng cáo ..."> </textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group col-md-12 ">
+            <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+     
+    <script src="~/Scripts/QMS/HienThiQuay/BenhVien.js"></script>
+    <script>
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                $('.setting').hide();
+            }
+            else {
+                fullScreenApi.cancelFullScreen(document.documentElement);
+                $('.setting').show();
+            }
+        }
+
+        $('#request-full').click(function () {
+            check();
+        });
+        var home = new GPRO.BenhVien();
+        home.Init();
+
+        function abb() {
+            alert('ii');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+﻿@model  List<QMS_System.Data.Model.VideoPlaylist>
+@using System.Configuration;
+@using Newtonsoft.Json
+@{
+    Layout = null;
+    var cf = (ViewData["config"] as QMS_Website.Models.BV_ConfigModel);
+    var str = (cf.SubTitle != null ? cf.SubTitle.Split('|').ToArray() : new String[] { });
+    if (str.Length < 2)
+    {
+        str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
+    }
+    var col = Convert.ToInt32((!string.IsNullOrEmpty(cf.Col) ? cf.Col : "1"));
+    //  QMS_System.Data.Q_User user = ViewData["userInfo"] as QMS_System.Data.Q_User;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ManHinhCoVideo</title>
+    <link href="~/Content/Materialize/materialize.min.css" rel="stylesheet" />
+
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+        <link href="~/Content/Marquee/jquery.marquee.min.css" rel="stylesheet" />*@
+    <link href="~/Scripts/QMS/HienThiQuay/BenhVien.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/Alert/common.js"></script>
+    <script src="~/Content/Marquee/jquery.marquee.min.js"></script>
+    <script src="~/Content/Materialize/materialize.min.js"></script>
+    <script src="~/Scripts/playSound.min.js"></script>
+    <style>
+        #video {
+            width: 100%;
+            height: inherit
+        }
+
+        .row {
+            margin: 0 !important
+        }
+
+        body {
+            background: none
+        }
+    </style>
+</head>
+<body>
+    <div id="fullscreen" class=" ">
+        @*counters="@user.Counters">*@
+        <div class="full-box">
+            <a id="request-full" class="btn btn-primary">
+                <i class="fa fa-arrows-alt "></i>
+            </a>
+            <a class="btn btn-primary" onclick="fullScreenApi.cancelFullScreen(document.documentElement)" style="display:none">
+                <i class="fa fa-compress "> </i>
+            </a>
+        </div>
+        <div>
+            <div class="col m12 s12 title"> </div>
+            <div class="row">
+                <div class="col m12 s12 left-box" style="padding:0">
+                    <div class="row  ">
+                        @for (int i = 1; i <= col; i++)
+                        {
+                            <div class="col m@(12/(col*2)) s@(12/(col*2)) sub-title">@str[0]</div>
+                            <div class="col m@(12/(col*2)) s@(12/(col*2)) sub-title @(i==col?"cell-last":"") ">@str[1]</div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                    <div content>
+                        <div class="row">
+                            <div class="col m3 cs3 sub-title   ">0</div>
+                            <div class="col m6 s6 sub-title cell-last"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col m12 s12 right-box" style="padding:0">
+                    <video autoplay controls
+                           name="media"
+                           id="video"
+                           autobuffer
+                           onended="RunNext()"
+                           src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col m12 s12">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="setting row">
+        <div class="input-field col m6">
+            <input type="text" class="" id="title" value=" " placeholder="Nhập tên tiêu đề lớn ..." />
+            <label for="title">Tiêu đề lớn</label>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="title_css" placeholder="Nhập giá trị CSS tiêu đề lớn ..."> </textarea>
+            <label>CSS Tiêu đề lớn</label>
+        </div>
+        <div class="input-field col m6">
+            <input type="text" class="materialize-textarea" id="subText" value=" " placeholder="Nhập tên tiêu đề nhỏ ..." />
+            <label>Tiêu đề phía dưới</label>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="sub_css" placeholder="Nhập giá trị CSS tiêu đề nhỏ ..."> </textarea>
+            <label>CSS Tiêu đề phía dưới</label>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="css_r1" placeholder="css dòng chẳn ..."> </textarea>
+            <label>CSS nội dung dòng chẳn</label>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
+            <label>CSS nội dung dòng lẻ</label>
+        </div>
+        <div class="input-field col m2 s2">
+            <label>Số cột</label>
+            <input type="text" class="" id="column" value=" " placeholder="số cột ..." />
+        </div>
+        <div class="input-field col m2 s2">
+            <label>Số dòng</label>
+            <input type="text" class="" id="row" value=" " placeholder="số dòng mỗi bên ..." />
+        </div>
+        <div class="input-field col m2 s2">
+            <label>Tốc độ chạy quảng cáo</label>
+            <input type="text" class="" id="run_time" value=" " placeholder="Tốc độ chạy quảng cáo ..." />
+        </div>
+        <div class="input-field col m6 s6">
+            <label>CSS quảng cáo</label>
+            <textarea class="materialize-textarea" id="run_css" placeholder="Css chạy quảng cáo ..."> </textarea>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="css_box_info"> </textarea>
+            <label>CSS Box thông tin</label>
+        </div>
+        <div class="input-field col m6">
+            <textarea class="materialize-textarea" id="css_box_video"> </textarea>
+            <label>CSS Box Video</label>
+        </div>
+        <div class="clearfix"></div>
+        <div class=" col m12 ">
+            <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <audio id="audio" src="~/audios/pingpong.wav" type="audio/wav"></audio>
+    <input type="button" value="Start" id="start" />
+
+    <script src="~/Scripts/QMS/HienThiQuay/man-hinh-co-video-doc.js"></script>
+    <script>
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    nonNativeSupportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+            else if (typeof window.ActiveXObject !== "undefined") { // IE.
+                fullScreenApi.nonNativeSupportsFullScreen = true;
+                fullScreenApi.requestFullScreen = fullScreenApi.requestFullScreen = function (el) {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+                fullScreenApi.isFullScreen = function () {
+                    return document.body.clientHeight == screen.height && document.body.clientWidth == screen.width;
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+                    return this.each(function () {
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(this);
+                        }
+                    });
+                };
+            }
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+        function check() {
+            if (!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen(document.documentElement);
+                $('.setting').hide();
+                var video = document.getElementById("video");
+                var videoPromise = video.play();
+                if (videoPromise !== undefined) {
+                    videoPromise.then(_ => {}).catch(error => { });
+                }
+
+                var audio = document.getElementById("audio");
+                var audioPromise = audio.play();
+                if (audioPromise !== undefined) {
+                    audioPromise.then(_ => {}).catch(error => { });
+                }
+            }
+            else {
+                fullScreenApi.cancelFullScreen(document.documentElement);
+                $('.setting').show();
+            }
+        }
+
+        $('#request-full').click(function () {
+            check();
+        });
+        var home = new GPRO.BenhVien();
+        home.Init(); 
+    </script>
+    <script>
+        var list = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model))');
+        var index = (list != null && list.length > 1 ? 1 : 0);
+            function toggleMute() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/'+list[index].Path;
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+            }
+
+            function RunNext() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/' + list[index].Path;
+                setTimeout('', 5000);
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+        };
+
+        $(document).ready(function () {
+            $('.materialize-textarea').trigger('autoresize');
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+﻿.null {
+    font-size: 40px !important;
+}
+
+body {
+    background-color: lightblue;
+    text-align: center;
+    font-size: 62px;
+    line-height: 62px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.full-box {
+    position: fixed;
+    top: 72px;
+    left: 0px;
+    z-index: 99999;
+    overflow: hidden;
+    margin-left: -15px;
+}
+
+.sub-title,
+.cell {
+    padding: 10px 0;
+    border: 2px solid blue;
+    border-left: none;
+}
+
+.setting {
+    font-size: initial;
+    line-height: normal;
+    text-align: justify;
+    text-transform: none;
+}
+
+.change { 
+    color: #fff !important;
+    background-size: 400% 400% !important;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB) !important;
+    -webkit-animation: Gradient 1s ease infinite;
+    -moz-animation: Gradient 1s ease infinite;
+    animation: Gradient 1s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+#animate-area {
+  width: 200px;
+  height: 200px;
+  background-image: url(http://placekitten.com/400/200);
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+  animation: animatedBackground 10s linear infinite alternate;
+}
+
+
+
+
+ .doi {
+      animation: colorchange 2s infinite ;  
+      -webkit-animation: colorchange 2s infinite ; 
+      color:white !important 
+    }
+
+    @keyframes colorchange
+    {
+      0%   {background: green;} 
+      30% {background: red;}
+        60%   {background: green;} 
+      100% {background: red;}
+    }
+
+    @-webkit-keyframes colorchange 
+    { 
+        0%   {background: green;} 
+      30% {background: red;}
+        60%   {background: green;} 
+      100% {background: red;}
+    }

@@ -1,0 +1,180 @@
+﻿@using System.Configuration;
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "MH1";
+    Layout = "~/Views/Shared/_Layout_LCD.cshtml";
+    var cf = JsonConvert.DeserializeObject<dynamic>(ViewData["Config"].ToString());
+    string sub_title = cf.sub_tieu_de;
+    string[] arr = sub_title.Split('|');
+    int interval = cf.thoi_gian_lat_trang * 1000;
+}
+<style>
+    #ticker {
+        padding: 0 !important;
+        height: 500px;
+        display: none;
+        margin-top: -21px;
+    }
+
+        #ticker ul,
+        #ticker ul li {
+            list-style: none;
+            padding: 0 !important;
+        }
+
+    #table2 {
+        margin: 0;
+        padding: 0;
+        width: 99.5%;
+        display: none;
+        height: 600px;
+    }
+
+        #table2 li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+    #fullscreen .rowcontent { @Html.Raw(@cf.noi_dung_css) }
+    #ticker .font-dt , #table2 .font-dt  { @Html.Raw(@cf.noi_dung_so_css) }
+   #fullscreen .title {  @Html.Raw(@cf.sub_tieu_de_css)}
+   #fullscreen .tieu-de {  @Html.Raw(@cf.tieu_de_css)}
+</style>
+<div style="background:black; color:#ccc">
+    <div class="col m1" style="height:109px; display:grid">
+        <img src="~/Content/logo.png" style="height:inherit; padding:inherit; " />
+    </div>
+    <div class="col m9">
+        <div class="col m12 center bold tieu-de"  >@cf.tieu_de</div>
+        <div class="col m3 font_30 no_Padding_Margin center">TỔNG XE <span class="center bold font-dt" id="totalcar"></span></div>
+        <div class="col m3 font_30 no_Padding_Margin center">ĐÃ XỬ LÝ <span class="center bold font-dt" id="done">0</span></div>
+        <div class="col m3 font_30 no_Padding_Margin center">ĐANG CHỜ <span class="center bold font-dt" id="waiting">0</span></div>
+        <div class="col m3 font_30 no_Padding_Margin center">ĐANG XỬ LÝ <span class="center bold font-dt" id="process">0</span></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="col m2 font-dt center" style="padding-top:10px">
+        <div id="date"></div>
+        <div id="time"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div >
+    @*<div class="col m4  title">BÀN</div>
+    <div class="col m2  title">SỐ PHIẾU</div>
+    <div class="col m3  title">GIỜ BẮT ĐẦU</div>
+    <div class="col m3  title">TG XỬ LÝ</div>*@
+    @if (arr != null && arr.Length > 0)
+    {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            <div class="col m@(i==0?4:(i==1?2:3)) title">@arr[i]</div>
+        }
+    }
+    <div class="clearfix"></div>
+</div>
+<ul id="ticker" class="col m12">
+    <li class="col m12 rowcontent">Không có dữ liệu</li>
+</ul>
+<div id="table2" config="@cf.thoi_gian_lat_trang" rows="@cf.dong_1_trang" >
+    <div id="vtemslideshow1" class="vtem_main_slideshow"> </div>
+</div>
+
+
+<div class="clearfix"></div> 
+
+<div class="row setting">
+    <div class="col s12 m12">
+        <div class="card  ">
+            <div class="card-content blue-text text-darken-2 glyphicon-bold">
+                <span class="card-title">Cấu hình hiển thị </span>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="tieu-de" type="text" value="@cf.tieu_de">
+                        <label for="tieu-de">Tiêu đề</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="sub-tieu-de" type="text" value="@cf.sub_tieu_de ">
+                        <label for="sub-tieu-de">DS Tiêu đề con</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-tieu-de" class="materialize-textarea">@cf.tieu_de_css</textarea>
+                        <label for="css-tieu-de">css khung Tiêu đề</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-sub-tieu-de" class="materialize-textarea">@cf.sub_tieu_de_css</textarea>
+                        <label for="css-sub-tieu-de">css khung tiêu đề con</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-content" class="materialize-textarea">@cf.noi_dung_css</textarea>
+                        <label for="css-content">css dòng nội dung</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-content-number" class="materialize-textarea">@cf.noi_dung_so_css</textarea>
+                        <label for="css-content-number">css con số trong dòng nội dung</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="row-in-page" type="number" value="@cf.dong_1_trang" />
+                        <label for="row-in-page">số dòng trên 1 trang</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <input type="number" id="time-change" value="@cf.thoi_gian_lat_trang" />
+                        <label for="time-change">TG đổi trang (đơn vị giây)</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="text" id="show-type" value="@cf.show_type" />
+                        <label for="show-type">Kiểu hiển thị (ticker -> cuộn lên|slide -> slideshow)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/QMS/LCDQuay/MH1.js"></script>
+<script>
+    function RunTicker() {
+        if ($('#table2').attr('config') == 'ticker') {
+            $('#ticker').totemticker({
+                row_height: $('#ticker ul li').css('height'),
+                mousestop: false,
+                speed: 800,
+                interval: @interval,
+                max_items: parseInt($('#table2').attr('rows')),
+                row_move: 1,
+                type: 'ul'
+            });
+        }
+        else {
+            $('#vtemslideshow1').cycle({
+                fx: 'blindY,blindY',
+                timeout: @interval,
+                speed: 1000,
+                next: '#cycle_next',
+                prev: '#cycle_prev',
+                pager: '#vtemnav',
+                pagerEvent: 'click',
+                startingSlide: 0,
+                fit: true,
+                height: 550,
+            });
+        }
+    }
+    $('[btSave]').click(function () {
+        var obj = {
+            tieu_de: $('#tieu-de').val(),
+            tieu_de_css: $('#css-tieu-de').val(),
+            sub_tieu_de: $('#sub-tieu-de').val(),
+            sub_tieu_de_css: $('#css-sub-tieu-de').val(),
+            noi_dung_css: $('#css-content').val(),
+            noi_dung_so_css: $('#css-content-number').val(),
+            dong_1_trang: $('#row-in-page').val(),
+            thoi_gian_lat_trang: $('#time-change').val(),
+            show_type: $('#show-type').val()
+        }
+        SaveConfig(JSON.stringify(obj), 'MH1');
+    });
+</script>
