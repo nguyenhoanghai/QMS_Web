@@ -298,6 +298,10 @@
                         <input id="counterid" type="number" min="1" value="@cf.counterid">
                         <label>CounterID</label>
                     </div>
+                    <div class="input-field col s2">
+                        <input id="userid" type="number" min="1" value="@cf.userid">
+                        <label>UserID</label>
+                    </div>
                 </div>
             </div>
             <div class="card-action">
@@ -324,7 +328,7 @@
             rows: $('#rows').val(),
             counterid: $('#counterid').val(),
             timer: $('#timer').val(),
-
+     userId : $('#userid').val()
         }
         SaveConfig(JSON.stringify(obj), 'MH5');
     });

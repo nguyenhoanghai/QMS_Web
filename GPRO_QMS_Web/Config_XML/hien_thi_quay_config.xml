@@ -46,6 +46,6 @@
   </View>
   <View ID="MH4">
     <Name>man_hinh_tien_thu</Name>
-    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":" font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","tieu_de_stt":"SỐ THỨ TỰ ĐANG PHỤ VỤ TẠI CỬA SỐ ","rows":"6","counterid":"32"}</Value>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":" font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","tieu_de_stt":"SỐ THỨ TỰ ĐANG PHỤ VỤ TẠI CỬA SỐ ","rows":"6","counterid":"1","userId":"1"}</Value>
   </View>
 </Views>

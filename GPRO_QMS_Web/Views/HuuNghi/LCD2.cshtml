@@ -236,6 +236,10 @@
                         <input id="counterid" type="number" min="1" value="@cf.counterid">
                         <label>CounterID</label>
                     </div>
+                    <div class="input-field col s2">
+                        <input id="userid" type="number" min="1" value="@cf.userid">
+                        <label>UserID</label>
+                    </div>
                 </div>
             </div>
             <div class="card-action">
@@ -258,7 +262,8 @@
             noi_dung_title_css: $('#css-content-title').val(),
             tieu_de_stt: $('#tieu-de-stt').val(),
             rows: $('#rows').val(),
-            counterid: $('#counterid').val()
+            counterid: $('#counterid').val(),
+            userId: $('#userid').val()
         }
         SaveConfig(JSON.stringify(obj), 'MH4');
     });

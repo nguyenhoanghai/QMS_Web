@@ -53,7 +53,7 @@ GPRO.GoiSo1 = function () {
         $.ajax({
             url: Global.UrlAction.get,
             type: 'POST',
-            data: JSON.stringify({ 'GetKL': true, 'counters': $('#counterid').val()}),
+            data: JSON.stringify({ 'GetKL': true, 'counters': $('#counterid').val(), 'userId': $('#userid').val()}),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var obj = JSON.parse(data);

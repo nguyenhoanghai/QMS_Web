@@ -38,11 +38,11 @@ namespace QMS_Website.Controllers
                 ViewData["config"] = "{}";
         }
 
-        public JsonResult GetDayInfo(bool GetKL, string counters)
+        public JsonResult GetDayInfo(bool GetKL, string counters,int userId)
         {
-            int userId = int.Parse(ConfigurationManager.AppSettings["UserId"].ToString());
+            //int userId = int.Parse(ConfigurationManager.AppSettings["UserId"].ToString());
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-            int equipCode = int.Parse(ConfigurationManager.AppSettings["EquipCode"].ToString());
+            //int equipCode = int.Parse(ConfigurationManager.AppSettings["EquipCode"].ToString());
             var obj = JsonConvert.SerializeObject(BLLHuuNghi.Instance.GetCounterDayInfo_Web(AppGlobal.Connectionstring, userId, countersArr[0], countersArr,GetKL));
             return Json(obj);
         }

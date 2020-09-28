@@ -1,8 +1,7 @@
 ﻿using QMS_System.Data.BLL;
 using QMS_System.Data.BLL.HuuNghi;
-using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
-using QMS_System.ThirdApp;
+using QMS_System.ThirdApp.Enum;
 using QMS_Website.App_Global;
 using System;
 using System.Collections.Generic;
@@ -25,13 +24,13 @@ namespace QMS_Website.Controllers
             var info = BLLLoginHistory.Instance.findLogin(connectString, pMaPhongKham);
             if (info.IsSuccess)
             {
-                ResponseBaseModel rs = BLLHuuNghi.Instance.CallAny(connectString, info.Data, info.Records, Convert.ToInt32(pSoThuTu), DateTime.Now,dailyType);
+                ResponseBaseModel rs = BLLHuuNghi.Instance.CallAny(connectString, info.Data, info.Records, Convert.ToInt32(pSoThuTu), DateTime.Now, dailyType);
                 if (rs.IsSuccess)
                 {
                     TicketInfo tk = (TicketInfo)rs.Data_3;
                     var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, info.Data, "8B");
                     if (readTemplateIds.Count > 0)
-                        GetSound(readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId);
+                        GetSound(readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId,dailyType);
                     kq = true;
                 }
             }
@@ -39,7 +38,7 @@ namespace QMS_Website.Controllers
             return kq;
         }
 
-        public void GetSound(List<int> templateIds, string ticket, int counterId)
+        public void GetSound(List<int> templateIds, string ticket, int counterId, int dailyType)
         {
             var readDetails = BLLReadTempDetail.Instance.Gets(connectString, templateIds);
             if (readDetails.Count > 0)
@@ -88,6 +87,12 @@ namespace QMS_Website.Controllers
                     if (!string.IsNullOrEmpty(soundStr))
                     {
                         soundStr = soundStr.Substring(0, soundStr.Length - 1);
+
+                        if(dailyType == (int)eDailyRequireType.KetLuan)
+                        {
+                            soundStr += "|NhanKetQuaKetLuan.wav";
+                        }
+
                         BLLCounterSoftRequire.Instance.Insert(connectString, soundStr, 1, counterId);
                     }
                 }
@@ -100,20 +105,20 @@ namespace QMS_Website.Controllers
         /// <param name="pMaPhongKham"></param> 
         /// <returns></returns>
         [HttpGet]
-        public bool Goi_VienPhi_PhatThuoc(string pMaPhongKham )
+        public bool Goi_VienPhi_PhatThuoc(string pMaPhongKham)
         {
 
             bool kq = false;
             var info = BLLLoginHistory.Instance.findLogin(connectString, pMaPhongKham);
             if (info.IsSuccess)
             {
-                ResponseBaseModel rs = BLLDailyRequire.Instance.Next(connectString, info.Data, info.Records,  DateTime.Now,1);
+                ResponseBaseModel rs = BLLDailyRequire.Instance.Next(connectString, info.Data, info.Records, DateTime.Now, 1);
                 if (rs.IsSuccess)
                 {
                     TicketInfo tk = (TicketInfo)rs.Data_3;
                     var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, info.Data, "8B");
                     if (readTemplateIds.Count > 0)
-                        GetSound(readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId);
+                        GetSound(readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
                     kq = true;
                 }
             }
@@ -128,7 +133,23 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public DataSet DSChoKetLuan(string maPK)
         {
-            return BLLHuuNghi.Instance.DSChoKetLuan(sqlConnection,maPK);
+            return BLLHuuNghi.Instance.DSCho(sqlConnection, maPK,(int)eDailyRequireType.KetLuan);
+        }
+
+        /// <summary>
+        /// Lấy DS BN chờ khu vực khám bệnh - Viện phí - phát thuốc
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public DataSet DSBenhNhanCho_KBenh_VPhi_PThuoc(string maPK)
+        {
+            return BLLHuuNghi.Instance.DSCho(sqlConnection, maPK, (int)eDailyRequireType.KhamBenh);
+        }
+
+        [HttpGet]
+        public int QuaLuot(int ticket, string maPK, string maBN, int serviceType)
+        {
+            return BLLHuuNghi.Instance.QuaLuot(connectString, ticket, maPK, maBN, serviceType);
         }
     }
 }
