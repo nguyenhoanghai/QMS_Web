@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinKH";
+    Layout = "~/Views/Shared/_LayoutTV.cshtml";
+}
+<style>
+    .text-upper {
+        text-transform: uppercase
+    }
+
+    .bold {
+        font-weight: 600
+    }
+
+    .head-title {
+        border-bottom: 5px solid red;
+        font-size: 45px;
+    }
+    .box-info {
+        text-align: center;
+        font-size: 21px;
+        font-weight: 600;
+        font-family: 'verdena';
+    }
+
+        .box-info div span {
+            color: blue
+        }
+</style>
+
+<div class="col m12 s12 box-info" style="padding:0 40px">
+    <h2 class="text-upper bold head-title">Thông tin khách hàng</h2>
+    <div >Mã KH : <span id="makh"></span></div>
+    <div >Tên KH : <span id="tenkh"></span></div> 
+    <div>Biển số xe : <span id="bsx"></span></div>
+    <div>Số lần làm DV : <span id="solan"></span ></div>
+    <div>Lần đến gần nhất : <span id="ngaysua"></span></div>
+</div>
+
+<div class="col m12 s12 " style="padding:0; width:600px; margin:0 auto; display:none">
+    <video autoplay controls style="width:100%"
+           name="media"
+           id="video"
+           autobuffer
+           onended="RunNext()"
+           src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
+</div>
+<div class="clearfix"></div>
+<script src="~/Scripts/QMS/tien-thu/thong-tin-kh.js"></script>

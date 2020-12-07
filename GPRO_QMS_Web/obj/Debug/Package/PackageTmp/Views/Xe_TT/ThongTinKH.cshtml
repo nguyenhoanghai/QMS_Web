@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinKH";
+    Layout = "~/Views/Shared/_LayoutTV.cshtml";
+}
+<style>
+    .text-upper {
+        text-transform: uppercase
+    }
+
+    .bold {
+        font-weight: 600
+    }
+
+    .head-title {
+        border-bottom: 5px solid red;
+        font-size: 45px;
+    }
+</style>
+
+<div class="col m12 s12" style="padding:0 40px">
+    <h2 class="text-upper bold head-title">Thông tin khách hàng</h2>
+    <div>Lê trần khánh thi</div>
+    <div>0989 987 909</div>
+    <div>89d - 234 78</div>
+</div>
+
+<div class="col m12 s12 " style="padding:0; width:600px; margin:0 auto">
+    <video autoplay controls style="width:100%"
+           name="media"
+           id="video"
+           autobuffer
+           onended="RunNext()"
+           src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
+</div>
+<div class="clearfix"></div>
+<script src="~/Scripts/QMS/tien-thu/thong-tin-kh.js"></script>

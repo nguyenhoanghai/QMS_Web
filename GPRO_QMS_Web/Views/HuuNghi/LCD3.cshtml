@@ -1,0 +1,337 @@
+﻿@using System.Configuration;
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "Màn hình tổng hợp";
+    Layout = "~/Views/Shared/_Layout_LCD.cshtml";
+    var cf = JsonConvert.DeserializeObject<dynamic>((ViewData["Config"] != null ? ViewData["Config"].ToString() : ""));
+    var str = (cf.SubTitle != null ?  ((string) cf.SubTitle).Split('|').ToArray() : new String[] { });
+    if (str.Length < 2)
+    {
+        str = new string[] { "SỐ PHIẾU", "SỐ QUẦY" };
+    }
+    var col = Convert.ToInt32((!string.IsNullOrEmpty(cf.Col) ? cf.Col : "1"));
+}
+<style>
+    .row .col {
+        padding: 0
+    }
+
+    .text-center {
+        text-align: center
+    }
+
+    .border {
+        border: 2px solid #ccc;
+        border-collapse: collapse;
+        border-top: none
+    }
+
+    .padd-20 {
+        padding: 20px !important;
+    }
+
+    .padd-10 {
+        padding: 10px !important
+    }
+
+    .border-bottom {
+        border-bottom: 2px solid #ccc;
+    }
+
+    .border-top {
+        border-top: 2px solid #ccc;
+    }
+
+    .border-left {
+        border-left: 2px solid #ccc;
+    }
+
+    .border-right {
+        border-right: 2px solid #ccc;
+    }
+
+    ul li {
+        list-style: none;
+        float: left;
+    }
+
+    .bold {
+        font-weight: bold
+    }
+
+    .sub-title {
+    }
+
+        .sub-title li {
+        }
+
+    .bv-title {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding: 10px 0;
+    }
+
+    .bv-sub-title {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding: 10px 0;
+    }
+
+    .bv-table-title,
+    .bv-table-row {
+        display: flex;
+    }
+
+        .bv-table-title div,
+        .bv-table-row div {
+            border: 2px solid #ccc;
+            border-left: none;
+        }
+
+            .bv-table-title div:last-child,
+            .bv-table-row div:last-child {
+                border-right: none
+            }
+
+        .bv-table-row div {
+            border-top: none
+        }
+
+    .sub-title-stt {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding: 10px 0;
+        display: inline-flex
+    }
+
+    .num-stt {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding-left: 10px 0;
+    }
+
+    .num-stt-dangkham {
+        color: red
+    }
+
+    .num-stt-ketluan {
+        color: green
+    }
+
+    .setting .row .col {
+        padding: 0 .75rem;
+    }
+
+    .tb2-head,
+    .tb2-content {
+        margin: 0;
+        padding: 0
+    }
+
+        .tb2-head div.col:last-child
+        .tb2-content div.col:last-child {
+            border-right: none
+        }
+</style>
+<link href="~/Scripts/QMS/huu-nghi/huu-nghi.css" rel="stylesheet" />
+<div class="row text-center" style="width:100%">
+    <div class="col s12 padd-20 bv-title">@cf.tieu_de</div>
+    <div class="col s12 border-bottom border-top">
+        <div class="col s6   border-right  red-text ">
+            <div class="bold bv-sub-title">BN XẾP CHỜ HÀNG KHÁM BỆNH</div>
+            <div class="bv-table-title">
+                <div class="col s2">STT</div>
+                <div class="col s8">Họ và Tên</div>
+                <div class="col s2">Tuổi</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="cho-kham">
+                @for (int i = 0; i < (int)cf.rows; i++)
+                {
+                    <div class="bv-table-row r@(i)">
+                        <div class="col s2"></div>
+                        <div class="col s8"></div>
+                        <div class="col s2"></div>
+                    </div>
+                }
+                <div class="clearfix"></div>
+            </div>
+
+        </div> 
+        <div class="col s6  border-left blue-text">
+            <div class="bold bv-sub-title">bn QUÁ LƯỢT KHÁM BỆNH</div>
+            <div class="bv-table-title">
+                <div class="col s2">STT</div>
+                <div class="col s8">Họ và Tên</div>
+                <div class="col s2">Tuổi</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="qua-luot-kham">
+                @for (int i = 0; i < (int)cf.rows; i++)
+                {
+                    <div class="bv-table-row r@(i)">
+                        <div class="col s2"></div>
+                        <div class="col s8"></div>
+                        <div class="col s2"></div>
+                    </div>
+                }
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col m12 s12 " style="padding:0">
+        <div class="row tb2-head"> 
+            @for (int i = 1; i <= col; i++)
+            {
+                <div class="col m@(12/(col*2)) s@(12/(col*2)) ">@str[0]</div>
+                <div class="col m@(12/(col*2)) s@(12/(col*2))  @(i==col?"cell-last":"") ">@str[1]</div>
+            }
+            <div class="clearfix"></div>
+        </div>
+        <div content>
+            @for (int i = 0; i < 6; i++)
+            {
+            <div class="row tb2-content ">
+                <div class="col m6 s6 sub-title   ">q @i</div>
+                <div class="col m6 s6 sub-title cell-last">@i</div>                
+            </div>
+            }
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="clearfix"></div>
+<div id="configStr" class="hide">@Html.Raw(cf)</div>
+
+<div class="row setting">
+    <div class="col s12 m12">
+        <div class="card  ">
+            <div class="card-content blue-text text-darken-2 glyphicon-bold">
+                <span class="card-title">Cấu hình hiển thị </span>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="tieu-de" type="text" value="@cf.tieu_de">
+                        <label for="tieu-de">Tiêu đề</label>
+                    </div>
+                    <div class="input-field col s8">
+                        <textarea id="css-tieu-de" class="materialize-textarea">@cf.tieu_de_css</textarea>
+                        <label for="css-tieu-de">css khung Tiêu đề</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-sub-tieu-de" class="materialize-textarea">@cf.sub_tieu_de_css</textarea>
+                        <label for="css-sub-tieu-de">css khung tiêu đề con</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <textarea id="tieu-de-stt" class="materialize-textarea">@cf.tieu_de_stt</textarea>
+                        <label>tiêu đề STT</label>
+                    </div>
+                    <div class="input-field col s8">
+                        <textarea id="css-tieu-de-stt" class="materialize-textarea">@cf.tieu_de_stt_css</textarea>
+                        <label>css tiêu đề STT</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-stt" class="materialize-textarea">@cf.stt_css</textarea>
+                        <label>css STT</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-content-title" class="materialize-textarea">@cf.noi_dung_title_css</textarea>
+                        <label for="css-content-title">css dòng nội dung tiêu đề</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-content" class="materialize-textarea">@cf.noi_dung_css</textarea>
+                        <label for="css-content">css dòng nội dung</label>
+                    </div>
+                    <div class="input-field col m3 s3">
+                        <input type="text" class="materialize-textarea" id="subText" value="@cf.SubTitle" placeholder="Nhập tên tiêu đề nhỏ ..." />
+                        <label>Tiêu đề phía dưới</label>
+                    </div>
+                    <div class="input-field col s9 m9">
+                        <textarea id="tb2_head" class="materialize-textarea">@cf.tb2_head</textarea>
+                        <label>css tiêu đề bảng cửa</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="tb2_content" class="materialize-textarea">@cf.tb2_content</textarea>
+                        <label>css nội dung bảng cửa</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <input id="rows" type="number" min="1" value="@cf.rows">
+                        <label>Số dòng nội dung</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="counterid" type="text" min="1" value="@cf.counterid">
+                        <label>CounterIds</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="userid" type="number" min="1" value="@cf.userId">
+                        <label>UserID</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="serviceIds" type="text"  value="@cf.serviceIds">
+                        <label>ServiceIds</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/QMS/huu-nghi/goi-so-3.js"></script>
+<script>
+    $('[btSave]').click(function () {
+        var obj = {
+            tieu_de: $('#tieu-de').val(),
+            tieu_de_css: $('#css-tieu-de').val(),
+            sub_tieu_de: $('#sub-tieu-de').val(),
+            sub_tieu_de_css: $('#css-sub-tieu-de').val(),
+            tieu_de_stt_css: $('#css-tieu-de-stt').val(),
+            stt_css: $('#css-stt').val(),
+            noi_dung_css: $('#css-content').val(),
+            noi_dung_title_css: $('#css-content-title').val(),
+            tieu_de_stt: $('#tieu-de-stt').val(),
+            rows: $('#rows').val(),
+            counterid: $('#counterid').val(),
+            userId: $('#userid').val(),
+            tb2_head: $('#tb2_head').val(),
+            tb2_content: $('#tb2_content').val(),
+            SubTitle: $('#subText').val(),
+            serviceIds: $('#serviceIds').val(),
+        }
+        SaveConfig(JSON.stringify(obj), 'MH6');
+    });
+    var str = $('#configStr').html();
+    var obj = JSON.parse(str);
+    var css = '.bv-title {' + obj.tieu_de_css + '  }';
+    css += '.bv-sub-title{' + obj.sub_tieu_de_css + ' }';
+    css += '.sub-title-stt{' + obj.tieu_de_stt_css + ' }';
+    css += '.num-stt{' + obj.stt_css + ' }';
+
+    css += '.bv-table-title {' + obj.noi_dung_title_css + '  }';
+    css += '.bv-table-row {' + obj.noi_dung_css + ' }';
+    css += '.tb2-head div.col{' + obj.tb2_head + '}';
+    css += '.tb2-content div.col{' + obj.tb2_content + '}'; 
+    $("style").append(css);
+
+</script>
