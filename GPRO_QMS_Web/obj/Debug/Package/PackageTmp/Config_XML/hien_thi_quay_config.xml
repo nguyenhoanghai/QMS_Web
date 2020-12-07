@@ -2,7 +2,7 @@
 <Views>
   <View ID="1">
     <Name>man_hinh_benh_vien1</Name>
-    <Value>{"PageTitle":"bệnh viện hoàn mỹ","PageTitle_Css":" font-size: 62px;padding: 15px;text-align: center;background:blue; color:white","SubTitle":"PHIẾU|phòng","SubTitle_Css":"background: red;color:white;","Row1_Css":"border-top: none;background: white;color: red;padding: 0;font-size: 84px;line-height: 84px;min-height: 86px;","Row2_Css":"border-top: none;background: green;color: #f9f9f9;padding: 0;font-size: 84px;line-height:84px;min-height: 86px;","Adv_Css":"font-size:46px; line-height:46px; color:red; text-transform:uppercase; font-weight:bold;padding:10px 0 5px 0","Row":"10","Col":"1","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":""}</Value>
+    <Value>{"PageTitle":"bệnh viện hoàn mỹ","PageTitle_Css":" font-size: 62px;padding: 15px;text-align: center;background:blue; color:white","SubTitle":"PHIẾU|phòng","SubTitle_Css":"background: red;color:white;","Row1_Css":"border-top: none;background: white;color: red;padding: 0;font-size: 84px;line-height: 84px;min-height: 86px;","Row2_Css":"border-top: none;background: green;color: #f9f9f9;padding: 0;font-size: 84px;line-height:84px;min-height: 86px;","Adv_Css":"font-size:46px; line-height:46px; color:red; text-transform:uppercase; font-weight:bold;padding:10px 0 5px 0","Row":"10","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":""}</Value>
   </View>
   <View ID="2">
     <Name>man_hinh_benh_vien2</Name>
@@ -10,7 +10,7 @@
   </View>
   <View ID="3">
     <Name>man_hinh_co_video</Name>
-    <Value>{"PageTitle":" ","PageTitle_Css":" ","SubTitle":" ","SubTitle_Css":" ","Row1_Css":" ","Row2_Css":" ","Adv_Css":" ","Row":" 5","Col":" 1","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":" ","css_box_video":" "}</Value>
+    <Value>{"PageTitle":" BIDV chi nhánh gia dinh","PageTitle_Css":" background:blue;color:white;padding:20px","SubTitle":" Phiếu|quầy","SubTitle_Css":"  background:red;color:white;padding:10px !important","Row1_Css":"color:blue;padding:10px","Row2_Css":"  background:blue;color:white;padding:10px","Adv_Css":" ","Row":" 5","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":" width:100% !important","css_box_video":" display:none"}</Value>
   </View>
   <View ID="6">
     <Name>man_hinh_co_video</Name>
@@ -42,10 +42,14 @@
   </View>
   <View ID="MH5">
     <Name>man_hinh_tien_thu</Name>
-    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important;  height:60px;line-height:35px ","stt_css":" font-size: 45px !important;  ","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","rows":"6","counterid":"32","timer":"5000"}</Value>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important;  height:60px;line-height:35px ","stt_css":" font-size: 45px !important;  ","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","rows":"6","counterid":"40","timer":"5000","userId":"40"}</Value>
   </View>
   <View ID="MH4">
     <Name>man_hinh_tien_thu</Name>
-    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":" font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","tieu_de_stt":"SỐ THỨ TỰ ĐANG PHỤ VỤ TẠI CỬA SỐ ","rows":"6","counterid":"32"}</Value>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important","sub_tieu_de_css":" font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":" font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","tieu_de_stt":"SỐ THỨ TỰ ĐANG PHỤ VỤ TẠI CỬA SỐ ","rows":"6","counterid":"9","userId":"9"}</Value>
+  </View>
+  <View ID="MH6">
+    <Name>man_hinh_tien_thu</Name>
+    <Value>{"tieu_de":"HỆ THỐNG XẾP HÀNG ĐĂNG KÝ KHÁM BỆNH","tieu_de_css":"font-size:45px; padding:20px !important;display:none !important;","sub_tieu_de_css":"font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;","tieu_de_stt_css":" font-size: 45px !important; ","stt_css":"font-size: 120px !important;  height:120px;line-height:90px","noi_dung_css":"font-size: 44px !important; background: black;     padding: 0 !important; min-height:68px","noi_dung_title_css":"font-size: 44px !important; background: black;    color: white;  padding: 0 !important","tieu_de_stt":"SỐ THỨ TỰ ĐANG PHỤ VỤ TẠI CỬA SỐ ","rows":"2","counterid":"5,6,7,8,17,18","userId":"5","tb2_head":"font-size: 35px !important; line-height: 35px; text-align: center; font-weight: bold; border-right: none; border-bottom: none; padding: 10px 0;text-transform: uppercase;background:blue ; color:white;border:2px solid #ccc; border-bottom:none;border-left:none","tb2_content":"font-size: 44px !important; background: black;color: white;  padding: 0 !important;border:2px solid #ccc; border-bottom:none;border-left:none","SubTitle":"Số phiếu|Cửa","serviceIds":"3"}</Value>
   </View>
 </Views>

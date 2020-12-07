@@ -151,5 +151,23 @@ namespace QMS_Website.Controllers
         {
             return BLLHuuNghi.Instance.QuaLuot(connectString, ticket, maPK, maBN, serviceType);
         }
+
+        [HttpGet]
+        public ResponseBase PrintNewTicket(string maBN, string tenBN, string maPK,  string bnAdd,int bnDOB,bool isKetLuan)
+        {
+            return BLLHuuNghi.Instance.API_PrintNewTicket(connectString, tenBN, bnAdd, bnDOB, maBN, maPK,isKetLuan);
+        }
+
+        [HttpGet]
+        public int XoaPhieu(int ticket, string maPK, string maBN )
+        {
+            return BLLHuuNghi.Instance.DeleteTicket(connectString, ticket, maPK, maBN );
+        }
+
+        [HttpGet]
+        public int KetThucPhieu(int ticket, string maPK, string maBN)
+        {
+            return BLLHuuNghi.Instance.DoneTicket(connectString, ticket, maPK, maBN);
+        }
     }
 }

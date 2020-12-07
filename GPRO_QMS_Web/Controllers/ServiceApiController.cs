@@ -141,7 +141,7 @@ namespace QMS_Website.Controllers
                     int _printType = 1;
                     int.TryParse(ConfigurationManager.AppSettings["PrintType"].ToString(), out _printType);
                     PrinterRequireModel require = null;
-                    var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, now, 1, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
+                    var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, now,_printType, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
                     if (result.IsSuccess)
                     {
                         require = new PrinterRequireModel()
@@ -155,7 +155,7 @@ namespace QMS_Website.Controllers
                         };
                         BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
                         rs.IsSuccess = true;
-                        rs.Data = require.newNumber;
+                        rs.Data = require.newNumber; 
                     }
                     else
                     {

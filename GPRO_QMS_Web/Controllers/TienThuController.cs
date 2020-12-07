@@ -4,11 +4,7 @@ using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
 using QMS_Website.App_Global;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace QMS_Website.Controllers
@@ -17,7 +13,7 @@ namespace QMS_Website.Controllers
     {
         public string connectString = AppGlobal.Connectionstring;
         [HttpGet]
-        public ResponseBase PrintTicket(string maphieudichvu, string madichvu, string diachi, string ten, string maKH,string soxe)
+        public ResponseBase PrintTicket(string maphieudichvu, string madichvu, string diachi, string ten, string maKH, string soxe, int solan)
         {
             var result = new ResponseBase();
             //ktra xem so cu da co chua neu chua có moi in mới
@@ -30,7 +26,7 @@ namespace QMS_Website.Controllers
                 if (serObj != null)
                 {
                     PrinterRequireModel require = null;
-                    var rs = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, 1, 0, DateTime.Now, 2, serObj.TimeProcess.TimeOfDay, ten,diachi,0, maKH, "", maphieudichvu, soxe, "", "");
+                    var rs = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, 1, 0, DateTime.Now, 2, serObj.TimeProcess.TimeOfDay, ten, diachi, 0, maKH, "", maphieudichvu, soxe, "", "");
                     if (rs.IsSuccess)
                     {
                         require = new PrinterRequireModel()
@@ -43,6 +39,14 @@ namespace QMS_Website.Controllers
                             ServiceId = serObj.Id
                         };
                         BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
+                        {
+                            MaKH = maKH,
+                            TenKH = ten,
+                            DChi = diachi,
+                            BSX = soxe,
+                            SoLan = solan
+                        }), (int)eCounterSoftRequireType.ShowCustDetail_TT);
                         result.IsSuccess = true;
                         result.Data = require.newNumber;
                         result.Data_1 = serObj.Name;
@@ -66,6 +70,21 @@ namespace QMS_Website.Controllers
                 result.Data = foundTicket.TicketNumber;
             }
             return result;
+        }
+
+        [HttpGet]
+        public ResponseBase LuuThongTinKH( string dChi, string tenKH, string maKH, string soxe, int soLan,string ngaysua)
+        {
+            BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
+            {
+                MaKH = maKH,
+                TenKH = tenKH,
+                DChi = dChi,
+                bSX = soxe,
+                SoLan = soLan,
+                NgaySua = ngaysua
+            }), (int)eCounterSoftRequireType.ShowCustDetail_TT);
+            return new ResponseBase();
         }
     }
 }

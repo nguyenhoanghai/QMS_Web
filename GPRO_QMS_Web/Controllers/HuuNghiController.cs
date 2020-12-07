@@ -27,6 +27,12 @@ namespace QMS_Website.Controllers
             return View();
         }
 
+        public ActionResult LCD3()
+        {
+            GetConfig("MH6");
+            return View();
+        }
+
         private void GetConfig(string pageId)
         {
             var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
@@ -47,5 +53,13 @@ namespace QMS_Website.Controllers
             return Json(obj);
         }
 
+        public JsonResult GetDayInfo_VP_PT(string counters, string services, int userId)
+        {
+            var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            var ss = BLLHuuNghi.Instance.GetWeb_VP_PT(AppGlobal.Connectionstring, countersArr, servicesArr, userId);
+            var obj = JsonConvert.SerializeObject(ss);
+            return Json(obj);
+        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using QMS_System.Data.BLL;
+using QMS_System.Data.Enum;
 using QMS_Website.App_Global;
 using QMS_Website.Models;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
@@ -28,9 +30,9 @@ namespace GPRO_QMS_Web.Controllers
             BV_ConfigModel item = serializer.Deserialize<BV_ConfigModel>(cStudent.Element("Value").Value);
             ViewData["config"] = item;
             ViewData["user"] = User.Identity.Name;
-            if (!string.IsNullOrEmpty(User.Identity.Name))
+             if (!string.IsNullOrEmpty(User.Identity.Name))
                 return View(BLLUser.Instance.Get(AppGlobal.Connectionstring,User.Identity.Name));
-            else
+           else
                 return RedirectToAction("Login", "DangNhap");
         }
         public ActionResult BenhVien_2()
@@ -85,7 +87,7 @@ namespace GPRO_QMS_Web.Controllers
             XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals(pageType)).FirstOrDefault();
             return Json(cStudent.Element("Value").Value);
         }
-
+        
         public JsonResult SaveBVConfig(string configStr, string pageType)
         {
             try

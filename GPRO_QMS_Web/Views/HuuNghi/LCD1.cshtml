@@ -1,7 +1,7 @@
 ﻿@using System.Configuration;
 @using Newtonsoft.Json;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "LCD Phòng khám";
     Layout = "~/Views/Shared/_Layout_LCD.cshtml";
     var cf = JsonConvert.DeserializeObject<dynamic>((ViewData["Config"] != null ? ViewData["Config"].ToString() : ""));
 }
@@ -299,7 +299,7 @@
                         <label>CounterID</label>
                     </div>
                     <div class="input-field col s2">
-                        <input id="userid" type="number" min="1" value="@cf.userid">
+                        <input id="userid" type="number" min="1" value="@cf.userId">
                         <label>UserID</label>
                     </div>
                 </div>

@@ -122,6 +122,6 @@ GPRO.GoiSo2 = function () {
     }
 };
 $(document).ready(function () {
-    var home = new GPRO.GoiSo1();
+    var home = new GPRO.GoiSo2();
     home.Init();
 });
