@@ -584,6 +584,7 @@
     <Content Include="Content\sqlConnect\script.min.js" />
     <Content Include="Content\sqlConnect\style.min.css" />
     <Content Include="Content\ThongTinPhucVu\ThongTinPhucVu.css" />
+    <Content Include="Content\tien-thu.png" />
     <Content Include="Content\tsc_image.png" />
     <Content Include="Content\U__.png" />
     <Content Include="Content\verygood.png" />
@@ -799,6 +800,8 @@
     <Content Include="Scripts\QMS\LCDQuay\MH2.js" />
     <Content Include="Scripts\QMS\LCDQuay\MH1.js" />
     <Content Include="Scripts\QMS\ManHinhGoiSo\goi-so-1.js" />
+    <Content Include="Scripts\QMS\RangHamMat\RHM-cho-kham.js" />
+    <Content Include="Scripts\QMS\RangHamMat\RHM-dieu-tri.js" />
     <Content Include="Scripts\QMS\Report\DailyReport-detail.js" />
     <Content Include="Scripts\QMS\Report\DailyReport.js" />
     <Content Include="Scripts\QMS\Report\View.js" />
@@ -846,6 +849,7 @@
     <Compile Include="Areas\Khac\KhacAreaRegistration.cs" />
     <Compile Include="Areas\Xe\XeAreaRegistration.cs" />
     <Compile Include="Controllers\BCDanhGiaController.cs" />
+    <Compile Include="Controllers\BVRangHamMatController.cs" />
     <Compile Include="Controllers\DangKyOnlineController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
@@ -929,6 +933,8 @@
     <Content Include="Views\HuuNghi\LCD3.cshtml" />
     <Content Include="Views\Xe_TT\ThongTinKH.cshtml" />
     <Content Include="Views\SQLConnect\Index.cshtml" />
+    <Content Include="Views\BVRangHamMat\LCD1.cshtml" />
+    <Content Include="Views\BVRangHamMat\LCD2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,7 +13,7 @@ namespace QMS_Website.Controllers
     {
         public string connectString = AppGlobal.Connectionstring;
         [HttpGet]
-        public ResponseBase PrintTicket(string maphieudichvu, string madichvu, string diachi, string ten, string maKH, string soxe, int solan)
+        public ResponseBase PrintTicket(string maphieudichvu, string madichvu, string diachi, string ten, string maKH, string soxe, string phone )
         {
             var result = new ResponseBase();
             //ktra xem so cu da co chua neu chua có moi in mới
@@ -36,17 +36,23 @@ namespace QMS_Website.Controllers
                             TenDichVu = serObj.Name,
                             TenQuay = rs.Data_2,
                             MajorId = (int)rs.Data_1,
-                            ServiceId = serObj.Id
+                            ServiceId = serObj.Id,
+                            MaPhongKham = maphieudichvu,
+                            MaBenhNhan = maKH,
+                            Name = ten,
+                            Address = diachi,
+                            SoXe = soxe ,
+                            Phone = phone
                         };
                         BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
-                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
-                        {
-                            MaKH = maKH,
-                            TenKH = ten,
-                            DChi = diachi,
-                            BSX = soxe,
-                            SoLan = solan
-                        }), (int)eCounterSoftRequireType.ShowCustDetail_TT);
+                        //BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
+                        //{
+                        //    MaKH = maKH,
+                        //    TenKH = ten,
+                        //    DChi = diachi,
+                        //    BSX = soxe,
+                        //    SoLan = solan
+                        //}), (int)eCounterSoftRequireType.ShowCustDetail_TT);
                         result.IsSuccess = true;
                         result.Data = require.newNumber;
                         result.Data_1 = serObj.Name;
@@ -73,7 +79,7 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
-        public ResponseBase LuuThongTinKH( string dChi, string tenKH, string maKH, string soxe, int soLan,string ngaysua)
+        public ResponseBase LuuThongTinKH( string dChi, string tenKH, string maKH, string soxe, int soLan,string ngaysua, string congviecs, string cuahang)
         {
             BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
             {
@@ -82,7 +88,9 @@ namespace QMS_Website.Controllers
                 DChi = dChi,
                 bSX = soxe,
                 SoLan = soLan,
-                NgaySua = ngaysua
+                NgaySua = ngaysua,
+                CongViecs = congviecs,
+                CuaHang = cuahang
             }), (int)eCounterSoftRequireType.ShowCustDetail_TT);
             return new ResponseBase();
         }

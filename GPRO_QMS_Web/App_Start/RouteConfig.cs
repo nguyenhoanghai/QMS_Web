@@ -50,6 +50,14 @@ namespace GPRO_QMS_Web
                 name: "thongtinKH",
                 url: "thongtinKH",
                 defaults: new { controller = "Xe_TT", action = "ThongTinKH", id = UrlParameter.Optional });
+            routes.MapRoute(
+               name: "RHM_DT",
+               url: "RHM1",
+               defaults: new { controller = "BVRangHamMat", action = "LCD1", id = UrlParameter.Optional });
+            routes.MapRoute(
+              name: "RHM_KB",
+              url: "RHM2",
+              defaults: new { controller = "BVRangHamMat", action = "LCD2", id = UrlParameter.Optional });
 
 
             routes.MapRoute(
@@ -102,14 +110,14 @@ namespace GPRO_QMS_Web
               name: "danhgia3",
               url: "Danh-Gia-3",
               defaults: new { controller = "danhgia", action = "tenbutton" });
-                       
+
 
             routes.MapRoute(
                name: "tracuu",
                url: "Tracuu",
                defaults: new { controller = "DangKyOnline", action = "FindInformation", id = UrlParameter.Optional }
-           );            
-            
+           );
+
 
             routes.MapRoute(
                 name: "dsdg",
@@ -129,8 +137,8 @@ namespace GPRO_QMS_Web
                url: "Nhan-Vien",
                defaults: new { controller = "Home", action = "Index_N" }
            );
-            
-            
+
+
             routes.MapRoute(
                 name: "ketnoicsdl",
                 url: "ketnoicsdl",
@@ -139,9 +147,14 @@ namespace GPRO_QMS_Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                 // defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
-                 defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } //huu nghi
-                                                                                                       // defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
+             // defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
+             // defaults: new { controller = "HienThiQuay", action = "Index", id = UrlParameter.Optional }
+             //defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } 
+             //huu nghi
+             // defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
+
+             //rang ham mat 
+             defaults: new { controller = "BVRangHamMat", action = "LCD1", id = UrlParameter.Optional } 
             );
         }
     }

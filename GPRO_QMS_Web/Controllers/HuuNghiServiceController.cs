@@ -30,7 +30,7 @@ namespace QMS_Website.Controllers
                     TicketInfo tk = (TicketInfo)rs.Data_3;
                     var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, info.Data, "8B");
                     if (readTemplateIds.Count > 0)
-                        GetSound(readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId,dailyType);
+                        GetSound(readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, dailyType);
                     kq = true;
                 }
             }
@@ -88,7 +88,7 @@ namespace QMS_Website.Controllers
                     {
                         soundStr = soundStr.Substring(0, soundStr.Length - 1);
 
-                        if(dailyType == (int)eDailyRequireType.KetLuan)
+                        if (dailyType == (int)eDailyRequireType.KetLuan)
                         {
                             soundStr += "|NhanKetQuaKetLuan.wav";
                         }
@@ -133,7 +133,7 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public DataSet DSChoKetLuan(string maPK)
         {
-            return BLLHuuNghi.Instance.DSCho(sqlConnection, maPK,(int)eDailyRequireType.KetLuan);
+            return BLLHuuNghi.Instance.DSCho(sqlConnection, maPK, (int)eDailyRequireType.KetLuan);
         }
 
         /// <summary>
@@ -153,21 +153,37 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
-        public ResponseBase PrintNewTicket(string maBN, string tenBN, string maPK,  string bnAdd,int bnDOB,bool isKetLuan)
+        public ResponseBase PrintNewTicket(string maBN, string tenBN, string maPK, string bnAdd, int bnDOB, bool isKetLuan)
         {
-            return BLLHuuNghi.Instance.API_PrintNewTicket(connectString, tenBN, bnAdd, bnDOB, maBN, maPK,isKetLuan);
+            return BLLHuuNghi.Instance.API_PrintNewTicket(connectString, tenBN, bnAdd, bnDOB, maBN, maPK, isKetLuan);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <param name="maPK"></param>
+        /// <param name="maBN"></param>
+        /// <param name="type">KhamBenh = 1, KetLuan = 2</param>
+        /// <returns></returns>
         [HttpGet]
-        public int XoaPhieu(int ticket, string maPK, string maBN )
+        public int XoaPhieu(int ticket, string maPK, string maBN, int type)
         {
-            return BLLHuuNghi.Instance.DeleteTicket(connectString, ticket, maPK, maBN );
+            return BLLHuuNghi.Instance.DeleteTicket(connectString, ticket, maBN, maPK, type);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <param name="maPK"></param>
+        /// <param name="maBN"></param>
+        /// <param name="type">KhamBenh = 1, KetLuan = 2</param>
+        /// <returns></returns>
         [HttpGet]
-        public int KetThucPhieu(int ticket, string maPK, string maBN)
+        public int KetThucPhieu(int ticket, string maPK, string maBN, int type)
         {
-            return BLLHuuNghi.Instance.DoneTicket(connectString, ticket, maPK, maBN);
+            return BLLHuuNghi.Instance.DoneTicket(connectString, maBN, maPK, ticket, type);
         }
     }
 }

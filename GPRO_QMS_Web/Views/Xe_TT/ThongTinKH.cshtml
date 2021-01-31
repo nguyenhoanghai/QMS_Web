@@ -1,4 +1,4 @@
-﻿
+﻿@using Newtonsoft.Json
 @{
     ViewBag.Title = "ThongTinKH";
     Layout = "~/Views/Shared/_LayoutTV.cshtml";
@@ -13,9 +13,9 @@
     }
 
     .head-title {
-        border-bottom: 5px solid red;
         font-size: 45px;
     }
+
     .box-info {
         text-align: center;
         font-size: 21px;
@@ -24,26 +24,71 @@
     }
 
         .box-info div span {
-            color: blue
+            // color: blue
+        }
+
+    #ds-congviec {
+        margin: 0;
+    }
+
+    .row- {
+        display: flex;
+        padding: 0 100px
+    }
+
+        .row- div {
+            min-width: 50%;
+            text-align: left;
         }
 </style>
 
 <div class="col m12 s12 box-info" style="padding:0 40px">
-    <h2 class="text-upper bold head-title">Thông tin khách hàng</h2>
-    <div >Mã KH : <span id="makh"></span></div>
-    <div >Tên KH : <span id="tenkh"></span></div> 
-    <div>Biển số xe : <span id="bsx"></span></div>
-    <div>Số lần làm DV : <span id="solan"></span ></div>
-    <div>Lần đến gần nhất : <span id="ngaysua"></span></div>
+    <div style="width:100%"><img style="width:100%" src="~/Content/tien-thu.png" /></div>
+    <h2 style="margin:10px" class="text-upper bold head-title">kính chào quý khách</h2>
+    <div class="div-info">
+        <div class="row-"><div>Khách hàng  </div><span id="tenkh"></span></div>
+        <div class="row-"><div>Biển số xe  </div><span id="bsx"></span></div>
+        <div class="row-"><div>Số lần đến làm dịch vụ  </div><span id="solan"></span></div>
+        <div class="row-" id="cua-hang"></div>
+        <div class="row-"><div>Hạn mục sửa chữa gần nhất  </div><span id="ngaysua"></span>  </div>
+        <div class=" ">   <ul id="ds-congviec"></ul></div>
+    </div>
+
+    <div class="col m12 s12 div-video" style="padding:0; width:600px; margin:0 auto; display:none">
+        <video autoplay controls style="width:100%"
+               name="media"
+               id="video"
+               autobuffer
+               onended="RunNext()"
+               src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
+    </div>
 </div>
 
-<div class="col m12 s12 " style="padding:0; width:600px; margin:0 auto; display:none">
-    <video autoplay controls style="width:100%"
-           name="media"
-           id="video"
-           autobuffer
-           onended="RunNext()"
-           src="@(Model!= null && Model.Count > 0 ?("/Videos/"+Model[0].Path) :"")"></video>
-</div>
+
 <div class="clearfix"></div>
 <script src="~/Scripts/QMS/tien-thu/thong-tin-kh.js"></script>
+<script>
+        var list = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model))');
+        var index = (list != null && list.length > 1 ? 1 : 0);
+
+            function toggleMute() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/'+list[index].Path;
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+            }
+
+            function RunNext() {
+                var video = document.getElementById("video");
+                video.src = '/Videos/' + list[index].Path;
+                setTimeout('', 5000);
+                video.play();
+                if (index == list.length - 1)
+                    index = 0;
+                else
+                    index++;
+            };
+</script>

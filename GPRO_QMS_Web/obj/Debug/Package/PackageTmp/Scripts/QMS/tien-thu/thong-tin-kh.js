@@ -22,7 +22,9 @@ GPRO.ThongTinKH = function () {
         UrlAction: {
             get: '/Xe_TT/GetCustInfo'
         },
-        Data: {  }
+        Data: {
+            showinfo: true
+        }
     }
     this.GetGlobal = function () {
         return Global;
@@ -31,79 +33,53 @@ GPRO.ThongTinKH = function () {
     this.Init = function () {
         RegisterEvent();
         Get();
-       // setInterval(function () { Get(); }, 1000);
+       // setInterval(function () { Get(); }, 2000);
     }
 
     var RegisterEvent = function () {
         $('#audio').on('ended', function () {
             playSound();
-        }); 
-    } 
+        });
+    }
 
     function Get() {
         $.ajax({
             url: Global.UrlAction.get,
             type: 'POST',
-           data: '',
+            data: '',
             contentType: 'application/json charset=utf-8',
             success: function (data) {
-                if (data) {
-    var obj = JSON.parse(data);
-                console.log(obj)
+                var video = document.getElementById("video");
+                if (data && !data.IsShowVideo) {
+                    if (!Global.Data.showinfo)
+                        video.pause();
+                    $('.div-info').removeClass('hide');
+                    $('.div-video').addClass('hide');
+                    var obj = JSON.parse(data.JsonKhachHang);
+                    console.log(obj.JsonKhachHang);
+                    $('#tenkh').html(": " + obj.TenKH);
+                    $('#bsx').html(": " + obj.bSX);
+                    $('#solan').html(": " + obj.SoLan + ' lần.');
+                    $('#ngaysua').html(": " + obj.NgaySua);
+                    $('#cua-hang').html(obj.CuaHang);
+                    var cvs = obj.CongViecs ? obj.CongViecs.split('|'):[];
+                    $('#ds-congviec').empty();
+                    for (var i = 0; i < cvs.length; i++) {
+                        $('#ds-congviec').append(`<li>${(i + 1)} : ${cvs[i]}</li>`);
+                    }
+                    Global.Data.showinfo = true;
                 }
-            
-
-                //if (obj.Sounds != null && obj.Sounds.length > 0)
-                //    $.each(obj.Sounds, (i, item) => {
-                //        Global.Data.sounds = Global.Data.sounds.concat(item.split('|'));
-                //    })
-
-                //if (Global.Data.sounds.length > 0 && !Global.Data.reading) {
-                //    Global.Data.reading = true;
-                //    playSound();
-                //}    
-                
-                //if ($('.num-stt-dangkham').html() == obj.STTDangKham.toString()) {
-                //    $('.box-dk').addClass('doi');
-                //    var inter = setInterval(function () {
-                //        $('.box-dk').removeClass('doi');
-                //        clearInterval(inter);
-                //    }, 5000);
-                //}
-                //$('.num-stt-dangkham').html(obj.STTDangKham);
-
-                //if ($('.num-stt-ketluan').html() == obj.STTDangKham.toString()) {
-                //    $('.box-kl').addClass('doi');
-                //    var inter = setInterval(function () {
-                //        $('.box-kl').removeClass('doi');
-                //        clearInterval(inter);
-                //    }, 5000);
-                //} 
-                //$('.num-stt-ketluan').html(obj.STTDangKetLuan);
-                //setValue(obj.DSChoKham, 'cho-kham');
-                //setValue(obj.DSQuaLuotKham, 'qua-luot-kham');
-                //setValue(obj.DSChoKL, 'cho-ket-luan');
-                //setValue(obj.DSQuaLuotKL, 'qua-luot-ket-luan');
+                else if (data && data.IsShowVideo) {
+                    if (Global.Data.showinfo)
+                        video.play();
+                    $('.div-video').removeClass('hide');
+                    $('.div-info').addClass('hide');
+                    Global.Data.showinfo = false;
+                }
             }
         });
     }
 
-    function setValue(objs, tableName) {
-        for (var i = 0; i < parseInt($('#rows').val()); i++) {
-            var cols = $('.' + tableName + ' .r' + i + ' div');
-            var item = objs[i];
-            if (item != null) {
-                $(cols[0]).html(item.Name);
-                $(cols[1]).html(item.Code);
-                $(cols[2]).html(item.Data);
-            }
-            else {
-                $(cols[0]).html('');
-                $(cols[1]).html('');
-                $(cols[2]).html('');
-            }
-        }
-    }
     function playSound() {
         var audioE = document.getElementById('audio');
         if (Global.Data.sounds.length > 0) {
