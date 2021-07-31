@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GPRO.Core.Mvc;
+using Newtonsoft.Json;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Enum;
 using QMS_System.Data.Model;

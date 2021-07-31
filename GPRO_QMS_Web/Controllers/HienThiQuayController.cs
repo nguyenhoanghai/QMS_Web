@@ -71,11 +71,11 @@ namespace GPRO_QMS_Web.Controllers
         //    return Json(obj);
         //}
 
-        public JsonResult GetDayInfo_BV(string counters, string services,int userId)
+        public JsonResult GetDayInfo_BV(string counters, string services,int userId, bool getLastFiveNumbers)
         {
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
             var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr,userId);
+            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr,userId,   getLastFiveNumbers);
             var obj = JsonConvert.SerializeObject(ss);
             return Json(obj);
         }
@@ -151,6 +151,22 @@ namespace GPRO_QMS_Web.Controllers
             BV_ConfigModel item = serializer.Deserialize<BV_ConfigModel>(cStudent.Element("Value").Value);
             ViewData["config"] = item;
             return View(BLLVideoTemplate.Instance.GetPlaylist(AppGlobal.Connectionstring)); 
+        }
+
+        /// <summary>
+        /// BV RHM khoa covid
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ManHinhCoVideo_Doc_Covid()
+        {
+            var path = Server.MapPath(@"~\Config_XML\hien_thi_quay_config.xml");
+            XDocument testXML = XDocument.Load(path);
+            XElement cStudent = testXML.Descendants("View").Where(c => c.Attribute("ID").Value.Equals("7")).FirstOrDefault();
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            BV_ConfigModel item = serializer.Deserialize<BV_ConfigModel>(cStudent.Element("Value").Value);
+            ViewData["config"] = item;
+            return View(BLLVideoTemplate.Instance.GetPlaylist(AppGlobal.Connectionstring));
         }
 
         public ActionResult LCD1()

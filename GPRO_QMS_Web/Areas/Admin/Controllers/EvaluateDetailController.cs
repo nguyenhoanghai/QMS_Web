@@ -13,7 +13,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
 {
     public class EvaluateDetailController : BaseController
     {
-        public JsonResult Save(Q_EvaluateDetail obj)
+        public JsonResult Save( EvaluateDetailModel obj)
         {
             ResponseBase result;
             try

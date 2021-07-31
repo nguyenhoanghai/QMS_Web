@@ -13,7 +13,9 @@ namespace QMS_Website.Models
         public string SubTitle { get; set; }
         public string SubTitle_Css { get; set; }
         public string Row1_Css { get; set; }
+        public string Row1_NumberCss { get; set; }
         public string Row2_Css { get; set; } 
+        public string Row2_NumberCss { get; set; }
         public string Adv_Css { get; set; }
         public string Row { get; set; }
         public string Col { get; set; }

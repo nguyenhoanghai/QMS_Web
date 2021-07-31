@@ -47,13 +47,15 @@
     <link href="~/Areas/Admin/Content/Controll.css" rel="stylesheet" />
 
     <link href="~/Scripts/SwitchButton/bootstrap-toggle.min.css" rel="stylesheet" />
-    <script src="~/Scripts/SwitchButton/bootstrap-toggle.min.js"></script>
-    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
 
-     
+
+
     <link href="~/Areas/Admin/Scripts/KendoUI/kendo.common-material.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Scripts/KendoUI/kendo.default.mobile.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Scripts/KendoUI/kendo.material.min.css" rel="stylesheet" />
+
+    @*time-picker*@
+    <link href="~/Scripts/time-picker/css/timepicker.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -86,19 +88,52 @@
                                     <a href="/Home/Index"><i class="fa fa-home"></i>Trang Chủ </a>
                                 </li>
                                 <li>
-                                    <a href="/danhmucnhanvien"><i class="fa fa-group"></i>Nhân Viên</a>
+                                    <a><i class="fa fa-th-list"></i>Danh mục</a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li>
+                                            <a href="/quan-tri/nhan-vien"><i class="fa fa-group"></i>Nhân Viên</a>
+                                        </li>
+                                        <li>
+                                            <a href="/quan-tri/dich-vu"><i class="fa fa-book"></i>Dịch vụ</a>
+                                        </li>
+                                        <li>
+                                            <a href="/quan-tri/nghiep-vu"><i class="fa fa-th-list"></i>Nghiệp vụ</a>
+                                        </li>
+                                        <li>
+                                            <a href="/quan-tri/nhan-vien-nghiep-vu"><i class="fa fa-th-list"></i>Nhân viên - nghiệp vụ</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                                <li>
+                                    <a href="/quan-tri/tin-nhan"><i class="fa fa-address-book-o"></i>Người nhận tin nhắn</a>
                                 </li>
                                 <li>
-                                    <a href="/danhmuctinnhan"><i class="fa fa-group"></i>Người nhận tin nhắn</a>
+                                    <a href="/quan-tri/danh-gia"><i class="fa fa-comments-o "></i>Tiêu chí đánh giá </a>
                                 </li>
                                 <li>
-                                    <a href="/danhmucdanhgia"><i class="fa fa-comments-o "></i>Tiêu chí đánh giá </a>
+                                    <a><i class="fa fa-video-camera"></i>Video</a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li>
+                                            <a href="/quan-tri/video"  ><i class="fa fa-file-video-o"></i>Danh mục video</a>
+                                        </li>
+                                        <li>
+                                            <a href="/quan-tri/mau-phat" ><i class="fa fa-play-circle-o"></i>Mẫu phát video</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="/bao-cao-1" target="_blank"><i class="fa fa-pie-chart"></i>Thống kê đánh giá trong ngày</a>
-                                </li>
-                                <li>
-                                    <a href="/bao-cao-danh-gia-chi-tiet" target="_blank"><i class="fa fa-pie-chart"></i>Thống kê đánh giá tổng hợp</a>
+                                    <a><i class="fa fa-pie-chart"></i>Thống kê</a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li>
+                                            <a href="/bao-cao-1"  ><i class="fa fa-bar-chart-o"></i>Đánh giá trong ngày</a>
+                                        </li>
+                                        <li>
+                                            <a href="/bao-cao-danh-gia-chi-tiet"  ><i class="fa fa-bar-chart-o"></i>Đánh giá tổng hợp</a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -200,6 +235,13 @@
 
     <script src="~/Areas/Admin/Scripts/KendoUI/kendo.all.min.js"></script>
     <script src="~/Areas/Admin/Scripts/KendoUI/Kendo.Cultures.vn.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+
+    <script src="~/Scripts/SwitchButton/bootstrap-toggle.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+
+    @*time-picker*@
+    <script src="~/Scripts/time-picker/js/timepicker.js"></script>
     <style>
         .tab-content {
             padding: 5px;

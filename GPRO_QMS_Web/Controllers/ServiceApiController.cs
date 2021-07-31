@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using GPRO.Core.Mvc;
+using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
+using QMS_System.Data;
 using QMS_System.Data.BLL;
 using QMS_System.Data.BLL.VietThaiQuan;
 using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
+using QMS_System.ThirdApp.Enum;
 using QMS_Website.App_Global;
+using QMS_Website.Helper;
 using QMS_Website.Hubs;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Web.Http;
@@ -18,6 +23,7 @@ namespace QMS_Website.Controllers
     public class ServiceApiController : ApiController
     {
         public string connectString = AppGlobal.Connectionstring;
+        public SqlConnection sqlconnection = AppGlobal.sqlConnection;
         [HttpGet]
         public string GetUserAvatar(string userName)
         {
@@ -52,6 +58,22 @@ namespace QMS_Website.Controllers
             if (getUserInfo == 1 && info.UserInfo != null && !string.IsNullOrEmpty(info.UserInfo.Avatar))
                 info.UserInfo.Avatar = (ConfigurationManager.AppSettings["imageFolder"].ToString() + info.UserInfo.Avatar);
             return info;
+        }
+
+        [HttpGet]
+        public AndroidModel GetAndroidInfo3(string userName, int matb, int getSTT, int getSMS, int getUserInfo)
+        {
+            var counterDayInfo = BLLLoginHistory.Instance.GetForHome(sqlconnection, userName, matb, DateTime.Now, 0);
+            AndroidModel androidModel = new AndroidModel();
+            androidModel.TicketNumber = counterDayInfo.CurrentTicket;
+            androidModel.TotalWaiting = counterDayInfo.TotalWating;
+            androidModel.CounterWaitings = counterDayInfo.CounterWaitingTickets;
+            androidModel.UserId = counterDayInfo.UserId;
+
+            androidModel.HasEvaluate = counterDayInfo.HasEvaluate;
+            androidModel.Status = counterDayInfo.Status;
+            androidModel.TicketNumber = counterDayInfo.CurrentTicket;
+            return androidModel;
         }
 
         [HttpGet]
@@ -101,28 +123,22 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public ResponseBase PrintNewTicket(string TenBenhNhan, string MaBenhNhan, string MaPhongKham, string STT_PhongKham)
         {
-            return BLLDailyRequire.Instance.API_PrintNewTicket(connectString, TenBenhNhan, null, null, MaBenhNhan, MaPhongKham, STT_PhongKham);
+            return InPhieu(new Q_DailyRequire() { CustomerName = TenBenhNhan, MaBenhNhan = MaBenhNhan, MaPhongKham = MaPhongKham, STT_PhongKham = STT_PhongKham }, string.Empty);
+        }
+
+        private ResponseBase InPhieu(Q_DailyRequire model, string maKhoa)
+        {
+            return BLLDailyRequire.Instance.API_PrintNewTicket(connectString, model, maKhoa);
         }
 
         [HttpGet]
         public ResponseBase PrintNewTicket(string MaPhongKham, string thoigian)
         {
             var rs = new ResponseBase();
-            //if (BLLCounterSoftRequire.Instance.HasProcessing(connectString, (int)eCounterSoftRequireType.PrintTicket) == null)
-            //{
             var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
 
             CultureInfo provider = CultureInfo.InvariantCulture;
             var newDate = DateTime.ParseExact("01/01/2018 " + thoigian, "dd/MM/yyyy HH:mm:ss", provider);
-
-            //var require = new PrinterRequireModel()
-            //{
-            //    PrinterId = printerId,
-            //    SoXe = "",
-            //    ServeTime = newDate,
-            //    ServiceId = int.Parse(MaPhongKham)
-            //};
-            //rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.PrintTicket);
 
 
             var serObj = BLLService.Instance.Get(connectString, int.Parse(MaPhongKham));
@@ -171,6 +187,30 @@ namespace QMS_Website.Controllers
                 }
             }
             return rs;
+        }
+
+        [HttpGet]
+        public ResponseBase PrintTicketFromSMS(string smsContent, string sdt)
+        {
+            //format smsContent
+            // HoTen-NamSinh-MaKhoa-MaPhongKham  -> full 
+            // HoTen-NamSinh-MaKhoa   -> ko biet ma phong kham(kham moi)
+            ResponseBase result = new ResponseBase();
+            var _contentArr = smsContent.Trim().Split('-').ToList();
+            if (_contentArr.Count >= 3)
+            {
+                int ns = 0;
+                int.TryParse(_contentArr[1], out ns);
+                result = InPhieu(new Q_DailyRequire() { CustomerName = _contentArr[0], MaBenhNhan = "", MaPhongKham = (_contentArr.Count == 3 ? string.Empty : _contentArr[3]), STT_PhongKham = "", PhoneNumber = sdt.Trim(), CustomerDOB = ns }, (_contentArr.Count == 3 ? _contentArr[2] : string.Empty));
+                result.Data_1 = sdt;
+            }
+            else
+            {
+                result.IsSuccess = false;
+                result.Errors = new List<Error>();
+                result.Errors.Add(new Error() { MemberName = "Lỗi", Message = "Cấu trúc tin nhắn không hợp lệ. Vui lòng gửi lại theo cú pháp: 'HoTen NamSinh MaKhoa MaPhongKham' hoặc 'HoTen NamSinh MaKhoa' " });
+            }
+            return result;
         }
 
         [HttpGet]
@@ -249,11 +289,15 @@ namespace QMS_Website.Controllers
             {
                 // chua co in mới   
                 var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
+                var cf = BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.PrintType);
+                int _printype = 1;
+                if (!string.IsNullOrEmpty(cf))
+                    int.TryParse(cf, out _printype);
                 var serObj = BLLService.Instance.Get(connectString, madichvu);
                 if (serObj != null)
                 {
                     PrinterRequireModel require = null;
-                    var rs = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, 1, 0, DateTime.Now, 2, serObj.TimeProcess.TimeOfDay, "", "", 0, "", "", maphieudichvu, "", macongviec, loaixe);
+                    var rs = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, DateTime.Now, _printype, serObj.TimeProcess.TimeOfDay, "", "", 0, "", "", maphieudichvu, "", macongviec, loaixe);
                     if (rs.IsSuccess)
                     {
                         require = new PrinterRequireModel()
@@ -263,7 +307,8 @@ namespace QMS_Website.Controllers
                             TenDichVu = serObj.Name,
                             TenQuay = rs.Data_2,
                             MajorId = (int)rs.Data_1,
-                            ServiceId = serObj.Id
+                            ServiceId = serObj.Id,
+                            MaPhongKham = maphieudichvu
                         };
                         BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
                         result.IsSuccess = true;
@@ -344,77 +389,6 @@ namespace QMS_Website.Controllers
         }
 
 
-        //[HttpGet]
-        //public ResponseBase PrintTicket1(string maphieudichvu, string madichvu, string macongviec, string loaixe)
-        //{
-        //    var rs = new ResponseBase();
-        //    if (BLLCounterSoftRequire.Instance.HasProcessing(connectString, (int)eCounterSoftRequireType.PrintTicket) == null)
-        //    {
-        //        var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
-        //        var serObj = BLLService.Instance.Get(connectString, madichvu);
-        //        if (serObj != null)
-        //        {
-        //            //if (CheckTimeBeforePrintTicket == "1" && serObj.Shifts.FirstOrDefault(x => now.TimeOfDay >= x.Start.TimeOfDay && now.TimeOfDay <= x.End.TimeOfDay) == null)
-        //            //    temp.Add(SoundLockPrintTicket);
-        //            //else
-        //            //{
-        //            var rs = BLLDailyRequire.Instance.PrintNewTicket(connectString, serviceId, startNumber, businessId, now, printType, (timeServeAllow != null ? timeServeAllow.Value : serObj.TimeProcess.TimeOfDay), Name, Address, DOB, MaBenhNhan, MaPhongKham, SttPhongKham, SoXe, MaCongViec, MaLoaiCongViec);
-        //            if (rs.IsSuccess)
-        //            {
-        //                if (!isProgrammer)
-        //                {
-        //                    var soArr = BaseCore.Instance.ChangeNumber(((int)rs.Data + 1));
-        //                    printStr = (soArr[0] + " " + soArr[1] + " ");
-        //                    if (printTicketReturnCurrentNumberOrServiceCode == 1)
-        //                    {
-        //                        soArr = BaseCore.Instance.ChangeNumber((int)rs.Records);
-        //                    }
-        //                    else
-        //                    {
-        //                        soArr = BaseCore.Instance.ChangeNumber(serviceId);
-        //                    }
-        //                    printStr += (soArr[0] + " " + soArr[1] + " " + now.ToString("dd") + " " + now.ToString("MM") + " " + now.ToString("yy") + " " + now.ToString("HH") + " " + now.ToString("mm"));
-        //                }
-        //                else if (isProgrammer)
-        //                    lbRecieve.Caption = printerId + "," + serviceId + "," + ((int)rs.Data + 1);
-        //                nghiepVu = rs.Data_1;
-        //                newNumber = ((int)rs.Data + 1);
-        //                tenQuay = rs.Data_2;
-        //            }
-        //            else
-        //                errorsms = rs.Errors[0].Message;
-        //            //  MessageBox.Show(rs.Errors[0].Message, rs.Errors[0].MemberName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            // }
-
-
-
-
-
-
-
-        //            var require = new PrinterRequireModel()
-        //            {
-        //                PrinterId = printerId,
-        //                SoXe = "",
-        //                Name = "",
-        //                MaBenhNhan = "",
-        //                ServiceId = serObj.Id,
-        //                ServeTime = serObj.TimeProcess,
-        //                SttPhongKham = maphieudichvu,
-        //                MaCongViec = macongviec,
-        //                MaLoaiCongViec = loaixe
-        //            };
-        //            rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.PrintTicket);
-        //        }
-        //        else
-        //        {
-        //            rs.IsSuccess = false;
-        //            rs.Errors.Add(new Error() { MemberName = "in phiếu", Message = "Không tìm thấy thông tin dịch vụ với mã bạn vừa cung cấp. vui lòng kiểm tra lại." });
-        //        }
-        //    }
-        //    return rs;
-        //}
-
         [HttpGet]
         public ResponseBase CounterEvent(string counterId, string action, string param)
         {
@@ -449,5 +423,89 @@ namespace QMS_Website.Controllers
             var obj = BLLDailyRequire.Instance.Get(connectString, yourNumber);
             return obj != null ? obj.TicketNumber : 0;
         }
+
+        [HttpGet]
+        public ResponseBaseModel CallNext(int matb, int userId, int dailyType)
+        {
+            ResponseBaseModel rs = BLLServiceApi.Instance.Next(connectString, userId, matb, DateTime.Now, 1);
+            if (rs.IsSuccess)
+            {
+                TicketInfo tk = (TicketInfo)rs.Data_3;
+                var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, userId, eCodeHex.Next);
+                if (readTemplateIds.Count > 0)
+                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
+
+            }
+            return rs;
+        }
+
+        [HttpGet]
+        public ResponseBaseModel CallAny(int matb, int userId, int stt)
+        {
+            var rs = BLLDailyRequire.Instance.CallAny(connectString, userId, matb, stt, DateTime.Now);
+            if (rs.IsSuccess)
+            {
+                TicketInfo tk = (TicketInfo)rs.Data_3;
+                var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, userId, eCodeHex.Next);
+                if (readTemplateIds.Count > 0)
+                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
+
+            }
+            return rs;
+        }
+
+        [HttpGet]
+        public ResponseBaseModel Recall(int matb, int userId)
+        {
+            var rs = BLLDailyRequire.Instance.GetCurrentTicket(connectString, userId, matb, DateTime.Now, 1);
+
+            if (rs.IsSuccess == true)
+            {
+                TicketInfo tk = (TicketInfo)rs.Data_3;
+                var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, userId, eCodeHex.Recall);
+                if (readTemplateIds.Count > 0)
+                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
+            }
+            return rs;
+        }
+
+        [HttpGet]
+        public ResponseBaseModel DoneTicket(int matb, int userId)
+        {
+            var ticket = BLLDailyRequire.Instance.DoneTicket(connectString, userId, matb, DateTime.Now);
+            var rs = new ResponseBaseModel();
+            rs.IsSuccess = true;
+            return rs;
+        }
+
+        [HttpGet]
+        public ResponseBaseModel DeleteTicket(int number)
+        {
+            var ticket = BLLDailyRequire.Instance.DeleteTicket(connectString, number, DateTime.Now);
+            var rs = new ResponseBaseModel();
+            if (ticket > 0)
+                rs.IsSuccess = true;
+            return rs;
+        }
+
+        [HttpGet]
+        public ResponseBaseModel TransferTicket(int matb, int manv, int stt)
+        {
+            var rs = new ResponseBaseModel();
+            if (BLLDailyRequire.Instance.TranferTicket(connectString, matb, manv, stt, DateTime.Now, true))
+            {
+                rs.IsSuccess = true;
+            }
+            else
+                rs.IsSuccess = false;
+            return rs;
+        }
+
+        [HttpGet]
+        public List<ModelSelectItem> GetMajors()
+        {
+            return BLLMajor.Instance.GetLookUp(connectString);
+        }
+
     }
 }

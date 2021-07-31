@@ -1,4 +1,7 @@
-﻿using System;
+﻿using QMS_System.Data.BLL;
+using QMS_System.Data.Model;
+using QMS_System.ThirdApp.Enum;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.EntityClient;
 using System.IO;
@@ -26,6 +29,7 @@ namespace QMS_Website.Helper
         }
         private GPRO_Helper() { }
         #endregion
+
         public string GetEntityConnectString()
         {
             try
@@ -62,6 +66,67 @@ namespace QMS_Website.Helper
             catch (Exception)
             {
                 return "";
+            }
+        }
+
+        public void GetSound(string connectString, List<int> templateIds, string ticket, int counterId, int dailyType)
+        {
+            var readDetails = BLLReadTempDetail.Instance.Gets(connectString, templateIds);
+            if (readDetails.Count > 0)
+            {
+                var sounds = BLLSound.Instance.Gets(connectString);
+                SoundModel soundFound;
+                var soundStr = string.Empty;
+                if (sounds.Count > 0)
+                {
+                    for (int y = 0; y < readDetails.Count; y++)
+                    {
+                        if (readDetails[y].Details.Count > 0)
+                        {
+                            for (int i = 0; i < readDetails[y].Details.Count; i++)
+                            {
+                                if (readDetails[y].Details[i].SoundId == 9999)
+                                {
+                                    for (int j = 0; j < ticket.Length; j++)
+                                    {
+                                        soundFound = sounds.FirstOrDefault(x => x.Code != null && x.Code.Equals(ticket[j] + "") && x.LanguageId == readDetails[y].LanguageId);
+                                        if (soundFound != null)
+                                        {
+                                            soundStr += soundFound.Name + "|";
+                                        }
+                                    }
+                                }
+                                else if (readDetails[y].Details[i].SoundId == 10000)
+                                {
+                                    var name = BLLCounterSound.Instance.GetSoundName(connectString, counterId, readDetails[y].LanguageId);
+                                    if (!string.IsNullOrEmpty(name))
+                                    {
+                                        soundStr += name + "|";
+                                    }
+                                }
+                                else
+                                {
+                                    soundFound = sounds.FirstOrDefault(x => x.Id == readDetails[y].Details[i].SoundId);
+                                    if (soundFound != null)
+                                    {
+                                        soundStr += soundFound.Name + "|";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(soundStr))
+                    {
+                        soundStr = soundStr.Substring(0, soundStr.Length - 1);
+
+                        if (dailyType == (int)eDailyRequireType.KetLuan)
+                        {
+                            soundStr += "|NhanKetQuaKetLuan.wav";
+                        }
+
+                        BLLCounterSoftRequire.Instance.Insert(connectString, soundStr, 1, counterId);
+                    }
+                }
             }
         }
 

@@ -101,7 +101,7 @@ GPRO.BenhVien = function () {
             url: Global.UrlAction.GetDayInfo,
             type: 'POST',
             // data: JSON.stringify({ 'counters': $('#fullscreen').attr('counters'), 'services': $('#service').val() }),
-            data: JSON.stringify({ 'counters': ('2,3,4,5,6'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userId': 3 }),
+            data: JSON.stringify({ 'counters': ('2,3,4,5,6'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userId': 3,, 'getLastFiveNumbers': false }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var objs = JSON.parse(data);

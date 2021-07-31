@@ -8,7 +8,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
 {
     public class AuthenticateController : Controller
     {
-        // GET: Admin/Authenticate
+       
         public ActionResult Login()
         {
             return View();

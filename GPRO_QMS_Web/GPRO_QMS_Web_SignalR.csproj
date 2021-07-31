@@ -81,9 +81,8 @@
     <Reference Include="Microsoft.Web.XmlTransform">
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenXmlPackaging">
       <HintPath>..\Lib\OpenXmlPackaging.dll</HintPath>
@@ -383,6 +382,7 @@
     <Content Include="Areas\Admin\Content\Css\js\wizard\jquery.smartWizard.js" />
     <Content Include="Areas\Admin\Content\Css\less\custom.css" />
     <Content Include="Areas\Admin\Content\custom.css" />
+    <Content Include="Areas\Admin\Content\images\no-image.png" />
     <Content Include="Areas\Admin\Content\Jtable\customizejtable.css" />
     <Content Include="Areas\Admin\Content\Jtable\themes\basic\close.png" />
     <Content Include="Areas\Admin\Content\Jtable\themes\basic\column-asc.png" />
@@ -481,8 +481,13 @@
     <Content Include="Areas\Admin\Scripts\KendoUI\kendo.default.mobile.min.css" />
     <Content Include="Areas\Admin\Scripts\KendoUI\kendo.material.min.css" />
     <Content Include="Areas\Admin\Scripts\KendoUI\Material\sprite_2x.png" />
+    <Content Include="Areas\Admin\Scripts\video-schedule\video-schedule-index.js" />
+    <Content Include="Areas\Admin\Scripts\video\video-index.js" />
+    <Content Include="Areas\Admin\Scripts\user-major\user-major-index.js" />
     <Content Include="Areas\Admin\Scripts\QMSCommon.js" />
+    <Content Include="Areas\Admin\Scripts\major\major-index.js" />
     <Content Include="Areas\Admin\Scripts\SMS\sms.js" />
+    <Content Include="Areas\Admin\Scripts\Service\service-index.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Create.js" />
     <Content Include="Areas\Admin\Scripts\User\User_Index.js" />
     <Content Include="Areas\BenhVien\Scripts\MH1.css" />
@@ -715,6 +720,11 @@
     <Content Include="Areas\BenhVien\Views\web.config" />
     <Content Include="Areas\Khac\Views\web.config" />
     <Content Include="Areas\BenhVien\Views\TV\MH1.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Major\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserMajor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoSchedule\Index.cshtml" />
     <None Include="Properties\PublishProfiles\nQMS.pubxml" />
     <None Include="Properties\PublishProfiles\QMS.pubxml" />
     <Content Include="Report Template\Report QMS Template.xls" />
@@ -779,6 +789,7 @@
     <Content Include="Scripts\QMS\DangNhap\DangNhap.js" />
     <Content Include="Scripts\QMS\danh-gia\danh-gia-10-nut.js" />
     <Content Include="Scripts\QMS\HienThiQuay\lcd-1.js" />
+    <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video-doc-covid.js" />
     <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video-doc.js" />
     <Content Include="Scripts\QMS\HienThiQuay\man-hinh-co-video.js" />
     <Content Include="Scripts\QMS\HienThiQuay\BenhVien.js" />
@@ -816,6 +827,8 @@
     <Content Include="Scripts\SlideJs\jquery-1.4.2.js" />
     <Content Include="Scripts\SlideJs\jquery.cycle.all.js" />
     <Content Include="Scripts\SlideJs\jquery.nivo.slider.pack.js" />
+    <Content Include="Scripts\time-picker\css\timepicker.css" />
+    <Content Include="Scripts\time-picker\js\timepicker.js" />
     <Content Include="Scripts\SwitchButton\bootstrap-toggle.min.css" />
     <Content Include="Scripts\SwitchButton\bootstrap-toggle.min.js" />
     <Content Include="Scripts\TotemTicker\jquery.totemticker.js" />
@@ -841,9 +854,15 @@
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
     <Compile Include="Areas\Admin\Controllers\EvaluateController.cs" />
     <Compile Include="Areas\Admin\Controllers\EvaluateDetailController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MajorController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReceiverSMSController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\testController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserMajorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoScheduleController.cs" />
     <Compile Include="Areas\BenhVien\BenhVienAreaRegistration.cs" />
     <Compile Include="Areas\BenhVien\Controllers\BVTVController.cs" />
     <Compile Include="Areas\Khac\KhacAreaRegistration.cs" />
@@ -935,6 +954,7 @@
     <Content Include="Views\SQLConnect\Index.cshtml" />
     <Content Include="Views\BVRangHamMat\LCD1.cshtml" />
     <Content Include="Views\BVRangHamMat\LCD2.cshtml" />
+    <Content Include="Views\HienThiQuay\ManHinhCoVideo_Doc_Covid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -945,6 +965,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\test\" />
     <Folder Include="Areas\BenhVien\Models\" />
     <Folder Include="Areas\BenhVien\Views\Shared\" />
     <Folder Include="Areas\Khac\Controllers\" />

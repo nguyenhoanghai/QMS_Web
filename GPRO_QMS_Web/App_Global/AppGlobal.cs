@@ -31,5 +31,30 @@ namespace QMS_Website.App_Global
             }
         }
 
+        private static string _videoPath;
+        public static string  videoPath
+        {
+            get
+            {
+                if (_videoPath == null)
+                {
+                    _videoPath =  HttpContext.Current.Server.MapPath("~/Videos/") ;  
+                }
+                return _videoPath;
+            }
+        }
+
+        private static string _userAvatarPath;
+        public static string  userAvatarPath
+        {
+            get
+            {
+                if (_userAvatarPath == null)
+                {
+                    _userAvatarPath = HttpContext.Current.Server.MapPath("~/Areas/Admin/Content/User/Images/");
+                }
+                return _userAvatarPath;
+            }
+        }
     }
 }

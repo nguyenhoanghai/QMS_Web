@@ -121,16 +121,36 @@ namespace GPRO_QMS_Web
 
             routes.MapRoute(
                 name: "dsdg",
-                url: "DanhMucDanhGia",
+                url: "quan-tri/danh-gia",
                 defaults: new { controller = "Evaluate", action = "index" }).DataTokens["area"] = "Admin";
             routes.MapRoute(
                 name: "dsnv",
-                url: "DanhMucNhanVien",
+                url: "quan-tri/nhan-vien",
                 defaults: new { controller = "User", action = "index" }).DataTokens["area"] = "Admin";
             routes.MapRoute(
                 name: "dstn",
-                url: "DanhMucTinNhan",
+                url: "quan-tri/tin-nhan",
                 defaults: new { controller = "ReceiverSMS", action = "index" }).DataTokens["area"] = "Admin";
+            routes.MapRoute(
+               name: "quan-tri/dich-vu",
+               url: "quan-tri/dich-vu",
+               defaults: new { controller = "Service", action = "index" }).DataTokens["area"] = "Admin";
+            routes.MapRoute(
+               name: "quan-tri/nghiep-vu",
+                url: "quan-tri/nghiep-vu",
+               defaults: new { controller = "Major", action = "index" }).DataTokens["area"] = "Admin";
+            routes.MapRoute(
+              name: "quan-tri/nhan-vien-nghiep-vu",
+              url: "quan-tri/nhan-vien-nghiep-vu",
+              defaults: new { controller = "userMajor", action = "index" }).DataTokens["area"] = "Admin";
+            routes.MapRoute(
+             name: "quan-tri/video",
+             url: "quan-tri/video",
+             defaults: new { controller = "video", action = "index" }).DataTokens["area"] = "Admin";
+            routes.MapRoute(
+            name: "quan-tri/mau-phat",
+            url: "quan-tri/mau-phat",
+            defaults: new { controller = "videoschedule", action = "index" }).DataTokens["area"] = "Admin";
 
             routes.MapRoute(
                name: "dg",
@@ -147,14 +167,14 @@ namespace GPRO_QMS_Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-             // defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
-             // defaults: new { controller = "HienThiQuay", action = "Index", id = UrlParameter.Optional }
-             //defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } 
-             //huu nghi
-             // defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
+               // defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
+               //   defaults: new { controller = "HienThiQuay", action = "Index", id = UrlParameter.Optional }
+               //defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } 
+               //huu nghi
+               //defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
 
-             //rang ham mat 
-             defaults: new { controller = "BVRangHamMat", action = "LCD1", id = UrlParameter.Optional } 
+            //rang ham mat 
+             defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo_Doc_Covid", id = UrlParameter.Optional } 
             );
         }
     }

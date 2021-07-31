@@ -1,5 +1,4 @@
 ﻿using GPRO.Core.Generic;
-using QMS_System.Data;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Model;
 using QMS_Website.App_Global;
@@ -20,14 +19,14 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
             return View();
         }
 
-        public JsonResult GetList(string keyword, int searchBy = 0, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = "")
+        public JsonResult GetList(string keyword, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = "")
         {
             try
             {
-                var objs = BLLUser.Instance.GetList(AppGlobal.Connectionstring, keyword, searchBy, jtStartIndex, jtPageSize, jtSorting);
+                var objs = BLLUser.Instance.GetList(AppGlobal.Connectionstring, keyword, jtStartIndex, jtPageSize, jtSorting);
                 JsonDataResult.Result = "OK";
                 JsonDataResult.Records = objs;
-                JsonDataResult.TotalRecordCount = objs.TotalItemCount; // TotalItemCount la mot property cua PagedList<> dem tong so item
+                JsonDataResult.TotalRecordCount = objs.TotalItemCount;
                 return Json(JsonDataResult);
             }
             catch (Exception ex)
@@ -38,14 +37,14 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Save(Q_User nv)
+        public JsonResult Save(UserModel model)
         {
             ResponseBase rs;
             try
             {
-                if (nv.Counters == null)
-                    nv.Counters = "0";
-                rs = BLLUser.Instance.CreateOrUpdate(AppGlobal.Connectionstring,nv);
+                if (model.Counters == null)
+                    model.Counters = "0";
+                rs = BLLUser.Instance.CreateOrUpdate(AppGlobal.Connectionstring, model);
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";
@@ -67,7 +66,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                if (BLLUser.Instance.Delete(AppGlobal.Connectionstring,manv))
+                if (BLLUser.Instance.Delete(AppGlobal.Connectionstring, manv))
                     JsonDataResult.Result = "OK";
                 else
                     JsonDataResult.Result = "ERROR";
@@ -84,7 +83,7 @@ namespace GPRO_QMS_Web.Areas.Admin.Controllers
         {
             try
             {
-                var nv = BLLUser.Instance.Get(AppGlobal.Connectionstring,MaNV);
+                var nv = BLLUser.Instance.Get(AppGlobal.Connectionstring, MaNV);
                 JsonDataResult.Result = "OK";
                 JsonDataResult.Data = nv;
                 return Json(JsonDataResult);
