@@ -92,7 +92,7 @@ function GetUserSelect(controlName) {
 
 function GetServiceSelect(controlName) {
     $.ajax({
-        url: '/DangKyOnline/GetServiceSelect',
+        url: '/DangKyOnline/GetServices',
         type: 'POST',
         data: '',
         contentType: 'application/json charset=utf-8',
@@ -101,7 +101,7 @@ function GetServiceSelect(controlName) {
                 if (data.Result == "OK") {
                     var str = '';
                     $.each(data.Data, function (index, item) {
-                        str += '<option value="' + item.Value + '" >' + item.Name + '</option>';
+                        str += '<option value="' + item.Id + '" >' + item.Name + '</option>';
                     });
                     $('#' + controlName).empty().append(str);
                     $('#' + controlName).change();

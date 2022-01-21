@@ -171,7 +171,6 @@ E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\Newtonsoft.Json.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\OpenXmlPackaging.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\Owin.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\PagedList.dll
-E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\QMS_System.Data.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\System.Net.Http.Formatting.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\System.Web.Helpers.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.dll
@@ -204,5 +203,9 @@ E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\GPRO_QMS_Web_SignalR.csproj.C
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\obj\Debug\QMS_Website.pdb
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\GPRO.Core.Hai.dll
-E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\QMS_System.ThirdApp.dll
 E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\Newtonsoft.Json.pdb
+E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\System.Web.Cors.dll
+E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.Cors.dll
+E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\System.Web.Http.Cors.xml
+E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\QMS_System.Data.dll
+E:\Hai_GPRO\Git QMS\QMS_Web\GPRO_QMS_Web\bin\QMS_System.ThirdApp.dll

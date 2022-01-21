@@ -20,6 +20,7 @@ GPRO.namespace('ServeInfo');
 GPRO.ServeInfo = function () {
     var Global = {
         UrlAction: {
+            GetServices: '/DangKyOnline/GetServices',
             GetServiceInfo: '/DangKyOnline/GetServiceInfo',
             InsertServiceRequire: '/DangKyOnline/InsertServiceRequire',
   Find: '/DangKyOnline/Find', 
@@ -34,7 +35,8 @@ GPRO.ServeInfo = function () {
     }
 
     this.Init = function () {
-        RegisterEvent(); 
+        RegisterEvent();
+        //GetServices();
         GetServiceSelect('dichvu');
         setInterval(function () { Get() }, 1000); 
     }
@@ -53,6 +55,21 @@ GPRO.ServeInfo = function () {
                 Find();
         }); 
     }
+
+    function GetServices() {
+        $.ajax({
+            url: Global.UrlAction.GetServices,
+            type: 'GET',
+            data: '',
+            contentType: 'application/json charset=utf-8',
+            success: function (data) {
+                console.log(data);
+                if (data.Result == "OK")
+                    DrawTable(data.Data);
+            }
+        });
+    }
+
 
     function Get() {
         $.ajax({
@@ -91,11 +108,11 @@ GPRO.ServeInfo = function () {
             str = '';
             $.each(objs, function (i, item) {
                 if (i % 2 == 0) {
-                    str += '<div class="background-row-even rowcontent"><div class="col-md-4 col-sm-4 col-xs-4 font_28 margin-right bor_bottom border-right">' + item.ServiceName + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt margin-left bor_bottom border-right">' + item.TicketNumberProcessing + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt bor_bottom border-right">' + item.TotalCarsWaiting + '</div><div class="clearfix"></div>';
+                    str += '<div class="background-row-even rowcontent"><div class="col-md-4 col-sm-4 col-xs-4 font_28 margin-right bor_bottom border-right">' + item.Name + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt margin-left bor_bottom border-right">' + item.TicketNumberProcessing + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt bor_bottom border-right">' + item.TotalCarsWaiting + '</div><div class="clearfix"></div>';
                 }
                 else
                 {
-                    str += '<div class="background-row-odd rowcontent"><div class="col-md-4 col-sm-4 col-xs-4 font_28 margin-right bor_bottom border-right">' + item.ServiceName + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt margin-left bor_bottom border-right">' + item.TicketNumberProcessing + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt bor_bottom border-right">' + item.TotalCarsWaiting + '</div><div class="clearfix"></div>';
+                    str += '<div class="background-row-odd rowcontent"><div class="col-md-4 col-sm-4 col-xs-4 font_28 margin-right bor_bottom border-right">' + item.Name + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt margin-left bor_bottom border-right">' + item.TicketNumberProcessing + '</div><div class="col-md-4 col-sm-4 col-xs-4 font-dt bor_bottom border-right">' + item.TotalCarsWaiting + '</div><div class="clearfix"></div>';
                 }
             });
         }
@@ -117,28 +134,23 @@ GPRO.ServeInfo = function () {
 
     function InsertServiceRequire() {
         var obj = {
-            MAPHIEU: 0,
-            MADV: $('#dichvu').val(),
-            GIOCAP: '',
-            MATT: '',
-            MADN: null,
-            MANVDAU: null,
-            SOXE: '',
-            PHONE: $('#sodienthoai').val(),
-            TGPHUCVU_DK: '',
+            TicketNumber: 0,
+            ServiceId: $('#dichvu').val(), 
+            phonenumber: $('#sodienthoai').val(), 
+            CustomerName: $('#hoten').val(),             
         }
         $.ajax({
             url: Global.UrlAction.InsertServiceRequire,
             type: 'POST',
-            data: JSON.stringify({ 'yc': obj }),
+            data: JSON.stringify({ 'model': obj }),
             contentType: 'application/json charset=utf-8',
             success: function (result) {
                 if (result.Result == "OK") {
-                    $('#sodienthoai').val('');
-                    $('#dichvu').val(1);
+                   // $('#sodienthoai').val('');
+                   // $('#dichvu').val(1);
 
                     $('#contentView').html(result.Data);
-                    GlobalCommon.ShowMessageDialog("Bạn đã đăng ký thành công!", function () { }, 'Thông Báo');
+                  //  GlobalCommon.ShowMessageDialog("Bạn đã đăng ký thành công!", function () { }, 'Thông Báo');
                 }
                 else
                     GlobalCommon.ShowMessageDialog(result.ErrorMessages[0].Message, function () { }, 'Lỗi');

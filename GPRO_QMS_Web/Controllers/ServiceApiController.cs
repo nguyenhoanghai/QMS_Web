@@ -20,9 +20,12 @@ using System.Web.Http;
 
 namespace QMS_Website.Controllers
 {
+    //[EnableCors(origins: "http://localhost:3000/", headers:"*", methods:"*")]
+    //[AllowCrossSite]
     public class ServiceApiController : ApiController
     {
         public string connectString = AppGlobal.Connectionstring;
+        public string sqlconnectString = AppGlobal.sqlConnectionString;
         public SqlConnection sqlconnection = AppGlobal.sqlConnection;
         [HttpGet]
         public string GetUserAvatar(string userName)
@@ -63,7 +66,7 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public AndroidModel GetAndroidInfo3(string userName, int matb, int getSTT, int getSMS, int getUserInfo)
         {
-            var counterDayInfo = BLLLoginHistory.Instance.GetForHome(sqlconnection, userName, matb, DateTime.Now, 0);
+            var counterDayInfo = BLLLoginHistory.Instance.GetForHome(sqlconnectString, sqlconnection, userName, matb, DateTime.Now, 0);
             AndroidModel androidModel = new AndroidModel();
             androidModel.TicketNumber = counterDayInfo.CurrentTicket;
             androidModel.TotalWaiting = counterDayInfo.TotalWating;
@@ -73,6 +76,7 @@ namespace QMS_Website.Controllers
             androidModel.HasEvaluate = counterDayInfo.HasEvaluate;
             androidModel.Status = counterDayInfo.Status;
             androidModel.TicketNumber = counterDayInfo.CurrentTicket;
+            androidModel.UserInfo = new UserModel() { UserName = counterDayInfo.UserName };
             return androidModel;
         }
 
@@ -219,10 +223,18 @@ namespace QMS_Website.Controllers
             return BLLDailyRequire.Instance.API_UpdateTicketInfo(connectString, TenBenhNhan, MaBenhNhan, STT_PhongKham);
         }
 
+
         [HttpGet]
         public List<ModelSelectItem> GetServices()
         {
             return BLLService.Instance.GetLookUp(connectString, false);
+        }
+
+
+        [HttpGet]
+        public List<ModelSelectItem> GetEvaluates()
+        {
+            return BLLEvaluateDetail.Instance.GetLookUp(connectString);
         }
 
         [HttpGet]
@@ -433,8 +445,9 @@ namespace QMS_Website.Controllers
                 TicketInfo tk = (TicketInfo)rs.Data_3;
                 var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, userId, eCodeHex.Next);
                 if (readTemplateIds.Count > 0)
-                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
-
+                {
+                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh, BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.TVReadSound));
+                }
             }
             return rs;
         }
@@ -448,7 +461,7 @@ namespace QMS_Website.Controllers
                 TicketInfo tk = (TicketInfo)rs.Data_3;
                 var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, userId, eCodeHex.Next);
                 if (readTemplateIds.Count > 0)
-                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
+                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh, BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.TVReadSound));
 
             }
             return rs;
@@ -464,7 +477,7 @@ namespace QMS_Website.Controllers
                 TicketInfo tk = (TicketInfo)rs.Data_3;
                 var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, userId, eCodeHex.Recall);
                 if (readTemplateIds.Count > 0)
-                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
+                    GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh, BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.TVReadSound));
             }
             return rs;
         }
@@ -507,5 +520,30 @@ namespace QMS_Website.Controllers
             return BLLMajor.Instance.GetLookUp(connectString);
         }
 
+
+
+
+        public ViewModel GetDayInfo_BV(string counters, string services, int userId, int getLastFiveNumbers)
+        {
+            var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            var servicesArr = services.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, servicesArr, userId, getLastFiveNumbers == 1);
+            // var obj = JsonConvert.SerializeObject(ss);
+            // return Json(obj);
+            return ss;
+        }
+
+        public ViewModel GetDayInfo_PK(string counters, int userId)
+        {
+            var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            var ss = BLLDailyRequire.Instance.GetDayInfo(AppGlobal.Connectionstring, countersArr, userId);
+            return ss;
+        }
+
+        [HttpGet]
+        public List<ModelSelectItem> GetDevices()
+        {
+            return BLLServiceApi.Instance.GetDevices(connectString );
+        }
     }
 }

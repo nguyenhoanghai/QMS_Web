@@ -31,6 +31,19 @@ namespace QMS_Website.App_Global
             }
         }
 
+        private static string _sqlConnectionString;
+        public static string sqlConnectionString
+        {
+            get
+            {
+                if (_sqlConnectionString == null)
+                {
+                    _sqlConnectionString = GPRO.Core.Hai.DatabaseConnection.Instance.ConnectStringOfSQLConnection(HttpContext.Current.Server.MapPath("~/Config_XML") + "\\DATA.XML"); //Helper.GPRO_Helper.Instance.GetEntityConnectString();
+                }
+                return _sqlConnectionString;
+            }
+        }
+
         private static string _videoPath;
         public static string  videoPath
         {

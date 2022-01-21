@@ -1,5 +1,6 @@
 ﻿using QMS_System.Data.BLL;
 using QMS_System.Data.BLL.HuuNghi;
+using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
 using QMS_System.ThirdApp.Enum;
 using QMS_Website.App_Global;
@@ -29,7 +30,7 @@ namespace QMS_Website.Controllers
                     TicketInfo tk = (TicketInfo)rs.Data_3;
                     var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, info.Data, "8B");
                     if (readTemplateIds.Count > 0)
-                        GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, dailyType);
+                        GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, dailyType, BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.TVReadSound));
                     kq = true;
                 }
             }
@@ -56,7 +57,7 @@ namespace QMS_Website.Controllers
                     TicketInfo tk = (TicketInfo)rs.Data_3;
                     var readTemplateIds = BLLUserCmdReadSound.Instance.GetReadTemplateIds(connectString, info.Data, "8B");
                     if (readTemplateIds.Count > 0)
-                        GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh);
+                        GPRO_Helper.Instance.GetSound(connectString, readTemplateIds, tk.TicketNumber.ToString(), tk.CounterId, (int)eDailyRequireType.KhamBenh, BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.TVReadSound));
                     kq = true;
                 }
             }

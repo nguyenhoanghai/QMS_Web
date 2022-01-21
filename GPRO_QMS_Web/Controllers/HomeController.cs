@@ -103,5 +103,10 @@ namespace GPRO_QMS_Web.Controllers
             connection.Clients.All.sendDateTimeToPage(DateTime.Now.ToString("dd/MM/yyyy|HH : mm"));
             return Json("");
         }
+
+        public ActionResult Index_SMS()
+        {
+            return View();
+        }
     }
 }

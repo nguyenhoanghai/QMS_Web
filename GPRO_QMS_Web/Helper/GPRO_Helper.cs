@@ -1,4 +1,5 @@
 ﻿using QMS_System.Data.BLL;
+using QMS_System.Data.Enum;
 using QMS_System.Data.Model;
 using QMS_System.ThirdApp.Enum;
 using System;
@@ -69,7 +70,7 @@ namespace QMS_Website.Helper
             }
         }
 
-        public void GetSound(string connectString, List<int> templateIds, string ticket, int counterId, int dailyType)
+        public void GetSound(string connectString, List<int> templateIds, string ticket, int counterId, int dailyType, string tvReadSound)
         {
             var readDetails = BLLReadTempDetail.Instance.Gets(connectString, templateIds);
             if (readDetails.Count > 0)
@@ -125,6 +126,10 @@ namespace QMS_Website.Helper
                         }
 
                         BLLCounterSoftRequire.Instance.Insert(connectString, soundStr, 1, counterId);
+                        if (!string.IsNullOrEmpty(soundStr) && !string.IsNullOrEmpty(tvReadSound) && tvReadSound == "1")
+                        { 
+                            BLLCounterSoftRequire.Instance.Insert(connectString, soundStr, (int)eCounterSoftRequireType.TVReadSound, counterId);
+                        }
                     }
                 }
             }

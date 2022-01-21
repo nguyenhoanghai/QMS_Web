@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Threading.Tasks;
+using System.Web.Services.Description;
 using Microsoft.Owin;
 using Owin;
 
@@ -11,7 +13,8 @@ namespace QMS_Website
     {
         public void Configuration(IAppBuilder app)
         {
-            app.MapSignalR();
-        }
+            app.MapSignalR(); 
+             
+        } 
     }
 }

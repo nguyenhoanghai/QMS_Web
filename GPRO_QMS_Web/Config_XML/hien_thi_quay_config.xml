@@ -10,11 +10,11 @@
   </View>
   <View ID="3">
     <Name>man_hinh_co_video</Name>
-    <Value>{"PageTitle":" BIDV chi nhánh gia dinh","PageTitle_Css":" background:blue;color:white;padding:20px","SubTitle":" Phiếu|quầy","SubTitle_Css":"  background:red;color:white;padding:10px !important","Row1_Css":"color:blue;padding:10px","Row2_Css":"  background:blue;color:white;padding:10px","Adv_Css":" ","Row":" 5","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":" width:100% !important","css_box_video":" display:none"}</Value>
+    <Value>{"PageTitle":"Bệnh viện quận 6","PageTitle_Css":" color:blue;padding:22px;font-size:114px;line-height:114px","SubTitle":"QUẦY|SỐ PHIẾU","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:100px;line-height:100px;min-height:114px !important","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:100px;line-height:100px;min-height:114px !important","Adv_Css":"","Row":"5","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important","css_box_video":"display:none;width:100% !important;height:550px !important"}</Value>
   </View>
   <View ID="6">
     <Name>man_hinh_co_video</Name>
-    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row1_NumberCss":"","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_NumberCss":"font-size:104px;line-height:104px","Adv_Css":"","Row":"4","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important;height:650px !important","css_box_video":"display:none;width:100% !important;height:550px !important"}</Value>
+    <Value>{"PageTitle":"Ngân hàng BIDV","PageTitle_Css":" color:blue;padding:15px","SubTitle":"SỐ PHIẾU| QUẦY","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:94px;line-height:94px","Adv_Text":"xin chào các bạn","Adv_Css":"color:red; font-size:94px;padding: 20px;line-height:94px;","Adv_Time":"10","Row":"4","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important;height:650px !important","css_box_video":"display:none;width:100% !important;height:550px !important"}</Value>
   </View>
   <View ID="7">
     <Name>man_hinh_co_video_covid</Name>
@@ -23,6 +23,10 @@
   <View ID="5">
     <Name>man_hinh_co_video</Name>
     <Value>{"tieu_de":"BẢNG THÔNG TIN PHỤC VỤ","tieu_de_css":"","sub_tieu_de":"BÀN|SỐ PHIẾU|GIỜ BẮT ĐẦU|TG XỬ LÝ|TG DỰ KIẾN|TG CÒN LẠI     ","sub_tieu_de_css":" background: blue;    font-size: 30px;    line-height: 30px;    text-align: center;    font-weight: bold;     border-right: none;    border-bottom: none;    padding: 10px 0;    background: blue;    color: white;","noi_dung_css":"","noi_dung_so_css":"","dong_1_trang":"","thoi_gian_lat_trang":""}</Value>
+  </View>
+  <View ID="6">
+    <Name>man_hinh_co_video</Name>
+    <Value>{"PageTitle":"Bệnh viện quận 6","PageTitle_Css":" color:blue;padding:22px;font-size:114px;line-height:114px","SubTitle":"QUẦY|SỐ PHIẾU","SubTitle_Css":"background:blue; color:white; padding:15px 0 !important","Row1_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:100px;line-height:100px;min-height:114px !important","Row2_Css":"padding:5px 0 !important;background:black; color:red;border-color:#ccc;font-size:100px;line-height:100px;min-height:114px !important","Adv_Css":"","Row":"5","Col":"2","Services":"","SerName_Col1_Css":"","SerName_Col2_Css":"","Called_Col1_Css":"","Called_Col2_Css":"","css_box_info":"width:100% !important","css_box_video":"display:none;width:100% !important;height:550px !important"}</Value>
   </View>
   <View ID="MH1">
     <Name>man_hinh_tien_thu</Name>
