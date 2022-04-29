@@ -1198,7 +1198,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2021 13:15:08</publishTime>
     </File>
     <File Include="Areas/Admin/Scripts/QMSCommon.js">
-      <publishTime>12/14/2021 11:14:31</publishTime>
+      <publishTime>04/14/2022 07:57:39</publishTime>
     </File>
     <File Include="Areas/Admin/Scripts/Service/service-index.js">
       <publishTime>06/29/2021 21:45:51</publishTime>
@@ -1507,16 +1507,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/28/2015 15:56:36</publishTime>
     </File>
     <File Include="bin/QMS_System.Data.dll">
-      <publishTime>01/06/2022 15:51:31</publishTime>
+      <publishTime>04/25/2022 20:45:44</publishTime>
     </File>
     <File Include="bin/QMS_System.ThirdApp.dll">
-      <publishTime>12/18/2021 05:53:19</publishTime>
+      <publishTime>04/21/2022 11:00:29</publishTime>
     </File>
     <File Include="bin/QMS_Website.dll">
-      <publishTime>01/06/2022 15:52:10</publishTime>
+      <publishTime>04/25/2022 21:06:44</publishTime>
     </File>
     <File Include="bin/QMS_Website.pdb">
-      <publishTime>01/06/2022 15:52:10</publishTime>
+      <publishTime>04/25/2022 21:06:44</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>11/28/2018 13:00:36</publishTime>
@@ -1552,13 +1552,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2017 11:29:19</publishTime>
     </File>
     <File Include="Config_XML/DATA.XML">
-      <publishTime>01/06/2022 15:46:11</publishTime>
+      <publishTime>04/18/2022 08:56:49</publishTime>
     </File>
     <File Include="Config_XML/hien_thi_quay_config.xml">
       <publishTime>11/22/2021 13:25:07</publishTime>
     </File>
     <File Include="Content/bad.png">
       <publishTime>04/23/2018 00:42:36</publishTime>
+    </File>
+    <File Include="Content/banner_b2f7812df5_dad4c14a6f.png">
+      <publishTime>04/09/2022 22:51:22</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>03/02/2017 11:30:51</publishTime>
@@ -1771,7 +1774,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/18/2020 12:57:18</publishTime>
     </File>
     <File Include="Content/ThongTinPhucVu/ThongTinPhucVu.css">
-      <publishTime>05/12/2017 09:31:12</publishTime>
+      <publishTime>04/10/2022 10:07:24</publishTime>
     </File>
     <File Include="Content/tien-thu.png">
       <publishTime>12/12/2020 10:21:19</publishTime>
@@ -2098,7 +2101,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2018 20:36:15</publishTime>
     </File>
     <File Include="Scripts/QMS/ThongTinPhucVu/ThongTinPhucVu.js">
-      <publishTime>01/06/2022 15:45:51</publishTime>
+      <publishTime>04/14/2022 08:11:03</publishTime>
     </File>
     <File Include="Scripts/QMS/tien-thu/thong-tin-kh.js">
       <publishTime>12/23/2020 16:22:33</publishTime>
@@ -2171,6 +2174,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/BVRangHamMat/LCD2.cshtml">
       <publishTime>01/22/2021 09:20:34</publishTime>
+    </File>
+    <File Include="Views/DangKyOnline/BV_DkyKham.cshtml">
+      <publishTime>04/10/2022 11:00:41</publishTime>
     </File>
     <File Include="Views/DangKyOnline/FindInformation.cshtml">
       <publishTime>09/10/2018 19:46:20</publishTime>

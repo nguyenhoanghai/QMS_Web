@@ -80,7 +80,7 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
-        public ResponseBase LuuThongTinKH( string dChi, string tenKH, string maKH, string soxe, int soLan,string ngaysua, string congviecs, string cuahang)
+        public ResponseBase LuuThongTinKH( string dChi, string tenKH, string maKH, string soxe, string soLan,string ngaysua, string congviecs, string cuahang)
         {
             BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
             {

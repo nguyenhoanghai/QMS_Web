@@ -116,6 +116,33 @@ function GetServiceSelect(controlName) {
     });
 }
 
+function GetServiceSelect_bv(controlName) {
+    $.ajax({
+        url: '/DangKyOnline/GetServices_showBV',
+        type: 'POST',
+        data: '',
+        contentType: 'application/json charset=utf-8',
+        success: function (data) {
+            GlobalCommon.CallbackProcess(data, function () {
+                if (data.Result == "OK") {
+                    var str = '';
+                    $.each(data.Data, function (index, item) {
+                        str += '<option value="' + item.Id + '" >' + item.Name + '</option>';
+                    });
+                    $('#' + controlName).empty().append(str);
+                    $('#' + controlName).change();
+                }
+                else
+                    GlobalCommon.ShowMessageDialog(msg, function () { }, "Đã có lỗi xảy ra trong quá trình sử lý.");
+            }, false, '', true, true, function () {
+                var msg = GlobalCommon.GetErrorMessage(data);
+                GlobalCommon.ShowMessageDialog(msg, function () { }, "Đã có lỗi xảy ra.");
+            });
+        }
+    });
+}
+
+
 
 GetMajorSelect = (controlName) => {
     $.ajax({

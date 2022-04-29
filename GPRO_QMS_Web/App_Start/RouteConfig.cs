@@ -165,6 +165,11 @@ namespace GPRO_QMS_Web
                 defaults: new { controller = "SQLConnect", action = "Index", id = UrlParameter.Optional });
 
             routes.MapRoute(
+               name: "dang-ky-kham-benh",
+               url: "dang-ky-kham-benh",
+               defaults: new { controller = "DangKyOnline", action = "BV_DkyKham", id = UrlParameter.Optional });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo_doc", id = UrlParameter.Optional }

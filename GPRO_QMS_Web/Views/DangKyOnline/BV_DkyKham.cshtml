@@ -1,0 +1,162 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Đăng ký khám bệnh</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Jquery.alerts/jquery.alerts.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/Alert/common.js"></script>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/THONGTINPHUCVU/ThongTinPhucVu.css" rel="stylesheet" />
+    <script src="~/Scripts/Alert/common.js"></script>
+    <script src="~/Scripts/Alert/jquery.alerts.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/QMS/ThongTinPhucVu/ThongTinPhucVu.js"></script>
+    <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+
+</head>
+<body>
+     <style>
+         .nav-tabs {
+             border-bottom: 2px solid #00c2c0 !important;
+         }
+         .nav-tabs li  a{
+             font-weight:900;
+             font-family: Verdana, Geneva, Tahoma, sans-serif;
+             font-size:18px
+         }
+         .nav-tabs li.active a {
+             background: #00c2c0 !important;
+             color: white !important
+         }
+     </style>
+    <div class="container">
+        <div class="col-md-12 col-sm-12 col-xs-12 "   > 
+            <img style="margin:0 auto; width:100%" src="~/Content/banner_b2f7812df5_dad4c14a6f.png" />
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12  no_Padding_Margin register-box" style="margin: 10px 0 0 0; padding:0 10px;border-left: 2px solid #e0e0e0;">
+           
+            
+            <div class="inside-box">
+                <div class="col-md-12 col-sm-12 col-xs-12 _header" style="text-transform:uppercase">ĐĂNG KÝ/Tra cứu </div>
+                @*<div class="col-md-12 col-sm-12 col-xs-12  form-label">Điện thoại</div>
+        <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+            <input type="text" name="sodienthoai" id="sodienthoai" class="form-control " />
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12   form-label">Họ tên</div>
+        <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+            <input type="text" name="hoten" id="hoten" class="form-control " />
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12   form-label">Dịch vụ yêu cầu</div>
+        <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+            <div>
+                <select id="dichvu" name="dichvu" class="form-control "></select>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12   border-bottom font_18" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+            <button class="btn btn-primary    " id="dangky" name="dangky"><i class="fa fa-edit"></i> Đăng Ký khám</button>
+            <button class="btn btn-info    " id="xemthongtinphucvu" name="xemthongtinphucvu"><i class="fa fa-search-minus"></i> Tìm thông tin đăng ký</button>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12  " style="font-size:20px; overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+
+            <div id="contentView"></div>
+        </div>*@
+                 
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Đăng ký khám</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Tra cứu thông tin</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <div style="padding-bottom:20px">
+                            <div class="col-md-12 col-sm-12 col-xs-12  form-label">Điện thoại</div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                                <input type="tel" name="sodienthoai" id="sodienthoai" class="form-control " />
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12   form-label">Họ tên</div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                                <input type="text" name="hoten" id="hoten" class="form-control " />
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12   form-label">Dịch vụ yêu cầu</div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                                <div>
+                                    <select id="dichvu" name="dichvu" class="form-control "></select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12   border-bottom font_18" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+                                <button class="btn btn-primary    " id="dangky" name="dangky"><i class="fa fa-edit"></i> Đăng Ký khám</button>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12  " style="font-size:20px; overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+
+                                <div id="contentView"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu1" class="tab-pane fade"> 
+                        <div style="padding-bottom:20px">
+                            <div class="col-md-12 col-sm-12 col-xs-12  form-label">Số điện thoại đăng ký</div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                                <input type="tel" name="sodienthoai_tracuu" id="sodienthoai_tracuu" class="form-control " />
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12   border-bottom font_18" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+                                 <button class="btn btn-info    " id="xemthongtinphucvu" name="xemthongtinphucvu"><i class="fa fa-search-minus"></i> Tìm thông tin đăng ký</button>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12  " style="font-size:20px; overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+
+                                <div id="contentView-tracuu"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12  " style="margin: 10px 0 0 0; padding:0 10px">
+            <div class="col-md-12 col-sm-12 col-xs-12 _header "  >
+                THÔNG TIN PHỤC VỤ khám chữa bệnh trong ngày 
+            </div>
+            @*<div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin margin-left no-margin" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
+                <div class="col-md-4 col-sm-4 col-xs-4 center white bold font_18 header no_Padding_Margin margin-right border-right">TÊN DỊCH VỤ</div>
+                <div class="col-md-4 col-sm-4 col-xs-4 center white bold font_18 header no_Padding_Margin margin-left border-right">SỐ THỨ TỰ ĐANG PHỤC VỤ</div>
+                <div class="col-md-4 col-sm-4 col-xs-4 center white bold font_18 header no_Padding_Margin border-right">SỐ KHÁCH HÀNG ĐANG CHỜ</div>
+            </div>
+            <div class="clearfix"></div>*@
+           @* <div id="thongtindichvuchitiet" class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin margin-left margin-right" style="overflow-wrap:break-word; overflow:auto; text-overflow:ellipsis;max-height:500px"></div>*@
+            <div style="max-height:500px; overflow-y:scroll">
+                <table class="tb-info table table-bordered table-hover table-responsive   ">
+                    <thead>
+                        <tr>
+                            <th>TÊN DỊCH VỤ</th>
+                            <th>SỐ THỨ TỰ ĐANG PHỤC VỤ</th>
+                            <th>SỐ KHÁCH HÀNG ĐANG CHỜ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="3">Không có dữ liệu</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

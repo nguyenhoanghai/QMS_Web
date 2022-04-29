@@ -16,7 +16,13 @@ namespace GPRO_QMS_Web.Controllers
         {
             return View();
         }
+
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult BV_DkyKham()
         {
             return View();
         }
@@ -32,7 +38,22 @@ namespace GPRO_QMS_Web.Controllers
             try
             {
                 JsonDataResult.Result = "OK";
-                JsonDataResult.Data = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring, false);
+                JsonDataResult.Data = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring,false );
+            }
+            catch (Exception ex)
+            {
+                JsonDataResult.Result = "ERROR";
+                JsonDataResult.ErrorMessages.Add(new Error() { MemberName = "Get Area", Message = "Lỗi: " + ex.Message });
+            }
+            return Json(JsonDataResult);
+        }
+
+        public JsonResult GetServices_showBV()
+        {
+            try
+            {
+                JsonDataResult.Result = "OK";
+                JsonDataResult.Data = BLLService.Instance.GetShowBenhViens(AppGlobal.Connectionstring);
             }
             catch (Exception ex)
             {
@@ -47,7 +68,7 @@ namespace GPRO_QMS_Web.Controllers
             try
             {
                 JsonDataResult.Result = "OK";
-                JsonDataResult.Data = BLLServiceInfo.Instance.GetServiceInfo(AppGlobal.Connectionstring);
+                JsonDataResult.Data = BLLServiceInfo.Instance.GetServiceInfo_showBenhVien(AppGlobal.Connectionstring);
             }
             catch (Exception ex)
             {

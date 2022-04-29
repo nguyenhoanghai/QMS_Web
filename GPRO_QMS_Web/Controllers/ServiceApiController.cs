@@ -485,20 +485,13 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public ResponseBaseModel DoneTicket(int matb, int userId)
         {
-            var ticket = BLLDailyRequire.Instance.DoneTicket(connectString, userId, matb, DateTime.Now);
-            var rs = new ResponseBaseModel();
-            rs.IsSuccess = true;
-            return rs;
+            return BLLDailyRequire.Instance.DoneTicket(connectString, userId, matb, DateTime.Now); 
         }
 
         [HttpGet]
-        public ResponseBaseModel DeleteTicket(int number)
+        public ResponseBaseModel DeleteTicket(int number,int userId)
         {
-            var ticket = BLLDailyRequire.Instance.DeleteTicket(connectString, number, DateTime.Now);
-            var rs = new ResponseBaseModel();
-            if (ticket > 0)
-                rs.IsSuccess = true;
-            return rs;
+            return BLLDailyRequire.Instance.DeleteTicket(connectString,userId, number, DateTime.Now); 
         }
 
         [HttpGet]
@@ -544,6 +537,12 @@ namespace QMS_Website.Controllers
         public List<ModelSelectItem> GetDevices()
         {
             return BLLServiceApi.Instance.GetDevices(connectString );
+        }
+
+        [HttpGet]
+        public List<ShowTVModel> GetShowTVs()
+        {
+            return BLLShowTV.Instance.Gets(connectString);
         }
     }
 }

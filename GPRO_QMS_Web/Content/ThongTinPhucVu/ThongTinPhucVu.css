@@ -164,7 +164,7 @@ body {
     text-align: center;
 }
 
-#dangky{
+/*#dangky{
     background-color:#f2f2f2;
 }
 #dangky:hover {
@@ -182,7 +182,7 @@ body {
 
 #xemthongtindangky:visited {
     color: white;
-}
+}*/
 
 h2 {
     font-weight: bold;
@@ -260,13 +260,80 @@ img {
     :fullscreen { /* spec */
         background: pink;
     }
-/*@media screen and (max-device-width : 320px)
+
+body {
+    background: white !important
+}
+
+._header {
+    border-bottom: 2px solid #00c2c0;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    padding: 5px 0;
+    font-weight: 900;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.form-control {
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    color: #00c2c0;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.btn-primary, .btn-info {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 30px 0;
+}
+
+.table-hover {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-height: 500px;
+    overflow: scroll
+}
+
+    .table-hover thead th {
+        text-align: center;
+        font-weight: 600;
+        font-size: 16px;
+        background: #00c2c0;
+        color: white
+    }
+
+    .table-hover tbody td {
+        text-align: center;
+        font-size: 16px
+    }
+
+        .table-hover tbody td:first-child {
+            text-align: left !important
+        }
+
+ @media screen and (max-device-width : 500px)
 {
-  div
-  {
-    font-size: 8px !important;
-  }
-}*/
+    .btn-primary {
+        margin: 0px;
+        margin-top: 20px; 
+    }
+     .btn-info{ margin:0px ; margin-top:20px ; margin-bottom:10px}
+    .register-box{ min-height:unset !important;  border-left:none !important}
+        .register-box .inside-box {
+            border-bottom: 2px solid #e0e0e0
+        }
+} 
 /*@media screen and (max-device-width : 1204px)
 {
   body or yourdiv element
