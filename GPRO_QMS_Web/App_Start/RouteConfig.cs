@@ -62,15 +62,15 @@ namespace GPRO_QMS_Web
 
             routes.MapRoute(
                 name: "tkct",
-                url: "ThongKeChiTiet",
+                url: "Bao-cao-giao-dich-Chi-Tiet",
                 defaults: new { controller = "ThongKe", action = "index" });
             routes.MapRoute(
                name: "tkth",
-               url: "ThongKeTongHop",
+               url: "Bao-cao-giao-dich-Tong-Hop",
                defaults: new { controller = "ThongKe", action = "index_TH" });
             routes.MapRoute(
                 name: "bc",
-                url: "Bao-cao-1",
+                url: "Bao-cao-danh-gia-tong-hop",
                 defaults: new { controller = "Report", action = "dailyreport" });
             routes.MapRoute(
                 name: "bc_ct",
@@ -172,7 +172,7 @@ namespace GPRO_QMS_Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo_doc", id = UrlParameter.Optional }
+                defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
                //   defaults: new { controller = "HienThiQuay", action = "Index", id = UrlParameter.Optional }
                //defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } 
                //huu nghi

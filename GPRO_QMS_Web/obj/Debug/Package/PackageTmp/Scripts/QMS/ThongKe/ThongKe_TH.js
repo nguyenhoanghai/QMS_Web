@@ -25,8 +25,8 @@ GPRO.Home = function () {
             GetObj: '/ThongKe/GetObj',
         },
         Data: {
-            NV: 'stt,đối tượng,số lượt giao dịch,TỔNG THỜI GIAN GIAO DỊCH(PHÚT),THỜI GIAN GIAO DỊCH TRUNG BÌNH (PHÚT/GD)',
-            DV: 'stt,đối tượng,số lượt giao dịch,TỔNG THỜI GIAN GIAO DỊCH(PHÚT),THỜI GIAN GIAO DỊCH TRUNG BÌNH (PHÚT/GD),Thời gian chờ trước sửa chữa (phút/gd),Thời gian chờ sau sửa chữa (phút/gd)',
+            NV: 'stt,đối tượng,tổng (phiếu),chờ giao dịch (phiếu),đã giao dịch (phiếu),TỔNG THỜI GIAN GIAO DỊCH(PHÚT),THỜI GIAN GIAO DỊCH TRUNG BÌNH (PHÚT/GD)',
+            DV: 'stt,đối tượng,tổng (phiếu),chờ giao dịch (phiếu),đã giao dịch (phiếu),TỔNG THỜI GIAN GIAO DỊCH(PHÚT),THỜI GIAN GIAO DỊCH TRUNG BÌNH (PHÚT/GD),Thời gian chờ trước sửa chữa (phút/gd),Thời gian chờ sau sửa chữa (phút/gd)',
         }
     }
     this.GetGlobal = function () {
@@ -39,6 +39,10 @@ GPRO.Home = function () {
 
     var RegisterEvent = function () {
         $("#from,#to").kendoDateTimePicker({
+            format: "dd/MM/yyyy HH:mm",
+            value: new Date(new Date().toDateString()+(" 00:00"))
+        });
+        $("#to").kendoDateTimePicker({
             format: "dd/MM/yyyy HH:mm",
             value: new Date()
         });
@@ -83,9 +87,11 @@ GPRO.Home = function () {
             type: 'POST',
             data: JSON.stringify({ 'typeOfSearch': parseInt($('#cb_option').val()), 'from': $("#from").data("kendoDateTimePicker").value(), 'to': $("#to").data("kendoDateTimePicker").value(), 'thungan': parseInt($('#box-date').attr('thungan')) }),
             contentType: 'application/json charset=utf-8',
-            success: function (objs) {
+            beforeSend: function () { $('#loading').show(); },
+            success: function (_objs) {
+                $('#loading').hide();
                 $('#view').attr({ 'disabled': false });
-              
+                var objs = JSON.parse(_objs)
                 switch ($('#cb_option').val()) {
                     case '1':
                     case '2':
@@ -104,9 +110,11 @@ GPRO.Home = function () {
                 var tr = $('<tr></tr>');
                 tr.append('<td>' + item.Index + '</td');
                 tr.append('<td>' + item.Name + '</td');
+                tr.append('<td>' + item.TotalTickets + '</td');
+                tr.append('<td>' + item.WaitingTickets + '</td');
                 tr.append('<td>' + item.TotalTransaction + '</td');
-                tr.append('<td>' + item.TotalTransTime + '</td');
-                tr.append('<td>' + item.AverageTimePerTrans + '</td');
+                tr.append('<td>' + (item.TotalTransTime).toFixed(2) + '</td');
+                tr.append('<td>' + (item.AverageTimePerTrans).toFixed(2) + '</td');
                 tb.append(tr);
             });
         }
@@ -122,11 +130,13 @@ GPRO.Home = function () {
                 var tr = $('<tr></tr>');
                 tr.append('<td>' + (i+1) + '</td');
                 tr.append('<td>' + item.Name + '</td');
+                tr.append('<td>' + item.TotalTickets + '</td');
+                tr.append('<td>' + item.WaitingTickets + '</td');
                 tr.append('<td>' + item.TotalTransaction + '</td');
                 tr.append('<td>' + item.TotalTransTime + '</td');
                 tr.append('<td>' + item.AverageTimePerTrans + '</td');
-                tr.append('<td>' + item.AverageTimeWaitingBeforePerTrans + '</td');
-                tr.append('<td>' + item.AverageTimeWaitingAfterPerTrans + '</td');
+                tr.append('<td>' + item.AverageTimeWaitingBeforePerTrans.toFixed(2) + '</td');
+                tr.append('<td>' + item.AverageTimeWaitingAfterPerTrans.toFixed(2) + '</td');
                 tb.append(tr);
             });
         }

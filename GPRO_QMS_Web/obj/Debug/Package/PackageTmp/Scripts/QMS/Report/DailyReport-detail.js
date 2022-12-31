@@ -20,6 +20,8 @@ GPRO.namespace('EvaluateReport');
 GPRO.EvaluateReport = function () {
     var Global = {
         UrlAction: {
+            GetEvaluates: '/Report/GetDailyReport_details',   
+
             Get: '/Report/GetDailyReport_details',  //co su dung qms  theo nghiep vu
             Get_: '/Report/GetDailyReport_NotUseQMS'     // ko su dung qms theo nv
         },

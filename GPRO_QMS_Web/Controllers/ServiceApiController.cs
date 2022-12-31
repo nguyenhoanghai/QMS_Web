@@ -46,6 +46,15 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
+        public UserModel GetUserInfo(int userId)
+        {
+            var user = BLLUser.Instance.Get(connectString, userId);
+            if (user != null && !string.IsNullOrEmpty(user.Avatar))
+                user.Avatar = (ConfigurationManager.AppSettings["imageFolder"].ToString() + user.Avatar);
+            return user;
+        }
+
+        [HttpGet]
         public AndroidModel GetAndroidInfo(string userName, int getSTT, int getSMS, int getUserInfo)
         {
             var info = BLLUserEvaluate.Instance.GetInfoForAndroid(connectString, userName, getSTT, getSMS, getUserInfo);
@@ -164,12 +173,29 @@ namespace QMS_Website.Controllers
                     var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, now, _printType, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
                     if (result.IsSuccess)
                     {
+                        string _tenQuay = ""; 
+                        string PrintAllTable=BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.PrintAllTable);
+
+                        if (!string.IsNullOrEmpty( PrintAllTable)&& PrintAllTable == "1")
+                            _tenQuay = rs.Data_2;
+                        else
+                        {
+                            if (rs.Data_4 != null)
+                            {
+                                var tqArr = (string[])rs.Data_4;
+                                if (tqArr != null && tqArr.Length > 0)
+                                    _tenQuay = tqArr[0];
+                            }
+                        }
+
+                        //_tenQuay = "Quầy " + MaPhongKham;
+                        rs.Data_4 = _tenQuay;
                         require = new PrinterRequireModel()
                         {
                             newNumber = ((int)result.Data + 1),
                             oldNumber = (int)result.Data,
                             TenDichVu = serObj.Name,
-                            TenQuay = result.Data_2,
+                            TenQuay = _tenQuay ,// result.Data_2,
                             MajorId = (int)result.Data_1,
                             ServiceId = serObj.Id
                         };
@@ -512,10 +538,7 @@ namespace QMS_Website.Controllers
         {
             return BLLMajor.Instance.GetLookUp(connectString);
         }
-
-
-
-
+         
         public ViewModel GetDayInfo_BV(string counters, string services, int userId, int getLastFiveNumbers)
         {
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();

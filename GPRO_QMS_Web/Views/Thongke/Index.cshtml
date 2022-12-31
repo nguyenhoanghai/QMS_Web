@@ -73,7 +73,9 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>                     
+                    </div>
+
+                    <div class="table table-bordered hide" id="jtable-view"></div>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -81,11 +83,25 @@
         <div class="clearfix"></div>
     </div>
 
-
+    <div id="loading">
+        <img src="~/Areas/Admin/Content/images/loading.gif" /> 
+    </div>
 
 
 
     <style>
+        #loading {
+            position: fixed;
+            top: 0%;
+            width: 100%;
+            z-index: 9999;
+            display: none;
+            text-align: center;
+            background: #d7d7d794;
+            height:100%;
+            padding-top:15%
+
+        }
         .full-box {
             position: fixed;
             top: 72px;
@@ -151,8 +167,9 @@
     </style>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
     <script src="~/Content/KendoUI/kendo.all.min.js"></script>
-    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script> 
+    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>
     <script src="~/Scripts/QMS/ThongKe/ThongKe_ct.js"></script>
     <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
     <script>
@@ -248,7 +265,7 @@
         $('#request-full').click(function () {
             check();
         });
-       
+
     </script>
 </body>
 </html>

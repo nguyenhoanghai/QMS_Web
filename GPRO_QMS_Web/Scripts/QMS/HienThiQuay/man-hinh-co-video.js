@@ -94,7 +94,8 @@ GPRO.BenhVien = function () {
             url: Global.UrlAction.GetDayInfo,
             type: 'POST', 
            // data: JSON.stringify({ 'counters': $('#fullscreen').attr('counters'), 'services': $('#service').val() }),
-            data: JSON.stringify({ 'counters': ('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20'), 'services': ('1,2,3,4,5,6,7,8,9'),'userid':1 }),
+            data: JSON.stringify({
+                'counters': ('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userid': 1, 'getLastFiveNumbers':false }),
             contentType: 'application/json charset=utf-8',
             success: function (data ) {
                 var objs = JSON.parse(data);
@@ -171,7 +172,6 @@ GPRO.BenhVien = function () {
             $('[content]').empty().html(str);
             Global.Data.lastRows = 1;
             Global.Data.Drawed = true;
-
         }
     }
 

@@ -811,7 +811,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 09:45:07</publishTime>
     </File>
     <File Include="Areas/Admin/Content/custom.css">
-      <publishTime>06/28/2021 10:54:47</publishTime>
+      <publishTime>06/08/2022 10:57:23</publishTime>
     </File>
     <File Include="Areas/Admin/Content/images/arrow.png">
       <publishTime>01/04/2017 18:50:57</publishTime>
@@ -821,6 +821,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/Admin/Content/images/HinhBanhRangXoay.gif">
       <publishTime>01/04/2017 18:50:57</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/images/loading.gif">
+      <publishTime>08/28/2015 15:56:32</publishTime>
     </File>
     <File Include="Areas/Admin/Content/images/login-sprite.png">
       <publishTime>01/04/2017 18:50:57</publishTime>
@@ -1507,16 +1510,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/28/2015 15:56:36</publishTime>
     </File>
     <File Include="bin/QMS_System.Data.dll">
-      <publishTime>04/25/2022 20:45:44</publishTime>
+      <publishTime>07/05/2022 17:23:18</publishTime>
     </File>
     <File Include="bin/QMS_System.ThirdApp.dll">
-      <publishTime>04/21/2022 11:00:29</publishTime>
+      <publishTime>06/07/2022 10:17:37</publishTime>
     </File>
     <File Include="bin/QMS_Website.dll">
-      <publishTime>04/25/2022 21:06:44</publishTime>
+      <publishTime>08/24/2022 08:33:28</publishTime>
     </File>
     <File Include="bin/QMS_Website.pdb">
-      <publishTime>04/25/2022 21:06:44</publishTime>
+      <publishTime>08/24/2022 08:33:28</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>11/28/2018 13:00:36</publishTime>
@@ -1552,7 +1555,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2017 11:29:19</publishTime>
     </File>
     <File Include="Config_XML/DATA.XML">
-      <publishTime>04/18/2022 08:56:49</publishTime>
+      <publishTime>08/24/2022 08:36:19</publishTime>
     </File>
     <File Include="Config_XML/hien_thi_quay_config.xml">
       <publishTime>11/22/2021 13:25:07</publishTime>
@@ -1854,6 +1857,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Report Template/Report QMS Template.xlsx">
       <publishTime>12/20/2018 17:33:01</publishTime>
     </File>
+    <File Include="Report Template/TK.xlsx">
+      <publishTime>06/08/2022 23:54:53</publishTime>
+    </File>
     <File Include="Scripts/Alert/common.js">
       <publishTime>11/22/2016 06:20:40</publishTime>
     </File>
@@ -2035,7 +2041,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2021 13:24:25</publishTime>
     </File>
     <File Include="Scripts/QMS/HienThiQuay/man-hinh-co-video.js">
-      <publishTime>01/15/2020 09:42:12</publishTime>
+      <publishTime>06/25/2022 17:04:49</publishTime>
     </File>
     <File Include="Scripts/QMS/HienThiQuay/tien-thu.js">
       <publishTime>05/25/2019 15:16:48</publishTime>
@@ -2086,7 +2092,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/22/2021 09:18:10</publishTime>
     </File>
     <File Include="Scripts/QMS/Report/DailyReport-detail.js">
-      <publishTime>01/15/2020 13:07:46</publishTime>
+      <publishTime>06/08/2022 22:27:34</publishTime>
     </File>
     <File Include="Scripts/QMS/Report/DailyReport.js">
       <publishTime>02/29/2020 15:42:41</publishTime>
@@ -2095,10 +2101,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/20/2018 17:29:04</publishTime>
     </File>
     <File Include="Scripts/QMS/ThongKe/ThongKe_ct.js">
-      <publishTime>03/28/2019 12:34:26</publishTime>
+      <publishTime>06/08/2022 10:42:56</publishTime>
     </File>
     <File Include="Scripts/QMS/ThongKe/ThongKe_TH.js">
-      <publishTime>10/18/2018 20:36:15</publishTime>
+      <publishTime>06/09/2022 13:30:24</publishTime>
     </File>
     <File Include="Scripts/QMS/ThongTinPhucVu/ThongTinPhucVu.js">
       <publishTime>04/14/2022 08:11:03</publishTime>
@@ -2293,10 +2299,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2020 13:24:57</publishTime>
     </File>
     <File Include="Views/Thongke/Index.cshtml">
-      <publishTime>08/28/2018 09:48:57</publishTime>
+      <publishTime>06/08/2022 10:55:48</publishTime>
     </File>
     <File Include="Views/Thongke/Index_TH.cshtml">
-      <publishTime>08/29/2018 09:19:22</publishTime>
+      <publishTime>06/09/2022 13:22:15</publishTime>
     </File>
     <File Include="Views/TV/TV1.cshtml">
       <publishTime>02/10/2020 23:41:56</publishTime>

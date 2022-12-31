@@ -57,15 +57,17 @@
                             <thead>
                                 <tr>
                                     <td class="col-md-1">stt</td>
-                                    <td class="col-md-5">Đối tượng</td>
-                                    <td class="col-md-2">Số lượt giao dịch</td>
+                                    <td class="col-md-4">Đối tượng</td>
+                                    <td class="col-md-1">Tổng (phiếu)</td>
+                                    <td class="col-md-1">Chờ giao dịch (phiếu)</td>
+                                    <td class="col-md-1">Đã giao dịch (phiếu)</td>
                                     <td class="col-md-2">Tổng thời gian giao dịch(phút)</td>
                                     <td class="col-md-2">Thời gian giao dịch trung bình (phút/gd)</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="5">Không có dữ liệu</td>
+                                    <td colspan="7">Không có dữ liệu</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -77,11 +79,25 @@
         <div class="clearfix"></div>
     </div>
 
-
+    <div id="loading">
+        <img src="~/Areas/Admin/Content/images/loading.gif" />
+    </div>
 
 
 
     <style>
+        #loading {
+            position: fixed;
+            top: 0%;
+            width: 100%;
+            z-index: 9999;
+            display: none;
+            text-align: center;
+            background: #d7d7d794;
+            height: 100%;
+            padding-top: 15%
+        }
+
         .full-box {
             position: fixed;
             top: 72px;
@@ -148,7 +164,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Content/KendoUI/kendo.all.min.js"></script>
-    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script> 
+    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>
     <script src="~/Scripts/QMS/ThongKe/ThongKe_TH.js"></script>
     <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
     <script>

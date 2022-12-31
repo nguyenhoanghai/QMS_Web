@@ -1,4 +1,6 @@
-﻿using OfficeOpenXml;
+﻿using GPRO_QMS_Web.Areas.Admin.Controllers;
+using Newtonsoft.Json;
+using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using QMS_System.Data.BLL;
 using QMS_System.Data.Model;
@@ -9,18 +11,37 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace QMS_Website.Controllers
 {
-    public class ThongkeController : Controller
+    public class ThongkeController : BaseController
     {
 
         public ActionResult Index()
-        { 
+        {
             return View();
         }
+
+        public JsonResult GetJtableData(int objId, int typeOfSearch, DateTime from, DateTime to, int thungan, string keyword, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = "")
+        {
+            try
+            {
+                //var objs = BLLUser.Instance.GetList(AppGlobal.Connectionstring, keyword, jtStartIndex, jtPageSize, jtSorting);
+                var objs = (typeOfSearch == 4 ? BLLReport.Instance.GetDetailReport_DichVuTienThu(AppGlobal.sqlConnection, objId, thungan, from, to, keyword, jtStartIndex, jtPageSize, jtSorting) : BLLReport.Instance.GetDetailReport(AppGlobal.sqlConnection, objId, typeOfSearch, from, to, keyword, jtStartIndex, jtPageSize, jtSorting));
+
+                JsonDataResult.Result = "OK";
+                JsonDataResult.Records = objs;
+                JsonDataResult.TotalRecordCount = objs.TotalItemCount;
+                return Json(JsonDataResult);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //CatchError(ex);
+            }
+        }
+
 
         #region Chi tiet
         public JsonResult GetObj(string type)
@@ -31,12 +52,12 @@ namespace QMS_Website.Controllers
             switch (type)
             {
                 case "1":
-                    listObj = BLLUser.Instance.GetLookUp(AppGlobal.Connectionstring ); break;
+                    listObj = BLLUser.Instance.GetLookUp(AppGlobal.Connectionstring); break;
                 case "2":
-                    listObj = BLLMajor.Instance.GetLookUp(AppGlobal.Connectionstring ); break;
+                    listObj = BLLMajor.Instance.GetLookUp(AppGlobal.Connectionstring); break;
                 case "3":
                 case "4":
-                    listObj = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring,false); break;
+                    listObj = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring, false); break;
             }
             if (listObj != null && listObj.Count > 0)
                 foreach (var item in listObj)
@@ -48,10 +69,10 @@ namespace QMS_Website.Controllers
         {
             try
             {
-                var objs = (typeOfSearch == 4 ? BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.sqlConnection,objId, thungan, from, to) : BLLReport.Instance.DetailReport(AppGlobal.sqlConnection,objId, typeOfSearch, from, to));
-                return Json(objs);
+                var objs = (typeOfSearch == 4 ? BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.sqlConnection, objId, thungan, from, to) : BLLReport.Instance.DetailReport(AppGlobal.sqlConnection, objId, typeOfSearch, from, to));
+                return Json(JsonConvert.SerializeObject(objs));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             return Json("[]");
@@ -76,7 +97,7 @@ namespace QMS_Website.Controllers
                     {
                         var workbook = package.Workbook;
                         var worksheet = workbook.Worksheets.First();
-                        var reportObj = BLLReport.Instance.DetailReport(AppGlobal.sqlConnection,objId, typeOfSearch, new DateTime(dfrom.Year, dfrom.Month, dfrom.Day), new DateTime(dto.Year, dto.Month, dto.Day, 23, 59, 00));
+                        var reportObj = BLLReport.Instance.DetailReport(AppGlobal.sqlConnection, objId, typeOfSearch, new DateTime(dfrom.Year, dfrom.Month, dfrom.Day), new DateTime(dto.Year, dto.Month, dto.Day, 23, 59, 00));
                         int row = 4;
 
                         #region Draw header
@@ -87,6 +108,7 @@ namespace QMS_Website.Controllers
                             case 2: title = titles.Split('|')[1].Split(',').ToArray(); break;
                             case 3: title = titles.Split('|')[2].Split(',').ToArray(); break;
                         }
+                        worksheet.Cells[2, 2].Value = "Báo cáo giao dịch chi tiết";
                         worksheet.Cells[2, 2, 2, title.Length + 1].Merge = true;
                         worksheet.Cells[2, 2, 2, title.Length + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
@@ -144,7 +166,7 @@ namespace QMS_Website.Controllers
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.sqlConnection,objId, thungan, dfrom, dto);
+                    var reportObj = BLLReport.Instance.DetailReport_DichVuTienThu(AppGlobal.sqlConnection, objId, thungan, dfrom, dto);
 
                     worksheet.Cells[2, 1].Value = "Từ " + dfrom.ToString("HH:mm") + " ngày " + dfrom.ToString("dd/MM/yyyy") + " - " + dto.ToString("HH:mm") + " ngày " + dto.ToString("dd/MM/yyyy");
                     int row = 5;
@@ -309,9 +331,9 @@ namespace QMS_Website.Controllers
 
         public JsonResult GetReportTH(int typeOfSearch, DateTime from, DateTime to, int thungan)
         {
-            var objs = typeOfSearch == 4 ? BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.sqlConnection,0, thungan, from, to) :
-                BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring,0, typeOfSearch, from, to);
-            return Json(objs);
+            var objs = typeOfSearch == 4 ? BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.sqlConnection, 0, thungan, from, to) :
+                BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring, 0, typeOfSearch, from, to);
+            return Json(JsonConvert.SerializeObject(objs));
         }
 
         public void ExcelTH(int typeOfSearch, string from, string to, int thungan)
@@ -324,16 +346,17 @@ namespace QMS_Website.Controllers
                 var fi = new FileInfo(Server.MapPath(@"~\Report Template\TK.xlsx"));
                 var dfrom = DateTime.ParseExact(from, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
                 var dto = DateTime.ParseExact(to, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-                var titles = "STT,ĐỐI TƯỢNG,SỐ LƯỢT GIAO DỊCH,TỔNG THỜI GIAN GIAO DỊCH(PHÚT),THỜI GIAN GIAO DỊCH TRUNG BÌNH (PHÚT/GD)";
+                var titles = "STT,ĐỐI TƯỢNG,TỔNG (PHIẾU),CHỜ GIAO DỊCH (PHIẾU),ĐÃ GIAO DỊCH (PHIẾU),TỔNG THỜI GIAN GIAO DỊCH(PHÚT),THỜI GIAN GIAO DỊCH TRUNG BÌNH (PHÚT/GD)";
                 using (var package = new ExcelPackage(fi))
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring,0, typeOfSearch, dfrom, dto);
+                    var reportObj = BLLReport.Instance.GeneralReport(AppGlobal.Connectionstring, 0, typeOfSearch, dfrom, dto);
                     int row = 4;
 
                     #region Draw header
                     string[] title = titles.Split(',').ToArray();
+                    worksheet.Cells[2, 2].Value = "Báo cáo giao dịch tổng hợp";
                     worksheet.Cells[2, 2, 2, title.Length + 1].Merge = true;
                     worksheet.Cells[2, 2, 2, title.Length + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
@@ -357,16 +380,22 @@ namespace QMS_Website.Controllers
                         row = 5;
                         for (int i = 0; i < reportObj.Count; i++)
                         {
-                            worksheet.Cells[row, 2].Value = (i+1);
+                            worksheet.Cells[row, 2].Value = (i + 1);
                             worksheet.Cells[row, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             worksheet.Cells[row, 3].Value = reportObj[i].Name;
                             worksheet.Cells[row, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                            worksheet.Cells[row, 4].Value = reportObj[i].TotalTransaction;
+                            worksheet.Cells[row, 4].Value = reportObj[i].TotalTickets;
                             worksheet.Cells[row, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                            worksheet.Cells[row, 5].Value = reportObj[i].TotalTransTime;
+
+                            worksheet.Cells[row, 5].Value = reportObj[i].WaitingTickets;
                             worksheet.Cells[row, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                            worksheet.Cells[row, 6].Value = reportObj[i].AverageTimePerTrans;
+                            worksheet.Cells[row, 6].Value = reportObj[i].TotalTransaction;
                             worksheet.Cells[row, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                            worksheet.Cells[row, 7].Value = reportObj[i].TotalTransTime;
+                            worksheet.Cells[row, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            worksheet.Cells[row, 8].Value = reportObj[i].AverageTimePerTrans;
+                            worksheet.Cells[row, 8].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             row++;
                         }
                     }
@@ -394,7 +423,7 @@ namespace QMS_Website.Controllers
                 {
                     var workbook = package.Workbook;
                     var worksheet = workbook.Worksheets.First();
-                    var reportObj = BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.Connectionstring,objId, thungan, dfrom, dto);
+                    var reportObj = BLLReport.Instance.GeneralReport_DichVuTienThu(AppGlobal.Connectionstring, objId, thungan, dfrom, dto);
 
                     worksheet.Cells[2, 1].Value = "Từ " + dfrom.ToString("HH:mm") + " ngày " + dfrom.ToString("dd/MM/yyyy") + " - " + dto.ToString("HH:mm") + " ngày " + dto.ToString("dd/MM/yyyy");
                     int row = 5;
@@ -402,7 +431,7 @@ namespace QMS_Website.Controllers
                     {
                         foreach (var model in reportObj)
                         {
-                            worksheet.Cells[row, 1].Value = (row-4);
+                            worksheet.Cells[row, 1].Value = (row - 4);
                             worksheet.Cells[row, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             worksheet.Cells[row, 2].Value = model.Name;
                             worksheet.Cells[row, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);

@@ -386,6 +386,7 @@
     <Content Include="Areas\Admin\Content\Css\js\wizard\jquery.smartWizard.js" />
     <Content Include="Areas\Admin\Content\Css\less\custom.css" />
     <Content Include="Areas\Admin\Content\custom.css" />
+    <Content Include="Areas\Admin\Content\images\loading.gif" />
     <Content Include="Areas\Admin\Content\images\no-image.png" />
     <Content Include="Areas\Admin\Content\Jtable\customizejtable.css" />
     <Content Include="Areas\Admin\Content\Jtable\themes\basic\close.png" />
@@ -588,6 +589,7 @@
     <Content Include="Content\ok.png" />
     <Content Include="Content\QH.png" />
     <Content Include="Content\QMS\HienThiQuay\HienThiQuay.css" />
+    <Content Include="Content\QMS\Rang-Ham-Mat\logo_rhm.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\sqlConnect\app.min.css" />
     <Content Include="Content\sqlConnect\app.min.js" />
@@ -747,6 +749,7 @@
     <Content Include="Report Template\BCao_DGia_Ngay_CTiet.xlsx" />
     <Content Include="Report Template\Mau_NangSuatDV_TGTrungBinh.xlsx" />
     <Content Include="Report Template\Mau_NangSuatDV_TheoTungPhieu.xlsx" />
+    <Content Include="Report Template\TK.xlsx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -887,6 +890,7 @@
     <Compile Include="Controllers\LCDQuayController.cs" />
     <Compile Include="Controllers\ManHinhGoiSoController.cs" />
     <Compile Include="Controllers\NodeController.cs" />
+    <Compile Include="Controllers\RangHamMat\RangHamMatController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ServiceApiController.cs" />
     <Compile Include="Controllers\SQLConnectController.cs" />
@@ -966,6 +970,7 @@
     <Content Include="Views\HienThiQuay\ManHinhCoVideo_Doc_Covid.cshtml" />
     <Content Include="Views\Home\Index_SMS.cshtml" />
     <Content Include="Views\DangKyOnline\BV_DkyKham.cshtml" />
+    <Content Include="Views\RangHamMat\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
