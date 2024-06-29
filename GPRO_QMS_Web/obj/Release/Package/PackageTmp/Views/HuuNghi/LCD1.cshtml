@@ -1,0 +1,360 @@
+﻿@using System.Configuration;
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "LCD Phòng khám";
+    Layout = "~/Views/Shared/_Layout_LCD.cshtml";
+    var cf = JsonConvert.DeserializeObject<dynamic>((ViewData["Config"] != null ? ViewData["Config"].ToString() : ""));
+}
+<style>
+    .row .col {
+        padding: 0
+    }
+
+    .text-center {
+        text-align: center
+    }
+
+    .border {
+        border: 2px solid #ccc;
+        border-collapse: collapse;
+        border-top: none
+    }
+
+    .padd-20 {
+        padding: 20px !important;
+    }
+
+    .padd-10 {
+        padding: 10px !important
+    }
+
+    .border-bottom {
+        border-bottom: 2px solid #ccc;
+    }
+
+    .border-top {
+        border-top: 2px solid #ccc;
+    }
+
+    .border-left {
+        border-left: 2px solid #ccc;
+    }
+
+    .border-right {
+        border-right: 2px solid #ccc;
+    }
+
+    ul li {
+        list-style: none;
+        float: left;
+    }
+
+    .bold {
+        font-weight: bold
+    }
+
+    .sub-title {
+    }
+
+        .sub-title li {
+        }
+
+    .bv-title {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding: 10px 0;
+    }
+
+    .bv-sub-title {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding: 10px 0;
+    }
+
+    .bv-table-title,
+    .bv-table-row {
+        display: flex;
+    }
+
+        .bv-table-title div,
+        .bv-table-row div {
+            border: 2px solid #ccc;
+            border-left: none;
+        }
+
+            .bv-table-title div:last-child,
+            .bv-table-row div:last-child {
+                border-right: none
+            }
+
+        .bv-table-row div {
+            border-top: none
+        }
+
+    .sub-title-stt {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none;
+        padding: 10px 0;
+        display:inline-flex
+    }
+
+    .num-stt {
+        font-size: 30px;
+        line-height: 39px;
+        text-align: center;
+        font-weight: bold;
+        border-right: none;
+        border-bottom: none; 
+        padding-left: 10px;
+    } 
+
+    .num-stt-dangkham {
+        color: red
+    }
+
+    .num-stt-ketluan {
+        color: green
+    }
+
+    .setting .row .col {
+        padding: 0 .75rem;
+    }
+</style>
+<link href="~/Scripts/QMS/huu-nghi/huu-nghi.css" rel="stylesheet" />
+
+<div class="row text-center" style="width:100%">    
+    <div id="vtemslideshow1" class="vtem_main_slideshow" style="min-height:650px">
+        <div class="slide-image" style=" height:100% ; width:100% ; ">
+            <div class="col s12 padd-20 bv-title">@cf.tieu_de</div>
+            <div class="col s12 border-bottom border-top">
+                <div class="col s6   border-right  red-text ">
+                    <div class="bold bv-sub-title">BN XẾP CHỜ HÀNG KHÁM BỆNH</div>
+                    <div class="bv-table-title">
+                        <div class="col s2">STT</div>
+                        <div class="col s8">Họ và Tên</div>
+                        <div class="col s2">Tuổi</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="cho-kham">
+                        @for (int i = 0; i < (int)cf.rows; i++)
+                        {
+                            <div class="bv-table-row r@(i)">
+                                <div class="col s2"></div>
+                                <div class="col s8"></div>
+                                <div class="col s2"></div>
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+                 
+                <div class="col s6  border-left blue-text">
+                    <div class="bold bv-sub-title">bn QUÁ LƯỢT KHÁM BỆNH</div>
+                    <div class="bv-table-title">
+                        <div class="col s2">STT</div>
+                        <div class="col s8">Họ và Tên</div>
+                        <div class="col s2">Tuổi</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="qua-luot-kham">
+                        @for (int i = 0; i < (int)cf.rows; i++)
+                        {
+                            <div class="bv-table-row r@(i)">
+                                <div class="col s2"></div>
+                                <div class="col s8"></div>
+                                <div class="col s2"></div>
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="box-dk  ">
+                <div class="sub-title-stt" style="display:inline-flex !important">SỐ THỨ TỰ ĐANG KHÁM BỆNH : <div class="num-stt num-stt-dangkham  ">001</div></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="slide-image" style=" height:100% ; width:100% ">
+            <div class="col s12 padd-20 bv-title">@cf.tieu_de</div>
+            <div class="col s12 border-bottom border-top">
+                <div class="col s6  border-right red-text">
+                    <div class="bold bv-sub-title">DANH SÁCH BN CHỜ KẾT LUẬN KHÁM BỆNH</div>
+                    <div class="bv-table-title">
+                        <div class="col s2">STT</div>
+                        <div class="col s8">Họ và Tên</div>
+                        <div class="col s2">Tuổi</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="cho-ket-luan">
+                        @for (int i = 0; i < (int)cf.rows; i++)
+                        {
+                            <div class="bv-table-row r@(i)">
+                                <div class="col s2"></div>
+                                <div class="col s8"></div>
+                                <div class="col s2"></div>
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                 
+                <div class="col s6  border-left  blue-text">
+                    <div class="bold bv-sub-title">BN QUÁ LƯỢT KẾT LUẬN KHÁM BỆNH</div>
+                    <div class="bv-table-title">
+                        <div class="col s2">STT</div>
+                        <div class="col s8">Họ và Tên</div>
+                        <div class="col s2">Tuổi</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="qua-luot-ket-luan">
+                        @for (int i = 0; i < (int)cf.rows; i++)
+                        {
+                            <div class="bv-table-row r@(i)">
+                                <div class="col s2"></div>
+                                <div class="col s8"></div>
+                                <div class="col s2"></div>
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="box-kl col s12 border-bottom  ">
+                <div class="sub-title-stt" style="display:inline-flex !important">SỐ THỨ TỰ ĐANG KẾT LUẬN KHÁM <div class="num-stt num-stt-ketluan">021</div></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="clearfix"></div>
+<div id="configStr" style="display:none">@Html.Raw(cf)</div>
+
+<div class="row setting">
+    <div class="col s12 m12">
+        <div class="card  ">
+            <div class="card-content blue-text text-darken-2 glyphicon-bold">
+                <span class="card-title">Cấu hình hiển thị </span>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="tieu-de" type="text" value="@cf.tieu_de">
+                        <label for="tieu-de">Tiêu đề</label>
+                    </div>
+                    <div class="input-field col s8">
+                        <textarea id="css-tieu-de" class="materialize-textarea">@cf.tieu_de_css</textarea>
+                        <label for="css-tieu-de">css khung Tiêu đề</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-sub-tieu-de" class="materialize-textarea">@cf.sub_tieu_de_css</textarea>
+                        <label for="css-sub-tieu-de">css khung tiêu đề con</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-tieu-de-stt" class="materialize-textarea">@cf.tieu_de_stt_css</textarea>
+                        <label for="css-sub-tieu-de">css tiêu đề STT</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-stt" class="materialize-textarea">@cf.stt_css</textarea>
+                        <label for="css-sub-tieu-de">css STT</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-content-title" class="materialize-textarea">@cf.noi_dung_title_css</textarea>
+                        <label for="css-content-title">css dòng nội dung tiêu đề</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="css-content" class="materialize-textarea">@cf.noi_dung_css</textarea>
+                        <label for="css-content">css dòng nội dung</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="rows" type="number" min="1" value="@cf.rows">
+                        <label>Số dòng nội dung</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="timer" type="number" min="1000" value="@cf.timer">
+                        <label>Thời gian lật trang</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="counterid" type="number" min="1" value="@cf.counterid">
+                        <label>CounterID</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="userid" type="number" min="1" value="@cf.userId">
+                        <label>UserID</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <input type="button" class="btn btn-danger" btsave value="Lưu cấu hình" />
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<script src="~/Scripts/playSound.min.js"></script>
+<script src="~/Scripts/QMS/huu-nghi/goi-so-1.js"></script>
+<script>
+    $('[btSave]').click(function () {
+        var obj = {
+            tieu_de: $('#tieu-de').val(),
+            tieu_de_css: $('#css-tieu-de').val(),
+            sub_tieu_de: $('#sub-tieu-de').val(),
+            sub_tieu_de_css: $('#css-sub-tieu-de').val(),
+            tieu_de_stt_css: $('#css-tieu-de-stt').val(),
+            stt_css: $('#css-stt').val(),
+            noi_dung_css: $('#css-content').val(),
+            noi_dung_title_css: $('#css-content-title').val(),
+            rows: $('#rows').val(),
+            counterid: $('#counterid').val(),
+            timer: $('#timer').val(),
+     userId : $('#userid').val()
+        }
+        SaveConfig(JSON.stringify(obj), 'MH5');
+    });
+    var str = $('#configStr').html();
+    var obj = JSON.parse(str);
+    var css = '.bv-title {' + obj.tieu_de_css + '  }';
+    css += '.bv-sub-title{' + obj.sub_tieu_de_css + ' }';
+    css += '.sub-title-stt{' + obj.tieu_de_stt_css + ' }';
+    css += '.num-stt{' + obj.stt_css + ' }';
+
+    css += '.bv-table-title {' + obj.noi_dung_title_css + '  }';
+    css += '.bv-table-row {' + obj.noi_dung_css + ' }';
+
+    $("style").append(css);
+
+
+    $('#vtemslideshow1').cycle({
+        fx: 'blindY,blindX,blindX',
+        timeout: @(cf.timer !=null?cf.timer:1000),
+        speed: 500,
+        next: '#cycle_next',
+        prev: '#cycle_prev',
+        pager: '#vtemnav',
+        pagerEvent: 'click',
+        startingSlide: 0,
+        fit: true,
+        height: 270,
+    });
+</script>

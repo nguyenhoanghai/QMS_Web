@@ -145,6 +145,17 @@ namespace QMS_Website.Controllers
         }
 
         [HttpGet]
+        public bool CapPhieu(string madichvu, int stt, string ngaycap )
+        {
+            CultureInfo provider = CultureInfo.InvariantCulture;
+           // giocap = giocap.Replace("/", ":");
+           // ngaycap = ngaycap + " " + giocap;
+            var newDate = DateTime.ParseExact(ngaycap, "dd/MM/yyyy HH:mm:ss", provider);
+            return BLLDailyRequire.Instance.API_PrintNewTicket(connectString, madichvu, stt, newDate).IsSuccess;
+        }
+
+
+        [HttpGet]
         public ResponseBase PrintNewTicket(string MaPhongKham, string thoigian)
         {
             var rs = new ResponseBase();
@@ -173,10 +184,10 @@ namespace QMS_Website.Controllers
                     var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, now, _printType, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
                     if (result.IsSuccess)
                     {
-                        string _tenQuay = ""; 
-                        string PrintAllTable=BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.PrintAllTable);
+                        string _tenQuay = "";
+                        string PrintAllTable = BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.PrintAllTable);
 
-                        if (!string.IsNullOrEmpty( PrintAllTable)&& PrintAllTable == "1")
+                        if (!string.IsNullOrEmpty(PrintAllTable) && PrintAllTable == "1")
                             _tenQuay = rs.Data_2;
                         else
                         {
@@ -195,11 +206,11 @@ namespace QMS_Website.Controllers
                             newNumber = ((int)result.Data + 1),
                             oldNumber = (int)result.Data,
                             TenDichVu = serObj.Name,
-                            TenQuay = _tenQuay ,// result.Data_2,
+                            TenQuay = _tenQuay,// result.Data_2,
                             MajorId = (int)result.Data_1,
                             ServiceId = serObj.Id
                         };
-                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu, 1);
                         rs.IsSuccess = true;
                         rs.Data = require.newNumber;
                     }
@@ -213,7 +224,7 @@ namespace QMS_Website.Controllers
                 {
                     rs.IsSuccess = false;
                     // rs.Errors.Add(new Error() { Message = "Dịch vụ hiện tạm ngưng phát số thứ tự. Xin quý khách đến vào buổi giao dịch sau." });
-                    BLLCounterSoftRequire.Instance.Insert(connectString, "khoa.wav", (int)eCounterSoftRequireType.ReadSound);
+                    BLLCounterSoftRequire.Instance.Insert(connectString, "khoa.wav", (int)eCounterSoftRequireType.ReadSound, 0);
                 }
             }
             return rs;
@@ -253,8 +264,92 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public List<ModelSelectItem> GetServices()
         {
-            return BLLService.Instance.GetLookUp(connectString, false);
+            try
+            {
+                return BLLService.Instance.GetLookUp(connectString, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
+
+        [HttpGet]
+        public ResponseBase _CapPhieu(string madichvu)
+        {
+            var rs = new ResponseBase();
+            var printerId = Convert.ToInt32(ConfigurationManager.AppSettings["PrinterId"].ToString());
+
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            var newDate = DateTime.ParseExact("01/01/2018 00:00:00", "dd/MM/yyyy HH:mm:ss", provider);
+
+
+            var serObj = BLLService.Instance.Get(connectString, int.Parse(madichvu));
+            if (serObj != null)
+            {
+                string checkTime = "0";
+                var cf = BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.CheckTimeBeforePrintTicket);
+                var now = DateTime.Now;
+                if (!string.IsNullOrEmpty(cf))
+                    checkTime = cf;
+                bool _continue = true;
+                if (checkTime == "1" && BLLServiceShift.Instance.CheckTime(connectString, serObj.Id, now))
+                    _continue = false;
+                if (_continue)
+                {
+                    int _printType = 1;
+                    int.TryParse(ConfigurationManager.AppSettings["PrintType"].ToString(), out _printType);
+                    PrinterRequireModel require = null;
+                    var result = BLLDailyRequire.Instance.PrintNewTicket(connectString, serObj.Id, serObj.StartNumber, 0, now, _printType, newDate.TimeOfDay, "", "", 0, "", "", "", "", "", "");
+                    if (result.IsSuccess)
+                    {
+                        string _tenQuay = "";
+                        string PrintAllTable = BLLConfig.Instance.GetConfigByCode(connectString, eConfigCode.PrintAllTable);
+
+                        if (!string.IsNullOrEmpty(PrintAllTable) && PrintAllTable == "1")
+                            _tenQuay = rs.Data_2;
+                        else
+                        {
+                            if (rs.Data_4 != null)
+                            {
+                                var tqArr = (string[])rs.Data_4;
+                                if (tqArr != null && tqArr.Length > 0)
+                                    _tenQuay = tqArr[0];
+                            }
+                        }
+
+                        //_tenQuay = "Quầy " + MaPhongKham;
+                        rs.Data_4 = _tenQuay;
+                        require = new PrinterRequireModel()
+                        {
+                            newNumber = ((int)result.Data + 1),
+                            oldNumber = (int)result.Data,
+                            TenDichVu = serObj.Name,
+                            TenQuay = _tenQuay,// result.Data_2,
+                            MajorId = (int)result.Data_1,
+                            ServiceId = serObj.Id
+                        };
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu, 1);
+                        rs.IsSuccess = true;
+                        rs.Data = require.newNumber;
+                    }
+                    else
+                    {
+                        rs.IsSuccess = false;
+                        rs.Errors.Add(new Error() { Message = "Gửi thông tin bị lỗi không xử lý được yêu cầu" });
+                    }
+                }
+                else
+                {
+                    rs.IsSuccess = false;
+                    // rs.Errors.Add(new Error() { Message = "Dịch vụ hiện tạm ngưng phát số thứ tự. Xin quý khách đến vào buổi giao dịch sau." });
+                    BLLCounterSoftRequire.Instance.Insert(connectString, "khoa.wav", (int)eCounterSoftRequireType.ReadSound, 0);
+                }
+            }
+            return rs;
+        }
+
 
 
         [HttpGet]
@@ -287,7 +382,7 @@ namespace QMS_Website.Controllers
                         MajorId = (int)rs.Data_1,
                         ServiceId = serObj.Id
                     };
-                    BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                    BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu, 0);
                     result.IsSuccess = true;
                     result.Data = require.newNumber;
                     result.Data_1 = serObj.Name;
@@ -348,7 +443,7 @@ namespace QMS_Website.Controllers
                             ServiceId = serObj.Id,
                             MaPhongKham = maphieudichvu
                         };
-                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu, 0);
                         result.IsSuccess = true;
                         result.Data = require.newNumber;
                         result.Data_1 = serObj.Name;
@@ -400,7 +495,7 @@ namespace QMS_Website.Controllers
                             MajorId = (int)rs.Data_1,
                             ServiceId = serObj.Id
                         };
-                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu, 0);
                         result.IsSuccess = true;
                         result.Data = require.newNumber;
                         result.Data_1 = serObj.Name;
@@ -434,7 +529,7 @@ namespace QMS_Website.Controllers
             if (BLLCounterSoftRequire.Instance.HasProcessing(connectString, (int)eCounterSoftRequireType.PrintTicket) == null)
             {
                 string content = "AA," + counterId + "," + action + "," + param;
-                rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(connectString, content, (int)eCounterSoftRequireType.CounterEvent);
+                rs.IsSuccess = BLLCounterSoftRequire.Instance.Insert(connectString, content, (int)eCounterSoftRequireType.CounterEvent, 0);
             }
             return rs;
         }
@@ -511,13 +606,13 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public ResponseBaseModel DoneTicket(int matb, int userId)
         {
-            return BLLDailyRequire.Instance.DoneTicket(connectString, userId, matb, DateTime.Now); 
+            return BLLDailyRequire.Instance.DoneTicket(connectString, userId, matb, DateTime.Now);
         }
 
         [HttpGet]
-        public ResponseBaseModel DeleteTicket(int number,int userId)
+        public ResponseBaseModel DeleteTicket(int number, int userId)
         {
-            return BLLDailyRequire.Instance.DeleteTicket(connectString,userId, number, DateTime.Now); 
+            return BLLDailyRequire.Instance.DeleteTicket(connectString, userId, number, DateTime.Now);
         }
 
         [HttpGet]
@@ -538,7 +633,7 @@ namespace QMS_Website.Controllers
         {
             return BLLMajor.Instance.GetLookUp(connectString);
         }
-         
+
         public ViewModel GetDayInfo_BV(string counters, string services, int userId, int getLastFiveNumbers)
         {
             var countersArr = counters.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
@@ -559,7 +654,7 @@ namespace QMS_Website.Controllers
         [HttpGet]
         public List<ModelSelectItem> GetDevices()
         {
-            return BLLServiceApi.Instance.GetDevices(connectString );
+            return BLLServiceApi.Instance.GetDevices(connectString);
         }
 
         [HttpGet]

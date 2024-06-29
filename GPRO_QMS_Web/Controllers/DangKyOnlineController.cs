@@ -32,13 +32,13 @@ namespace GPRO_QMS_Web.Controllers
             return Json(BLLDailyRequire.Instance.CheckServeInformation(AppGlobal.Connectionstring, ticket));
         }
 
-        
+
         public JsonResult GetServices()
         {
             try
             {
                 JsonDataResult.Result = "OK";
-                JsonDataResult.Data = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring,false );
+                JsonDataResult.Data = BLLService.Instance.GetLookUp(AppGlobal.Connectionstring, false);
             }
             catch (Exception ex)
             {
@@ -79,12 +79,14 @@ namespace GPRO_QMS_Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult InsertServiceRequire(Q_DailyRequire model)
+      //  public JsonResult InsertServiceRequire(Q_DailyRequire model)
+        public JsonResult InsertServiceRequire(Q_RegisterOnline model)
         {
             ResponseBase rs;
             try
             {
-                rs = BLLServiceInfo.Instance.InsertServiceRequire(model, AppGlobal.Connectionstring);
+                // rs = BLLServiceInfo.Instance.InsertServiceRequire(model, AppGlobal.Connectionstring);
+                rs = BLLRegisterOnline.Instance.Register(AppGlobal.Connectionstring, model);
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";
@@ -103,12 +105,13 @@ namespace GPRO_QMS_Web.Controllers
             return Json(JsonDataResult);
         }
 
-        public JsonResult Find(string Phone, int Service)
+        public JsonResult Find(string Phone,   string ngaydk)
         {
             ResponseBase rs;
             try
             {
-                rs = BLLServiceInfo.Instance.Find(AppGlobal.Connectionstring, Phone, Service);
+               //rs = BLLServiceInfo.Instance.Find(AppGlobal.Connectionstring, Phone, Service);
+                rs = BLLRegisterOnline.Instance.Find(AppGlobal.Connectionstring, Phone,  ngaydk);
                 if (!rs.IsSuccess)
                 {
                     JsonDataResult.Result = "ERROR";

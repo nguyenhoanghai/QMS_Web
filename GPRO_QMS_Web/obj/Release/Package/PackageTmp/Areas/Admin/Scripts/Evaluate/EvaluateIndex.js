@@ -39,7 +39,8 @@ GPRO.Evaluate = function () {
             Parent: {},
             Child: {},
             ParentId: 0,
-            Avartar: ''
+            Avartar: '',
+            folder: $('#jtable').attr('imgFolder')
         }
     }
     this.GetGlobal = function () {
@@ -51,31 +52,45 @@ GPRO.Evaluate = function () {
         InitList();
         ReloadList();
 
-        InitSearchPopup();
         InitPopup();
         InitPopupChild();
-
-        BindParent(null);
     }
 
     var RegisterEvent = function () {
-        //$('#Eval_c_default').bootstrapToggle({
-        //    on: 'Có',
-        //    off: 'Không'
-        //});
+
         $('.box-sms').hide();
-        $('#Eval_c_hid_avatar').change(function () {
-            Global.Data.Avartar = $('#Eval_c_hid_avatar').val();
-            SaveChild();
-        });
 
         $('#Eval_c_sendSMS').change(function () {
-            if ($('#Eval_c_sendSMS').prop('checked'))  
+            if ($('#Eval_c_sendSMS').prop('checked'))
                 $('.box-sms').show();
             else
                 $('.box-sms').hide();
         });
+
+        $('#p-file-upload').change(function () {
+            readURL(this);
+        });
+
+        $('#p-btn-file-upload').click(function () {
+            $('#p-file-upload').click();
+        });
+
+        // Register event after upload file done the value of [filelist] will be change => call function save your Data 
+        $('#p-file-upload').select(function () {
+            SaveChild();
+        });
     }
+
+    readURL = (input) => {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.img-avatar').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
 
     function InitList() {
         $('#' + Global.Element.Jtable).jtable({
@@ -88,13 +103,19 @@ GPRO.Evaluate = function () {
             actions: {
                 listAction: Global.UrlAction.GetList,
                 createAction: Global.Element.Popup,
-                createObjDefault: InitParentModel(null),
-                searchAction: Global.Element.Search,
             },
             messages: {
                 addNewRecord: 'Thêm mới',
-                searchRecord: 'Tìm kiếm',
                 selectShow: 'Ẩn hiện cột'
+            },
+            searchInput: {
+                id: 'keyword',
+                className: 'search-input',
+                placeHolder: 'Nhập từ khóa ...',
+                keyup: function (evt) {
+                    if (evt.keyCode == 13)
+                        ReloadList();
+                }
             },
             datas: {
                 jtableId: Global.Element.Jtable
@@ -113,182 +134,182 @@ GPRO.Evaluate = function () {
                     list: false
                 },
                 Index: {
-                    title: "Số TT",
+                    title: "STT",
                     width: "5%",
+                    columnClass: 'text-center',
                 },
                 Name: {
                     visibility: 'fixed',
                     title: "Tiêu chí đánh giá",
-                    width: "20%"
-                },
-                Detail: {
-                    title: 'Thang đánh giá',
-                    width: '3%',
-                    sorting: false,
-                    edit: false,
-                    display: function (parent) {
-                        var $img = $('<i class="fa fa-list-ol clickable red aaa" title="Click Xem thang đánh giá ' + parent.record.Name + '"></i>');
-                        $img.click(function () {
-                            Global.Data.ParentId = parent.record.Id;
-                            $('#' + Global.Element.Jtable).jtable('openChildTable',
-                                    $img.closest('tr'),
-                                    {
-                                        title: '<span class="red">Danh sách thang đánh giá : ' + parent.record.Name + '</span>',
-                                        paging: true,
-                                        pageSize: 20,
-                                        pageSizeChange: true,
-                                        sorting: true,
-                                        selectShow: true,
-                                        actions: {
-                                            listAction: Global.UrlAction.GetList_c + '' + parent.record.Id,
-                                            createAction: Global.Element.Popup_c,
-                                        },
-                                        messages: {
-                                            addNewRecord: 'Thêm thang ĐG',
-                                            // searchRecord: 'Tìm kiếm',
-                                            selectShow: 'Ẩn hiện cột'
-                                        },
-                                        fields: {
-                                            OrderId: {
-                                                type: 'hidden',
-                                                defaultValue: parent.record.Id
-                                            },
-                                            Id: {
-                                                key: true,
-                                                create: false,
-                                                edit: false,
-                                                list: false
-                                            },
-                                            Index: {
-                                                title: "STT",
-                                                width: "10%",
-                                            },
-                                            Name: {
-                                                title: "Tên",
-                                                width: "10%",
-                                            },
-                                            IsDefault: {
-                                                title: "Mặc định",
-                                                width: "10%",
-                                                display: function (data) {
-                                                    var text = '';
-                                                    if (!data.record.IsDefault)
-                                                        text = $('<i class="fa fa-square-o" style="font-size:26px"></i> ');
-                                                    else
-                                                        text = $('<i class="fa fa-check-square-o blue"  style="font-size:26px"></i> ');
-                                                    return text;
-                                                }
-                                            },
-                                            Avatar: {
-                                                title: "Hình",
-                                                width: "7%",
-                                                display: function (data) {
-                                                    var txt;
-                                                    if (data.record.Icon != null)
-                                                        txt = '<span><img src="' + ($('#' + Global.Element.Jtable).attr('imgFolder') + data.record.Icon) + '" width="40px" height="40px"/></span>';
-                                                    else
-                                                        txt = '<span>' + " " + '</span>';
-                                                    return txt;
-                                                }
-                                            },
-                                            IsSendSMS: {
-                                                title: "Gửi tin nhắn",
-                                                width: "10%",
-                                                display: function (data) {
-                                                    var text = '';
-                                                    if (!data.record.IsSendSMS)
-                                                        text = $('<i class="fa fa-square-o" style="font-size:26px"></i> ');
-                                                    else
-                                                        text = $('<i class="fa fa-check-square-o blue"  style="font-size:26px"></i> ');
-                                                    return text;
-                                                }
-                                            },
-                                            SmsContent: {
-                                                title: "Tin nhắn",
-                                                width: "20%",
-                                                sorting: false,
-                                            },
-                                            Note: {
-                                                title: "Ghi Chú",
-                                                width: "20%",
-                                                sorting: false,
-                                            },
-                                            edit: {
-                                                title: '',
-                                                width: '1%',
-                                                sorting: false,
-                                                display: function (data) {
-                                                    var text = $('<i data-toggle="modal" data-target="#' + Global.Element.Popup_c + '" title="Chỉnh sửa thông tin" class="fa fa_tb fa-pencil-square-o clickable blue"  ></i>');
-                                                    text.click(function () {
-                                                        $('#Eval_c_id').val(data.record.Id);
-                                                        $('#Eval_c_name').val(data.record.Name);
-                                                        $('#Eval_c_note').val(data.record.Note);
-                                                        $('#Eval_c_index').val(data.record.Index);
-                                                        $('#SmsContent').val(data.record.SmsContent);
-                                                        Global.Data.Avartar = data.record.Icon;
-                                                        $('#Eval_c_default').prop('checked', data.record.IsDefault);
-                                                        $('#Eval_c_sendSMS').prop('checked', data.record.IsSendSMS).change();
-                                                        //.data("kendoMobileSwitch").check( data.record.IsDefault);
-                                                        //if(data.record.IsDefault)
-                                                        //    $('#Eval_c_default').bootstrapToggle('on');
-                                                        //else
-                                                        //    $('#Eval_c_default').bootstrapToggle('off');
-
-                                                    });
-                                                    return text;
-                                                }
-                                            },
-                                            Delete: {
-                                                title: ' ',
-                                                width: "3%",
-                                                sorting: false,
-                                                display: function (data) {
-                                                    var text = $('<button title="Xóa" class="jtable-command-button jtable-delete-command-button"><span>Xóa</span></button>');
-                                                    text.click(function () {
-                                                        GlobalCommon.ShowConfirmDialog('Bạn có chắc chắn muốn xóa?', function () {
-                                                            DeleteChild(data.record.Id);
-                                                        }, function () { }, 'Đồng ý', 'Hủy bỏ', 'Thông báo');
-                                                    });
-                                                    return text;
-                                                }
-                                            }
-                                        }
-                                    }, function (data) { //opened handler
-                                        data.childTable.jtable('load');
-                                    });
-                        });
-                        return $img;
-                    }
+                    width: "30%"
                 },
                 Note: {
                     title: "Ghi chú",
                     width: "50%",
                     sorting: false
                 },
-                edit: {
+                actions: {
                     title: '',
-                    width: '1%',
+                    width: '10%',
                     sorting: false,
-                    display: function (data) {
-                        var text = $('<i data-toggle="modal" data-target="#' + Global.Element.Popup + '" title="Chỉnh sửa thông tin" class="fa fa-pencil-square-o clickable blue"  ></i>');
-                        text.click(function () {
-                            BindParent(data.record);
+                    columnClass: 'text-center',
+                    display: function (parent) {
+                        var div = $('<div></div>');
+
+                        var $img = $('<i style="margin-right:10px" class="fa fa-list-ol clickable red aaa" title="Click Xem thang đánh giá ' + parent.record.Name + '"></i>');
+                        $img.click(function () {
+                            Global.Data.ParentId = parent.record.Id;
+                            $('#' + Global.Element.Jtable).jtable('openChildTable',
+                                $img.closest('tr'),
+                                {
+                                    title: '<span class="red">Danh sách thang đánh giá : ' + parent.record.Name + '</span>',
+                                    paging: true,
+                                    pageSize: 20,
+                                    pageSizeChange: true,
+                                    sorting: true,
+                                    selectShow: true,
+                                    actions: {
+                                        listAction: Global.UrlAction.GetList_c + '' + parent.record.Id,
+                                        createAction: Global.Element.Popup_c,
+                                    },
+                                    messages: {
+                                        addNewRecord: 'Thêm thang ĐG',
+                                        // searchRecord: 'Tìm kiếm',
+                                        selectShow: 'Ẩn hiện cột'
+                                    },
+                                    fields: {
+                                        OrderId: {
+                                            type: 'hidden',
+                                            defaultValue: parent.record.Id
+                                        },
+                                        Id: {
+                                            key: true,
+                                            create: false,
+                                            edit: false,
+                                            list: false
+                                        },
+                                        Index: {
+                                            title: "STT",
+                                            width: "10%",
+                                            columnClass: 'text-center',
+                                        },
+                                        Name: {
+                                            title: "Tên",
+                                            width: "10%",
+                                        },
+                                        IsDefault: {
+                                            title: "Mặc định",
+                                            width: "10%",
+                                            columnClass: 'text-center',
+                                            display: function (data) {
+                                                var text = '';
+                                                if (!data.record.IsDefault)
+                                                    text = $('<i class="fa fa-square-o" style="font-size:26px"></i> ');
+                                                else
+                                                    text = $('<i class="fa fa-check-square-o blue"  style="font-size:26px"></i> ');
+                                                return text;
+                                            }
+                                        },
+                                        Icon: {
+                                            title: "Hình",
+                                            width: "7%",
+                                            columnClass: 'text-center',
+                                            sorting: false,
+                                            display: function (data) {
+                                                var txt;
+                                                if (data.record.Icon != null)
+                                                    txt = `<span><img src="${Global.Data.folder}${data.record.Icon}" width="40px" height="40px"/></span>`;
+                                                else
+                                                    txt = '<span>' + " " + '</span>';
+                                                return txt;
+                                            }
+                                        },
+                                        IsSendSMS: {
+                                            title: "Gửi tin nhắn",
+                                            width: "10%",
+                                            columnClass: 'text-center',
+                                            display: function (data) {
+                                                var text = '';
+                                                if (!data.record.IsSendSMS)
+                                                    text = $('<i class="fa fa-square-o" style="font-size:26px"></i> ');
+                                                else
+                                                    text = $('<i class="fa fa-check-square-o blue"  style="font-size:26px"></i> ');
+                                                return text;
+                                            }
+                                        },
+                                        SmsContent: {
+                                            title: "Tin nhắn",
+                                            width: "20%",
+                                            sorting: false,
+                                        },
+                                        Note: {
+                                            title: "Ghi Chú",
+                                            width: "20%",
+                                            sorting: false,
+                                        },
+                                        edit: {
+                                            title: '',
+                                            width: '1%',
+                                            sorting: false,
+                                            columnClass: 'text-center',
+                                            display: function (data) {
+                                                var text = $('<i data-toggle="modal" data-target="#' + Global.Element.Popup_c + '" title="Chỉnh sửa thông tin" class="fa fa_tb fa-pencil-square-o clickable blue"  ></i>');
+                                                text.click(function () {
+                                                    $('#Eval_c_id').val(data.record.Id);
+                                                    $('#Eval_c_name').val(data.record.Name);
+                                                    $('#Eval_c_note').val(data.record.Note);
+                                                    $('#Eval_c_index').val(data.record.Index);
+                                                    $('#SmsContent').val(data.record.SmsContent);
+                                                    $('#Eval_c_default').prop('checked', data.record.IsDefault).change();
+                                                    $('#Eval_c_sendSMS').prop('checked', data.record.IsSendSMS).change();
+
+                                                    if (data.record.Icon)
+                                                        $('.img-avatar').attr('src', `${Global.Data.folder}${data.record.Icon}`);
+                                                });
+                                                return text;
+                                            }
+                                        },
+                                        Delete: {
+                                            title: ' ',
+                                            width: "3%",
+                                            sorting: false,
+                                            display: function (data) {
+                                                var text = $('<button title="Xóa" class="jtable-command-button jtable-delete-command-button"><span>Xóa</span></button>');
+                                                text.click(function () {
+                                                    GlobalCommon.ShowConfirmDialog('Bạn có chắc chắn muốn xóa?', function () {
+                                                        DeleteChild(data.record.Id);
+                                                    }, function () { }, 'Đồng ý', 'Hủy bỏ', 'Thông báo');
+                                                });
+                                                return text;
+                                            }
+                                        }
+                                    }
+                                }, function (data) { //opened handler
+                                    data.childTable.jtable('load');
+                                });
                         });
-                        return text;
-                    }
-                },
-                Delete: {
-                    title: '',
-                    width: "3%",
-                    sorting: false,
-                    display: function (data) {
-                        var text = $('<button title="Xóa" class="jtable-command-button jtable-delete-command-button"><span>Xóa</span></button>');
-                        text.click(function () {
+                        div.append($img);
+
+
+                        var btnEdit = $('<i data-toggle="modal" data-target="#' + Global.Element.Popup + '" title="Chỉnh sửa thông tin" class="fa fa-pencil-square-o clickable blue"  ></i>');
+                        btnEdit.click(function () {
+                            $('#p-id').val(parent.record.Id);
+                            $('#p-name').val(parent.record.Name);
+                            $('#p-note').val(parent.record.Note);
+                            $('#p-index').val(parent.record.Index);
+                        });
+                        div.append(btnEdit);
+
+                        var btnDelete = $('<i title="Xóa" class="fa fa-trash-o clickable red i-delete"></i>');
+                        btnDelete.click(function () {
                             GlobalCommon.ShowConfirmDialog('Bạn có chắc chắn muốn xóa?', function () {
-                                Delete(data.record.Id);
+                                Delete(parent.record.Id);
                             }, function () { }, 'Đồng ý', 'Hủy bỏ', 'Thông báo');
                         });
-                        return text;
+                        div.append(btnDelete);
+
+
+                        return div;
                     }
                 }
             }
@@ -299,34 +320,18 @@ GPRO.Evaluate = function () {
         $('#' + Global.Element.Jtable).jtable('load', { 'keyword': $('#keyword').val() });
     }
 
-    function InitParentModel(obj) {
-        var ViewModel = {
-            Id: 0,
-            Name: '',
-            Note: '',
-            Index: 0,
-        };
-        if (obj != null) {
-            ViewModel = {
-                Id: ko.observable(obj.Id),
-                Name: ko.observable(obj.Name),
-                Note: ko.observable(obj.Note),
-                Index: ko.observable(obj.Index),
-            };
-        }
-        return ViewModel;
-    }
-
-    function BindParent(obj) {
-        Global.Data.Parent = InitParentModel(obj);
-        ko.applyBindings(Global.Data.Parent, document.getElementById(Global.Element.Popup));
-    }
-
+    //#region parent
     function Save() {
+        var obj = {
+            Id: $('#p-id').val(),
+            Name: $('#p-name').val(),
+            Note: $('#p-note').val(),
+            Index: $('#p-index').val(),
+        }
         $.ajax({
             url: Global.UrlAction.Save,
             type: 'post',
-            data: ko.toJSON(Global.Data.Parent),
+            data: ko.toJSON(obj),
             contentType: 'application/json',
             beforeSend: function () { $('#loading').show(); },
             success: function (result) {
@@ -380,35 +385,27 @@ GPRO.Evaluate = function () {
         });
         $("#" + Global.Element.Popup + ' button[cancel]').click(function () {
             $("#" + Global.Element.Popup).modal("hide");
-            BindParent(null);
+            $('#p-id').val(0);
+            $('#p-name').val('');
+            $('#p-note').val('');
+            $('#p-index').val('');
         });
     }
 
     function CheckValidate() {
-        if ($('#name').val() == "") {
+        if ($('#p-name').val() == "") {
             GlobalCommon.ShowMessageDialog("Vui lòng nhập tên đánh giá.", function () { }, "Lỗi Nhập liệu");
             return false;
         }
-        else if ($('#index').val() == "") {
+        else if ($('#p-index').val() == "") {
             GlobalCommon.ShowMessageDialog("Vui lòng nhập số thứ tự hiển thị.", function () { }, "Lỗi Nhập liệu");
             return false;
         }
         return true;
     }
+    //#endregion
 
-
-    function InitSearchPopup() {
-        $('#' + Global.Element.Search + ' button[search]').click(function () {
-            ReloadList();
-        });
-
-        $('#' + Global.Element.Search + ' button[close]').click(function () {
-            $("#" + Global.Element.Search).modal("hide");
-        });
-    }
-
-
-
+    //#region child
     function SaveChild() {
         var obj = {
             Id: $('#Eval_c_id').val(),
@@ -418,8 +415,8 @@ GPRO.Evaluate = function () {
             SmsContent: $('#SmsContent').val(),
             EvaluateId: Global.Data.ParentId,
             IsDefault: $("#Eval_c_default").prop('checked'),//.data("kendoMobileSwitch").check(),
-            IsSendSMS: $("#Eval_c_sendSMS").prop('checked'), 
-            Icon: Global.Data.Avartar
+            IsSendSMS: $("#Eval_c_sendSMS").prop('checked'),
+            Image: $('#p-file-upload').attr('newurl')
         }
         $.ajax({
             url: Global.UrlAction.Save_c,
@@ -473,8 +470,8 @@ GPRO.Evaluate = function () {
         });
         $("#" + Global.Element.Popup_c + ' button[save]').click(function () {
             if (CheckValidateChild()) {
-                if ($('#Eval_c_pictureuploader').val() != '')
-                    UploadPicture('Eval_c_pictureuploader', 'Eval_c_hid_avatar');
+                if ($('#p-file-upload').val() != '')
+                    UploadPicture("p-file-upload", 'p-file-upload');
                 else
                     SaveChild();
             }
@@ -488,10 +485,12 @@ GPRO.Evaluate = function () {
             $('#Eval_c_hid_avatar').val('');
             $('#SmsContent').val('');
             $('#Eval_c_index').val(0);
-            Global.Data.Avartar = '';
             $('#Eval_c_default').prop('checked', true);
             $('#Eval_c_sendSMS').prop('checked', false).change();
-           // $('#Eval_c_default').bootstrapToggle('on');
+
+            $('.img-avatar').attr('src', '/Areas/Admin/Content/images/no-image.png');
+            $('#p-file-upload').attr('newurl', '');
+            $('#p-file-upload').val('');
         });
     }
 
@@ -506,18 +505,11 @@ GPRO.Evaluate = function () {
         }
         return true;
     }
-
+    //#endregion
 }
 $(document).ready(function () {
     var Evaluate = new GPRO.Evaluate();
     Evaluate.Init();
-
-    //$("#Eval_c_default").kendoMobileSwitch({
-    //    onLabel: "Có",
-    //    offLabel: "Không"
-    //});
-   // $('#Eval_c_default').bootstrapToggle({        on: 'Có',        off: 'Không'    });
-   
 })
 
 

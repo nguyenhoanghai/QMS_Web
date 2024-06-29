@@ -12,6 +12,10 @@
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Jquery.alerts/jquery.alerts.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.material.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.common-material.min.css" rel="stylesheet" />
+    <link href="~/Content/KendoUI/kendo.default.mobile.min.css" rel="stylesheet" />
+
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -28,6 +32,9 @@
     <script src="~/Scripts/Common.js"></script>
     <script src="~/Scripts/QMS/ThongTinPhucVu/ThongTinPhucVu.js"></script>
     <script src="~/Areas/Admin/Scripts/QMSCommon.js"></script>
+    <script src="~/Content/KendoUI/kendo.all.min.js"></script>
+    <script src="~/Content/KendoUI/Kendo.Cultures.vn.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
 
 </head>
 <body>
@@ -100,6 +107,10 @@
                                     <select id="dichvu" name="dichvu" class="form-control "></select>
                                 </div>
                             </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12   form-label">Ngày đăng ký khám</div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                                <input type="text" name="ngay-dk" id="ngay-dk" class="form-control datepicker" />
+                            </div>
                             <div class="col-md-12 col-sm-12 col-xs-12   border-bottom font_18" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
                                 <button class="btn btn-primary    " id="dangky" name="dangky"><i class="fa fa-edit"></i> Đăng Ký khám</button>
                             </div>
@@ -116,8 +127,12 @@
                             <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
                                 <input type="tel" name="sodienthoai_tracuu" id="sodienthoai_tracuu" class="form-control " />
                             </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12   form-label">Ngày đăng ký khám</div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 no_Padding_Margin">
+                                <input type="text"  id="ngay-dk-tc" class="form-control datepicker" />
+                            </div>
                             <div class="col-md-12 col-sm-12 col-xs-12   border-bottom font_18" style="overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">
-                                 <button class="btn btn-info    " id="xemthongtinphucvu" name="xemthongtinphucvu"><i class="fa fa-search-minus"></i> Tìm thông tin đăng ký</button>
+                                <button class="btn btn-info    " id="xemthongtinphucvu" name="xemthongtinphucvu"><i class="fa fa-search-minus"></i> Tìm thông tin đăng ký</button>
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-xs-12  " style="font-size:20px; overflow-wrap:break-word; overflow:hidden; text-overflow:ellipsis;">

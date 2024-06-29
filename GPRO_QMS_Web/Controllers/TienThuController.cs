@@ -45,7 +45,7 @@ namespace QMS_Website.Controllers
                             SoXe = soxe ,
                             Phone = phone
                         };
-                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu);
+                        BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(require), (int)eCounterSoftRequireType.inPhieu,0);
                         //BLLCounterSoftRequire.Instance.Insert(connectString, JsonConvert.SerializeObject(new
                         //{
                         //    MaKH = maKH,
@@ -92,7 +92,7 @@ namespace QMS_Website.Controllers
                 NgaySua = ngaysua,
                 CongViecs = congviecs,
                 CuaHang = cuahang
-            }), (int)eCounterSoftRequireType.ShowCustDetail_TT);
+            }), (int)eCounterSoftRequireType.ShowCustDetail_TT,0);
             return new ResponseBase();
         }
     }

@@ -92,6 +92,20 @@
             </div>
 
             <div class="col m12 s12">
+                @*<marquee id="mq"
+        behavior=scroll
+        onmousedown="this.stop();"
+        onfinish="alert('chay xong')"
+        direction="left"
+        loop="1"
+        scrollamount="@ConfigurationManager.AppSettings["TD_BV_TIME"]"
+        class="marquee">Dòng chữ chạy khi gọi bệnh nhân giữ lai so phieu cuoi cung ko cho ve 0</marquee>*@
+
+                <marquee id="mq"
+        behavior=scroll 
+        direction="left" 
+        scrollamount="50"
+        class="marquee">Dòng chữ chạy khi gọi bệnh nhân giữ lai so phieu cuoi cung ko cho ve 0</marquee> 
             </div>
             <div class="clearfix"></div>
         </div>
@@ -122,27 +136,31 @@
             <textarea class="materialize-textarea" id="css_r2" placeholder="css dòng lẻ ..."> </textarea>
             <label>CSS nội dung dòng lẻ</label>
         </div>
-        <div class="input-field col m2 s2">
+        <div class="input-field col m1 s1">
             <label>Số cột</label>
             <input type="text" class="" id="column" value=" " placeholder="số cột ..." />
         </div>
-        <div class="input-field col m2 s2">
+        <div class="input-field col m1 s1">
             <label>Số dòng</label>
             <input type="text" class="" id="row" value=" " placeholder="số dòng mỗi bên ..." />
         </div>
-        <div class="input-field col m2 s2">
+        <div class="input-field col m1 s1  ">
             <label>Tốc độ chạy quảng cáo</label>
             <input type="text" class="" id="run_time" value=" " placeholder="Tốc độ chạy quảng cáo ..." />
         </div>
-        <div class="input-field col m6 s6">
+        <div class="input-field col m9 s9  ">
+            <label>Nội dung chạy quảng cáo</label>
+            <input type="text" class="" id="run_text" value=" " placeholder="Nội dung quảng cáo ..." />
+        </div>
+        <div class="input-field col m12 s12">
             <label>CSS quảng cáo</label>
             <textarea class="materialize-textarea" id="run_css" placeholder="Css chạy quảng cáo ..."> </textarea>
         </div>
-        <div class="input-field col m6">
+        <div class="input-field col m12 s12">
             <textarea class="materialize-textarea" id="css_box_info"> </textarea>
             <label>CSS Box thông tin</label>
         </div>
-        <div class="input-field col m6">
+        <div class="input-field col m12 s12">
             <textarea class="materialize-textarea" id="css_box_video"> </textarea>
             <label>CSS Box Video</label>
         </div>
@@ -242,13 +260,13 @@
                 var video = document.getElementById("video");
                 var videoPromise = video.play();
                 if (videoPromise !== undefined) {
-                    videoPromise.then(_ => {}).catch(error => { });
+                    videoPromise.then(_ => { }).catch(error => { });
                 }
 
                 var audio = document.getElementById("audio");
                 var audioPromise = audio.play();
                 if (audioPromise !== undefined) {
-                    audioPromise.then(_ => {}).catch(error => { });
+                    audioPromise.then(_ => { }).catch(error => { });
                 }
             }
             else {
@@ -261,7 +279,7 @@
             check();
         });
         var home = new GPRO.BenhVien();
-        home.Init(); 
+        home.Init();
     </script>
     <script>
         var list = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model))');

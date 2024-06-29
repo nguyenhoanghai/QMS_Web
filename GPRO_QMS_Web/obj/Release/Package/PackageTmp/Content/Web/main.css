@@ -19,7 +19,7 @@ body {
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 
 
@@ -35,7 +35,7 @@ textarea {
 .form-control {
     box-shadow: none; /*padding: 25px 16px; min-height: 51px;*/
     /*height: 51px;*/
-    padding: 14px 12px;
+    /*padding: 14px 12px;*/
     vertical-align: middle;
 }
 
@@ -2850,4 +2850,22 @@ ul#navigation {
 .custom-social {
     margin: 0 5px;
     overflow: hidden;
+}
+
+.i-delete{
+   margin-left:5px;
+   cursor:pointer
+}
+
+.i-edit {
+    margin-left: 5px;
+    cursor: pointer
+}
+
+.text-left{
+    text-align:left !important;
+}
+
+.text-right {
+    text-align: right !important;
 }

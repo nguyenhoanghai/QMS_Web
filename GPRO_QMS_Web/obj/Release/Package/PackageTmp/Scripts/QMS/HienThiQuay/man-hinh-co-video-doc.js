@@ -1,4 +1,4 @@
-﻿if (typeof GPRO == 'undefined' || !GPRO) {
+﻿ if (typeof GPRO == 'undefined' || !GPRO) {
     var GPRO = {};
 }
 
@@ -69,7 +69,9 @@ GPRO.BenhVien = function () {
             SubTitle_Css: $('#sub_css').val(),
             Row1_Css: $('#css_r1').val(),
             Row2_Css: $('#css_r2').val(),
+            Adv_Text: $('#run_text').val(),
             Adv_Css: $('#run_css').val(),
+            Adv_Time: $('#run_time').val(),
             Row: $('#row').val(),
             Col: $('#column').val(),
             Services: '',
@@ -101,7 +103,7 @@ GPRO.BenhVien = function () {
             url: Global.UrlAction.GetDayInfo,
             type: 'POST',
             // data: JSON.stringify({ 'counters': $('#fullscreen').attr('counters'), 'services': $('#service').val() }),
-            data: JSON.stringify({ 'counters': ('2,3,4,5,6'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userId': 3 }),
+            data: JSON.stringify({ 'counters': ('2,3,4,5,6'), 'services': ('1,2,3,4,5,6,7,8,9'), 'userId': 3, 'getLastFiveNumbers': false }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 var objs = JSON.parse(data);
@@ -171,6 +173,10 @@ GPRO.BenhVien = function () {
                     $('#css_r1').val(obj.Row1_Css);
                     $('#css_r2').val(obj.Row2_Css);
                     $('#run_css').val(obj.Adv_Css);
+                    $('#run_text').val(obj.Adv_Text);
+                    $('#run_time').val(obj.Adv_Time);
+                    $('#mq').html(obj.Adv_Text);
+                    $('#mq').attr('scrollamount', parseInt(obj.Adv_Time));
                     $('#css_box_info').val(obj.css_box_info);
                     $('#css_box_video').val(obj.css_box_video);
 

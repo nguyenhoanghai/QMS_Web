@@ -879,9 +879,11 @@
     <Compile Include="Areas\Xe\XeAreaRegistration.cs" />
     <Compile Include="Controllers\BCDanhGiaController.cs" />
     <Compile Include="Controllers\BVRangHamMatController.cs" />
+    <Compile Include="Controllers\CapPhieuController.cs" />
     <Compile Include="Controllers\DangKyOnlineController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
+    <Compile Include="Controllers\DauSoMang\ContextPathController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HienThiQuayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -971,6 +973,7 @@
     <Content Include="Views\Home\Index_SMS.cshtml" />
     <Content Include="Views\DangKyOnline\BV_DkyKham.cshtml" />
     <Content Include="Views\RangHamMat\Register.cshtml" />
+    <Content Include="Views\CapPhieu\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -992,6 +995,7 @@
     <Folder Include="Areas\Xe\Views\Shared\" />
     <Folder Include="BLL\" />
     <Folder Include="Videos\" />
+    <Folder Include="Views\ContextPath\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

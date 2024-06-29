@@ -7,6 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>E:\Hai_GPRO\Publish\QMS</_PublishTargetUrl>
+    <History>True|2023-10-14T02:44:21.7044477Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin/Content/Authenticate.js">
@@ -1510,16 +1511,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/28/2015 15:56:36</publishTime>
     </File>
     <File Include="bin/QMS_System.Data.dll">
-      <publishTime>07/05/2022 17:23:18</publishTime>
+      <publishTime>10/19/2023 23:19:07</publishTime>
     </File>
     <File Include="bin/QMS_System.ThirdApp.dll">
-      <publishTime>06/07/2022 10:17:37</publishTime>
+      <publishTime>11/18/2022 11:37:22</publishTime>
     </File>
     <File Include="bin/QMS_Website.dll">
-      <publishTime>08/24/2022 08:33:28</publishTime>
+      <publishTime>10/20/2023 16:20:05</publishTime>
     </File>
     <File Include="bin/QMS_Website.pdb">
-      <publishTime>08/24/2022 08:33:28</publishTime>
+      <publishTime>10/20/2023 16:20:05</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>11/28/2018 13:00:36</publishTime>
@@ -1555,7 +1556,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2017 11:29:19</publishTime>
     </File>
     <File Include="Config_XML/DATA.XML">
-      <publishTime>08/24/2022 08:36:19</publishTime>
+      <publishTime>10/19/2023 17:32:50</publishTime>
     </File>
     <File Include="Config_XML/hien_thi_quay_config.xml">
       <publishTime>11/22/2021 13:25:07</publishTime>
@@ -1751,6 +1752,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/QMS/HienThiQuay/HienThiQuay.css">
       <publishTime>03/24/2019 08:22:20</publishTime>
+    </File>
+    <File Include="Content/QMS/Rang-Ham-Mat/logo_rhm.png">
+      <publishTime>11/16/2022 10:36:12</publishTime>
     </File>
     <File Include="Content/QMS/TV/TV1.css">
       <publishTime>02/09/2020 12:06:09</publishTime>
@@ -2107,7 +2111,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2022 13:30:24</publishTime>
     </File>
     <File Include="Scripts/QMS/ThongTinPhucVu/ThongTinPhucVu.js">
-      <publishTime>04/14/2022 08:11:03</publishTime>
+      <publishTime>10/19/2023 22:54:44</publishTime>
     </File>
     <File Include="Scripts/QMS/tien-thu/thong-tin-kh.js">
       <publishTime>12/23/2020 16:22:33</publishTime>
@@ -2181,8 +2185,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/BVRangHamMat/LCD2.cshtml">
       <publishTime>01/22/2021 09:20:34</publishTime>
     </File>
+    <File Include="Views/CapPhieu/Index.cshtml">
+      <publishTime>08/19/2023 09:22:22</publishTime>
+    </File>
     <File Include="Views/DangKyOnline/BV_DkyKham.cshtml">
-      <publishTime>04/10/2022 11:00:41</publishTime>
+      <publishTime>10/19/2023 22:53:53</publishTime>
     </File>
     <File Include="Views/DangKyOnline/FindInformation.cshtml">
       <publishTime>09/10/2018 19:46:20</publishTime>
@@ -2271,6 +2278,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/ManHinhGoiSo/Index.cshtml">
       <publishTime>07/15/2020 10:29:47</publishTime>
     </File>
+    <File Include="Views/RangHamMat/Register.cshtml">
+      <publishTime>11/16/2022 11:38:18</publishTime>
+    </File>
     <File Include="Views/Report/DailyDetailsReport.cshtml">
       <publishTime>02/21/2020 11:29:45</publishTime>
     </File>
@@ -2317,7 +2327,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2017 13:48:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/12/2021 14:06:14</publishTime>
+      <publishTime>10/20/2023 16:20:05</publishTime>
     </File>
   </ItemGroup>
 </Project>

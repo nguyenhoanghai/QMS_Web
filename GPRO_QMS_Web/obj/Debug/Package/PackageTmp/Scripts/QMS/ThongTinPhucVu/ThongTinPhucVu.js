@@ -23,7 +23,7 @@ GPRO.ServeInfo = function () {
             GetServices: '/DangKyOnline/GetServices',
             GetServiceInfo: '/DangKyOnline/GetServiceInfo',
             InsertServiceRequire: '/DangKyOnline/InsertServiceRequire',
-  Find: '/DangKyOnline/Find', 
+            Find: '/DangKyOnline/Find',
         },
         Element: {
         },
@@ -38,7 +38,7 @@ GPRO.ServeInfo = function () {
         RegisterEvent();
         //GetServices();
         GetServiceSelect_bv('dichvu');
-        setInterval(function () { Get() }, 1000); 
+        setInterval(function () { Get() }, 1000);
     }
 
     var RegisterEvent = function () {
@@ -49,11 +49,20 @@ GPRO.ServeInfo = function () {
 
         $('#sodienthoai,#sodienthoai_tracuu').on("keypress", function () {
             return isNumberKey(event);
-        }); 
+        });
         $('#xemthongtinphucvu').click(function () {
-            
-                Find();
-        }); 
+
+            Find();
+        });
+
+        let date = new Date();
+        date.setDate(date.getDate() + 1);
+
+        $("#ngay-dk,#ngay-dk-tc").kendoDatePicker({
+            format: "dd/MM/yyyy",
+            value: date,
+            min: date
+        });
     }
 
     function GetServices() {
@@ -93,19 +102,19 @@ GPRO.ServeInfo = function () {
         $.ajax({
             url: Global.UrlAction.Find,
             type: 'POST',
-            data: JSON.stringify({ 'Phone': $('#sodienthoai_tracuu').val(), 'Service': $('#dichvu').val() }),
+            data: JSON.stringify({ 'Phone': $('#sodienthoai_tracuu').val(), 'ngaydk': $('#ngay-dk-tc').val() }),
             contentType: 'application/json charset=utf-8',
             success: function (data) {
                 if (data.Result == "OK") {
                     $('#contentView-tracuu').html(data.Data);
                 }
-                else { 
+                else {
                     $('#contentView-tracuu').html('Không tìm thấy thông tin theo yêu cầu');
                 }
             }
         });
     }
-    
+
     function DrawTable(objs) {
         var tb = $('.tb-info tbody');
         tb.empty();
@@ -145,9 +154,10 @@ GPRO.ServeInfo = function () {
     function InsertServiceRequire() {
         var obj = {
             TicketNumber: 0,
-            ServiceId: $('#dichvu').val(), 
-            phonenumber: $('#sodienthoai').val(), 
-            CustomerName: $('#hoten').val(),             
+            ServiceId: $('#dichvu').val(),
+            PhoneNumber: $('#sodienthoai').val(),
+            Name: $('#hoten').val(),
+            RegisterDate: $("#ngay-dk").val()
         }
         $.ajax({
             url: Global.UrlAction.InsertServiceRequire,
@@ -156,20 +166,20 @@ GPRO.ServeInfo = function () {
             contentType: 'application/json charset=utf-8',
             success: function (result) {
                 if (result.Result == "OK") {
-                   // $('#sodienthoai').val('');
-                   // $('#dichvu').val(1);
+                    // $('#sodienthoai').val('');
+                    // $('#dichvu').val(1);
 
                     $('#contentView').html(result.Data);
-                  //  GlobalCommon.ShowMessageDialog("Bạn đã đăng ký thành công!", function () { }, 'Thông Báo');
+                    //  GlobalCommon.ShowMessageDialog("Bạn đã đăng ký thành công!", function () { }, 'Thông Báo');
                 }
                 else
                     //GlobalCommon.ShowMessageDialog(result.ErrorMessages[0].Message, function () { }, 'Lỗi');
-                $('#contentView').html(result.ErrorMessages[0].Message);
+                    $('#contentView').html(result.ErrorMessages[0].Message);
             }
         });
     }
 
- }
+}
 
 $(document).ready(function () {
     var serveinfo = new GPRO.ServeInfo();

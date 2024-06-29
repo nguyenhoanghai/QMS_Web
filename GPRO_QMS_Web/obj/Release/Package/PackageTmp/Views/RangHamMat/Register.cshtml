@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký khám";
+    Layout = "~/Views/Shared/_LayoutTV.cshtml";
+}
+<style>
+    .head-box {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .head-box-title,
+    .head-box-sub-title {
+        font-size: 20px;
+        font-weight: 600
+    }
+
+    .head-box-title {
+        padding-top: 10px;
+        background: #1a3644;
+    }
+
+    .head-box-sub-title {
+        padding: 10px 0;
+        font-size: 30px;
+        color: blue;
+        font-weight: bold;
+    }
+
+    .no-margin-bottom{ margin-bottom:0 !important}
+    .search-btn,
+    .search-btn i{
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .input-field.col label { 
+        font-size: 20px;
+        line-height: 5px;
+    }
+</style>
+
+<div style="width:1000px ; margin: 0 auto">
+    <div class="head-box">
+        <div class="head-box-title">
+            <img src="~/Content/QMS/Rang-Ham-Mat/logo_rhm.png" />
+        </div>
+        <div class="head-box-sub-title">Đăng ký khám bệnh</div>
+    </div>
+    <div style="padding:10px">
+        <div class="row no-margin-bottom">
+            <div class="input-field col s12">                
+                <input id="cccd" type="text" class="validate" style="  font-size: 25px;font-weight:600" />
+                <label for="cccd">Số chứng minh / căn cước công dân</label>
+            </div>
+          
+        </div>
+        <div class="row no-margin-bottom">
+            <div class="input-field col s12">
+                <input id="name" type="text" class="validate" style=" font-size: 25px;font-weight:600" />
+                <label for="name">Họ tên</label>
+            </div> 
+        </div>
+        <div style="text-align:center; padding:10px 0">
+            <button class="btn waves-effect waves-light btn-large search-btn">Tìm kiếm <i class="material-icons right">search</i></button>
+        </div>
+    </div>
+</div>
+
+
+

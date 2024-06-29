@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Nhân viên - nghiệp vụ"; 
+}
+
+ <div id="table" imgFolder="@System.Configuration.ConfigurationManager.AppSettings["imageFolder"].ToString()"></div>
+
+ <div class="modal fade" id="popup" data-backdrop="static" data-keyboard="false">
+     <div class="modal-dialog modal-small ">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <button cancel aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                 <h4 class="modal-title">Thông tin nghiệp vụ</h4>
+             </div>
+             <div class="modal-body">
+                 <div class="form-horizontal">
+                     <input type="hidden" id="id" />
+                     <div class="form-group col-md-12 ">
+                         <label class="control-label">Số thứ tự<span class="required-class">*</span></label> 
+                         <input class="form-control" id="index" required="required" type="number" />
+                     </div>
+                     <div class="form-group col-md-12 ">
+                         <label class="control-label">Nghiệp vụ<span class="required-class">*</span></label> 
+                         <select class="form-control" id="major" required="required" ></select>
+                     </div>
+                     <div class="clearfix"></div>
+                 </div>
+             </div>
+             <div class="modal-footer">
+                 <button cancel aria-hidden="true" data-dismiss="modal" class="btn">
+                     <div class="button-image image-close"></div>Đóng
+                 </button>
+                 <button save class="btn btn-primary">
+                     <div class="button-image image-save"></div>Lưu Lại
+                 </button>
+             </div>
+         </div>
+     </div>
+ </div>
+ <script src="~/Areas/Admin/Scripts/user-major/user-major-index.js"></script>

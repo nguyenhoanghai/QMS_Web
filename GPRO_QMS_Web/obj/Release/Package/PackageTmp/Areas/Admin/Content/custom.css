@@ -1,5 +1,5 @@
-div.jtable-main-container > table.jtable > thead th {text-align:center !important}
-.jtable-center div.jtable-main-container > table.jtable > tbody td {text-align:center !important}
+div.jtable-main-container > table.jtable > thead th {text-align:center }
+.jtable-center div.jtable-main-container > table.jtable > tbody td {text-align:center }
 .jtable-child-row .jtable-title{ background:#ccc !important}
 .jtable-child-row .jtable thead th,
 .jtable-child-row .jtable-bottom-panel,
@@ -75,11 +75,14 @@ div.jtable-main-container > table.jtable > thead th {text-align:center !importan
 
 #loading {
     position: fixed;
-    top: 28%;
+    top: 0%;
     width: 100%;
     z-index: 9999;
     display: none;
     text-align: center;
+    background: #d7d7d794;
+    height: 100%;
+    padding-top: 15%
 }
 
 .radio-box {
@@ -2520,7 +2523,7 @@ legend {
 
 .modal-body {
     padding: 10px;
-    padding-bottom: 0;
+    /*padding-bottom: 0;*/
 }
 
 .modalsmall .modal-body {

@@ -1,42 +1,25 @@
 ﻿@{
-    ViewBag.Title = "QL Nhân Viên"; 
+    ViewBag.Title = "QL Nhân Viên";
 }
 
 <script src="~/Areas/Admin/Scripts/User/User_Index.js"></script>
 <div id="jtableNhanVien" imgFolder="@System.Configuration.ConfigurationManager.AppSettings["imageFolder"].ToString()"></div>
 <style>
-    .form-horizontal .form-group {     min-height: 66px;}
-    textarea {max-width:none}
-</style>
+    .form-horizontal .form-group {
+        min-height: 66px;
+    }
 
-<div class="modal fade   " id="popup_Search" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modalsmall">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" cancel data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tìm Kiếm</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-horizontal">
-                    <div class="rows">
-                        <label class="control-label">Từ Khóa</label>
-                        <input class="form-control" id="keyword" type="text" placeholder="Nhập thông tin bạn cần tìm ..." />
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button close aria-hidden="true" data-dismiss="modal" class="btn">
-                    <div class="button-image image-close"></div>
-                    Đóng
-                </button>
-                <button search class="btn btn-primary">
-                    <div class="button-image image-search"></div>
-                    Tìm Kiếm
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+    textarea {
+        max-width: none
+    }
+
+    .img-avatar {
+        height: 150px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+</style>
 
 <div class="modal fade" id="popup" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog  ">
@@ -44,70 +27,73 @@
             <div class="modal-header">
                 <button cancel aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Thông Tin nhân viên</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-horizontal">
-                    <input type="hidden" data-bind="value: Id" />
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Tên tài khoản<span class="required-class">*</span></label><br />
-                        <input class="form-control" id="username" required="required" data-bind="value: UserName" type="text" placeholder="Nhập Tên tài khoản " />
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Mật khẩu<span class="required-class">*</span></label><br />
-                        <input class="form-control"  id="password" required="required" data-bind="value: Password" type="password" placeholder=" " />
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Họ tên<span class="required-class">*</span></label><br />
-                        <input class="form-control" id="name" required="required" data-bind="value: Name" type="text" placeholder="Nhập Họ Tên " />
-                    </div>
+            </div> 
+            <div class="modal-body form-inline">
+                <div class="container-fluid">
+                    <div class="form-horizontal">
+                        <input type="hidden" id="id" value="0" />
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-4 col-sm-6" style="padding-top:4px">
+                                <img src="~/Areas/Admin/Content/images/no-image.png" class="img-avatar" />
+                                <form id="p-form-upload" name="p-form-upload" enctype="multipart/form-data" method="post">
+                                    <input type="file" id="p-file-upload" name="p-file-upload" filelist newurl="" style="display:none" accept="image/*" />
+                                </form>
+                                <button class="btn btn-primary" id="p-btn-file-upload" style=" margin:0">Chọn ảnh ...</button>
+                                <div class="clearfix"></div>
+                            </div>
 
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Giới tính</label><br />
-                        <div>
-                            <input type="checkbox" id="sex" data-width="70" data-toggle="toggle" data-on="Nam" data-off="Nữ">
+                            <div class="form-group col-md-4 col-sm-6">
+                                <label class="control-label">Tên tài khoản<span class="required-class">*</span></label><br />
+                                <input class="form-control" id="user-name" required="required" type="text" placeholder="Nhập Tên tài khoản " />
+                            </div>
+                            <div class="form-group col-md-4 col-sm-6">
+                                <label class="control-label">Mật khẩu<span class="required-class">*</span></label><br />
+                                <input class="form-control" id="password" required="required" type="password" />
+                            </div>
+                            <div class="form-group col-md-4 col-sm-6">
+                                <label class="control-label">Họ tên<span class="required-class">*</span></label><br />
+                                <input class="form-control" id="name" required="required" type="text" placeholder="Nhập Họ Tên " />
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                <label class="control-label">Giới tính</label><br />
+                                <div>
+                                    <input type="checkbox" id="sex" data-width="70" data-toggle="toggle" data-on="Nam" data-off="Nữ">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                <label class="control-label">Chuyên môn</label>
+                                <div>
+                                    <input type="text" class="form-control" id="professional" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                <label class="control-label">Chức vụ</label>
+                                <div>
+                                    <input type="text" class="form-control" id="position" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Chuyên môn</label>
-                        <div>
-                            <input type="text" class="form-control" data-bind="value: Professional" />
+                        <div class="form-group col-md-12  ">
+                            <label class="control-label">Trợ giúp</label>
+                            <div>
+                                <textarea class="form-control" id="help"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Chức vụ</label>
-                        <div>
-                            <input type="text" class="form-control" data-bind="value: Position" />
+                        <div class="form-group col-md-12  ">
+                            <label class="control-label">Quá trình công tác</label>
+                            <div>
+                                <textarea class="form-control" id="working-history"></textarea>
+                            </div>
                         </div>
-                    </div>
-                   
-                     <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Hình</label>
-                        <div>
-                            <input id="avatar" type="file" />
-                            <input type="hidden" id="hid_avatar" />
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">Địa chỉ</label>
+                            <div>
+                                <textarea class="form-control" id="address"></textarea>
+                            </div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Trợ giúp</label>
-                        <div>
-                            <textarea class="form-control" data-bind="value: Help"></textarea>
-                        </div>                        
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        <label class="control-label">Quá trình công tác</label>
-                        <div>
-                            <textarea class="form-control" data-bind="value: WorkingHistory"></textarea>
-                        </div>
-                    </div>
-                   
-                     <div class="form-group col-md-12 col-sm-12">
-                        <label class="control-label">Địa chỉ</label>
-                        <div>
-                            <textarea class="form-control" data-bind="value: Address"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="clearfix"></div>
                 </div>
             </div>
             <div class="modal-footer">

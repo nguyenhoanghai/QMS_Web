@@ -115,6 +115,8 @@
             if (!fullScreenApi.isFullScreen()) {
                 fullScreenApi.requestFullScreen(document.documentElement);
                 $('.setting').hide();
+                var video = document.getElementById("video");
+                video.play();
             }
             else {
                 fullScreenApi.cancelFullScreen(document.documentElement);

@@ -172,8 +172,8 @@ namespace GPRO_QMS_Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
-               //   defaults: new { controller = "HienThiQuay", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "HienThiQuay", action = "ManHinhCoVideo", id = UrlParameter.Optional }
+                 defaults: new { controller = "HienThiQuay", action = "Index", id = UrlParameter.Optional }
                //defaults: new { controller = "huunghi", action = "lcd2", id = UrlParameter.Optional } 
                //huu nghi
                //defaults: new { controller = "tv", action = "tv1", id = UrlParameter.Optional } //viet thai quan
